@@ -635,48 +635,6 @@ const Navbar = ({ setView, currentView, onNavClick, isEditing, setIsEditing }: {
         )}
       </AnimatePresence>
 
-      {/* Right Utility Rail */}
-      <aside className="hidden xl:flex fixed right-0 top-0 h-screen w-20 hover:w-72 bg-bg-main/95 backdrop-blur-md border-l border-zinc-800 flex-col py-8 px-6 z-40 overflow-x-hidden hover:overflow-y-auto transition-all duration-300 group">
-        <div className="mb-12">
-          <div className="text-[10px] font-mono text-zinc-500 tracking-widest mb-6 uppercase border-b border-zinc-800 pb-2 whitespace-nowrap overflow-hidden">
-            <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">빠른 링크</span>
-          </div>
-          <div className="space-y-3">
-            <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="w-full flex items-center gap-4 group/btn whitespace-nowrap overflow-hidden">
-              <ArrowUp className="w-5 h-5 text-zinc-600 group-hover/btn:text-zinc-100 transition-colors shrink-0" />
-              <span className="text-sm font-medium text-zinc-400 group-hover/btn:text-zinc-100 transition-colors uppercase tracking-widest opacity-0 group-hover:opacity-100 duration-300">맨 위로</span>
-            </button>
-            <button onClick={handleResumeClick} className="w-full flex items-center gap-4 group/btn whitespace-nowrap overflow-hidden">
-              <FileText className="w-5 h-5 text-zinc-600 group-hover/btn:text-zinc-100 transition-colors shrink-0" />
-              <span className="text-sm font-medium text-zinc-400 group-hover/btn:text-zinc-100 transition-colors uppercase tracking-widest opacity-0 group-hover:opacity-100 duration-300">이력서</span>
-            </button>
-            <button onClick={handlePortfolioClick} className="w-full flex items-center gap-4 group/btn whitespace-nowrap overflow-hidden">
-              <Briefcase className="w-5 h-5 text-zinc-600 group-hover/btn:text-zinc-100 transition-colors shrink-0" />
-              <span className="text-sm font-medium text-zinc-400 group-hover/btn:text-zinc-100 transition-colors uppercase tracking-widest opacity-0 group-hover:opacity-100 duration-300">포트폴리오</span>
-            </button>
-          </div>
-        </div>
-
-        <div>
-          <div className="text-[10px] font-mono text-zinc-500 tracking-widest mb-6 uppercase border-b border-zinc-800 pb-2 whitespace-nowrap overflow-hidden">
-            <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">주요 프로젝트</span>
-          </div>
-          <div className="space-y-6">
-            <div className="group/proj cursor-pointer flex items-center gap-4 whitespace-nowrap overflow-hidden" onClick={(e) => handleLinkClick(e as any, 'projects')}>
-              <div className="w-8 h-8 border border-zinc-800 overflow-hidden relative shrink-0">
-                <img src="https://picsum.photos/seed/project1/300/200" className="w-full h-full object-cover grayscale opacity-50 group-hover/proj:opacity-100 transition-all duration-500" referrerPolicy="no-referrer" />
-              </div>
-              <div className="text-xs font-medium text-zinc-400 group-hover/proj:text-zinc-100 transition-colors uppercase tracking-widest opacity-0 group-hover:opacity-100 duration-300">01. 프로젝트</div>
-            </div>
-            <div className="group/proj cursor-pointer flex items-center gap-4 whitespace-nowrap overflow-hidden" onClick={(e) => handleLinkClick(e as any, 'skills')}>
-              <div className="w-8 h-8 border border-zinc-800 overflow-hidden relative shrink-0">
-                <img src="https://picsum.photos/seed/project2/300/200" className="w-full h-full object-cover grayscale opacity-50 group-hover/proj:opacity-100 transition-all duration-500" referrerPolicy="no-referrer" />
-              </div>
-              <div className="text-xs font-medium text-zinc-400 group-hover/proj:text-zinc-100 transition-colors uppercase tracking-widest opacity-0 group-hover:opacity-100 duration-300">02. 핵심역량</div>
-            </div>
-          </div>
-        </div>
-      </aside>
 
       <PasswordModal
         isOpen={isPasswordModalOpen}
