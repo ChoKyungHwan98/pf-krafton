@@ -481,17 +481,17 @@ const Navbar = ({ setView, currentView, onNavClick, isEditing, setIsEditing, act
     }
   };
 
-  const navBgClass = scrolledPastHero ? 'bg-[#080808]/70 border-white/[0.04] border-b backdrop-blur-xl shadow-[0_4px_30px_rgba(0,0,0,0.3)] py-4' : 'bg-transparent py-6';
+  const navBgClass = scrolledPastHero ? 'bg-white/90 border-black/10 border-b backdrop-blur-md shadow-sm py-4' : 'bg-transparent py-6';
 
   return (
     <>
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${navBgClass} print:hidden`}>
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
           <div className="flex items-center gap-3 cursor-pointer" onClick={() => { setView('home'); window.scrollTo({ top: 0, behavior: 'smooth' }); setIsMenuOpen(false); }}>
-            <span className="font-display font-bold tracking-tight text-xl text-[#f0ece4]">지망생 조경환</span>
-            <span className="text-[10px] font-mono tracking-widest uppercase hidden sm:block text-[#666]">// Game Designer</span>
+            <span className="font-display font-bold tracking-tight text-xl text-[#2C2C2C]">지망생 조경환</span>
+            <span className="text-[10px] font-mono tracking-widest uppercase hidden sm:block text-zinc-500">// Game Designer</span>
             {isEditing && (
-              <div className="ml-2 px-2 py-0.5 bg-[#800020]/20 border border-[#800020]/40 rounded text-[10px] text-[#800020] font-bold uppercase">
+              <div className="ml-2 px-2 py-0.5 bg-[#800020]/10 border border-[#800020]/20 rounded text-[10px] text-[#800020] font-bold uppercase">
                 Edit
               </div>
             )}
@@ -509,7 +509,7 @@ const Navbar = ({ setView, currentView, onNavClick, isEditing, setIsEditing, act
                 <a 
                   href={`#${id}`}
                   onClick={(e) => handleLinkClick(e, id)}
-                  className={`text-[14px] font-bold transition-all flex items-center gap-1.5 relative py-1 ${activeSection === id ? 'text-[#f0ece4]' : 'text-[#777] hover:text-[#f0ece4]'}`}
+                  className={`text-[14px] font-bold transition-all flex items-center gap-1.5 relative py-1 ${activeSection === id ? 'text-[#2C2C2C]' : 'text-zinc-500 hover:text-[#2C2C2C]'}`}
                 >
                   <span className={`text-[12px] font-bold transition-opacity duration-300 ${activeSection === id ? 'opacity-100 text-[#800020]' : 'opacity-0'}`}>{num}.</span>
                   {label}
@@ -517,17 +517,17 @@ const Navbar = ({ setView, currentView, onNavClick, isEditing, setIsEditing, act
                     <motion.div layoutId="nav-indicator" className="absolute -bottom-1 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#800020] to-transparent rounded-full" />
                   )}
                 </a>
-                {idx < 3 && <span className="w-px h-3 bg-white/[0.08]"></span>}
+                {idx < 3 && <span className="w-px h-3 bg-black/10"></span>}
               </React.Fragment>
             ))}
-            <div className="flex items-center gap-1 ml-3 pl-3 border-l border-white/[0.08]">
+            <div className="flex items-center gap-1 ml-3 pl-3 border-l border-black/10">
               {[
                 { key: 'resume', label: '이력서', icon: <FileText className="w-3.5 h-3.5" /> },
                 { key: 'portfolio', label: '포트폴리오', icon: <FolderOpen className="w-3.5 h-3.5" /> },
                 { key: 'game-history', label: '플레이 이력', icon: <Gamepad2 className="w-3.5 h-3.5" /> },
               ].map(item => (
                 <button key={item.key} onClick={() => { setView(item.key as any); window.scrollTo(0,0); }} 
-                  className={`px-3 py-1.5 rounded-lg text-xs font-bold tracking-wide transition-all flex items-center gap-1.5 ${currentView === item.key ? 'bg-[#800020]/20 text-[#f0ece4]' : 'text-[#777] hover:text-[#f0ece4] hover:bg-white/[0.04]'}`}>
+                  className={`px-3 py-1.5 rounded-lg text-xs font-bold tracking-wide transition-all flex items-center gap-1.5 ${currentView === item.key ? 'bg-[#800020]/10 text-[#800020]' : 'text-zinc-500 hover:text-[#2C2C2C] hover:bg-zinc-100'}`}>
                   {item.icon}
                   <span className="hidden lg:inline">{item.label}</span>
                 </button>
@@ -560,7 +560,7 @@ const Navbar = ({ setView, currentView, onNavClick, isEditing, setIsEditing, act
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="fixed inset-0 z-40 pt-24 px-6 bg-[#080808]/95 backdrop-blur-3xl"
+            className="fixed inset-0 z-40 pt-24 px-6 bg-white/95 backdrop-blur-xl"
           >
             <div className="flex flex-col gap-6 text-lg">
               {[
@@ -570,19 +570,19 @@ const Navbar = ({ setView, currentView, onNavClick, isEditing, setIsEditing, act
                 { id: 'play-history', label: '플레이 이력', num: '04' }
               ].map(({ id, label, num }) => (
                 <a key={id} href={`#${id}`} onClick={(e) => handleLinkClick(e, id)}
-                  className="font-medium flex items-center gap-3 pb-4 border-b border-white/[0.04] text-[#f0ece4]">
-                  <span className="text-sm font-bold opacity-50">{num}.</span>
+                  className="font-medium flex items-center gap-3 pb-4 border-b border-black/10 text-[#2C2C2C]">
+                  <span className="text-sm font-bold opacity-50 text-zinc-500">{num}.</span>
                   {label}
                 </a>
               ))}
               <div className="pt-4 flex flex-col gap-4">
-                <button onClick={() => { setView('resume'); setIsMenuOpen(false); window.scrollTo(0,0); }} className={`text-left font-medium flex items-center gap-2 ${currentView === 'resume' ? 'text-[#800020]' : 'text-[#777] hover:text-[#f0ece4]'}`}>
+                <button onClick={() => { setView('resume'); setIsMenuOpen(false); window.scrollTo(0,0); }} className={`text-left font-medium flex items-center gap-2 ${currentView === 'resume' ? 'text-[#800020]' : 'text-zinc-600 hover:text-[#2C2C2C]'}`}>
                   <FileText className="w-4 h-4" /> 이력서 보기
                 </button>
-                <button onClick={() => { setView('portfolio'); setIsMenuOpen(false); window.scrollTo(0,0); }} className={`text-left font-medium flex items-center gap-2 ${currentView === 'portfolio' ? 'text-[#800020]' : 'text-[#888]'}`}>
+                <button onClick={() => { setView('portfolio'); setIsMenuOpen(false); window.scrollTo(0,0); }} className={`text-left font-medium flex items-center gap-2 ${currentView === 'portfolio' ? 'text-[#800020]' : 'text-zinc-600'}`}>
                   <FolderOpen className="w-4 h-4" /> 포트폴리오 갤러리
                 </button>
-                <button onClick={() => { setView('game-history'); setIsMenuOpen(false); window.scrollTo(0,0); }} className={`text-left font-medium flex items-center gap-2 ${currentView === 'game-history' ? 'text-[#800020]' : 'text-[#888]'}`}>
+                <button onClick={() => { setView('game-history'); setIsMenuOpen(false); window.scrollTo(0,0); }} className={`text-left font-medium flex items-center gap-2 ${currentView === 'game-history' ? 'text-[#800020]' : 'text-zinc-600'}`}>
                   <Gamepad2 className="w-4 h-4" /> 플레이 이력 보기
                 </button>
               </div>
@@ -600,8 +600,8 @@ const Navbar = ({ setView, currentView, onNavClick, isEditing, setIsEditing, act
 
 // --- Hero ---
 const Hero = ({ onPortfolioClick, onResumeClick, isEditing, content, setContent }: { onPortfolioClick: () => void, onResumeClick: () => void, isEditing: boolean, content: any, setContent: (c: any) => void }) => (
-  <section className="relative min-h-screen flex flex-col justify-center items-center px-6 md:px-12 py-[120px] overflow-hidden bg-[#0a0a0a]">
-    <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,rgba(128,0,32,0.03)_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+  <section className="relative min-h-screen flex flex-col justify-center items-center px-6 md:px-12 py-[120px] overflow-hidden bg-transparent">
+    <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.03)_1px,transparent_1px)] bg-[size:24px_24px]"></div>
     
     <motion.div 
       initial={{ opacity: 0, y: 20 }}
@@ -610,14 +610,14 @@ const Hero = ({ onPortfolioClick, onResumeClick, isEditing, content, setContent 
       className="z-10 text-center max-w-5xl relative w-full mx-auto flex flex-col items-center pb-24"
     >
       <h1 className="mb-10 flex flex-col items-center gap-3">
-        <div className="text-xl md:text-2xl lg:text-3xl font-display font-normal text-[#666] tracking-tight">
+        <div className="text-xl md:text-2xl lg:text-3xl font-display font-medium text-zinc-500 tracking-tight">
           <EditableText value={content.titleLine1 || "기획의도를 알고"} onSave={(v) => setContent({...content, titleLine1: v})} isEditing={isEditing} />
         </div>
-        <div className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-display font-bold text-[#e8e4dc] tracking-[-0.04em] leading-[1.1] break-keep">
+        <div className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-display font-bold text-[#2C2C2C] tracking-[-0.04em] leading-[1.1] break-keep">
           <EditableText value={content.titleLine2 || "목차를 쓸줄 아는 기획자"} onSave={(v) => setContent({...content, titleLine2: v})} isEditing={isEditing} />
         </div>
       </h1>
-      <p className="text-[#888] text-lg md:text-xl font-medium leading-relaxed mb-12 max-w-2xl mx-auto">
+      <p className="text-zinc-500 text-lg md:text-xl font-medium leading-relaxed mb-12 max-w-2xl mx-auto">
         <EditableText value={content.description} onSave={(v) => setContent({...content, description: v})} isEditing={isEditing} multiline />
       </p>
       
@@ -625,14 +625,14 @@ const Hero = ({ onPortfolioClick, onResumeClick, isEditing, content, setContent 
         <motion.button 
           whileHover={{ y: -2 }} whileTap={{ scale: 0.98 }}
           onClick={onResumeClick}
-          className="px-10 py-5 bg-[#e8e4dc] text-[#0a0a0a] font-bold flex items-center justify-center gap-3 hover:bg-[#800020] hover:text-white transition-all duration-500 text-sm tracking-widest w-full sm:w-auto rounded-full uppercase shadow-xl hover:shadow-2xl"
+          className="px-10 py-5 bg-[#800020] text-white font-bold flex items-center justify-center gap-3 hover:bg-[#a10028] transition-all duration-500 text-sm tracking-widest w-full sm:w-auto rounded-full uppercase shadow-lg shadow-[#800020]/20 hover:shadow-xl"
         >
           이력서 보기 <ChevronRight className="w-4 h-4" />
         </motion.button>
         <motion.button 
           whileHover={{ y: -2 }} whileTap={{ scale: 0.98 }}
           onClick={onPortfolioClick}
-          className="px-10 py-5 bg-transparent border border-[#2a2a2a] text-[#c8c4bc] font-bold hover:border-[#800020] hover:text-[#e8e4dc] transition-all duration-500 flex items-center justify-center gap-3 text-sm tracking-widest w-full sm:w-auto rounded-full uppercase"
+          className="px-10 py-5 bg-white border border-zinc-200 text-zinc-600 font-bold hover:border-zinc-300 hover:text-[#2C2C2C] hover:bg-zinc-50 transition-all duration-500 flex items-center justify-center gap-3 text-sm tracking-widest w-full sm:w-auto rounded-full uppercase shadow-sm hover:shadow-md"
         >
           포트폴리오 보기 <ArrowUpRight className="w-4 h-4" />
         </motion.button>
@@ -640,8 +640,8 @@ const Hero = ({ onPortfolioClick, onResumeClick, isEditing, content, setContent 
     </motion.div>
 
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1, duration: 1 }} className="mt-16 flex flex-col items-center gap-4">
-      <span className="text-[10px] font-mono text-[#555] uppercase tracking-widest">Scroll to explore</span>
-      <div className="w-[1px] h-16 bg-[#2a2a2a] relative overflow-hidden">
+      <span className="text-[10px] font-mono text-zinc-400 uppercase tracking-widest">Scroll to explore</span>
+      <div className="w-[1px] h-16 bg-zinc-200 relative overflow-hidden">
         <motion.div animate={{ y: [-64, 64] }} transition={{ repeat: Infinity, duration: 2, ease: "linear" }} className="absolute top-0 left-0 w-full h-1/2 bg-[#800020]" />
       </div>
     </motion.div>
@@ -650,16 +650,16 @@ const Hero = ({ onPortfolioClick, onResumeClick, isEditing, content, setContent 
 
 // --- About ---
 const About = ({ isEditing, content, setContent }: { isEditing: boolean, content: any, setContent: (c: any) => void }) => (
-  <section id="about" className="scroll-mt-20 py-[120px] px-6 md:px-12 relative border-t border-[#1e1e1e] min-h-screen flex flex-col items-center justify-center bg-[#0a0a0a] overflow-hidden">
-    <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,rgba(128,0,32,0.02)_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+  <section id="about" className="scroll-mt-20 py-[120px] px-6 md:px-12 relative border-t border-black/5 min-h-screen flex flex-col items-center justify-center bg-white overflow-hidden">
+    <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.02)_1px,transparent_1px)] bg-[size:24px_24px]"></div>
     
     <div className="max-w-5xl mx-auto w-full relative z-10">
       <div className="text-center mb-16">
         <span className="text-[#800020] font-mono text-xs uppercase tracking-[0.25em] font-bold mb-6 block">01. About</span>
-        <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold tracking-[-0.03em] text-[#e8e4dc] leading-[1.15] mb-10">
+        <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold tracking-[-0.03em] text-[#2C2C2C] leading-[1.15] mb-10">
           <EditableText value={content.title || "안녕하세요."} onSave={(v) => setContent({...content, title: v})} isEditing={isEditing} />
         </h2>
-        <div className="space-y-5 text-[#777] font-normal text-base md:text-lg leading-[1.85] max-w-2xl mx-auto">
+        <div className="space-y-5 text-zinc-600 font-normal text-base md:text-lg leading-[1.85] max-w-2xl mx-auto">
           <p><EditableText value={content.p1} onSave={(v) => setContent({...content, p1: v})} isEditing={isEditing} multiline /></p>
           <p><EditableText value={content.p2} onSave={(v) => setContent({...content, p2: v})} isEditing={isEditing} multiline /></p>
         </div>
@@ -667,11 +667,11 @@ const About = ({ isEditing, content, setContent }: { isEditing: boolean, content
       
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16">
         {content.stats.slice(0, 3).map((stat: any, idx: number) => (
-          <div key={idx} className="group flex flex-col items-center justify-center gap-2 bg-[#111] border border-[#1e1e1e] rounded-3xl p-10 hover:border-[#800020]/40 hover:-translate-y-1 transition-all duration-500">
-            <div className="text-5xl font-display font-bold text-[#e8e4dc] tracking-tighter group-hover:text-[#800020] transition-colors">
+          <div key={idx} className="group flex flex-col items-center justify-center gap-2 bg-[#F6F6F3] border border-black/5 rounded-3xl p-10 hover:border-[#800020]/20 hover:shadow-md hover:-translate-y-1 transition-all duration-500">
+            <div className="text-5xl font-display font-bold text-[#2C2C2C] tracking-tighter group-hover:text-[#800020] transition-colors">
               <EditableText value={stat.value} onSave={(v) => { const s = [...content.stats]; s[idx].value = v; setContent({...content, stats: s}); }} isEditing={isEditing} />
             </div>
-            <div className="text-sm font-bold text-[#555] tracking-widest uppercase">
+            <div className="text-sm font-bold text-zinc-500 tracking-widest uppercase">
               <EditableText value={stat.label} onSave={(v) => { const s = [...content.stats]; s[idx].label = v; setContent({...content, stats: s}); }} isEditing={isEditing} />
             </div>
           </div>
@@ -733,21 +733,21 @@ const ProjectCard = ({ project, idx, isEditing, projects, setProjects, onProject
   }
 
   return (
-    <motion.div whileHover={{ scale: 1.02 }} className="group relative bg-[#0e0e0e] border border-white/[0.04] rounded-2xl overflow-hidden hover:border-[#800020]/20 hover:shadow-[0_8px_32px_rgba(0,0,0,0.5)] transition-all duration-500 flex flex-col">
+    <motion.div whileHover={{ scale: 1.02 }} className="group relative bg-white border border-black/5 rounded-2xl overflow-hidden hover:border-black/10 hover:shadow-lg transition-all duration-500 flex flex-col">
       {isEditing && (
         <button onClick={(e) => { e.stopPropagation(); if (confirm("삭제하시겠습니까?")) { setProjects(projects.filter(p => p.id !== project.id)); }}}
           className="absolute top-4 right-4 z-20 p-2 bg-red-500 text-white rounded-full hover:bg-red-600 transition-colors shadow-lg" title="삭제">
           <X className="w-4 h-4" />
         </button>
       )}
-      <div className="overflow-hidden relative bg-[#111] shrink-0 aspect-[16/10] border-b border-[#1e1e1e]">
+      <div className="overflow-hidden relative bg-zinc-100 shrink-0 aspect-[16/10] border-b border-black/5">
         <img src={project.image} alt={project.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 absolute inset-0" referrerPolicy="no-referrer" />
         <div className="absolute top-4 left-4 flex flex-wrap items-center gap-2">
-          <div className="bg-black/70 backdrop-blur-sm border border-white/10 rounded-md px-3 py-1.5 text-[11px] font-sans font-bold text-[#e8e4dc] tracking-tight shadow-sm w-fit">
+          <div className="bg-white/90 backdrop-blur-sm border border-black/10 rounded-md px-3 py-1.5 text-[11px] font-sans font-bold text-[#2C2C2C] tracking-tight shadow-sm w-fit">
             <EditableText value={project.category} onSave={(v) => { const p = [...projects]; p[idx].category = v; setProjects(p); }} isEditing={isEditing} />
           </div>
           {project.status && (
-            <div className={`border rounded-md px-3 py-1.5 text-[11px] font-sans font-bold tracking-tight shadow-sm w-fit backdrop-blur-sm ${project.status === '미출시' ? 'bg-zinc-900/80 text-zinc-300 border-zinc-700' : 'bg-[#800020] text-white border-[#800020] shadow-lg shadow-[#800020]/30'}`}>
+            <div className={`border rounded-md px-3 py-1.5 text-[11px] font-sans font-bold tracking-tight shadow-sm w-fit backdrop-blur-sm ${project.status === '미출시' ? 'bg-zinc-100/90 text-zinc-500 border-zinc-200' : 'bg-[#800020] text-white border-[#800020] shadow-md shadow-[#800020]/20'}`}>
               <EditableText value={project.status} onSave={(v) => { const p = [...projects]; p[idx].status = v; setProjects(p); }} isEditing={isEditing} />
             </div>
           )}
@@ -755,22 +755,22 @@ const ProjectCard = ({ project, idx, isEditing, projects, setProjects, onProject
       </div>
       <div className="flex-1 flex flex-col justify-between p-8">
         <div>
-          <h3 className="text-xl font-bold mb-3 text-[#e8e4dc] group-hover:text-[#800020] transition-colors line-clamp-1">
+          <h3 className="text-xl font-bold mb-3 text-[#2C2C2C] group-hover:text-[#800020] transition-colors line-clamp-1">
             <EditableText value={project.title} onSave={(v) => { const p = [...projects]; p[idx].title = v; setProjects(p); }} isEditing={isEditing} />
           </h3>
-          <p className="text-[#888] text-sm leading-relaxed mb-6 line-clamp-2">
+          <p className="text-zinc-500 text-sm leading-relaxed mb-6 line-clamp-2">
             <EditableText value={project.description} onSave={(v) => { const p = [...projects]; p[idx].description = v; setProjects(p); }} isEditing={isEditing} multiline />
           </p>
           <div className="flex flex-wrap gap-2 mb-8">
             {project.tags.slice(0, 3).map((tag, tagIdx) => (
-              <span key={tagIdx} className="text-[10px] font-sans font-bold px-2 py-1 bg-[#1a1a1a] border border-[#2a2a2a] rounded-md text-[#888] flex items-center gap-1">
+              <span key={tagIdx} className="text-[10px] font-sans font-bold px-2 py-1 bg-zinc-50 border border-zinc-200 rounded-md text-zinc-500 flex items-center gap-1">
                 #{tag}
               </span>
             ))}
           </div>
         </div>
         <button onClick={(e) => { e.stopPropagation(); onProjectClick(project); }}
-          className="w-full relative overflow-hidden group/btn py-4 bg-[#f0ece4] text-[#080808] font-bold text-xs tracking-widest transition-all duration-500 flex items-center justify-center gap-2 uppercase rounded-xl hover:shadow-[0_4px_16px_rgba(128,0,32,0.2)]">
+          className="w-full relative overflow-hidden group/btn py-4 bg-white border border-black/10 text-[#2C2C2C] font-bold text-xs tracking-widest transition-all duration-500 flex items-center justify-center gap-2 uppercase rounded-xl hover:shadow-[0_4px_16px_rgba(128,0,32,0.15)] hover:border-[#800020]">
           <span className="relative z-10 flex items-center gap-2 transition-colors duration-500 group-hover/btn:text-white">기획서 보기 <ArrowRight className="w-4 h-4" /></span>
           <div className="absolute inset-0 bg-[#800020] scale-x-0 origin-left group-hover/btn:scale-x-100 transition-transform duration-500" />
         </button>
@@ -786,18 +786,18 @@ const Projects = ({ onProjectClick, isEditing, projects, setProjects, limit, set
   const displayedProjects = limit ? projects.slice(0, limit) : projects;
 
   return (
-    <section id="projects" className="scroll-mt-20 py-[120px] px-6 md:px-12 relative min-h-screen flex flex-col items-center justify-center bg-[#080808] overflow-hidden">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[60%] h-px bg-gradient-to-r from-transparent via-[#800020]/20 to-transparent" />
-      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,rgba(128,0,32,0.02)_1px,transparent_1px)] bg-[size:32px_32px]"></div>
+    <section id="projects" className="scroll-mt-20 py-[120px] px-6 md:px-12 relative min-h-screen flex flex-col items-center justify-center bg-[#F6F6F3] overflow-hidden border-t border-black/5">
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[60%] h-px bg-gradient-to-r from-transparent via-black/10 to-transparent" />
+      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.03)_1px,transparent_1px)] bg-[size:32px_32px]"></div>
       
       <div className="max-w-7xl mx-auto w-full relative z-10">
         <div className="text-center mb-20">
           <motion.span initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}
             className="text-[#800020] font-mono text-xs uppercase tracking-[0.3em] font-bold mb-6 block">02. Projects</motion.span>
           <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-            className="text-4xl md:text-5xl lg:text-7xl font-display font-bold tracking-[-0.03em] text-[#f0ece4] leading-tight mb-8">주요 프로젝트.</motion.h2>
+            className="text-4xl md:text-5xl lg:text-7xl font-display font-bold tracking-[-0.03em] text-[#2C2C2C] leading-tight mb-8">주요 프로젝트.</motion.h2>
           <motion.p initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }}
-            className="text-[#777] text-lg md:text-xl max-w-2xl mx-auto font-medium leading-[1.9]">
+            className="text-zinc-500 text-lg md:text-xl max-w-2xl mx-auto font-medium leading-[1.9]">
             시스템 기획 및 레벨 디자인, 프로토타입 개발 결과물입니다.
           </motion.p>
         </div>
@@ -808,7 +808,7 @@ const Projects = ({ onProjectClick, isEditing, projects, setProjects, limit, set
               const isActive = project.id === actualFeaturedId;
               return (
                 <motion.div key={project.id} layout onClick={() => setFeaturedId(project.id)}
-                  className={`relative overflow-hidden rounded-3xl cursor-pointer transition-all duration-700 ease-in-out border border-[#1e1e1e] hover:border-[#2e2e2e] shadow-sm hover:shadow-xl flex flex-col bg-[#111] ${
+                  className={`relative overflow-hidden rounded-3xl cursor-pointer transition-all duration-700 ease-in-out border border-black/5 hover:border-black/10 shadow-sm hover:shadow-lg flex flex-col bg-white ${
                     isActive ? 'lg:grow-[3] lg:basis-0 h-[500px] lg:h-full' : 'lg:grow-[1] lg:basis-0 h-[150px] lg:h-full'
                   }`}>
                   <ProjectCard project={project} idx={idx} isEditing={isEditing} projects={projects} setProjects={setProjects} onProjectClick={onProjectClick} layout={isActive ? 'accordion-active' : 'accordion-inactive'} />
@@ -827,7 +827,7 @@ const Projects = ({ onProjectClick, isEditing, projects, setProjects, limit, set
         {limit && setView && (
           <div className="mt-20 text-center">
             <button onClick={() => setView('portfolio')}
-              className="group relative inline-flex items-center justify-center gap-4 px-10 py-5 bg-[#f0ece4] text-[#080808] font-bold tracking-widest text-sm rounded-full uppercase overflow-hidden shadow-xl transition-all duration-500 hover:shadow-[0_8px_32px_rgba(128,0,32,0.3)] hover:-translate-y-1">
+              className="group relative inline-flex items-center justify-center gap-4 px-10 py-5 bg-white border border-black/10 text-[#2C2C2C] font-bold tracking-widest text-sm rounded-full uppercase overflow-hidden shadow-sm transition-all duration-500 hover:shadow-[0_8px_24px_rgba(128,0,32,0.15)] hover:-translate-y-1 hover:border-[#800020]">
               <span className="relative z-10 flex items-center gap-3 transition-colors duration-500 group-hover:text-white">
                 전체 포트폴리오 보기 <ArrowRight className="w-4 h-4" />
               </span>
@@ -847,42 +847,42 @@ const Portfolio = ({ onProjectClick, isEditing, projects, setProjects, setView }
     <motion.section initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} className="py-[120px] px-6 md:px-12 max-w-7xl mx-auto">
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-16">
         <div>
-          <button onClick={() => setView('home')} className="flex items-center gap-2 text-[#888] hover:text-[#800020] transition-colors mb-6 group font-sans tracking-tight text-sm uppercase font-bold">
+          <button onClick={() => setView('home')} className="flex items-center gap-2 text-zinc-500 hover:text-[#800020] transition-colors mb-6 group font-sans tracking-tight text-sm uppercase font-bold">
             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" /> Return to Home
           </button>
           <div className="flex items-center gap-4 mb-6">
-            <span className="text-[#888] font-mono text-sm uppercase tracking-widest font-bold">DOC. 02</span>
-            <div className="w-12 h-px bg-[#2a2a2a]"></div>
+            <span className="text-zinc-400 font-mono text-sm uppercase tracking-widest font-bold">DOC. 02</span>
+            <div className="w-12 h-px bg-zinc-300"></div>
           </div>
-          <h2 className="text-4xl lg:text-5xl font-display font-bold tracking-tighter text-[#e8e4dc] leading-tight">포트폴리오 갤러리.</h2>
+          <h2 className="text-4xl lg:text-5xl font-display font-bold tracking-tighter text-[#2C2C2C] leading-tight">포트폴리오 갤러리.</h2>
         </div>
       </div>
       <div className="space-y-24">
         {categories.map(category => (
           <div key={category}>
-            <h3 className="text-2xl font-bold mb-8 flex items-center gap-3 text-[#e8e4dc] border-b border-[#1e1e1e] pb-4">
+            <h3 className="text-2xl font-bold mb-8 flex items-center gap-3 text-[#2C2C2C] border-b border-black/5 pb-4">
               <FileText className="w-5 h-5 text-[#800020]" /> {category}
             </h3>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {projects.filter(p => p.category === category).map((project, idx) => (
-                <motion.div key={project.id} whileHover={{ y: -4 }} className="group relative flex flex-col bg-[#111] border border-[#1e1e1e] rounded-xl overflow-hidden hover:border-[#2e2e2e] hover:shadow-md transition-all duration-300">
-                  <div className="aspect-[16/10] overflow-hidden relative border-b border-[#1e1e1e] bg-[#111]">
+                <motion.div key={project.id} whileHover={{ y: -4 }} className="group relative flex flex-col bg-white border border-black/5 rounded-xl overflow-hidden hover:border-black/10 hover:shadow-lg transition-all duration-300">
+                  <div className="aspect-[16/10] overflow-hidden relative border-b border-black/5 bg-zinc-100">
                     <img src={project.image} alt={project.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" referrerPolicy="no-referrer" />
                     {project.status && (
-                      <div className={`absolute top-4 left-4 border rounded-md px-3 py-1 text-[10px] font-sans font-bold tracking-tight shadow-sm ${project.status === '미출시' ? 'bg-zinc-900/80 text-zinc-400 border-zinc-800' : 'bg-[#800020]/90 text-white border-[#800020]'}`}>
+                      <div className={`absolute top-4 left-4 border rounded-md px-3 py-1 text-[10px] font-sans font-bold tracking-tight shadow-sm ${project.status === '미출시' ? 'bg-zinc-100/90 text-zinc-500 border-zinc-200' : 'bg-[#800020]/90 text-white border-[#800020]'}`}>
                         <EditableText value={project.status} onSave={(v) => { const p = [...projects]; const i = p.findIndex(pp => pp.id === project.id); p[i].status = v; setProjects(p); }} isEditing={isEditing} />
                       </div>
                     )}
                   </div>
                   <div className="p-8 flex-1 flex flex-col">
-                    <h4 className="text-xl font-bold mb-3 text-[#e8e4dc] group-hover:text-[#800020] transition-colors">
+                    <h4 className="text-xl font-bold mb-3 text-[#2C2C2C] group-hover:text-[#800020] transition-colors">
                       <EditableText value={project.title} onSave={(v) => { const p = [...projects]; const i = p.findIndex(pp => pp.id === project.id); p[i].title = v; setProjects(p); }} isEditing={isEditing} />
                     </h4>
-                    <p className="text-[#888] text-sm leading-relaxed mb-8 flex-1">
+                    <p className="text-zinc-500 text-sm leading-relaxed mb-8 flex-1">
                       <EditableText value={project.description} onSave={(v) => { const p = [...projects]; const i = p.findIndex(pp => pp.id === project.id); p[i].description = v; setProjects(p); }} isEditing={isEditing} multiline />
                     </p>
                     <button onClick={() => onProjectClick(project)}
-                      className="w-full py-4 bg-[#e8e4dc] text-[#0a0a0a] font-bold text-xs tracking-widest hover:bg-[#800020] hover:text-white transition-colors flex items-center justify-center gap-2 uppercase rounded-xl">
+                      className="w-full py-4 bg-white border border-black/10 text-[#2C2C2C] font-bold text-xs tracking-widest hover:border-[#800020] hover:text-[#800020] transition-colors flex items-center justify-center gap-2 uppercase rounded-xl">
                       자세히 보기 <ArrowUpRight className="w-4 h-4" />
                     </button>
                   </div>
@@ -915,25 +915,25 @@ const Skills = ({ isEditing, skills, setSkills }: { isEditing: boolean, skills: 
   const [showIconPicker, setShowIconPicker] = useState<number | null>(null);
 
   return (
-    <section id="skills" className="scroll-mt-20 py-[120px] px-6 md:px-12 relative min-h-screen flex flex-col items-center justify-center bg-[#080808] overflow-hidden">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[60%] h-px bg-gradient-to-r from-transparent via-[#800020]/20 to-transparent" />
-      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,rgba(128,0,32,0.02)_1px,transparent_1px)] bg-[size:32px_32px]"></div>
+    <section id="skills" className="scroll-mt-20 py-[120px] px-6 md:px-12 relative min-h-screen flex flex-col items-center justify-center bg-[#F6F6F3] overflow-hidden">
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[60%] h-px bg-gradient-to-r from-transparent via-black/10 to-transparent" />
+      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.03)_1px,transparent_1px)] bg-[size:32px_32px]"></div>
       
       <div className="max-w-6xl mx-auto w-full relative z-10">
         <div className="text-center mb-20">
           <motion.span initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}
             className="text-[#800020] font-mono text-xs uppercase tracking-[0.3em] font-bold mb-6 block">03. Skills</motion.span>
           <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-            className="text-4xl md:text-5xl lg:text-7xl font-display font-bold tracking-[-0.03em] text-[#f0ece4] leading-tight mb-8">핵심 역량.</motion.h2>
+            className="text-4xl md:text-5xl lg:text-7xl font-display font-bold tracking-[-0.03em] text-[#2C2C2C] leading-tight mb-8">핵심 역량.</motion.h2>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {skills.map((skill, idx) => (
             <motion.div key={idx} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.1 }}
-              className="relative group/skill flex flex-col gap-6 bg-gradient-to-b from-[#0e0e0e] to-[#0a0a0a] border border-white/[0.04] rounded-2xl p-8 hover:border-[#800020]/30 hover:-translate-y-2 transition-all duration-500 overflow-hidden shadow-lg hover:shadow-[0_8px_32px_rgba(128,0,32,0.05)]">
-              {/* Card top edge glow */}
-              <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/[0.06] to-transparent" />
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-0 group-hover/skill:w-1/2 h-px bg-gradient-to-r from-transparent via-[#800020]/50 to-transparent transition-all duration-700" />
+              className="relative group/skill flex flex-col gap-6 bg-white border border-black/5 rounded-2xl p-8 hover:border-black/10 hover:-translate-y-2 transition-all duration-500 overflow-hidden shadow-sm hover:shadow-[0_8px_32px_rgba(0,0,0,0.06)]">
+              {/* Card top edge glow (light version) */}
+              <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-black/[0.03] to-transparent" />
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-0 group-hover/skill:w-1/2 h-px bg-gradient-to-r from-transparent via-[#800020]/30 to-transparent transition-all duration-700" />
               {isEditing && (
                 <button onClick={() => { const s = [...skills]; s.splice(idx, 1); setSkills(s); }}
                   className="absolute top-4 right-4 p-2 bg-red-500 text-white rounded-full hover:bg-red-600 transition-colors shadow-sm z-10" title="삭제">
@@ -942,14 +942,14 @@ const Skills = ({ isEditing, skills, setSkills }: { isEditing: boolean, skills: 
               )}
               
               <div className="flex items-center gap-4">
-                <div className={`w-14 h-14 bg-[#1a1a1a] rounded-2xl flex items-center justify-center text-[#e8e4dc] shrink-0 border border-[#2a2a2a] group-hover/skill:bg-[#800020] group-hover/skill:border-[#800020] group-hover/skill:text-white transition-colors duration-500`}>
+                <div className={`w-14 h-14 bg-zinc-50 rounded-2xl flex items-center justify-center text-[#2C2C2C] shrink-0 border border-black/5 group-hover/skill:bg-[#800020] group-hover/skill:border-[#800020] group-hover/skill:text-white transition-colors duration-500`}>
                   {skill.icon}
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-xl font-bold text-[#e8e4dc] truncate">
+                  <h3 className="text-xl font-bold text-[#2C2C2C] truncate">
                     <EditableText value={skill.name} onSave={(v) => { const s = [...skills]; s[idx].name = v; setSkills(s); }} isEditing={isEditing} />
                   </h3>
-                  <p className="text-sm font-medium text-[#888] mt-1 truncate">
+                  <p className="text-sm font-medium text-zinc-500 mt-1 truncate">
                     <EditableText value={skill.caption || ""} onSave={(v) => { const s = [...skills]; s[idx].caption = v; setSkills(s); }} isEditing={isEditing} />
                   </p>
                 </div>
@@ -957,16 +957,16 @@ const Skills = ({ isEditing, skills, setSkills }: { isEditing: boolean, skills: 
               
               <div className="flex flex-col gap-2 relative z-10">
                 <div className="flex justify-between items-center mb-1">
-                  <span className="text-xs font-bold text-[#555] tracking-[0.2em] uppercase">Proficiency</span>
-                  <span className="text-sm font-bold text-[#f0ece4] group-hover/skill:text-[#800020] transition-colors duration-500">{skill.level}%</span>
+                  <span className="text-xs font-bold text-zinc-400 tracking-[0.2em] uppercase">Proficiency</span>
+                  <span className="text-sm font-bold text-[#2C2C2C] group-hover/skill:text-[#800020] transition-colors duration-500">{skill.level}%</span>
                 </div>
-                <div className="h-1.5 w-full bg-[#1a1a1a] rounded-full overflow-hidden relative">
+                <div className="h-1.5 w-full bg-zinc-100 rounded-full overflow-hidden relative border border-black/[0.03]">
                   <motion.div 
                     initial={{ width: 0 }}
                     whileInView={{ width: `${skill.level}%` }}
                     viewport={{ once: true }}
                     transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
-                    className="absolute top-0 left-0 bottom-0 bg-gradient-to-r from-[#d4d0c8] to-[#f0ece4] group-hover/skill:from-[#800020] group-hover/skill:to-[#c80032] transition-colors duration-500 rounded-full shadow-[0_0_10px_rgba(240,236,228,0.5)] group-hover/skill:shadow-[0_0_15px_rgba(128,0,32,0.6)]"
+                    className="absolute top-0 left-0 bottom-0 bg-gradient-to-r from-zinc-300 to-zinc-400 group-hover/skill:from-[#800020] group-hover/skill:to-[#c80032] transition-colors duration-500 rounded-full group-hover/skill:shadow-[0_0_8px_rgba(128,0,32,0.3)]"
                   />
                 </div>
               </div>
@@ -987,52 +987,52 @@ const PlayHistory = ({ isEditing, history, setHistory, onViewAll }: { isEditing:
 
     return (
       <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}
-        className="group flex flex-col bg-gradient-to-b from-[#0e0e0e] to-[#0a0a0a] border border-white/[0.04] rounded-2xl p-8 hover:border-[#800020]/20 hover:-translate-y-2 transition-all duration-500 h-full relative overflow-hidden shadow-lg hover:shadow-[0_8px_32px_rgba(0,0,0,0.4)]">
-        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/[0.06] to-transparent" />
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-0 group-hover:w-1/2 h-px bg-gradient-to-r from-transparent via-[#800020]/50 to-transparent transition-all duration-700" />
+        className="group flex flex-col bg-[#F6F6F3] border border-black/5 rounded-2xl p-8 hover:border-[#800020]/20 hover:-translate-y-2 transition-all duration-500 h-full relative overflow-hidden shadow-sm hover:shadow-[0_8px_24px_rgba(0,0,0,0.06)]">
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-black/[0.03] to-transparent" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-0 group-hover:w-1/2 h-px bg-gradient-to-r from-transparent via-[#800020]/30 to-transparent transition-all duration-700" />
         
-        <div className="flex items-center justify-between mb-8 pb-4 border-b border-white/[0.04] relative z-10">
-          <div className="flex items-center gap-4 text-[#f0ece4]">
-            <div className="w-12 h-12 bg-[#141414] rounded-xl flex items-center justify-center text-[#d4d0c8] border border-white/[0.04] group-hover:bg-[#800020] group-hover:border-[#800020] group-hover:text-white transition-all duration-500 shadow-inner">
+        <div className="flex items-center justify-between mb-8 pb-4 border-b border-black/5 relative z-10">
+          <div className="flex items-center gap-4 text-[#2C2C2C]">
+            <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-[#2C2C2C] border border-black/5 group-hover:bg-[#800020] group-hover:border-[#800020] group-hover:text-white transition-all duration-500 shadow-sm">
               {icon}
             </div>
             <span className="font-bold tracking-tight text-xl group-hover:text-[#800020] transition-colors duration-500">{title}</span>
           </div>
           {isEditing && (
             <button onClick={() => { const h = {...history}; h[dataKey].push({ id: Date.now().toString(), name: "새 항목", hours: 0 }); setHistory(h); }}
-              className="p-2 bg-[#1a1a1a] border border-[#2a2a2a] text-[#888] hover:bg-[#2a2a2a] transition-colors rounded-full">
+              className="p-2 bg-white border border-black/10 text-zinc-500 hover:bg-zinc-50 transition-colors rounded-full">
               <Plus className="w-4 h-4" />
             </button>
           )}
         </div>
         <div className="space-y-6 flex-1">
           {displayItems.map((game, idx) => (
-            <div key={game.id} className="group/item flex flex-col gap-1 p-3 -mx-3 rounded-2xl hover:bg-[#1a1a1a] transition-colors relative">
+            <div key={game.id} className="group/item flex flex-col gap-1 p-3 -mx-3 rounded-2xl hover:bg-white transition-colors relative shadow-transparent hover:shadow-sm">
               <div className="flex items-center gap-2 mb-1">
                 {isEditing && (
-                  <button onClick={() => { const h = {...history}; h[dataKey].splice(idx, 1); setHistory(h); }} className="absolute -left-4 text-[#555] hover:text-red-500 transition-colors">
+                  <button onClick={() => { const h = {...history}; h[dataKey].splice(idx, 1); setHistory(h); }} className="absolute -left-4 text-zinc-400 hover:text-red-500 transition-colors">
                     <X className="w-3.5 h-3.5" />
                   </button>
                 )}
-                <span className="px-2 py-0.5 bg-[#800020]/20 text-[#800020] rounded-sm text-[10px] font-bold tracking-widest">{game.genre}</span>
+                <span className="px-2 py-0.5 bg-[#800020]/10 text-[#800020] rounded-sm text-[10px] font-bold tracking-widest">{game.genre}</span>
               </div>
               <div className="flex items-center gap-2">
-                <span className="text-[#e8e4dc] font-bold text-lg truncate">
+                <span className="text-[#2C2C2C] font-bold text-lg truncate">
                   <EditableText value={game.title || ""} onSave={(v) => { const h = {...history}; h[dataKey][idx].title = v; setHistory(h); }} isEditing={isEditing} />
                 </span>
               </div>
-              <div className="flex items-center gap-1.5 text-[#888] font-mono text-xs mt-0.5">
+              <div className="flex items-center gap-1.5 text-zinc-500 font-mono text-xs mt-0.5">
                 <Gamepad2 className="w-3.5 h-3.5" /> 
                 <span className="flex items-center">
                   <EditableText value={game.platform || ""} onSave={(v) => { const h = {...history}; h[dataKey][idx].platform = v; setHistory(h); }} isEditing={isEditing} />
-                  {game.playTime && <span className="ml-2 pl-2 border-l border-[#2a2a2a] text-[#555]">{game.playTime}</span>}
+                  {game.playTime && <span className="ml-2 pl-2 border-l border-zinc-300 text-zinc-500">{game.playTime}</span>}
                 </span>
               </div>
             </div>
           ))}
           {hiddenCount > 0 && !isEditing && (
-            <div className="pt-4 mt-4 border-t border-dashed border-[#2a2a2a] text-center">
-              <span className="text-xs font-bold text-[#555] tracking-widest uppercase">+ {hiddenCount} More Entries</span>
+            <div className="pt-4 mt-4 border-t border-dashed border-black/10 text-center">
+              <span className="text-xs font-bold text-zinc-400 tracking-widest uppercase">+ {hiddenCount} More Entries</span>
             </div>
           )}
         </div>
@@ -1041,25 +1041,25 @@ const PlayHistory = ({ isEditing, history, setHistory, onViewAll }: { isEditing:
   };
 
   return (
-    <section id="play-history" className="scroll-mt-20 py-[120px] px-6 md:px-12 relative min-h-screen flex flex-col items-center justify-center bg-[#080808] overflow-hidden">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[60%] h-px bg-gradient-to-r from-transparent via-[#800020]/20 to-transparent" />
-      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,rgba(128,0,32,0.02)_1px,transparent_1px)] bg-[size:32px_32px]"></div>
+    <section id="play-history" className="scroll-mt-20 py-[120px] px-6 md:px-12 relative min-h-screen flex flex-col items-center justify-center bg-white overflow-hidden border-t border-black/5">
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[60%] h-px bg-gradient-to-r from-transparent via-black/10 to-transparent" />
+      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.02)_1px,transparent_1px)] bg-[size:32px_32px]"></div>
       
       <div className="max-w-6xl mx-auto w-full relative z-10">
         <div className="text-center mb-20">
           <motion.span initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}
             className="text-[#800020] font-mono text-xs uppercase tracking-[0.3em] font-bold mb-6 block">04. Play History</motion.span>
           <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-            className="text-4xl md:text-5xl lg:text-7xl font-display font-bold tracking-[-0.03em] text-[#f0ece4] leading-tight mb-8">게임 플레이 이력.</motion.h2>
+            className="text-4xl md:text-5xl lg:text-7xl font-display font-bold tracking-[-0.03em] text-[#2C2C2C] leading-tight mb-8">게임 플레이 이력.</motion.h2>
           <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }}
             className="flex flex-col items-center gap-8">
-            <p className="text-[#777] text-lg md:text-xl max-w-2xl mx-auto font-medium leading-[1.9]">
+            <p className="text-zinc-500 text-lg md:text-xl max-w-2xl mx-auto font-medium leading-[1.9]">
               다양한 장르와 플랫폼을 아우르는 게임 플레이 경험이 <br className="hidden md:block" />
               폭넓은 시야와 차별화된 레벨 디자인의 밑거름이 됩니다.
             </p>
             {!isEditing && (
               <button onClick={onViewAll}
-                className="group relative px-8 py-4 bg-transparent text-[#d4d0c8] rounded-full text-xs font-bold tracking-widest uppercase border border-white/[0.08] hover:border-[#800020]/50 transition-all duration-500 overflow-hidden flex items-center gap-3">
+                className="group relative px-8 py-4 bg-white text-zinc-600 rounded-full text-xs font-bold tracking-widest uppercase border border-black/10 hover:border-[#800020] transition-all duration-500 overflow-hidden flex items-center gap-3">
                 <span className="relative z-10 flex items-center gap-2 group-hover:text-white transition-colors duration-500">
                   전체 플레이 이력 보기 <ArrowRight className="w-4 h-4" />
                 </span>
@@ -1129,12 +1129,12 @@ const Resume = ({ setView, isEditing, data, setData }: ResumeProps) => {
     <motion.section initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }}
       className="py-12 md:py-20 px-6 md:px-12 max-w-5xl mx-auto w-full">
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12">
-        <button onClick={() => setView('home')} className="flex items-center gap-2 text-[#888] hover:text-[#800020] transition-colors group font-sans tracking-tight text-sm">
+        <button onClick={() => setView('home')} className="flex items-center gap-2 text-zinc-500 hover:text-[#800020] transition-colors group font-sans tracking-tight text-sm">
           <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" /> RETURN TO HOME
         </button>
         <motion.button whileHover={{ y: -2 }} whileTap={{ scale: 0.98 }} onClick={handleDownload}
           disabled={isGeneratingPdf}
-          className="px-8 py-4 bg-[#111] border border-[#1e1e1e] rounded-xl text-[#e8e4dc] font-bold flex items-center justify-center gap-3 hover:border-[#800020] transition-all duration-300 text-sm tracking-widest shadow-sm w-full sm:w-auto disabled:opacity-50">
+          className="px-8 py-4 bg-white border border-black/10 rounded-xl text-[#2C2C2C] font-bold flex items-center justify-center gap-3 hover:border-[#800020] hover:text-[#800020] transition-all duration-300 text-sm tracking-widest shadow-sm w-full sm:w-auto disabled:opacity-50">
           {isGeneratingPdf ? (
             <><span className="animate-spin inline-block w-4 h-4 border-2 border-[#800020] border-t-transparent rounded-full" /> PDF 생성 중...
             </>
@@ -1148,24 +1148,24 @@ const Resume = ({ setView, isEditing, data, setData }: ResumeProps) => {
         {/* Sidebar */}
         <div className="lg:col-span-4 print:col-span-4 space-y-8 print:space-y-6 lg:sticky lg:top-24 self-start">
           <div className="text-center lg:text-left">
-            <div className="w-40 h-40 print:w-32 print:h-32 print:mb-4 rounded-3xl overflow-hidden mb-8 mx-auto lg:mx-0 border border-[#1e1e1e] shadow-sm print:shadow-none">
+            <div className="w-40 h-40 print:w-32 print:h-32 print:mb-4 rounded-3xl overflow-hidden mb-8 mx-auto lg:mx-0 border border-black/5 shadow-sm print:shadow-none">
               <img src="https://picsum.photos/seed/profile/400/400" alt="Profile" className="w-full h-full object-cover grayscale opacity-80" />
             </div>
-            <h1 className="text-4xl print:text-3xl font-display font-bold mb-3 text-[#e8e4dc] tracking-tight">
+            <h1 className="text-4xl print:text-3xl font-display font-bold mb-3 text-[#2C2C2C] tracking-tight">
               <EditableText value={data.name} onSave={(v) => setData({...data, name: v})} isEditing={isEditing} />
             </h1>
             <p className="text-[#800020] font-bold mb-8 print:mb-4 font-mono tracking-widest text-sm uppercase">
               <EditableText value={data.role} onSave={(v) => setData({...data, role: v})} isEditing={isEditing} />
             </p>
-            <div className="space-y-4 text-sm text-[#888] font-medium">
+            <div className="space-y-4 text-sm text-zinc-600 font-medium">
               {/* 이메일 — 항상 표시 */}
               <div className="flex items-center gap-4 justify-center lg:justify-start">
-                <div className="w-10 h-10 bg-[#1a1a1a] rounded-xl flex items-center justify-center text-[#888] border border-[#2a2a2a]"><Mail className="w-4 h-4" /></div>
+                <div className="w-10 h-10 bg-zinc-50 rounded-xl flex items-center justify-center text-zinc-500 border border-black/5"><Mail className="w-4 h-4" /></div>
                 <span><EditableText value={data.email} onSave={(v) => setData({...data, email: v})} isEditing={isEditing} /></span>
               </div>
               {/* 전화번호 — PDF 다운로드(인쇄) 시에만 표시 */}
               <div className="hidden print:flex items-center gap-4 justify-center lg:justify-start">
-                <div className="w-10 h-10 bg-[#1a1a1a] rounded-xl flex items-center justify-center text-[#888] border border-[#2a2a2a] print:border-gray-200"><Phone className="w-4 h-4" /></div>
+                <div className="w-10 h-10 bg-zinc-50 rounded-xl flex items-center justify-center text-zinc-500 border border-black/5 print:border-gray-200"><Phone className="w-4 h-4" /></div>
                 <span><EditableText value={data.phone} onSave={(v) => setData({...data, phone: v})} isEditing={isEditing} /></span>
               </div>
             </div>
@@ -1229,17 +1229,17 @@ const Resume = ({ setView, isEditing, data, setData }: ResumeProps) => {
         <div className="lg:col-span-8 print:col-span-8">
           
           {/* Tabs for Web View */}
-          <div className="flex gap-4 border-b border-[#1e1e1e] mb-8 print:hidden overflow-x-auto whitespace-nowrap">
-            <button onClick={() => setActiveTab('overview')} className={`pb-4 px-2 text-sm font-bold tracking-widest border-b-2 transition-all ${activeTab === 'overview' ? 'text-[#e8e4dc] border-[#800020]' : 'text-[#555] border-transparent hover:text-[#888]'}`}>개요</button>
-            <button onClick={() => setActiveTab('experience')} className={`pb-4 px-2 text-sm font-bold tracking-widest border-b-2 transition-all ${activeTab === 'experience' ? 'text-[#e8e4dc] border-[#800020]' : 'text-[#555] border-transparent hover:text-[#888]'}`}>경험</button>
-            <button onClick={() => setActiveTab('coverletter')} className={`pb-4 px-2 text-sm font-bold tracking-widest border-b-2 transition-all ${activeTab === 'coverletter' ? 'text-[#e8e4dc] border-[#800020]' : 'text-[#555] border-transparent hover:text-[#888]'}`}>자기소개서</button>
+          <div className="flex gap-4 border-b border-black/10 mb-8 print:hidden overflow-x-auto whitespace-nowrap">
+            <button onClick={() => setActiveTab('overview')} className={`pb-4 px-2 text-sm font-bold tracking-widest border-b-2 transition-all ${activeTab === 'overview' ? 'text-[#2C2C2C] border-[#800020]' : 'text-zinc-500 border-transparent hover:text-[#2C2C2C]'}`}>개요</button>
+            <button onClick={() => setActiveTab('experience')} className={`pb-4 px-2 text-sm font-bold tracking-widest border-b-2 transition-all ${activeTab === 'experience' ? 'text-[#2C2C2C] border-[#800020]' : 'text-zinc-500 border-transparent hover:text-[#2C2C2C]'}`}>경험</button>
+            <button onClick={() => setActiveTab('coverletter')} className={`pb-4 px-2 text-sm font-bold tracking-widest border-b-2 transition-all ${activeTab === 'coverletter' ? 'text-[#2C2C2C] border-[#800020]' : 'text-zinc-500 border-transparent hover:text-[#2C2C2C]'}`}>자기소개서</button>
           </div>
 
           <div className="space-y-6 print:space-y-4">
             {/* TAB: OVERVIEW */}
             <div className={`space-y-6 print:space-y-4 ${activeTab === 'overview' ? 'block' : 'hidden print:block'}`}>
               {/* Summary */}
-              <section className="bg-[#111] rounded-3xl p-6 lg:p-8 print:p-6 shadow-sm border border-[#1e1e1e]">
+              <section className="bg-white rounded-3xl p-6 lg:p-8 print:p-6 shadow-sm border border-black/5">
                 <h3 className="text-xl font-bold mb-4 print:mb-3 flex items-center gap-3 text-[#e8e4dc]"><User className="w-6 h-6" /> 자기소개</h3>
                 <div className="text-[#888] print:text-[13px] print:leading-relaxed leading-relaxed font-medium">
                   <EditableText value={data.summary} onSave={(v) => setData({...data, summary: v})} isEditing={isEditing} markdown={true} />
@@ -1247,7 +1247,7 @@ const Resume = ({ setView, isEditing, data, setData }: ResumeProps) => {
               </section>
 
           {/* Education */}
-          <section className="bg-[#111] rounded-3xl p-6 lg:p-8 print:p-6 shadow-sm border border-[#1e1e1e]">
+          <section className="bg-white rounded-3xl p-6 lg:p-8 print:p-6 shadow-sm border border-black/5">
             <h3 className="text-xl font-bold mb-6 print:mb-4 flex items-center gap-3 text-[#e8e4dc]"><GraduationCap className="w-6 h-6" /> 학력 및 교육</h3>
             <div className="space-y-8 print:space-y-4">
               {data.education.map((edu, idx) => (
@@ -1273,7 +1273,7 @@ const Resume = ({ setView, isEditing, data, setData }: ResumeProps) => {
           </section>
           
           {/* Awards */}
-          <section className="bg-[#111] rounded-3xl p-6 lg:p-8 print:p-6 shadow-sm border border-[#1e1e1e]">
+          <section className="bg-white rounded-3xl p-6 lg:p-8 print:p-6 shadow-sm border border-black/5">
             <h3 className="text-xl font-bold mb-6 print:mb-4 flex items-center gap-3 text-[#e8e4dc]"><Award className="text-[#800020] w-6 h-6" /> 자격 및 수상</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 print:gap-3">
               {data.awards.map((award, idx) => (
@@ -1291,7 +1291,7 @@ const Resume = ({ setView, isEditing, data, setData }: ResumeProps) => {
         {/* TAB: EXPERIENCE */}
         <div className={activeTab === 'experience' ? 'block print:mt-12' : 'hidden print:block print:mt-12'}>
           {/* Experience */}
-          <section className="bg-[#111] rounded-3xl p-6 lg:p-8 print:p-6 shadow-sm border border-[#1e1e1e]">
+          <section className="bg-white rounded-3xl p-6 lg:p-8 print:p-6 shadow-sm border border-black/5">
             <h3 className="text-xl font-bold mb-6 print:mb-4 flex items-center gap-3 text-[#e8e4dc]"><Briefcase className="text-[#800020] w-6 h-6" /> 프로젝트 경험</h3>
             <div className="space-y-8 print:space-y-4">
               {data.experience.map((exp, idx) => (
@@ -1483,21 +1483,21 @@ const Resume = ({ setView, isEditing, data, setData }: ResumeProps) => {
 
 // --- Contact ---
 const Contact = () => (
-  <section id="contact" className="scroll-mt-20 py-[120px] px-6 md:px-12 relative border-t border-[#1e1e1e] min-h-screen flex flex-col items-center justify-center bg-[#0a0a0a] overflow-hidden">
-    <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,rgba(128,0,32,0.02)_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+  <section id="contact" className="scroll-mt-20 py-[120px] px-6 md:px-12 relative border-t border-black/5 min-h-screen flex flex-col items-center justify-center bg-white overflow-hidden">
+    <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.02)_1px,transparent_1px)] bg-[size:24px_24px]"></div>
     
     <div className="max-w-4xl mx-auto w-full text-center relative z-10">
       <span className="text-[#800020] font-mono text-xs uppercase tracking-[0.25em] font-bold mb-8 block">05. Contact</span>
-      <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold tracking-[-0.03em] text-[#e8e4dc] leading-[1.15] mb-8">
-        저는 <br/><span className="text-[#555]">준비되었습니다.</span>
+      <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold tracking-[-0.03em] text-[#2C2C2C] leading-[1.15] mb-8">
+        저는 <br/><span className="text-zinc-400">준비되었습니다.</span>
       </h2>
-      <p className="text-[#888] text-lg md:text-xl mb-12 max-w-2xl mx-auto font-medium leading-relaxed">
+      <p className="text-zinc-500 text-lg md:text-xl mb-12 max-w-2xl mx-auto font-medium leading-relaxed">
         새로운 프로젝트나 협업 제안은 언제나 환영입니다. <br className="hidden md:block" />
         아래 이메일로 연락 주시면 빠르게 답변 드리겠습니다.
       </p>
       
       <a href="mailto:kh980624@naver.com" 
-        className="group inline-flex items-center justify-center gap-4 px-10 py-5 bg-[#e8e4dc] text-[#0a0a0a] font-bold hover:bg-[#800020] hover:text-white transition-all duration-500 shadow-xl hover:shadow-2xl hover:-translate-y-1 tracking-widest text-sm rounded-full uppercase overflow-hidden relative">
+        className="group inline-flex items-center justify-center gap-4 px-10 py-5 bg-[#800020] text-white font-bold hover:bg-[#a10028] transition-all duration-500 shadow-lg hover:shadow-xl hover:-translate-y-1 tracking-widest text-sm rounded-full uppercase overflow-hidden relative">
         <span className="relative z-10 flex items-center gap-3">
           <Mail className="w-5 h-5" /> 이메일 보내기
         </span>
@@ -1508,15 +1508,15 @@ const Contact = () => (
 
 // --- Footer ---
 const Footer = () => (
-  <footer className="py-12 px-6 md:px-12 text-center bg-[#0a0a0a]">
-    <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 border-t border-[#1e1e1e] pt-8">
+  <footer className="py-12 px-6 md:px-12 text-center bg-transparent">
+    <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 border-t border-black/5 pt-8">
       <div className="flex items-center gap-2">
-        <div className="w-6 h-6 bg-[#e8e4dc] flex items-center justify-center rounded-md">
-          <FileText className="text-[#0a0a0a] w-3 h-3" />
+        <div className="w-6 h-6 bg-[#2C2C2C] flex items-center justify-center rounded-md">
+          <FileText className="text-white w-3 h-3" />
         </div>
-        <span className="font-bold text-[#888] font-sans">지망생 조경환</span>
+        <span className="font-bold text-zinc-600 font-sans">지망생 조경환</span>
       </div>
-      <p className="text-[#555] text-xs font-mono uppercase tracking-widest">© 2026 GAME DESIGNER PORTFOLIO. All rights reserved.</p>
+      <p className="text-zinc-400 text-xs font-mono uppercase tracking-widest">© 2026 GAME DESIGNER PORTFOLIO. All rights reserved.</p>
     </div>
   </footer>
 );
@@ -1545,27 +1545,27 @@ const RightRail = ({ view, onNavClick, activeSection }: { view: string, onNavCli
     <>
       {view === 'home' && (
         <div className="fixed right-8 top-1/2 -translate-y-1/2 z-40 hidden xl:flex flex-col items-center gap-6 print:hidden">
-          <div className="w-px h-24 bg-[#2a2a2a]"></div>
+          <div className="w-px h-24 bg-zinc-200"></div>
           <div className="flex flex-col gap-5">
             {sections.map(section => {
               const isActive = activeSection === section.id;
               return (
                 <button key={section.id} onClick={() => onNavClick(section.id)} className="group relative flex items-center justify-center w-6 h-6" aria-label={`Scroll to ${section.id}`}>
-                  <div className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${isActive ? 'bg-[#800020] scale-150' : 'bg-[#555] group-hover:bg-[#888]'}`}></div>
-                  <span className={`absolute right-8 text-[10px] font-mono tracking-widest transition-all duration-300 ${isActive ? 'text-[#800020] font-bold opacity-100 translate-x-0' : 'text-[#555] opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0'}`}>
+                  <div className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${isActive ? 'bg-[#800020] scale-150' : 'bg-zinc-300 group-hover:bg-zinc-400'}`}></div>
+                  <span className={`absolute right-8 text-[10px] font-mono tracking-widest transition-all duration-300 ${isActive ? 'text-[#800020] font-bold opacity-100 translate-x-0' : 'text-zinc-400 opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0'}`}>
                     {section.label}
                   </span>
                 </button>
               );
             })}
           </div>
-          <div className="w-px h-24 bg-[#2a2a2a]"></div>
+          <div className="w-px h-24 bg-zinc-200"></div>
           <div className="absolute top-full mt-6">
             <AnimatePresence>
               {isVisible && (
                 <motion.button initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }}
-                  onClick={scrollToTop} className="group w-8 h-8 flex items-center justify-center border border-[#2a2a2a] bg-[#111] hover:bg-[#1a1a1a] hover:border-[#800020] transition-all" aria-label="Back to top">
-                  <ArrowUp className="w-3 h-3 text-[#888] group-hover:text-[#800020] group-hover:-translate-y-0.5 transition-all" />
+                  onClick={scrollToTop} className="group w-8 h-8 flex items-center justify-center border border-black/10 bg-white hover:bg-zinc-50 hover:border-[#800020] transition-all rounded-full shadow-sm" aria-label="Back to top">
+                  <ArrowUp className="w-3 h-3 text-zinc-500 group-hover:text-[#800020] group-hover:-translate-y-0.5 transition-all" />
                 </motion.button>
               )}
             </AnimatePresence>
@@ -1577,7 +1577,7 @@ const RightRail = ({ view, onNavClick, activeSection }: { view: string, onNavCli
         {isVisible && (
           <motion.button initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.8 }}
             onClick={scrollToTop}
-            className={`fixed bottom-8 right-8 z-50 w-12 h-12 bg-[#111]/90 backdrop-blur-md border border-[#2a2a2a] rounded-xl flex items-center justify-center text-[#e8e4dc] hover:bg-[#1a1a1a] hover:border-[#800020] transition-all shadow-md ${view === 'home' ? 'xl:hidden' : ''} print:hidden`}>
+            className={`fixed bottom-8 right-8 z-50 w-12 h-12 bg-white/90 backdrop-blur-md border border-black/10 rounded-xl flex items-center justify-center text-[#2C2C2C] hover:bg-zinc-50 hover:border-[#800020] transition-all shadow-md ${view === 'home' ? 'xl:hidden' : ''} print:hidden`}>
             <ArrowUp className="w-6 h-6" />
           </motion.button>
         )}
@@ -1593,15 +1593,15 @@ const ProjectDetail = ({ project, onBack, isEditing, onSaveContent }: { project:
 
   return (
     <motion.section initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} className="py-[120px] px-6 md:px-12 max-w-7xl mx-auto">
-      <button onClick={onBack} className="flex items-center gap-2 text-[#888] hover:text-[#800020] transition-colors mb-12 group font-sans text-sm">
-        <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" /> 프로젝트 목록으로 돌아가기
+      <button onClick={onBack} className="flex items-center gap-2 text-zinc-500 hover:text-[#800020] transition-colors mb-12 group font-sans text-sm tracking-tight font-bold">
+        <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" /> 프로젝트 목록으로 돌아가기
       </button>
 
       <div className="flex flex-col lg:flex-row gap-16">
         <div className="hidden lg:block w-64 shrink-0">
           <div className="sticky top-32">
-            <h4 className="text-xs font-bold text-[#555] uppercase tracking-widest mb-6 pb-4 border-b border-[#1e1e1e]">Table of Contents</h4>
-            <ul className="space-y-4 text-sm font-medium text-[#888]">
+            <h4 className="text-xs font-bold text-zinc-400 uppercase tracking-widest mb-6 pb-4 border-b border-black/5">Table of Contents</h4>
+            <ul className="space-y-4 text-sm font-medium text-zinc-500">
               {headings.map((heading, idx) => (
                 <li key={idx}><a href={`#${generateId(heading)}`} className="hover:text-[#800020] transition-colors block leading-snug">{heading}</a></li>
               ))}
@@ -1611,21 +1611,21 @@ const ProjectDetail = ({ project, onBack, isEditing, onSaveContent }: { project:
 
         <div className="flex-1 min-w-0">
           <div className="mb-16">
-            <div className="aspect-[21/9] relative group mb-10 border border-[#1e1e1e] rounded-xl overflow-hidden bg-[#111]">
-              <img src={project.image} alt={project.title} className="w-full h-full object-cover grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700" referrerPolicy="no-referrer" />
+            <div className="aspect-[21/9] relative group mb-10 border border-black/5 rounded-xl overflow-hidden bg-zinc-100 shadow-sm">
+              <img src={project.image} alt={project.title} className="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700" referrerPolicy="no-referrer" />
             </div>
             <div className="flex items-center gap-3 mb-6">
-              <span className="bg-[#1a1a1a] border border-[#2a2a2a] px-3 py-1 rounded-md text-[10px] font-bold text-[#888] tracking-tight font-sans">{project.category}</span>
+              <span className="bg-white border border-black/10 px-3 py-1 rounded-md text-[10px] font-bold text-zinc-600 tracking-tight font-sans shadow-sm">{project.category}</span>
               <div className="flex gap-2">
                 {project.tags.map(tag => (
-                  <span key={tag} className="text-[10px] font-bold px-3 py-1 bg-[#111] border border-[#1e1e1e] rounded-md text-[#888] font-sans">#{tag}</span>
+                  <span key={tag} className="text-[10px] font-bold px-3 py-1 bg-zinc-50 border border-black/5 rounded-md text-zinc-500 font-sans">#{tag}</span>
                 ))}
               </div>
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-[#e8e4dc] leading-tight tracking-tight">{project.title}</h1>
+            <h1 className="text-4xl md:text-5xl font-bold text-[#2C2C2C] leading-tight tracking-tight">{project.title}</h1>
           </div>
 
-          <div className="markdown-body bg-[#111] border border-[#1e1e1e] rounded-xl p-8 md:p-16">
+          <div className="markdown-body bg-white border border-black/5 rounded-xl shadow-sm p-8 md:p-16">
             {isEditing ? (
               <textarea className="w-full h-[600px] bg-[#0a0a0a] border border-[#2a2a2a] rounded-md p-6 text-[#e8e4dc] font-sans text-sm focus:outline-none focus:border-[#800020]"
                 value={project.content} onChange={(e) => onSaveContent(e.target.value)} />
@@ -1659,23 +1659,23 @@ const GameHistoryView = ({ setView }: { setView: (v: any) => void }) => {
     <motion.section initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }}
       className="py-[120px] px-6 md:px-12 max-w-5xl mx-auto flex flex-col min-h-screen">
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12">
-        <button onClick={() => setView('home')} className="flex items-center gap-2 text-[#888] hover:text-[#800020] transition-colors group font-sans tracking-tight text-sm">
-          <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" /> RETURN TO HOME
+        <button onClick={() => setView('home')} className="flex items-center gap-2 text-zinc-500 hover:text-[#800020] transition-colors group font-sans tracking-tight text-sm font-bold uppercase">
+          <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" /> RETURN TO HOME
         </button>
       </div>
       <div className="text-center mb-16">
-        <h2 className="text-4xl md:text-5xl font-display font-bold tracking-tighter text-[#e8e4dc] mb-4">전체 플레이 이력.</h2>
-        <p className="text-[#888] text-lg max-w-2xl mx-auto font-medium leading-relaxed">
+        <h2 className="text-4xl md:text-5xl font-display font-bold tracking-tighter text-[#2C2C2C] mb-4">전체 플레이 이력.</h2>
+        <p className="text-zinc-500 text-lg max-w-2xl mx-auto font-medium leading-relaxed">
           다양한 게임을 깊게 파고들며 쌓아온 인사이트입니다.<br className="hidden md:block" />
           장르와 플랫폼을 가리지 않는 폭넓은 레퍼런스를 갖추고 있습니다.
         </p>
       </div>
 
-      <div className="bg-[#111] border border-[#1e1e1e] rounded-3xl overflow-hidden flex-1 shadow-2xl">
+      <div className="bg-white border border-black/5 rounded-3xl overflow-hidden flex-1 shadow-xl">
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse min-w-[700px]">
             <thead>
-              <tr className="bg-[#1a1a1a] border-b border-[#2a2a2a] text-[#555] text-xs font-bold uppercase tracking-widest text-center">
+              <tr className="bg-[#F6F6F3] border-b border-black/5 text-zinc-500 text-xs font-bold uppercase tracking-widest text-center">
                 <th className="p-5 font-bold w-16">#</th>
                 <th className="p-5 text-left">타이틀</th>
                 <th className="p-5 w-32">장르</th>
@@ -1683,14 +1683,14 @@ const GameHistoryView = ({ setView }: { setView: (v: any) => void }) => {
                 <th className="p-5 w-32">플레이 타임</th>
               </tr>
             </thead>
-            <tbody className="text-[#888] font-medium text-sm align-middle text-center">
+            <tbody className="text-zinc-600 font-medium text-sm align-middle text-center">
               {ALL_GAMES.map((game, idx) => (
-                <tr key={idx} className="border-b border-[#1e1e1e] hover:bg-[#1a1a1a] transition-colors group">
-                  <td className="p-5 font-mono text-[#555]">{idx + 1}</td>
-                  <td className="p-5 font-bold text-[#e8e4dc] text-left text-base">{game.title}</td>
+                <tr key={idx} className="border-b border-black/5 hover:bg-zinc-50 transition-colors group">
+                  <td className="p-5 font-mono text-zinc-400">{idx + 1}</td>
+                  <td className="p-5 font-bold text-[#2C2C2C] text-left text-base">{game.title}</td>
                   <td className="p-5"><span className="px-3 py-1 bg-[#800020]/10 text-[#800020] rounded-md text-[11px] font-bold tracking-widest whitespace-nowrap">{game.genre}</span></td>
                   <td className="p-5 font-mono text-xs">{game.platform}</td>
-                  <td className="p-5 text-[#555] whitespace-nowrap">{game.playTime || '-'}</td>
+                  <td className="p-5 text-zinc-500 whitespace-nowrap">{game.playTime || '-'}</td>
                 </tr>
               ))}
             </tbody>
@@ -1838,11 +1838,11 @@ export default function App() {
   return (
     <div className="min-h-screen selection:bg-[#800020]/20 flex flex-col relative">
       {/* Global Background */}
-      <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden bg-bg-main">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(128,0,32,0.03),transparent_50%)]"></div>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(128,0,32,0.02),transparent_50%)]"></div>
-        <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-[#111]/30 rounded-full blur-[120px] mix-blend-lighten"></div>
-        <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-[#111]/30 rounded-full blur-[120px] mix-blend-lighten"></div>
+      <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden bg-[#F6F6F3]">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(0,0,0,0.02),transparent_50%)]"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(0,0,0,0.01),transparent_50%)]"></div>
+        <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-white/50 rounded-full blur-[120px] mix-blend-overlay"></div>
+        <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-white/50 rounded-full blur-[120px] mix-blend-overlay"></div>
       </div>
 
       <Navbar setView={changeView} currentView={view} onNavClick={handleNavClick} isEditing={isEditing} setIsEditing={setIsEditing} activeSection={activeSection} />
@@ -1891,12 +1891,12 @@ export default function App() {
       
       {isEditing && (
         <div className="fixed bottom-24 left-8 z-50 flex flex-col gap-2 print:hidden">
-          <div className="bg-[#111]/90 backdrop-blur-xl p-4 rounded-2xl flex items-center gap-3 border border-[#2a2a2a] shadow-xl">
+          <div className="bg-white/90 backdrop-blur-xl p-4 rounded-2xl flex items-center gap-3 border border-black/10 shadow-xl">
             <div className="w-10 h-10 bg-[#800020] rounded-xl flex items-center justify-center text-white">
               <Edit3 className="w-5 h-5" />
             </div>
             <div>
-              <p className="text-xs font-bold text-[#e8e4dc] tracking-tight font-sans">ADMIN MODE</p>
+              <p className="text-xs font-bold text-[#2C2C2C] tracking-tight font-sans">ADMIN MODE</p>
               <p className="text-[10px] text-[#888] font-sans">내용을 클릭하여 직접 수정하세요. 자동 저장됩니다.</p>
             </div>
             <button onClick={() => setIsEditing(false)} className="ml-4 p-2 hover:bg-[#1a1a1a] rounded-xl transition-colors">
