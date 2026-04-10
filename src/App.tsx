@@ -443,7 +443,7 @@ const PasswordModal = ({ isOpen, onClose, onConfirm }: { isOpen: boolean, onClos
   );
 };
 
-// --- Navbar (Horizontal Top Bar — Dark) ---
+// --- Navbar (Premium Floating Pill Design) ---
 const Navbar = ({ setView, currentView, onNavClick, isEditing, setIsEditing, activeSection, theme, setTheme }: { setView: (v: 'home' | 'resume' | 'project-detail' | 'portfolio' | 'all-projects' | 'game-history') => void, currentView: string, onNavClick: (id: string) => void, isEditing: boolean, setIsEditing: (v: boolean) => void, activeSection: string, theme: string, setTheme: (v: string) => void }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isPasswordModalOpen, setIsPasswordModalOpen] = useState(false);
@@ -451,7 +451,7 @@ const Navbar = ({ setView, currentView, onNavClick, isEditing, setIsEditing, act
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolledPastHero(window.scrollY > window.innerHeight - 80);
+      setScrolledPastHero(window.scrollY > 50);
     };
     window.addEventListener('scroll', handleScroll);
     handleScroll();
@@ -483,132 +483,146 @@ const Navbar = ({ setView, currentView, onNavClick, isEditing, setIsEditing, act
     }
   };
 
-  const navBgClass = scrolledPastHero ? 'bg-white/90 dark:bg-black/80 border-black/10 dark:border-[#1e1e1e] border-b backdrop-blur-xl shadow-sm py-5' : 'bg-transparent py-10';
+  const isDark = theme === 'dark';
+  const navContainerClass = scrolledPastHero 
+    ? 'py-3' 
+    : 'py-6';
+    
+  const navBgClass = scrolledPastHero
+    ? 'bg-white/80 dark:bg-[#0a0a0a]/80 backdrop-blur-xl border border-black/10 dark:border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.06)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.5)]'
+    : 'bg-transparent border border-transparent';
 
   return (
     <>
-      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${navBgClass} print:hidden`}>
-        <div className="max-w-[1440px] w-full mx-auto px-8 flex items-center justify-between">
+      <div className={`fixed top-0 left-0 right-0 z-50 flex justify-center px-4 sm:px-6 transition-all duration-500 pointer-events-none print:hidden ${navContainerClass}`}>
+        <nav className={`pointer-events-auto w-full max-w-[1280px] rounded-full transition-all duration-500 flex items-center justify-between px-6 lg:px-8 py-3 lg:py-2.5 ${navBgClass}`}>
           
           {/* Left: Logo */}
-          <div className="flex-1 flex justify-start">
-            <div className="flex items-center gap-3 cursor-pointer group" onClick={() => { setView('home'); window.scrollTo({ top: 0, behavior: 'smooth' }); setIsMenuOpen(false); }}>
-              <span className="font-display font-bold tracking-tight text-xl lg:text-2xl text-[#2C2C2C] dark:text-[#e8e4dc] group-hover:text-[#800020] transition-colors">지망생 조경환</span>
-              <span className="text-[10px] lg:text-xs font-mono tracking-widest uppercase hidden lg:block text-zinc-400 dark:text-[#555]">// Game Designer</span>
-              {isEditing && (
-                <div className="ml-2 px-2 py-0.5 bg-[#800020]/10 border border-[#800020]/20 rounded text-[10px] text-[#800020] font-bold uppercase">
-                  Edit
-                </div>
-              )}
+          <div className="flex shrink-0 items-center gap-3 cursor-pointer group" onClick={() => { setView('home'); window.scrollTo({ top: 0, behavior: 'smooth' }); setIsMenuOpen(false); }}>
+            <div className="w-9 h-9 rounded-full bg-gradient-to-br from-[#800020] to-[#500014] text-white flex items-center justify-center font-display font-black tracking-tighter text-sm shadow-md shadow-[#800020]/20">
+              조
             </div>
+            <div className="flex flex-col justify-center">
+              <span className="font-display font-bold tracking-tight text-[15px] text-[#2C2C2C] dark:text-[#e8e4dc] group-hover:text-[#800020] transition-colors leading-none">조경환</span>
+              <span className="text-[9px] font-mono tracking-widest uppercase text-zinc-400 dark:text-[#666] mt-1 leading-none hidden sm:block">Game Designer</span>
+            </div>
+            {isEditing && (
+              <span className="ml-2 px-1.5 py-0.5 bg-[#800020]/10 border border-[#800020]/30 rounded text-[9px] text-[#800020] font-bold uppercase tracking-wider">
+                Edit
+              </span>
+            )}
           </div>
 
           {/* Center: Anchor Links */}
-          <div className="hidden lg:flex items-center justify-center gap-8">
+          <div className="hidden lg:flex items-center justify-center gap-1 mx-4">
             {[
               { id: 'about', label: '소개', num: '01' },
               { id: 'projects', label: '프로젝트', num: '02' },
               { id: 'skills', label: '핵심역량', num: '03' },
               { id: 'play-history', label: '플레이 이력', num: '04' }
-            ].map(({ id, label, num }, idx) => (
+            ].map(({ id, label, num }) => (
               <a 
                 key={id}
                 href={`#${id}`}
                 onClick={(e) => handleLinkClick(e, id)}
-                className={`text-[15px] font-bold transition-all flex items-center gap-1.5 relative py-2 ${activeSection === id ? 'text-[#2C2C2C] dark:text-[#e8e4dc]' : 'text-zinc-500 hover:text-[#2C2C2C] dark:hover:text-[#e8e4dc]'}`}
+                className={`relative px-4 py-2 rounded-full text-[13px] font-bold transition-all flex items-center gap-2 group overflow-hidden ${activeSection === id ? 'text-[#800020] bg-[#800020]/5 dark:bg-[#800020]/10' : 'text-zinc-500 dark:text-zinc-400 hover:text-[#2C2C2C] dark:hover:text-[#e8e4dc] hover:bg-zinc-100 dark:hover:bg-white/5'}`}
               >
-                <span className={`text-[11px] font-bold transition-opacity duration-300 ${activeSection === id ? 'opacity-100 text-[#800020]' : 'opacity-0'}`}>{num}.</span>
-                {label}
-                {activeSection === id && (
-                  <motion.div layoutId="nav-indicator" className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#800020] to-transparent rounded-full" />
-                )}
+                <span className={`text-[10px] font-mono uppercase tracking-widest transition-colors duration-300 ${activeSection === id ? 'text-[#800020]/70' : 'text-zinc-400'}`}>{num}</span>
+                <span className="tracking-wide">{label}</span>
               </a>
             ))}
           </div>
 
-          {/* Right: Page Views & Utilities */}
-          <div className="flex-1 flex justify-end items-center gap-4 hidden lg:flex">
-            <div className="flex items-center gap-2">
+          {/* Right: Utilities */}
+          <div className="flex items-center justify-end gap-2 shrink-0">
+            <div className="hidden xl:flex bg-zinc-100 dark:bg-white/5 p-1 rounded-full border border-black/5 dark:border-white/5 shadow-inner">
               {[
-                { key: 'resume', label: '이력서', icon: <FileText className="w-[14px] h-[14px]" /> },
-                { key: 'portfolio', label: '포트폴리오', icon: <FolderOpen className="w-[14px] h-[14px]" /> },
-                { key: 'game-history', label: '플레이 이력', icon: <Gamepad2 className="w-[14px] h-[14px]" /> },
+                { key: 'resume', label: '이력서', icon: <FileText className="w-3.5 h-3.5" /> },
+                { key: 'portfolio', label: '포트폴리오', icon: <FolderOpen className="w-3.5 h-3.5" /> },
+                { key: 'game-history', label: '플레이 이력', icon: <Gamepad2 className="w-3.5 h-3.5" /> },
               ].map(item => (
                 <button key={item.key} onClick={() => { setView(item.key as any); window.scrollTo(0,0); }} 
-                  className={`px-4 py-2 rounded-xl text-[13px] font-bold tracking-wide transition-all flex items-center gap-2 ${currentView === item.key ? 'bg-[#800020]/10 text-[#800020]' : 'text-zinc-500 hover:text-[#2C2C2C] dark:hover:text-[#e8e4dc] hover:bg-zinc-100 dark:hover:bg-[#1a1a1a]'}`}>
+                  className={`px-4 py-2 rounded-full text-[12px] font-bold tracking-wide transition-all flex items-center gap-1.5 ${currentView === item.key ? 'bg-white dark:bg-[#222] text-[#800020] shadow-sm' : 'text-zinc-500 hover:text-[#2C2C2C] dark:hover:text-[#e8e4dc]'}`}>
                   {item.icon}
                   <span>{item.label}</span>
                 </button>
               ))}
             </div>
             
-            <div className="w-px h-5 bg-black/10 dark:bg-white/10 mx-2"></div>
+            <div className="hidden xl:block w-px h-6 bg-black/10 dark:bg-white/10 mx-1"></div>
             
-            <div className="flex items-center gap-1">
+            <div className="flex items-center gap-1.5">
               <button 
-                onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                className="w-10 h-10 rounded-full transition-all flex items-center justify-center hover:bg-zinc-100 dark:hover:bg-[#1a1a1a] shadow-sm bg-white dark:bg-black border border-black/5 dark:border-white/5"
+                onClick={() => setTheme(isDark ? 'light' : 'dark')}
+                className="w-10 h-10 rounded-full transition-all flex items-center justify-center hover:bg-zinc-100 dark:hover:bg-white/10 text-zinc-500 dark:text-zinc-400 hover:text-[#2C2C2C] dark:hover:text-white"
                 title="Toggle Theme"
               >
-                {theme === 'dark' ? <Moon className="w-[18px] h-[18px] text-zinc-400" /> : <Sun className="w-[18px] h-[18px] text-zinc-500" />}
+                {isDark ? <Sun className="w-[18px] h-[18px]" /> : <Moon className="w-[18px] h-[18px]" />}
               </button>
               <button 
                 onClick={handleAdminClick}
-                className="w-10 h-10 rounded-full transition-all flex items-center justify-center hover:bg-zinc-100 dark:hover:bg-[#1a1a1a] shadow-sm bg-white dark:bg-black border border-black/5 dark:border-white/5"
+                className="w-10 h-10 rounded-full transition-all flex items-center justify-center hover:bg-zinc-100 dark:hover:bg-white/10 text-zinc-500 dark:text-zinc-400 hover:text-[#2C2C2C] dark:hover:text-white"
+                title="Admin Mode"
               >
-                <Lock className={`w-[18px] h-[18px] ${isEditing ? 'text-[#800020]' : 'text-zinc-400'}`} />
+                <Lock className={`w-[16px] h-[16px] ${isEditing ? 'text-[#800020]' : 'opacity-80'}`} />
+              </button>
+              
+              {/* Mobile Menu Toggle */}
+              <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="lg:hidden w-10 h-10 flex items-center justify-center rounded-full bg-zinc-100 dark:bg-white/5 text-[#2C2C2C] dark:text-[#e8e4dc] ml-1">
+                {isMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
               </button>
             </div>
           </div>
+        </nav>
+      </div>
 
-          {/* Mobile Right */}
-          <div className="lg:hidden flex items-center gap-4">
-            <button onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')} className="p-2 rounded-full transition-colors hover:bg-black/5 dark:hover:bg-white/5">
-              {theme === 'dark' ? <Moon className="w-5 h-5 text-zinc-400" /> : <Sun className="w-5 h-5 text-zinc-500" />}
-            </button>
-            <button onClick={handleAdminClick} className="p-2 rounded-full transition-colors hover:bg-black/5 dark:hover:bg-white/5">
-              <Lock className={`w-5 h-5 ${isEditing ? 'text-[#800020]' : 'text-zinc-500'}`} />
-            </button>
-            <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="p-2 focus:outline-none text-[#2C2C2C] dark:text-[#e8e4dc]">
-              {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
-          </div>
-        </div>
-      </nav>
-
-      {/* Mobile Menu */}
+      {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div 
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="fixed inset-0 z-40 pt-24 px-6 bg-white/95 backdrop-blur-xl"
+            initial={{ opacity: 0, backdropFilter: 'blur(0px)' }}
+            animate={{ opacity: 1, backdropFilter: 'blur(16px)' }}
+            exit={{ opacity: 0, backdropFilter: 'blur(0px)' }}
+            className="fixed inset-0 z-40 bg-white/90 dark:bg-[#0a0a0a]/95 flex items-center justify-center pt-20 pb-10"
           >
-            <div className="flex flex-col gap-6 text-lg">
-              {[
-                { id: 'about', label: '소개', num: '01' },
-                { id: 'projects', label: '프로젝트', num: '02' },
-                { id: 'skills', label: '핵심역량', num: '03' },
-                { id: 'play-history', label: '플레이 이력', num: '04' }
-              ].map(({ id, label, num }) => (
-                <a key={id} href={`#${id}`} onClick={(e) => handleLinkClick(e, id)}
-                  className="font-medium flex items-center gap-3 pb-4 border-b border-black/10 text-[#2C2C2C]">
-                  <span className="text-sm font-bold opacity-50 text-zinc-500">{num}.</span>
-                  {label}
-                </a>
-              ))}
-              <div className="pt-4 flex flex-col gap-4">
-                <button onClick={() => { setView('resume'); setIsMenuOpen(false); window.scrollTo(0,0); }} className={`text-left font-medium flex items-center gap-2 ${currentView === 'resume' ? 'text-[#800020]' : 'text-zinc-600 hover:text-[#2C2C2C]'}`}>
-                  <FileText className="w-4 h-4" /> 이력서 보기
-                </button>
-                <button onClick={() => { setView('portfolio'); setIsMenuOpen(false); window.scrollTo(0,0); }} className={`text-left font-medium flex items-center gap-2 ${currentView === 'portfolio' ? 'text-[#800020]' : 'text-zinc-600'}`}>
-                  <FolderOpen className="w-4 h-4" /> 포트폴리오 갤러리
-                </button>
-                <button onClick={() => { setView('game-history'); setIsMenuOpen(false); window.scrollTo(0,0); }} className={`text-left font-medium flex items-center gap-2 ${currentView === 'game-history' ? 'text-[#800020]' : 'text-zinc-600'}`}>
-                  <Gamepad2 className="w-4 h-4" /> 플레이 이력 보기
-                </button>
+            <div className="w-[90%] max-w-md bg-white dark:bg-[#111] border border-black/5 dark:border-white/10 p-8 rounded-3xl shadow-2xl flex flex-col gap-8 max-h-[90vh] overflow-y-auto">
+              
+              {/* Document Nav Inside Mobile */}
+              <div className="bg-zinc-50 dark:bg-white/5 rounded-2xl p-4 flex flex-col gap-2">
+                <span className="text-[10px] font-mono tracking-widest uppercase text-zinc-500 mb-2">Documents</span>
+                {[
+                  { key: 'resume', label: '이력서 보기', icon: <FileText className="w-4 h-4" /> },
+                  { key: 'portfolio', label: '포트폴리오 갤러리', icon: <FolderOpen className="w-4 h-4" /> },
+                  { key: 'game-history', label: '플레이 이력 보기', icon: <Gamepad2 className="w-4 h-4" /> },
+                ].map(item => (
+                  <button key={item.key} onClick={() => { setView(item.key as any); setIsMenuOpen(false); window.scrollTo(0,0); }} 
+                    className={`text-left font-bold text-[14px] flex items-center gap-3 p-3 rounded-xl transition-colors ${currentView === item.key ? 'bg-white dark:bg-[#222] text-[#800020] shadow-sm' : 'text-zinc-600 dark:text-zinc-400 hover:bg-white dark:hover:bg-[#222] hover:text-[#2C2C2C] dark:hover:text-white'}`}>
+                    {item.icon} {item.label}
+                  </button>
+                ))}
               </div>
+
+              {/* Anchor Nav Inside Mobile */}
+              <div className="flex flex-col gap-2">
+                <span className="text-[10px] font-mono tracking-widest uppercase text-zinc-500 px-4 mb-1">Navigation</span>
+                {[
+                  { id: 'about', label: '소개', num: '01' },
+                  { id: 'projects', label: '프로젝트', num: '02' },
+                  { id: 'skills', label: '핵심역량', num: '03' },
+                  { id: 'contact', label: '문의하기', num: '04' } /* Optional info link added per current structure */
+                ].map(({ id, label, num }) => (
+                  <a key={id} href={`#${id}`} onClick={(e) => handleLinkClick(e, id)}
+                    className="group relative font-bold flex items-center gap-4 py-3 px-4 rounded-xl text-[#2C2C2C] dark:text-[#e8e4dc] hover:bg-zinc-50 dark:hover:bg-white/5 transition-colors">
+                    <span className="text-xs font-mono opacity-40 text-zinc-500 group-hover:text-[#800020] transition-colors">{num}</span>
+                    <span className="text-base tracking-wide">{label}</span>
+                  </a>
+                ))}
+              </div>
+              
+              {/* Close Button Bottom */}
+              <button onClick={() => setIsMenuOpen(false)} className="mt-auto w-full py-4 rounded-xl bg-zinc-100 dark:bg-white/5 text-zinc-600 dark:text-zinc-400 font-bold tracking-widest flex items-center justify-center gap-2 hover:bg-zinc-200 dark:hover:bg-white/10 transition-colors">
+                닫기 <X className="w-4 h-4" />
+              </button>
             </div>
           </motion.div>
         )}
