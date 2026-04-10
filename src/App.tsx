@@ -1080,8 +1080,20 @@ const Resume = ({ setView, isEditing, data, setData }: ResumeProps) => {
                 <div>
                   <p className="text-[10px] font-bold text-[#555] uppercase mb-3">기획 및 문서화</p>
                   <div className="flex flex-wrap gap-2">
-                    {['Excel', 'Word', 'Powerpoint', 'Notion', 'Figma'].map(tool => (
-                      <span key={tool} className="px-4 py-2 bg-[#1a1a1a] rounded-xl text-xs font-bold text-[#888] border border-[#2a2a2a]">{tool}</span>
+                    {[
+                      { name: 'Word', desc: '• 사용자 정의 스타일 및 섹션 정형화\n• 논리적 구조에 따른 목차 작성\n• 법학 논문 및 공문서 수준의 작문 구사능력\n• 기획서 가독성 최적화를 위한 전용 템플릿 보유' },
+                      { name: 'Powerpoint', desc: '• 슬라이드 마스터 기반의 커스텀 템플릿 제작\n• 기획 의도 전달을 위한 텍스트의 도식화 및 레이아웃 설계\n• 논리를 기반으로 한 목차 구성이 강점' },
+                      { name: 'Excel', desc: '• 함수: VLOOKUP, 사칙연산, 조건부 서식 등\n• 데이터 테이블 구조화 및 정합성 검토\n• 데이터 테이블 프로그램 개발 구상' },
+                      { name: 'Notion', desc: '• 전반적인 문서 작성 및 간트차트 작성' },
+                      { name: 'Figma', desc: '• UI 와이어프레임 작성' }
+                    ].map(tool => (
+                      <span key={tool.name} className="group relative px-4 py-2 bg-[#1a1a1a] rounded-xl text-xs font-bold text-[#888] border border-[#2a2a2a] hover:border-[#800020] hover:text-[#e8e4dc] transition-all cursor-help flex items-center justify-center">
+                        {tool.name}
+                        <div className="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 translate-y-2 opacity-0 group-hover:-translate-y-2 group-hover:opacity-100 transition-all z-50 mb-2 w-max max-w-[320px] bg-[#111] border border-[#333] text-[#e8e4dc] text-xs leading-[1.6] p-3 rounded-xl shadow-xl whitespace-pre-wrap font-medium">
+                          {tool.desc}
+                          <div className="absolute top-full left-1/2 -translate-x-1/2 border-solid border-t-[#333] border-t-8 border-x-transparent border-x-8 border-b-0 w-0 h-0"></div>
+                        </div>
+                      </span>
                     ))}
                   </div>
                 </div>
