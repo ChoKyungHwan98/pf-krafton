@@ -134,7 +134,7 @@ const RESUME_DATA: ResumeData = {
   name: "조경환",
   role: "Game Designer",
   email: "kh980624@naver.com",
-  phone: "010-0000-0000",
+  phone: "010-4826-6256",
   summary: "플레이어의 경험을 설계하고 논리적인 시스템으로 구현하는 게임 기획자입니다. 데이터 기반의 밸런싱과 치밀한 레벨 디자인을 통해 게임의 재미를 극대화하며, 명확한 문서화로 개발팀과의 원활한 협업을 이끌어냅니다.",
   selfIntroductions: [
     {
@@ -170,23 +170,29 @@ const RESUME_DATA: ResumeData = {
   ],
   experience: [
     {
-      title: "사이버펑크 RPG '네온 프로토콜' 시스템 기획",
-      period: "2024.03 - 2024.05",
-      description: "모듈형 스킬 트리 및 동적 경제 시스템 설계",
+      title: "스팀펑크 판타지 방치형 RPG",
+      period: "2026.02 - 2026.04",
+      description: "팀장 | 핵앤슬래시 방치형 RPG 시스템 기획",
       details: [
-        "100여 종의 스킬 모듈 조합 시스템 기획 및 밸런싱 시트 작성",
-        "인게임 재화 인플레이션 제어를 위한 경제 모델링",
-        "50페이지 분량의 상세 시스템 기획서(GDD) 작성"
+        "장비 합성 및 4종 재화 경제 시스템 설계",
+        "500스테이지 구성 및 콘텐츠 순환 구조 기획"
       ]
     },
     {
-      title: "3D 플랫포머 '잊혀진 첨탑' 레벨 디자인",
-      period: "2024.02 - 2024.03",
-      description: "언리얼 엔진 5를 활용한 수직적 구조의 레벨 설계",
+      title: "2D 탑뷰 던전 크롤러 로그라이트",
+      period: "2025.12 - 2026.01",
+      description: "팀장 | 잠입 액션 로그라이트 게임 전체 룰 및 시스템 설계",
       details: [
-        "플레이어의 시선 유도를 위한 조명 및 랜드마크 배치 기획",
-        "점프 및 등반 액션을 활용한 입체적인 동선 설계",
-        "환경 스토리텔링을 위한 오브젝트 배치 기획"
+        "무기 교체 시스템, 맵 프리팹 구조, MVP 사이클 기획"
+      ]
+    },
+    {
+      title: "침묵의 저택 (메이플월드 호러게임)",
+      period: "2025.11",
+      description: "팀장 | 술래잡기 기반 생존 공포 게임 전체 룰 및 시스템 설계",
+      details: [
+        "유령 AI 행동 패턴, 시야 축소 메카닉, 아이템 획득 및 탈출 구조 기획",
+        "플레이어-유령 충돌 처리, 오브젝트 상호작용 규칙 정의"
       ]
     }
   ],
@@ -1045,7 +1051,7 @@ const Resume = ({ setView, isEditing, data, setData }: ResumeProps) => {
                 <div>
                   <p className="text-[10px] font-bold text-[#555] uppercase mb-3">기획 및 문서화</p>
                   <div className="flex flex-wrap gap-2">
-                    {['Excel', 'Notion', 'Jira', 'Confluence', 'Figma'].map(tool => (
+                    {['Excel', 'Word', 'Powerpoint', 'Notion', 'Figma'].map(tool => (
                       <span key={tool} className="px-4 py-2 bg-[#1a1a1a] rounded-xl text-xs font-bold text-[#888] border border-[#2a2a2a]">{tool}</span>
                     ))}
                   </div>
@@ -1053,7 +1059,7 @@ const Resume = ({ setView, isEditing, data, setData }: ResumeProps) => {
                 <div>
                   <p className="text-[10px] font-bold text-[#555] uppercase mb-3">엔진 및 개발</p>
                   <div className="flex flex-wrap gap-2">
-                    {['UE5', 'Unity', 'C#', 'Git'].map(tool => (
+                    {['Unity', 'Git'].map(tool => (
                       <span key={tool} className="px-4 py-2 bg-[#1a1a1a] rounded-xl text-xs font-bold text-[#888] border border-[#2a2a2a]">{tool}</span>
                     ))}
                   </div>
@@ -1063,7 +1069,7 @@ const Resume = ({ setView, isEditing, data, setData }: ResumeProps) => {
             <div>
               <h3 className="text-xs font-bold text-[#555] tracking-widest uppercase mb-6 flex items-center gap-2"><Zap className="w-4 h-4" /> 핵심 역량</h3>
               <ul className="space-y-4 text-sm text-[#888] font-medium">
-                {["데이터 기반의 시스템 설계 및 밸런싱", "플레이어 동선 및 레벨 디자인", "명확하고 직관적인 GDD 작성"].map((item, i) => (
+                {["기획 의도를 먼저 세우고 목차로 증명하는 문서 설계", "법학적 사고 기반 시스템 정합성 확보", "AI 프롬프트 설계를 통한 업무 자동화"].map((item, i) => (
                   <li key={i} className="flex items-start gap-3">
                     <div className="w-2 h-2 rounded-full bg-[#800020] mt-1.5 shrink-0"></div>
                     <span>{item}</span>
