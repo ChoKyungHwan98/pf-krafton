@@ -443,7 +443,7 @@ const PasswordModal = ({ isOpen, onClose, onConfirm }: { isOpen: boolean, onClos
   );
 };
 
-// --- Navbar (Premium Floating Pill Design) ---
+// --- Navbar (Premium Floating Pill Design - BOLD SCALED) ---
 const Navbar = ({ setView, currentView, onNavClick, isEditing, setIsEditing, activeSection, theme, setTheme }: { setView: (v: 'home' | 'resume' | 'project-detail' | 'portfolio' | 'all-projects' | 'game-history') => void, currentView: string, onNavClick: (id: string) => void, isEditing: boolean, setIsEditing: (v: boolean) => void, activeSection: string, theme: string, setTheme: (v: string) => void }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isPasswordModalOpen, setIsPasswordModalOpen] = useState(false);
@@ -485,36 +485,36 @@ const Navbar = ({ setView, currentView, onNavClick, isEditing, setIsEditing, act
 
   const isDark = theme === 'dark';
   const navContainerClass = scrolledPastHero 
-    ? 'py-3' 
-    : 'py-6';
+    ? 'py-4' 
+    : 'py-8';
     
   const navBgClass = scrolledPastHero
-    ? 'bg-white/80 dark:bg-[#0a0a0a]/80 backdrop-blur-xl border border-black/10 dark:border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.06)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.5)]'
+    ? 'bg-white/85 dark:bg-[#0a0a0a]/85 backdrop-blur-2xl border border-black/10 dark:border-white/10 shadow-[0_12px_40px_rgba(0,0,0,0.08)] dark:shadow-[0_12px_40px_rgba(0,0,0,0.6)]'
     : 'bg-transparent border border-transparent';
 
   return (
     <>
       <div className={`fixed top-0 left-0 right-0 z-50 flex justify-center px-4 sm:px-6 transition-all duration-500 pointer-events-none print:hidden ${navContainerClass}`}>
-        <nav className={`pointer-events-auto w-full max-w-[1280px] rounded-full transition-all duration-500 flex items-center justify-between px-6 lg:px-8 py-3 lg:py-2.5 ${navBgClass}`}>
+        <nav className={`pointer-events-auto w-[98%] max-w-[1440px] rounded-full transition-all duration-500 flex items-center justify-between px-6 lg:px-10 py-3 lg:py-3.5 ${navBgClass}`}>
           
           {/* Left: Logo */}
-          <div className="flex shrink-0 items-center gap-3 cursor-pointer group" onClick={() => { setView('home'); window.scrollTo({ top: 0, behavior: 'smooth' }); setIsMenuOpen(false); }}>
-            <div className="w-9 h-9 rounded-full bg-gradient-to-br from-[#800020] to-[#500014] text-white flex items-center justify-center font-display font-black tracking-tighter text-sm shadow-md shadow-[#800020]/20">
+          <div className="flex shrink-0 items-center gap-3 md:gap-4 cursor-pointer group" onClick={() => { setView('home'); window.scrollTo({ top: 0, behavior: 'smooth' }); setIsMenuOpen(false); }}>
+            <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-br from-[#800020] to-[#500014] text-white flex items-center justify-center font-display font-black tracking-tighter text-base md:text-lg shadow-lg shadow-[#800020]/30 transition-transform group-hover:scale-105">
               조
             </div>
             <div className="flex flex-col justify-center">
-              <span className="font-display font-bold tracking-tight text-[15px] text-[#2C2C2C] dark:text-[#e8e4dc] group-hover:text-[#800020] transition-colors leading-none">조경환</span>
-              <span className="text-[9px] font-mono tracking-widest uppercase text-zinc-400 dark:text-[#666] mt-1 leading-none hidden sm:block">Game Designer</span>
+              <span className="font-display font-bold tracking-tight text-[16px] md:text-[18px] text-[#2C2C2C] dark:text-[#e8e4dc] group-hover:text-[#800020] transition-colors leading-none">조경환</span>
+              <span className="text-[10px] md:text-[11px] font-mono tracking-widest uppercase text-zinc-500 dark:text-[#666] mt-1.5 leading-none hidden sm:block">Game Designer</span>
             </div>
             {isEditing && (
-              <span className="ml-2 px-1.5 py-0.5 bg-[#800020]/10 border border-[#800020]/30 rounded text-[9px] text-[#800020] font-bold uppercase tracking-wider">
+              <span className="ml-3 px-2 py-1 bg-[#800020]/10 border border-[#800020]/30 rounded text-[10px] text-[#800020] font-bold uppercase tracking-wider">
                 Edit
               </span>
             )}
           </div>
 
           {/* Center: Anchor Links */}
-          <div className="hidden lg:flex items-center justify-center gap-1 mx-4">
+          <div className="hidden lg:flex items-center justify-center gap-2 mx-6">
             {[
               { id: 'about', label: '소개', num: '01' },
               { id: 'projects', label: '프로젝트', num: '02' },
@@ -525,51 +525,51 @@ const Navbar = ({ setView, currentView, onNavClick, isEditing, setIsEditing, act
                 key={id}
                 href={`#${id}`}
                 onClick={(e) => handleLinkClick(e, id)}
-                className={`relative px-4 py-2 rounded-full text-[13px] font-bold transition-all flex items-center gap-2 group overflow-hidden ${activeSection === id ? 'text-[#800020] bg-[#800020]/5 dark:bg-[#800020]/10' : 'text-zinc-500 dark:text-zinc-400 hover:text-[#2C2C2C] dark:hover:text-[#e8e4dc] hover:bg-zinc-100 dark:hover:bg-white/5'}`}
+                className={`relative px-5 py-3 rounded-full text-[15px] font-bold transition-all flex items-center gap-2.5 group overflow-hidden ${activeSection === id ? 'text-[#800020] bg-[#800020]/5 dark:bg-[#800020]/10' : 'text-zinc-500 dark:text-zinc-400 hover:text-[#2C2C2C] dark:hover:text-[#e8e4dc] hover:bg-zinc-100 dark:hover:bg-white/5'}`}
               >
-                <span className={`text-[10px] font-mono uppercase tracking-widest transition-colors duration-300 ${activeSection === id ? 'text-[#800020]/70' : 'text-zinc-400'}`}>{num}</span>
+                <span className={`text-[12px] font-mono uppercase tracking-widest transition-colors duration-300 ${activeSection === id ? 'text-[#800020]/70' : 'text-zinc-400'}`}>{num}</span>
                 <span className="tracking-wide">{label}</span>
               </a>
             ))}
           </div>
 
           {/* Right: Utilities */}
-          <div className="flex items-center justify-end gap-2 shrink-0">
-            <div className="hidden xl:flex bg-zinc-100 dark:bg-white/5 p-1 rounded-full border border-black/5 dark:border-white/5 shadow-inner">
+          <div className="flex items-center justify-end gap-3 shrink-0">
+            <div className="hidden xl:flex bg-zinc-100/80 dark:bg-white/5 p-1.5 rounded-full border border-black/5 dark:border-white/5 shadow-inner">
               {[
-                { key: 'resume', label: '이력서', icon: <FileText className="w-3.5 h-3.5" /> },
-                { key: 'portfolio', label: '포트폴리오', icon: <FolderOpen className="w-3.5 h-3.5" /> },
-                { key: 'game-history', label: '플레이 이력', icon: <Gamepad2 className="w-3.5 h-3.5" /> },
+                { key: 'resume', label: '이력서', icon: <FileText className="w-4 h-4" /> },
+                { key: 'portfolio', label: '포트폴리오', icon: <FolderOpen className="w-4 h-4" /> },
+                { key: 'game-history', label: '플레이 이력', icon: <Gamepad2 className="w-4 h-4" /> },
               ].map(item => (
                 <button key={item.key} onClick={() => { setView(item.key as any); window.scrollTo(0,0); }} 
-                  className={`px-4 py-2 rounded-full text-[12px] font-bold tracking-wide transition-all flex items-center gap-1.5 ${currentView === item.key ? 'bg-white dark:bg-[#222] text-[#800020] shadow-sm' : 'text-zinc-500 hover:text-[#2C2C2C] dark:hover:text-[#e8e4dc]'}`}>
+                  className={`px-5 py-2.5 rounded-full text-[14px] font-bold tracking-wide transition-all flex items-center gap-2 ${currentView === item.key ? 'bg-white dark:bg-[#222] text-[#800020] shadow-md' : 'text-zinc-500 hover:text-[#2C2C2C] dark:hover:text-[#e8e4dc]'}`}>
                   {item.icon}
                   <span>{item.label}</span>
                 </button>
               ))}
             </div>
             
-            <div className="hidden xl:block w-px h-6 bg-black/10 dark:bg-white/10 mx-1"></div>
+            <div className="hidden xl:block w-px h-8 bg-black/10 dark:bg-white/10 mx-1.5"></div>
             
-            <div className="flex items-center gap-1.5">
+            <div className="flex items-center gap-2">
               <button 
                 onClick={() => setTheme(isDark ? 'light' : 'dark')}
-                className="w-10 h-10 rounded-full transition-all flex items-center justify-center hover:bg-zinc-100 dark:hover:bg-white/10 text-zinc-500 dark:text-zinc-400 hover:text-[#2C2C2C] dark:hover:text-white"
+                className="w-12 h-12 rounded-full transition-all flex items-center justify-center hover:bg-zinc-100 dark:hover:bg-white/10 text-zinc-500 dark:text-zinc-400 hover:text-[#2C2C2C] dark:hover:text-white"
                 title="Toggle Theme"
               >
-                {isDark ? <Sun className="w-[18px] h-[18px]" /> : <Moon className="w-[18px] h-[18px]" />}
+                {isDark ? <Sun className="w-[20px] h-[20px]" /> : <Moon className="w-[20px] h-[20px]" />}
               </button>
               <button 
                 onClick={handleAdminClick}
-                className="w-10 h-10 rounded-full transition-all flex items-center justify-center hover:bg-zinc-100 dark:hover:bg-white/10 text-zinc-500 dark:text-zinc-400 hover:text-[#2C2C2C] dark:hover:text-white"
+                className="w-12 h-12 rounded-full transition-all flex items-center justify-center hover:bg-zinc-100 dark:hover:bg-white/10 text-zinc-500 dark:text-zinc-400 hover:text-[#2C2C2C] dark:hover:text-white"
                 title="Admin Mode"
               >
-                <Lock className={`w-[16px] h-[16px] ${isEditing ? 'text-[#800020]' : 'opacity-80'}`} />
+                <Lock className={`w-[18px] h-[18px] ${isEditing ? 'text-[#800020]' : 'opacity-80'}`} />
               </button>
               
               {/* Mobile Menu Toggle */}
-              <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="lg:hidden w-10 h-10 flex items-center justify-center rounded-full bg-zinc-100 dark:bg-white/5 text-[#2C2C2C] dark:text-[#e8e4dc] ml-1">
-                {isMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="lg:hidden w-12 h-12 flex items-center justify-center rounded-full bg-zinc-100 dark:bg-white/5 text-[#2C2C2C] dark:text-[#e8e4dc] ml-1">
+                {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
               </button>
             </div>
           </div>
