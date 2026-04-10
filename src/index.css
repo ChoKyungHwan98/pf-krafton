@@ -12,6 +12,8 @@
   --color-bg-main: #F6F6F3; /* Light Editorial */
 }
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @layer base {
   * {
     -webkit-font-smoothing: antialiased;
@@ -22,6 +24,7 @@
   }
   body {
     @apply bg-bg-main text-[#2C2C2C] font-sans antialiased selection:bg-[#800020] selection:text-[#F6F6F3];
+    transition: background-color 0.5s ease, color 0.5s ease;
     line-height: 1.7;
     letter-spacing: -0.01em;
     word-break: keep-all;

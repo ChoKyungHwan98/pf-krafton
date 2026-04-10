@@ -48,7 +48,9 @@ import {
   FolderOpen,
   ChevronDown,
   Info,
-  Figma
+  Figma,
+  Sun,
+  Moon
 } from 'lucide-react';
 
 // --- Types ---
@@ -481,15 +483,15 @@ const Navbar = ({ setView, currentView, onNavClick, isEditing, setIsEditing, act
     }
   };
 
-  const navBgClass = scrolledPastHero ? 'bg-white/90 border-black/10 border-b backdrop-blur-md shadow-sm py-4' : 'bg-transparent py-6';
+  const navBgClass = scrolledPastHero ? 'bg-white/90 dark:bg-black/80 border-black/10 dark:border-[#1e1e1e] border-b backdrop-blur-md shadow-sm py-4' : 'bg-transparent py-8';
 
   return (
     <>
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${navBgClass} print:hidden`}>
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
           <div className="flex items-center gap-3 cursor-pointer" onClick={() => { setView('home'); window.scrollTo({ top: 0, behavior: 'smooth' }); setIsMenuOpen(false); }}>
-            <span className="font-display font-bold tracking-tight text-xl text-[#2C2C2C]">지망생 조경환</span>
-            <span className="text-[10px] font-mono tracking-widest uppercase hidden sm:block text-zinc-500">// Game Designer</span>
+            <span className="font-display font-bold tracking-tight text-2xl text-[#2C2C2C] dark:text-[#e8e4dc]">지망생 조경환</span>
+            <span className="text-xs font-mono tracking-widest uppercase hidden sm:block text-zinc-500 dark:text-[#888]">// Game Designer</span>
             {isEditing && (
               <div className="ml-2 px-2 py-0.5 bg-[#800020]/10 border border-[#800020]/20 rounded text-[10px] text-[#800020] font-bold uppercase">
                 Edit
@@ -498,7 +500,7 @@ const Navbar = ({ setView, currentView, onNavClick, isEditing, setIsEditing, act
           </div>
 
           {/* Desktop Nav */}
-          <div className="hidden md:flex items-center gap-5">
+          <div className="hidden md:flex items-center gap-6">
             {[
               { id: 'about', label: '소개', num: '01' },
               { id: 'projects', label: '프로젝트', num: '02' },
@@ -509,7 +511,7 @@ const Navbar = ({ setView, currentView, onNavClick, isEditing, setIsEditing, act
                 <a 
                   href={`#${id}`}
                   onClick={(e) => handleLinkClick(e, id)}
-                  className={`text-[14px] font-bold transition-all flex items-center gap-1.5 relative py-1 ${activeSection === id ? 'text-[#2C2C2C]' : 'text-zinc-500 hover:text-[#2C2C2C]'}`}
+                  className={`text-[15px] font-bold transition-all flex items-center gap-1.5 relative py-1 ${activeSection === id ? 'text-[#2C2C2C] dark:text-[#e8e4dc]' : 'text-zinc-500 dark:text-zinc-500 hover:text-[#2C2C2C] dark:hover:text-[#e8e4dc]'}`}
                 >
                   <span className={`text-[12px] font-bold transition-opacity duration-300 ${activeSection === id ? 'opacity-100 text-[#800020]' : 'opacity-0'}`}>{num}.</span>
                   {label}
@@ -517,27 +519,34 @@ const Navbar = ({ setView, currentView, onNavClick, isEditing, setIsEditing, act
                     <motion.div layoutId="nav-indicator" className="absolute -bottom-1 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#800020] to-transparent rounded-full" />
                   )}
                 </a>
-                {idx < 3 && <span className="w-px h-3 bg-black/10"></span>}
+                {idx < 3 && <span className="w-px h-4 bg-black/10 dark:bg-white/10"></span>}
               </React.Fragment>
             ))}
-            <div className="flex items-center gap-1 ml-3 pl-3 border-l border-black/10">
+            <div className="flex items-center gap-2 ml-4 pl-4 border-l border-black/10 dark:border-white/10">
               {[
-                { key: 'resume', label: '이력서', icon: <FileText className="w-3.5 h-3.5" /> },
-                { key: 'portfolio', label: '포트폴리오', icon: <FolderOpen className="w-3.5 h-3.5" /> },
-                { key: 'game-history', label: '플레이 이력', icon: <Gamepad2 className="w-3.5 h-3.5" /> },
+                { key: 'resume', label: '이력서', icon: <FileText className="w-4 h-4" /> },
+                { key: 'portfolio', label: '포트폴리오', icon: <FolderOpen className="w-4 h-4" /> },
+                { key: 'game-history', label: '플레이 이력', icon: <Gamepad2 className="w-4 h-4" /> },
               ].map(item => (
                 <button key={item.key} onClick={() => { setView(item.key as any); window.scrollTo(0,0); }} 
-                  className={`px-3 py-1.5 rounded-lg text-xs font-bold tracking-wide transition-all flex items-center gap-1.5 ${currentView === item.key ? 'bg-[#800020]/10 text-[#800020]' : 'text-zinc-500 hover:text-[#2C2C2C] hover:bg-zinc-100'}`}>
+                  className={`px-3 py-2 rounded-lg text-[13px] font-bold tracking-wide transition-all flex items-center gap-2 ${currentView === item.key ? 'bg-[#800020]/10 text-[#800020]' : 'text-zinc-500 dark:text-[#888] hover:text-[#2C2C2C] dark:hover:text-[#e8e4dc] hover:bg-zinc-100 dark:hover:bg-[#1a1a1a]'}`}>
                   {item.icon}
                   <span className="hidden lg:inline">{item.label}</span>
                 </button>
               ))}
             </div>
             <button 
-              onClick={handleAdminClick}
-              className="p-2 rounded-lg transition-colors flex items-center justify-center hover:bg-[#1a1a1a] ml-1"
+              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+              className="p-2 ml-2 rounded-full transition-colors flex items-center justify-center hover:bg-zinc-100 dark:hover:bg-[#1a1a1a]"
+              title="Toggle Theme"
             >
-              <Lock className={`w-3.5 h-3.5 ${isEditing ? 'text-[#800020]' : 'text-[#444]'}`} />
+              {theme === 'dark' ? <Moon className="w-5 h-5 text-zinc-400" /> : <Sun className="w-5 h-5 text-zinc-500" />}
+            </button>
+            <button 
+              onClick={handleAdminClick}
+              className="p-2 rounded-full transition-colors flex items-center justify-center hover:bg-zinc-100 dark:hover:bg-[#1a1a1a] ml-1"
+            >
+              <Lock className={`w-4 h-4 ${isEditing ? 'text-[#800020]' : 'text-zinc-400 dark:text-[#555]'}`} />
             </button>
           </div>
 
@@ -600,8 +609,8 @@ const Navbar = ({ setView, currentView, onNavClick, isEditing, setIsEditing, act
 
 // --- Hero ---
 const Hero = ({ onPortfolioClick, onResumeClick, isEditing, content, setContent }: { onPortfolioClick: () => void, onResumeClick: () => void, isEditing: boolean, content: any, setContent: (c: any) => void }) => (
-  <section className="relative min-h-screen flex flex-col justify-center items-center px-6 md:px-12 py-[120px] overflow-hidden bg-transparent">
-    <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.03)_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+  <section id="hero" className="relative min-h-screen flex flex-col justify-center items-center px-6 md:px-12 py-[120px] overflow-hidden bg-[#0a0a0a] border-b border-black/10 dark:border-[#1e1e1e] transition-colors duration-500">
+    <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:24px_24px]"></div>
     
     <motion.div 
       initial={{ opacity: 0, y: 20 }}
@@ -610,14 +619,14 @@ const Hero = ({ onPortfolioClick, onResumeClick, isEditing, content, setContent 
       className="z-10 text-center max-w-5xl relative w-full mx-auto flex flex-col items-center pb-24"
     >
       <h1 className="mb-10 flex flex-col items-center gap-3">
-        <div className="text-xl md:text-2xl lg:text-3xl font-display font-medium text-zinc-500 tracking-tight">
+        <div className="text-xl md:text-2xl lg:text-3xl font-display font-medium text-zinc-400 tracking-tight">
           <EditableText value={content.titleLine1 || "기획의도를 알고"} onSave={(v) => setContent({...content, titleLine1: v})} isEditing={isEditing} />
         </div>
-        <div className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-display font-bold text-[#2C2C2C] tracking-[-0.04em] leading-[1.1] break-keep">
+        <div className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-display font-bold text-white tracking-[-0.04em] leading-[1.1] break-keep drop-shadow-sm">
           <EditableText value={content.titleLine2 || "목차를 쓸줄 아는 기획자"} onSave={(v) => setContent({...content, titleLine2: v})} isEditing={isEditing} />
         </div>
       </h1>
-      <p className="text-zinc-500 text-lg md:text-xl font-medium leading-relaxed mb-12 max-w-2xl mx-auto">
+      <p className="text-zinc-400 text-lg md:text-xl font-medium leading-relaxed mb-12 max-w-2xl mx-auto">
         <EditableText value={content.description} onSave={(v) => setContent({...content, description: v})} isEditing={isEditing} multiline />
       </p>
       
@@ -632,7 +641,7 @@ const Hero = ({ onPortfolioClick, onResumeClick, isEditing, content, setContent 
         <motion.button 
           whileHover={{ y: -2 }} whileTap={{ scale: 0.98 }}
           onClick={onPortfolioClick}
-          className="px-10 py-5 bg-white border border-zinc-200 text-zinc-600 font-bold hover:border-zinc-300 hover:text-[#2C2C2C] hover:bg-zinc-50 transition-all duration-500 flex items-center justify-center gap-3 text-sm tracking-widest w-full sm:w-auto rounded-full uppercase shadow-sm hover:shadow-md"
+          className="px-10 py-5 bg-white/5 border border-white/10 text-white font-bold flex items-center justify-center gap-3 hover:bg-white/10 transition-all duration-500 text-sm tracking-widest w-full sm:w-auto rounded-full uppercase backdrop-blur-md"
         >
           포트폴리오 보기 <ArrowUpRight className="w-4 h-4" />
         </motion.button>
@@ -640,8 +649,8 @@ const Hero = ({ onPortfolioClick, onResumeClick, isEditing, content, setContent 
     </motion.div>
 
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1, duration: 1 }} className="mt-16 flex flex-col items-center gap-4">
-      <span className="text-[10px] font-mono text-zinc-400 uppercase tracking-widest">Scroll to explore</span>
-      <div className="w-[1px] h-16 bg-zinc-200 relative overflow-hidden">
+      <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest">Scroll to explore</span>
+      <div className="w-[1px] h-16 bg-white/10 relative overflow-hidden">
         <motion.div animate={{ y: [-64, 64] }} transition={{ repeat: Infinity, duration: 2, ease: "linear" }} className="absolute top-0 left-0 w-full h-1/2 bg-[#800020]" />
       </div>
     </motion.div>
@@ -1190,9 +1199,9 @@ const Resume = ({ setView, isEditing, data, setData }: ResumeProps) => {
                         {tool.name}
                         <Info className="w-3 h-3 text-[#444] group-hover:text-[#800020] transition-colors" />
                         <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[#800020] to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                        <div className="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 translate-y-2 opacity-0 group-hover:-translate-y-2 group-hover:opacity-100 transition-all z-50 mb-3 w-max max-w-[320px] bg-[#111] border border-[#333] text-[#e8e4dc] text-xs leading-[1.6] p-3 rounded-xl shadow-xl whitespace-pre-wrap font-medium text-left">
+                        <div className="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 translate-y-2 opacity-0 group-hover:-translate-y-2 group-hover:opacity-100 transition-all z-50 mb-3 w-max max-w-[320px] bg-white dark:bg-[#111] border border-black/10 dark:border-[#333] text-[#2C2C2C] dark:text-[#e8e4dc] text-xs leading-[1.6] p-3 rounded-xl shadow-xl whitespace-pre-wrap font-medium text-left">
                           {tool.desc}
-                          <div className="absolute top-full left-1/2 -translate-x-1/2 border-solid border-t-[#333] border-t-8 border-x-transparent border-x-8 border-b-0 w-0 h-0"></div>
+                          <div className="absolute top-full left-1/2 -translate-x-1/2 border-solid border-t-white dark:border-t-[#333] border-t-8 border-x-transparent border-x-8 border-b-0 w-0 h-0"></div>
                         </div>
                       </span>
                     ))}
@@ -1202,7 +1211,7 @@ const Resume = ({ setView, isEditing, data, setData }: ResumeProps) => {
                   <p className="text-[10px] font-bold text-[#555] uppercase mb-3">엔진 및 개발</p>
                   <div className="flex flex-wrap gap-2">
                     {['Unity', 'Git'].map(tool => (
-                      <span key={tool} className="px-4 py-2 bg-[#1a1a1a] rounded-xl text-xs font-bold text-[#888] border border-[#2a2a2a] flex items-center gap-2">
+                      <span key={tool} className="px-4 py-2 bg-zinc-50 dark:bg-[#1a1a1a] rounded-xl text-xs font-bold text-zinc-600 dark:text-[#888] border border-black/5 dark:border-[#2a2a2a] flex items-center gap-2">
                         {TOOL_ICONS[tool]}
                         {tool}
                       </span>
@@ -1239,25 +1248,25 @@ const Resume = ({ setView, isEditing, data, setData }: ResumeProps) => {
             {/* TAB: OVERVIEW */}
             <div className={`space-y-6 print:space-y-4 ${activeTab === 'overview' ? 'block' : 'hidden print:block'}`}>
               {/* Summary */}
-              <section className="bg-white rounded-3xl p-6 lg:p-8 print:p-6 shadow-sm border border-black/5">
-                <h3 className="text-xl font-bold mb-4 print:mb-3 flex items-center gap-3 text-[#e8e4dc]"><User className="w-6 h-6" /> 자기소개</h3>
-                <div className="text-[#888] print:text-[13px] print:leading-relaxed leading-relaxed font-medium">
+              <section className="bg-white dark:bg-[#111] rounded-3xl p-6 lg:p-8 print:p-6 shadow-sm border border-black/5 dark:border-[#1e1e1e] transition-colors">
+                <h3 className="text-xl font-bold mb-4 print:mb-3 flex items-center gap-3 text-[#2C2C2C] dark:text-[#e8e4dc]"><User className="w-6 h-6" /> 자기소개</h3>
+                <div className="text-zinc-600 dark:text-[#888] print:text-[13px] print:leading-relaxed leading-relaxed font-medium">
                   <EditableText value={data.summary} onSave={(v) => setData({...data, summary: v})} isEditing={isEditing} markdown={true} />
                 </div>
               </section>
 
           {/* Education */}
-          <section className="bg-white rounded-3xl p-6 lg:p-8 print:p-6 shadow-sm border border-black/5">
-            <h3 className="text-xl font-bold mb-6 print:mb-4 flex items-center gap-3 text-[#e8e4dc]"><GraduationCap className="w-6 h-6" /> 학력 및 교육</h3>
+          <section className="bg-white dark:bg-[#111] rounded-3xl p-6 lg:p-8 print:p-6 shadow-sm border border-black/5 dark:border-[#1e1e1e] transition-colors">
+            <h3 className="text-xl font-bold mb-6 print:mb-4 flex items-center gap-3 text-[#2C2C2C] dark:text-[#e8e4dc]"><GraduationCap className="w-6 h-6" /> 학력 및 교육</h3>
             <div className="space-y-8 print:space-y-4">
               {data.education.map((edu, idx) => (
-                <div key={idx} className="relative pl-8 border-l-2 border-[#2a2a2a] print:break-inside-avoid">
-                  <div className="absolute -left-[5px] top-1.5 w-2.5 h-2.5 rounded-none bg-[#555]"></div>
+                <div key={idx} className="relative pl-8 border-l-2 border-black/10 dark:border-[#2a2a2a] print:break-inside-avoid">
+                  <div className="absolute -left-[5px] top-1.5 w-2.5 h-2.5 rounded-none bg-zinc-300 dark:bg-[#555]"></div>
                   <div className="flex justify-between items-start mb-2">
-                    <h4 className="font-bold text-lg text-[#e8e4dc]">
+                    <h4 className="font-bold text-lg text-[#2C2C2C] dark:text-[#e8e4dc]">
                       <EditableText value={edu.title} onSave={(v) => { const e = [...data.education]; e[idx].title = v; setData({...data, education: e}); }} isEditing={isEditing} />
                     </h4>
-                    <span className="text-xs font-sans text-[#888]">
+                    <span className="text-xs font-sans text-zinc-500 dark:text-[#888]">
                       <EditableText value={edu.period} onSave={(v) => { const e = [...data.education]; e[idx].period = v; setData({...data, education: e}); }} isEditing={isEditing} />
                     </span>
                   </div>
@@ -1273,15 +1282,15 @@ const Resume = ({ setView, isEditing, data, setData }: ResumeProps) => {
           </section>
           
           {/* Awards */}
-          <section className="bg-white rounded-3xl p-6 lg:p-8 print:p-6 shadow-sm border border-black/5">
-            <h3 className="text-xl font-bold mb-6 print:mb-4 flex items-center gap-3 text-[#e8e4dc]"><Award className="text-[#800020] w-6 h-6" /> 자격 및 수상</h3>
+          <section className="bg-white dark:bg-[#111] rounded-3xl p-6 lg:p-8 print:p-6 shadow-sm border border-black/5 dark:border-[#1e1e1e] transition-colors">
+            <h3 className="text-xl font-bold mb-6 print:mb-4 flex items-center gap-3 text-[#2C2C2C] dark:text-[#e8e4dc]"><Award className="text-[#800020] w-6 h-6" /> 자격 및 수상</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 print:gap-3">
               {data.awards.map((award, idx) => (
-                <div key={idx} className="p-5 bg-[#1a1a1a] rounded-2xl border-l-4 border-l-[#800020]">
-                  <h4 className="font-bold text-sm mb-1 text-[#e8e4dc]">
+                <div key={idx} className="p-5 bg-zinc-50 dark:bg-[#1a1a1a] rounded-2xl border-l-4 border-l-[#800020] border-y border-r border-black/5 dark:border-[#1e1e1e]">
+                  <h4 className="font-bold text-sm mb-1 text-[#2C2C2C] dark:text-[#e8e4dc]">
                     <EditableText value={award.title} onSave={(v) => { const a = [...data.awards]; a[idx].title = v; setData({...data, awards: a}); }} isEditing={isEditing} />
                   </h4>
-                  <p className="text-xs text-[#888]">{award.organization} // {award.year}</p>
+                  <p className="text-xs text-zinc-500 dark:text-[#888]">{award.organization} // {award.year}</p>
                 </div>
               ))}
             </div>
@@ -1291,21 +1300,21 @@ const Resume = ({ setView, isEditing, data, setData }: ResumeProps) => {
         {/* TAB: EXPERIENCE */}
         <div className={activeTab === 'experience' ? 'block print:mt-12' : 'hidden print:block print:mt-12'}>
           {/* Experience */}
-          <section className="bg-white rounded-3xl p-6 lg:p-8 print:p-6 shadow-sm border border-black/5">
-            <h3 className="text-xl font-bold mb-6 print:mb-4 flex items-center gap-3 text-[#e8e4dc]"><Briefcase className="text-[#800020] w-6 h-6" /> 프로젝트 경험</h3>
+          <section className="bg-white dark:bg-[#111] rounded-3xl p-6 lg:p-8 print:p-6 shadow-sm border border-black/5 dark:border-[#1e1e1e] transition-colors">
+            <h3 className="text-xl font-bold mb-6 print:mb-4 flex items-center gap-3 text-[#2C2C2C] dark:text-[#e8e4dc]"><Briefcase className="text-[#800020] w-6 h-6" /> 프로젝트 경험</h3>
             <div className="space-y-8 print:space-y-4">
               {data.experience.map((exp, idx) => (
-                <div key={idx} className="relative pl-8 border-l-2 border-[#2a2a2a] print:break-inside-avoid">
+                <div key={idx} className="relative pl-8 border-l-2 border-black/10 dark:border-[#2a2a2a] print:break-inside-avoid">
                   <div className="absolute -left-[5px] top-1.5 w-2.5 h-2.5 rounded-none bg-[#800020]"></div>
                   <div className="flex justify-between items-start mb-2">
-                    <h4 className="font-bold text-lg text-[#e8e4dc]">
+                    <h4 className="font-bold text-lg text-[#2C2C2C] dark:text-[#e8e4dc]">
                       <EditableText value={exp.title} onSave={(v) => { const e = [...data.experience]; e[idx].title = v; setData({...data, experience: e}); }} isEditing={isEditing} />
                     </h4>
-                    <span className="text-xs font-sans text-[#888]">
+                    <span className="text-xs font-sans text-zinc-500 dark:text-[#888]">
                       <EditableText value={exp.period} onSave={(v) => { const e = [...data.experience]; e[idx].period = v; setData({...data, experience: e}); }} isEditing={isEditing} />
                     </span>
                   </div>
-                  <div className="text-sm text-[#888] mb-4">
+                  <div className="text-sm text-zinc-600 dark:text-[#888] mb-4">
                     <EditableText value={exp.description} onSave={(v) => { const e = [...data.experience]; e[idx].description = v; setData({...data, experience: e}); }} isEditing={isEditing} markdown={true} />
                   </div>
                   <ul className="text-xs text-[#888] space-y-2 list-disc list-inside">
@@ -1322,7 +1331,7 @@ const Resume = ({ setView, isEditing, data, setData }: ResumeProps) => {
           {/* Self Introduction */}
           <div className="flex flex-col gap-2 mb-10 print:mb-6">
             <span className="text-[#800020] font-mono text-xs uppercase tracking-[0.25em] font-bold">자기소개서 전문</span>
-            <h3 className="text-3xl md:text-4xl font-display font-bold text-[#e8e4dc] tracking-[-0.02em]">자기소개서</h3>
+            <h3 className="text-3xl md:text-4xl font-display font-bold text-[#2C2C2C] dark:text-[#e8e4dc] tracking-[-0.02em]">자기소개서</h3>
           </div>
         
         {data.selfIntroductions ? (
@@ -1340,12 +1349,12 @@ const Resume = ({ setView, isEditing, data, setData }: ResumeProps) => {
                   <div className="w-10 h-10 shrink-0 rounded-xl bg-[#800020]/10 flex items-center justify-center text-[#800020] font-mono font-bold text-sm border border-[#800020]/20">
                     {String(idx + 1).padStart(2, '0')}
                   </div>
-                  <h4 className="text-xl md:text-2xl font-bold text-[#e8e4dc] leading-snug tracking-[-0.01em] pt-1">
+                  <h4 className="text-xl md:text-2xl font-bold text-[#2C2C2C] dark:text-[#e8e4dc] leading-snug tracking-[-0.01em] pt-1">
                     <EditableText value={intro.logline} onSave={(v) => { const n = [...(data.selfIntroductions || [])]; n[idx].logline = v; setData({...data, selfIntroductions: n}); }} isEditing={isEditing} multiline />
                   </h4>
                 </div>
                 {/* Content body */}
-                <div className="ml-[60px] text-[#999] leading-[2] text-[15px] md:text-base bg-[#111] p-6 md:p-8 print:p-6 print:py-4 rounded-2xl border border-[#1e1e1e] hover:border-[#2a2a2a] transition-colors">
+                <div className="ml-[60px] text-zinc-600 dark:text-[#999] leading-[2] text-[15px] md:text-base bg-white dark:bg-[#111] p-6 md:p-8 print:p-6 print:py-4 rounded-2xl border border-black/5 dark:border-[#1e1e1e] hover:border-black/10 dark:hover:border-[#2a2a2a] transition-colors shadow-sm">
                   <EditableText value={intro.content} onSave={(v) => { const n = [...(data.selfIntroductions || [])]; n[idx].content = v; setData({...data, selfIntroductions: n}); }} isEditing={isEditing} markdown={true} />
                 </div>
               </div>
@@ -1705,6 +1714,18 @@ const GameHistoryView = ({ setView }: { setView: (v: any) => void }) => {
 export default function App() {
   const [view, setView] = useState<'home' | 'resume' | 'project-detail' | 'portfolio' | 'all-projects' | 'game-history'>('home');
   const [prevView, setPrevView] = useState<'home' | 'resume' | 'project-detail' | 'portfolio' | 'all-projects' | 'game-history'>('home');
+  const [theme, setTheme] = useState<'light' | 'dark'>(() => {
+    return (localStorage.getItem('theme') as 'light' | 'dark') || 'light';
+  });
+
+  useEffect(() => {
+    if (theme === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+    localStorage.setItem('theme', theme);
+  }, [theme]);
   
   const changeView = (newView: 'home' | 'resume' | 'project-detail' | 'portfolio' | 'all-projects' | 'game-history') => {
     setPrevView(view);
@@ -1838,14 +1859,14 @@ export default function App() {
   return (
     <div className="min-h-screen selection:bg-[#800020]/20 flex flex-col relative">
       {/* Global Background */}
-      <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden bg-[#F6F6F3]">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(0,0,0,0.02),transparent_50%)]"></div>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(0,0,0,0.01),transparent_50%)]"></div>
-        <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-white/50 rounded-full blur-[120px] mix-blend-overlay"></div>
-        <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-white/50 rounded-full blur-[120px] mix-blend-overlay"></div>
+      <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden bg-[#F6F6F3] dark:bg-[#0a0a0a] transition-colors duration-500">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(0,0,0,0.02),transparent_50%)] dark:bg-[radial-gradient(circle_at_top_right,rgba(128,0,32,0.05),transparent_50%)]"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(0,0,0,0.01),transparent_50%)] dark:bg-[radial-gradient(circle_at_bottom_left,rgba(128,0,32,0.03),transparent_50%)]"></div>
+        <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-white/50 dark:bg-[#800020]/5 rounded-full blur-[120px] mix-blend-overlay dark:mix-blend-lighten"></div>
+        <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-white/50 dark:bg-[#800020]/5 rounded-full blur-[120px] mix-blend-overlay dark:mix-blend-lighten"></div>
       </div>
 
-      <Navbar setView={changeView} currentView={view} onNavClick={handleNavClick} isEditing={isEditing} setIsEditing={setIsEditing} activeSection={activeSection} />
+      <Navbar setView={changeView} currentView={view} onNavClick={handleNavClick} isEditing={isEditing} setIsEditing={setIsEditing} activeSection={activeSection} theme={theme} setTheme={setTheme} />
       <main className="flex-1 w-full min-w-0 relative z-10 transition-all duration-300">
         <AnimatePresence mode="wait">
           {view === 'home' && (
