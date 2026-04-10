@@ -1182,63 +1182,60 @@ const Resume = ({ setView, isEditing, data, setData }: ResumeProps) => {
 
       <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 print:grid-cols-12 print:gap-8">
         {/* Sidebar */}
-        <div className="lg:col-span-4 print:col-span-4 space-y-8 print:space-y-6 lg:sticky lg:top-24 self-start">
-          <div className="text-center lg:text-left">
-            <div className="w-40 h-40 print:w-32 print:h-32 print:mb-4 rounded-3xl overflow-hidden mb-8 mx-auto lg:mx-0 border border-black/5 shadow-sm print:shadow-none">
-              <img src="https://picsum.photos/seed/profile/400/400" alt="Profile" className="w-full h-full object-cover grayscale opacity-80" />
+        <div className="lg:col-span-4 print:col-span-4 lg:sticky lg:top-32 self-start space-y-6">
+          {/* Profile Card */}
+          <div className="bg-white dark:bg-[#111] rounded-[2.5rem] p-8 md:p-10 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-black/5 dark:border-[#1e1e1e] flex flex-col items-center lg:items-start text-center lg:text-left transition-all duration-500 hover:shadow-[0_8px_40px_rgb(0,0,0,0.08)]">
+            <div className="w-32 h-32 print:w-28 print:h-28 rounded-full overflow-hidden mb-6 border-4 border-white dark:border-[#222] shadow-lg ring-1 ring-black/5 dark:ring-white/10 shrink-0 mx-auto lg:mx-0">
+              <img src="https://picsum.photos/seed/profile/400/400" alt="Profile" className="w-full h-full object-cover grayscale hover:grayscale-0 transition-transform duration-700 hover:scale-110" />
             </div>
-            <h1 className="text-4xl print:text-3xl font-display font-bold mb-3 text-[#2C2C2C] tracking-tight">
-              <EditableText value={data.name} onSave={(v) => setData({...data, name: v})} isEditing={isEditing} />
-            </h1>
-            <p className="text-[#800020] font-bold mb-8 print:mb-4 font-mono tracking-widest text-sm uppercase">
-              <EditableText value={data.role} onSave={(v) => setData({...data, role: v})} isEditing={isEditing} />
-            </p>
-            <div className="space-y-4 text-sm text-zinc-600 font-medium">
-              {/* 이메일 — 항상 표시 */}
-              <div className="flex items-center gap-4 justify-center lg:justify-start">
-                <div className="w-10 h-10 bg-zinc-50 rounded-xl flex items-center justify-center text-zinc-500 border border-black/5"><Mail className="w-4 h-4" /></div>
-                <span><EditableText value={data.email} onSave={(v) => setData({...data, email: v})} isEditing={isEditing} /></span>
+            
+            <div className="mb-4 w-full">
+              <span className="inline-block bg-[#800020]/10 dark:bg-[#800020]/20 text-[#800020] dark:text-[#ff3b6b] px-4 py-1.5 rounded-full font-mono text-[10px] font-bold tracking-[0.2em] uppercase mb-4">
+                <EditableText value={data.role} onSave={(v) => setData({...data, role: v})} isEditing={isEditing} />
+              </span>
+              <h1 className="text-3xl md:text-4xl print:text-3xl font-black text-[#2C2C2C] dark:text-[#e8e4dc] tracking-tight mb-2">
+                <EditableText value={data.name} onSave={(v) => setData({...data, name: v})} isEditing={isEditing} />
+              </h1>
+            </div>
+
+            <div className="w-full space-y-3 mt-4 pt-6 border-t border-black/5 dark:border-[#2a2a2a]">
+              <div className="flex items-center gap-3 text-sm text-zinc-600 dark:text-[#888] font-medium justify-center lg:justify-start group cursor-pointer">
+                <div className="w-9 h-9 rounded-full bg-zinc-50 dark:bg-white/5 flex items-center justify-center group-hover:bg-[#800020]/10 transition-colors shrink-0">
+                  <Mail className="w-4 h-4 text-zinc-400 group-hover:text-[#800020] transition-colors" />
+                </div>
+                <span className="group-hover:text-[#2C2C2C] dark:group-hover:text-white transition-colors"><EditableText value={data.email} onSave={(v) => setData({...data, email: v})} isEditing={isEditing} /></span>
               </div>
-              {/* 전화번호 — PDF 다운로드(인쇄) 시에만 표시 */}
-              <div className="hidden print:flex items-center gap-4 justify-center lg:justify-start">
-                <div className="w-10 h-10 bg-zinc-50 rounded-xl flex items-center justify-center text-zinc-500 border border-black/5 print:border-gray-200"><Phone className="w-4 h-4" /></div>
+              <div className="hidden print:flex items-center gap-3 text-sm text-zinc-600 font-medium justify-center lg:justify-start">
+                <div className="w-9 h-9 rounded-full bg-zinc-50 flex items-center justify-center shrink-0">
+                  <Phone className="w-4 h-4 text-zinc-400" />
+                </div>
                 <span><EditableText value={data.phone} onSave={(v) => setData({...data, phone: v})} isEditing={isEditing} /></span>
               </div>
             </div>
           </div>
 
-          <div className="space-y-10 print:space-y-6">
+          {/* Connect & Skills */}
+          <div className="bg-white dark:bg-[#111] rounded-[2.5rem] p-8 md:p-10 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-black/5 dark:border-[#1e1e1e] space-y-10">
+            {/* Tech Stack */}
             <div>
-              <h3 className="text-xs font-bold text-[#555] tracking-widest uppercase mb-6 print:mb-3 flex items-center gap-2"><Wrench className="w-4 h-4" /> 기술 스택</h3>
+              <h3 className="text-xs font-bold text-zinc-400 dark:text-[#666] tracking-widest uppercase mb-5 flex items-center gap-2"><Wrench className="w-4 h-4" /> TECH STACK</h3>
               <div className="space-y-6">
                 <div>
-                  <p className="text-[10px] font-bold text-[#555] uppercase mb-3">기획 및 문서화</p>
+                  <p className="text-[10px] font-bold text-[#2C2C2C] dark:text-[#888] uppercase mb-3 px-1">기획 및 문서화</p>
                   <div className="flex flex-wrap gap-2">
-                    {[
-                      { name: 'Word', desc: '• 사용자 정의 스타일 및 섹션 정형화\n• 논리적 구조에 따른 목차 작성\n• 법학 논문 및 공문서 수준의 작문 구사능력\n• 기획서 가독성 최적화를 위한 전용 템플릿 보유' },
-                      { name: 'Powerpoint', desc: '• 슬라이드 마스터 기반의 커스텀 템플릿 제작\n• 기획 의도 전달을 위한 텍스트의 도식화 및 레이아웃 설계\n• 논리를 기반으로 한 목차 구성이 강점' },
-                      { name: 'Excel', desc: '• 함수: VLOOKUP, 사칙연산, 조건부 서식 등\n• 데이터 테이블 구조화 및 정합성 검토\n• 데이터 테이블 프로그램 개발 구상' },
-                      { name: 'Notion', desc: '• 전반적인 문서 작성 및 간트차트 작성' },
-                      { name: 'Figma', desc: '• UI 와이어프레임 작성' }
-                    ].map(tool => (
-                      <span key={tool.name} className="group relative px-4 py-2 bg-[#1a1a1a] rounded-xl text-xs font-bold text-[#888] border border-[#2a2a2a] hover:border-[#800020] hover:bg-[#800020]/5 hover:text-[#e8e4dc] transition-all cursor-help flex items-center justify-center gap-2">
-                        {TOOL_ICONS[tool.name]}
-                        {tool.name}
-                        <Info className="w-3 h-3 text-[#444] group-hover:text-[#800020] transition-colors" />
-                        <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[#800020] to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                        <div className="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 translate-y-2 opacity-0 group-hover:-translate-y-2 group-hover:opacity-100 transition-all z-50 mb-3 w-max max-w-[320px] bg-white dark:bg-[#111] border border-black/10 dark:border-[#333] text-[#2C2C2C] dark:text-[#e8e4dc] text-xs leading-[1.6] p-3 rounded-xl shadow-xl whitespace-pre-wrap font-medium text-left">
-                          {tool.desc}
-                          <div className="absolute top-full left-1/2 -translate-x-1/2 border-solid border-t-white dark:border-t-[#333] border-t-8 border-x-transparent border-x-8 border-b-0 w-0 h-0"></div>
-                        </div>
+                    {['Word', 'Powerpoint', 'Excel', 'Notion', 'Figma'].map(tool => (
+                      <span key={tool} className="px-3.5 py-1.5 bg-zinc-50 dark:bg-[#1a1a1a] rounded-xl text-[11.5px] font-bold text-zinc-600 dark:text-[#aaa] border border-black/5 dark:border-[#2a2a2a] hover:border-[#800020]/30 hover:bg-[#800020]/5 hover:text-[#800020] dark:hover:text-[#ff3b6b] transition-all cursor-default flex items-center gap-2">
+                        {TOOL_ICONS[tool]}
+                        {tool}
                       </span>
                     ))}
                   </div>
                 </div>
                 <div>
-                  <p className="text-[10px] font-bold text-[#555] uppercase mb-3">엔진 및 개발</p>
+                  <p className="text-[10px] font-bold text-[#2C2C2C] dark:text-[#888] uppercase mb-3 px-1">엔진 및 개발</p>
                   <div className="flex flex-wrap gap-2">
                     {['Unity', 'Git'].map(tool => (
-                      <span key={tool} className="px-4 py-2 bg-zinc-50 dark:bg-[#1a1a1a] rounded-xl text-xs font-bold text-zinc-600 dark:text-[#888] border border-black/5 dark:border-[#2a2a2a] flex items-center gap-2">
+                      <span key={tool} className="px-3.5 py-1.5 bg-zinc-50 dark:bg-[#1a1a1a] rounded-xl text-[11.5px] font-bold text-zinc-600 dark:text-[#aaa] border border-black/5 dark:border-[#2a2a2a] flex items-center gap-2">
                         {TOOL_ICONS[tool]}
                         {tool}
                       </span>
@@ -1247,13 +1244,15 @@ const Resume = ({ setView, isEditing, data, setData }: ResumeProps) => {
                 </div>
               </div>
             </div>
+
+            {/* Core Competencies */}
             <div>
-              <h3 className="text-xs font-bold text-[#555] tracking-widest uppercase mb-6 print:mb-3 flex items-center gap-2"><Zap className="w-4 h-4" /> 핵심 역량</h3>
-              <ul className="space-y-4 print:space-y-2 text-sm text-[#888] font-medium">
+              <h3 className="text-xs font-bold text-zinc-400 dark:text-[#666] tracking-widest uppercase mb-5 flex items-center gap-2"><Zap className="w-4 h-4" /> COMPETENCIES</h3>
+              <ul className="space-y-3 text-[13.5px] text-zinc-600 dark:text-[#999] font-semibold">
                 {["기획 의도를 먼저 세우고 목차로 증명하는 문서 설계", "법학적 사고 기반 시스템 정합성 확보", "AI 프롬프트 설계를 통한 업무 자동화"].map((item, i) => (
-                  <li key={i} className="flex items-start gap-3">
-                    <div className="w-2 h-2 rounded-full bg-[#800020] mt-1.5 shrink-0"></div>
-                    <span>{item}</span>
+                  <li key={i} className="flex items-start gap-3 p-4 bg-zinc-50 dark:bg-white/5 rounded-2xl border border-black/5 dark:border-white/5 hover:bg-zinc-100 transition-colors">
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#800020] mt-1.5 shrink-0"></div>
+                    <span className="leading-snug">{item}</span>
                   </li>
                 ))}
               </ul>
@@ -1262,133 +1261,133 @@ const Resume = ({ setView, isEditing, data, setData }: ResumeProps) => {
         </div>
 
         {/* Main Content */}
-        <div className="lg:col-span-8 print:col-span-8 flex flex-col gap-10">
+        <div className="lg:col-span-8 print:col-span-8 flex flex-col gap-8 print:gap-6">
           
-          {/* OVERVIEW & EXPERIENCE COMBINED SCROLL */}
-          <div className="space-y-10 print:space-y-6">
-              
-              {/* Summary */}
-              <section className="bg-white dark:bg-[#111] rounded-3xl p-8 lg:p-10 shadow-sm border border-black/5 dark:border-[#1e1e1e] transition-colors print:p-6 print:shadow-none">
-                <h3 className="text-xl font-bold mb-4 flex items-center gap-3 text-[#2C2C2C] dark:text-[#e8e4dc]"><User className="w-6 h-6 text-[#800020]" /> 소개</h3>
-                <div className="text-zinc-600 dark:text-[#888] leading-[1.8] font-medium text-[15px] print:text-[13px]">
-                  <EditableText value={data.summary} onSave={(v) => setData({...data, summary: v})} isEditing={isEditing} markdown={true} />
-                </div>
-              </section>
+          {/* OVERVIEW */}
+          <div className="bg-white dark:bg-[#111] rounded-[2.5rem] p-8 md:p-12 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-black/5 dark:border-[#1e1e1e]">
+            <h3 className="text-sm font-bold text-zinc-400 tracking-widest uppercase mb-6 flex items-center gap-2"><User className="w-4 h-4 text-[#800020]" /> PROFILE</h3>
+            <div className="text-[#2C2C2C] dark:text-[#888] leading-[2] font-medium text-[15px] md:text-[16px]">
+              <EditableText value={data.summary} onSave={(v) => setData({...data, summary: v})} isEditing={isEditing} markdown={true} />
+            </div>
+          </div>
 
-              {/* Experience */}
-              <section className="bg-white dark:bg-[#111] rounded-3xl p-8 lg:p-10 shadow-sm border border-black/5 dark:border-[#1e1e1e] transition-colors print:p-6 print:shadow-none">
-                <h3 className="text-xl font-bold mb-8 flex items-center gap-3 text-[#2C2C2C] dark:text-[#e8e4dc]"><Briefcase className="text-[#800020] w-6 h-6" /> 프로젝트 경험</h3>
-                <div className="space-y-10 pl-2">
-                  {data.experience.map((exp, idx) => (
-                    <div key={idx} className="relative pl-8 border-l-2 border-black/10 dark:border-[#2a2a2a] print:break-inside-avoid">
-                      <div className="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-white border-4 border-[#800020]"></div>
-                      <div className="flex justify-between items-start mb-2">
-                        <h4 className="font-bold text-xl md:text-2xl text-[#2C2C2C] dark:text-[#e8e4dc] tracking-tight">
-                          <EditableText value={exp.title} onSave={(v) => { const e = [...data.experience]; e[idx].title = v; setData({...data, experience: e}); }} isEditing={isEditing} />
-                        </h4>
-                        <span className="text-xs font-mono font-bold text-zinc-500 bg-zinc-100 dark:bg-white/5 border border-black/5 px-2 py-1 rounded-md shrink-0 whitespace-nowrap">
-                          <EditableText value={exp.period} onSave={(v) => { const e = [...data.experience]; e[idx].period = v; setData({...data, experience: e}); }} isEditing={isEditing} />
-                        </span>
-                      </div>
-                      <div className="text-[14px] md:text-[15px] font-bold text-[#800020] mb-4">
+          {/* EXPERIENCE */}
+          <div className="bg-white dark:bg-[#111] rounded-[2.5rem] p-8 md:p-12 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-black/5 dark:border-[#1e1e1e]">
+            <h3 className="text-sm font-bold text-zinc-400 tracking-widest uppercase mb-10 flex items-center gap-2"><Briefcase className="w-4 h-4 text-[#800020]" /> EXPERIENCE</h3>
+            <div className="relative border-l border-zinc-200 dark:border-[#2a2a2a] ml-3 md:ml-4 space-y-12 pb-4">
+              {data.experience.map((exp, idx) => (
+                <div key={idx} className="relative pl-8 md:pl-10 print:break-inside-avoid group">
+                  <div className="absolute -left-[5px] top-1.5 w-2.5 h-2.5 rounded-full bg-zinc-300 dark:bg-[#333] group-hover:bg-[#800020] group-hover:scale-150 transition-all duration-300 ring-4 ring-white dark:ring-[#111]"></div>
+                  
+                  <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-4 gap-2">
+                    <div>
+                      <h4 className="font-bold text-xl md:text-2xl text-[#2C2C2C] dark:text-[#e8e4dc] tracking-tight group-hover:text-[#800020] transition-colors">
+                        <EditableText value={exp.title} onSave={(v) => { const e = [...data.experience]; e[idx].title = v; setData({...data, experience: e}); }} isEditing={isEditing} />
+                      </h4>
+                      <div className="text-[14px] font-bold text-[#800020]/80 dark:text-[#ff3b6b] mt-1">
                         <EditableText value={exp.description} onSave={(v) => { const e = [...data.experience]; e[idx].description = v; setData({...data, experience: e}); }} isEditing={isEditing} markdown={true} />
                       </div>
-                      <ul className="text-sm text-zinc-600 dark:text-[#888] space-y-2 list-disc list-inside bg-zinc-50 dark:bg-[#1a1a1a] border border-black/5 dark:border-[#2a2a2a] p-4 md:p-6 rounded-xl leading-relaxed">
-                        {exp.details.map((detail, dIdx) => <li key={dIdx}>{detail}</li>)}
-                      </ul>
                     </div>
-                  ))}
+                    <span className="text-xs font-mono font-bold text-zinc-500 bg-zinc-50 dark:bg-white/5 border border-black/5 px-3 py-1.5 rounded-full shrink-0 uppercase tracking-wider mt-2 md:mt-0">
+                      <EditableText value={exp.period} onSave={(v) => { const e = [...data.experience]; e[idx].period = v; setData({...data, experience: e}); }} isEditing={isEditing} />
+                    </span>
+                  </div>
+                  
+                  <ul className="text-[14px] text-zinc-600 dark:text-[#999] space-y-2 list-none leading-[1.8] mt-5 lg:mt-6 pr-4">
+                    {exp.details.map((detail, dIdx) => (
+                      <li key={dIdx} className="relative pl-4"><span className="absolute left-0 top-[0.65em] w-1 h-1 rounded-full bg-zinc-300 dark:bg-[#444]"></span>{detail}</li>
+                    ))}
+                  </ul>
                 </div>
-              </section>
-
-              {/* Education */}
-              <section className="bg-white dark:bg-[#111] rounded-3xl p-8 lg:p-10 shadow-sm border border-black/5 dark:border-[#1e1e1e] transition-colors print:p-6 print:shadow-none">
-                <h3 className="text-xl font-bold mb-8 flex items-center gap-3 text-[#2C2C2C] dark:text-[#e8e4dc]"><GraduationCap className="w-6 h-6 text-[#800020]" /> 학력 및 교육</h3>
-                <div className="space-y-8 pl-2">
-                  {data.education.map((edu, idx) => (
-                    <div key={idx} className="relative pl-8 border-l-2 border-black/10 dark:border-[#2a2a2a] print:break-inside-avoid">
-                      <div className="absolute -left-[5px] top-2.5 w-2 h-2 rounded-full bg-zinc-400"></div>
-                      <div className="flex justify-between items-start mb-2">
-                        <h4 className="font-bold text-lg md:text-xl text-[#2C2C2C] dark:text-[#e8e4dc] tracking-tight">
-                          <EditableText value={edu.title} onSave={(v) => { const e = [...data.education]; e[idx].title = v; setData({...data, education: e}); }} isEditing={isEditing} />
-                        </h4>
-                        <span className="text-xs font-mono font-bold text-zinc-500 whitespace-nowrap">
-                          <EditableText value={edu.period} onSave={(v) => { const e = [...data.education]; e[idx].period = v; setData({...data, education: e}); }} isEditing={isEditing} />
-                        </span>
-                      </div>
-                      <div className="text-[14px] font-bold text-zinc-600 dark:text-[#888] mb-3">
-                        <EditableText value={edu.description} onSave={(v) => { const e = [...data.education]; e[idx].description = v; setData({...data, education: e}); }} isEditing={isEditing} markdown={true} />
-                      </div>
-                      <ul className="text-[13px] text-zinc-500 space-y-1 list-disc list-inside">
-                        {edu.details.map((detail, dIdx) => <li key={dIdx}>{detail}</li>)}
-                      </ul>
-                    </div>
-                  ))}
-                </div>
-              </section>
-              
-              {/* Awards */}
-              <section className="bg-white dark:bg-[#111] rounded-3xl p-8 lg:p-10 shadow-sm border border-black/5 dark:border-[#1e1e1e] transition-colors print:p-6 print:shadow-none">
-                <h3 className="text-xl font-bold mb-6 flex items-center gap-3 text-[#2C2C2C] dark:text-[#e8e4dc]"><Award className="text-[#800020] w-6 h-6" /> 자격 및 수상</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 print:gap-3">
-                  {data.awards.map((award, idx) => (
-                    <div key={idx} className="p-5 bg-zinc-50 dark:bg-[#1a1a1a] rounded-2xl border-l-4 border-l-[#800020] border-y border-r border-black/5 dark:border-[#1e1e1e]">
-                      <h4 className="font-bold text-[15px] mb-1 text-[#2C2C2C] dark:text-[#e8e4dc] truncate">
-                        <EditableText value={award.title} onSave={(v) => { const a = [...data.awards]; a[idx].title = v; setData({...data, awards: a}); }} isEditing={isEditing} />
-                      </h4>
-                      <p className="text-xs text-zinc-500 dark:text-[#888] font-mono mt-1">{award.organization} <span className="opacity-40">|</span> {award.year}</p>
-                    </div>
-                  ))}
-                </div>
-              </section>
+              ))}
+            </div>
           </div>
+
+          {/* EDUCATION & AWARDS DUAL GRID */}
+          <div className="grid md:grid-cols-2 gap-8 print:gap-6">
+            <div className="bg-white dark:bg-[#111] rounded-[2.5rem] p-8 md:p-10 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-black/5 dark:border-[#1e1e1e]">
+              <h3 className="text-sm font-bold text-zinc-400 tracking-widest uppercase mb-8 flex items-center gap-2"><GraduationCap className="w-4 h-4 text-[#800020]" /> EDUCATION</h3>
+              <div className="relative border-l border-zinc-200 dark:border-[#2a2a2a] ml-2 space-y-8 pb-2">
+                {data.education.map((edu, idx) => (
+                  <div key={idx} className="relative pl-6 print:break-inside-avoid">
+                    <div className="absolute -left-[4.5px] top-2 w-2 h-2 rounded-full bg-zinc-300 dark:bg-[#444] ring-4 ring-white dark:ring-[#111]"></div>
+                    <span className="text-[10px] font-mono font-bold text-zinc-400 dark:text-[#666] uppercase tracking-widest block mb-1">
+                      <EditableText value={edu.period} onSave={(v) => { const e = [...data.education]; e[idx].period = v; setData({...data, education: e}); }} isEditing={isEditing} />
+                    </span>
+                    <h4 className="font-bold text-base md:text-lg text-[#2C2C2C] dark:text-[#e8e4dc] tracking-tight mb-2">
+                      <EditableText value={edu.title} onSave={(v) => { const e = [...data.education]; e[idx].title = v; setData({...data, education: e}); }} isEditing={isEditing} />
+                    </h4>
+                    <div className="text-[13px] font-medium text-zinc-500 leading-relaxed mb-2">
+                      <EditableText value={edu.description} onSave={(v) => { const e = [...data.education]; e[idx].description = v; setData({...data, education: e}); }} isEditing={isEditing} markdown={true} />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="bg-white dark:bg-[#111] rounded-[2.5rem] p-8 md:p-10 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-black/5 dark:border-[#1e1e1e]">
+              <h3 className="text-sm font-bold text-zinc-400 tracking-widest uppercase mb-8 flex items-center gap-2"><Award className="w-4 h-4 text-[#800020]" /> AWARDS</h3>
+              <div className="space-y-4">
+                {data.awards.map((award, idx) => (
+                  <div key={idx} className="p-5 bg-zinc-50 dark:bg-[#1a1a1a] rounded-2xl border border-black/5 dark:border-[#2a2a2a] group hover:border-[#800020]/20 transition-colors">
+                    <p className="text-[10px] font-mono font-bold text-[#800020] dark:text-[#ff3b6b] uppercase tracking-widest mb-1.5">{award.organization} <span className="opacity-40 px-1">/</span> {award.year}</p>
+                    <h4 className="font-bold text-sm text-[#2C2C2C] dark:text-[#e8e4dc] leading-tight">
+                      <EditableText value={award.title} onSave={(v) => { const a = [...data.awards]; a[idx].title = v; setData({...data, awards: a}); }} isEditing={isEditing} />
+                    </h4>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
         </div> {/* Main Content End */}
       </div> {/* Top Grid End */}
 
       {/* NEW FULL-WIDTH COVER LETTER SECTION */}
-      <div className="mt-20 pt-20 border-t border-black/10 dark:border-[#1e1e1e] print:break-before-page">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-16">
-            <span className="text-[#800020] font-mono text-sm uppercase tracking-[0.25em] font-bold block mb-4">자기소개서 전문</span>
-            <h3 className="text-3xl md:text-5xl font-display font-bold text-[#2C2C2C] dark:text-[#e8e4dc] tracking-[-0.03em]">기획의 이유.</h3>
+      <div className="mt-24 pt-24 print:break-before-page border-t border-black/5 dark:border-[#1e1e1e]">
+        <div className="max-w-[840px] mx-auto">
+          <div className="text-center mb-20">
+            <span className="inline-block bg-[#800020] text-white px-5 py-2 rounded-full font-mono text-[11px] uppercase tracking-[0.3em] font-bold mb-6 shadow-lg shadow-[#800020]/20">The Story</span>
+            <h3 className="text-4xl md:text-6xl font-display font-black text-[#2C2C2C] dark:text-[#e8e4dc] tracking-[-0.04em]">기획의 이유.</h3>
           </div>
           
           {data.selfIntroductions ? (
-            <div className="flex flex-col gap-12">
+            <div className="flex flex-col gap-20 md:gap-28">
               {data.selfIntroductions.map((intro, idx) => (
-                <div key={idx} className="relative group bg-white dark:bg-[#111] rounded-[2.5rem] p-8 md:p-16 shadow-lg shadow-black/5 border border-black/5 dark:border-[#1e1e1e] transition-all duration-500 print:shadow-none print:border-b print:rounded-none">
+                <div key={idx} className="relative group">
                   {isEditing && (
                     <button onClick={() => { if (confirm("삭제하시겠습니까?")) { const n = [...(data.selfIntroductions || [])]; n.splice(idx, 1); setData({...data, selfIntroductions: n}); }}}
-                      className="absolute top-8 right-8 z-20 p-2 bg-red-500 text-white rounded-full hover:bg-red-600 transition-colors shadow-lg" title="삭제">
+                      className="absolute -top-4 right-0 z-20 p-2 bg-red-500 text-white rounded-full hover:bg-red-600 transition-colors shadow-lg" title="삭제">
                       <X className="w-4 h-4" />
                     </button>
                   )}
-                  {/* Category/Number Bubble */}
-                  <div className="inline-flex items-center justify-center bg-[#2C2C2C] dark:bg-white text-white dark:text-[#111] px-4 py-2 rounded-xl font-mono text-xs tracking-widest font-bold shadow-md shadow-black/10 mb-8 border border-white/10">
-                    CHAPTER {String(idx + 1).padStart(2, '0')}
-                  </div>
                   
                   {/* Logline header */}
-                  <h4 className="text-2xl md:text-3xl font-bold text-[#2C2C2C] dark:text-[#e8e4dc] leading-[1.3] tracking-[-0.02em] mb-10 pb-10 border-b border-black/5 dark:border-[#2a2a2a]">
-                    <EditableText value={intro.logline} onSave={(v) => { const n = [...(data.selfIntroductions || [])]; n[idx].logline = v; setData({...data, selfIntroductions: n}); }} isEditing={isEditing} multiline />
-                  </h4>
+                  <div className="flex flex-col md:flex-row md:items-baseline gap-4 md:gap-8 mb-8 pb-8 border-b border-black/10 dark:border-[#2a2a2a] relative">
+                    <span className="text-7xl md:text-8xl font-black text-black/5 dark:text-white/5 tracking-tighter shrink-0 absolute -top-10 -left-8 md:static md:w-auto -z-10 select-none">
+                      {String(idx + 1).padStart(2, '0')}
+                    </span>
+                    <h4 className="text-2xl md:text-[2.5rem] font-bold text-[#2C2C2C] dark:text-[#e8e4dc] leading-[1.3] tracking-[-0.02em] pt-2">
+                      <EditableText value={intro.logline} onSave={(v) => { const n = [...(data.selfIntroductions || [])]; n[idx].logline = v; setData({...data, selfIntroductions: n}); }} isEditing={isEditing} multiline />
+                    </h4>
+                  </div>
                   
                   {/* Content body */}
-                  <div className="text-zinc-600 dark:text-[#555] leading-[2] md:leading-[2.2] text-[16px] md:text-[17px] font-medium [&_p]:mb-8 [&_strong]:text-[#800020] dark:[&_strong]:text-[#ff3b6b] [&_strong]:font-bold [&_ul]:mb-8 [&_li]:mb-3 [&_blockquote]:border-l-4 [&_blockquote]:border-[#800020] [&_blockquote]:pl-6 [&_blockquote]:italic [&_blockquote]:bg-zinc-50 dark:[&_blockquote]:bg-white/5 [&_blockquote]:py-4 [&_blockquote]:rounded-r-2xl">
+                  <div className="text-zinc-700 dark:text-[#999] leading-[2.1] md:leading-[2.4] text-[16px] md:text-[17px] font-medium [&_p]:mb-8 [&_strong]:text-[#2C2C2C] dark:[&_strong]:text-white [&_strong]:bg-[#800020]/10 dark:[&_strong]:bg-[#800020]/30 [&_strong]:px-1.5 [&_strong]:py-0.5 [&_strong]:rounded-md [&_strong]:font-extrabold [&_ul]:mb-8 [&_li]:mb-3 [&_blockquote]:border-l-4 [&_blockquote]:border-[#800020] [&_blockquote]:pl-6 [&_blockquote]:italic [&_blockquote]:text-zinc-500 text-justify">
                     <EditableText value={intro.content} onSave={(v) => { const n = [...(data.selfIntroductions || [])]; n[idx].content = v; setData({...data, selfIntroductions: n}); }} isEditing={isEditing} markdown={true} />
                   </div>
                 </div>
               ))}
               {isEditing && (
                 <button onClick={() => { const n = [...(data.selfIntroductions || [])]; n.push({ logline: "새로운 항목의 로그라인을 입력하세요.", content: "내용을 입력하세요." }); setData({...data, selfIntroductions: n}); }}
-                  className="flex flex-col items-center justify-center border-2 border-dashed border-[#2a2a2a] bg-[#111] hover:bg-[#1a1a1a] transition-colors min-h-[200px] cursor-pointer rounded-[2.5rem]">
-                  <Plus className="w-8 h-8 text-[#555] mb-2" />
-                  <span className="text-[#888] font-bold">새 자기소개 항목 추가</span>
+                  className="flex flex-col items-center justify-center border-2 border-dashed border-black/10 dark:border-[#2a2a2a] hover:bg-black/5 dark:hover:bg-white/5 transition-colors min-h-[200px] cursor-pointer rounded-3xl mt-8">
+                  <Plus className="w-8 h-8 text-zinc-400 mb-2" />
+                  <span className="text-zinc-500 font-bold">새 자기소개 항목 추가</span>
                 </button>
               )}
             </div>
           ) : (
-            <div className="bento-card p-8 md:p-12 markdown-body max-w-3xl mx-auto">
+            <div className="bento-card p-8 md:p-12 markdown-body">
               {isEditing ? (
                 <textarea className="w-full h-[400px] bg-[#0a0a0a] border border-[#2a2a2a] rounded-lg p-6 text-[#e8e4dc] font-sans text-sm focus:outline-none focus:border-[#800020]"
                   value={data.selfIntroduction || ''} onChange={(e) => setData({...data, selfIntroduction: e.target.value})} />
