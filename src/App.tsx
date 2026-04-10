@@ -609,8 +609,8 @@ const Navbar = ({ setView, currentView, onNavClick, isEditing, setIsEditing, act
 
 // --- Hero ---
 const Hero = ({ onPortfolioClick, onResumeClick, isEditing, content, setContent }: { onPortfolioClick: () => void, onResumeClick: () => void, isEditing: boolean, content: any, setContent: (c: any) => void }) => (
-  <section id="hero" className="relative min-h-screen flex flex-col justify-center items-center px-6 md:px-12 py-[120px] overflow-hidden bg-[#0a0a0a] border-b border-black/10 dark:border-[#1e1e1e] transition-colors duration-500">
-    <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+  <section id="hero" className="relative min-h-screen flex flex-col justify-center items-center px-6 md:px-12 py-[120px] overflow-hidden bg-transparent border-b border-black/10 dark:border-[#1e1e1e] transition-colors duration-500">
+    <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.03)_1px,transparent_1px)] dark:bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.04)_1px,transparent_1px)] bg-[size:24px_24px]"></div>
     
     <motion.div 
       initial={{ opacity: 0, y: 20 }}
@@ -619,14 +619,14 @@ const Hero = ({ onPortfolioClick, onResumeClick, isEditing, content, setContent 
       className="z-10 text-center max-w-5xl relative w-full mx-auto flex flex-col items-center pb-24"
     >
       <h1 className="mb-10 flex flex-col items-center gap-3">
-        <div className="text-xl md:text-2xl lg:text-3xl font-display font-medium text-zinc-400 tracking-tight">
+        <div className="text-xl md:text-2xl lg:text-3xl font-display font-medium text-zinc-500 dark:text-zinc-400 tracking-tight transition-colors">
           <EditableText value={content.titleLine1 || "기획의도를 알고"} onSave={(v) => setContent({...content, titleLine1: v})} isEditing={isEditing} />
         </div>
-        <div className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-display font-bold text-white tracking-[-0.04em] leading-[1.1] break-keep drop-shadow-sm">
+        <div className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-display font-bold text-[#2C2C2C] dark:text-[#e8e4dc] tracking-[-0.04em] leading-[1.1] break-keep drop-shadow-sm transition-colors">
           <EditableText value={content.titleLine2 || "목차를 쓸줄 아는 기획자"} onSave={(v) => setContent({...content, titleLine2: v})} isEditing={isEditing} />
         </div>
       </h1>
-      <p className="text-zinc-400 text-lg md:text-xl font-medium leading-relaxed mb-12 max-w-2xl mx-auto">
+      <p className="text-zinc-500 dark:text-zinc-400 text-lg md:text-xl font-medium leading-relaxed mb-12 max-w-2xl mx-auto transition-colors">
         <EditableText value={content.description} onSave={(v) => setContent({...content, description: v})} isEditing={isEditing} multiline />
       </p>
       
@@ -641,7 +641,7 @@ const Hero = ({ onPortfolioClick, onResumeClick, isEditing, content, setContent 
         <motion.button 
           whileHover={{ y: -2 }} whileTap={{ scale: 0.98 }}
           onClick={onPortfolioClick}
-          className="px-10 py-5 bg-white/5 border border-white/10 text-white font-bold flex items-center justify-center gap-3 hover:bg-white/10 transition-all duration-500 text-sm tracking-widest w-full sm:w-auto rounded-full uppercase backdrop-blur-md"
+          className="px-10 py-5 bg-white dark:bg-white/5 border border-zinc-200 dark:border-white/10 text-zinc-600 dark:text-[#e8e4dc] font-bold hover:border-zinc-300 hover:text-[#2C2C2C] hover:bg-zinc-50 dark:hover:bg-white/10 transition-all duration-500 flex items-center justify-center gap-3 text-sm tracking-widest w-full sm:w-auto rounded-full uppercase shadow-sm dark:shadow-none hover:shadow-md"
         >
           포트폴리오 보기 <ArrowUpRight className="w-4 h-4" />
         </motion.button>
@@ -649,8 +649,8 @@ const Hero = ({ onPortfolioClick, onResumeClick, isEditing, content, setContent 
     </motion.div>
 
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1, duration: 1 }} className="mt-16 flex flex-col items-center gap-4">
-      <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest">Scroll to explore</span>
-      <div className="w-[1px] h-16 bg-white/10 relative overflow-hidden">
+      <span className="text-[10px] font-mono text-zinc-400 dark:text-zinc-500 uppercase tracking-widest transition-colors">Scroll to explore</span>
+      <div className="w-[1px] h-16 bg-zinc-200 dark:bg-white/10 relative overflow-hidden transition-colors">
         <motion.div animate={{ y: [-64, 64] }} transition={{ repeat: Infinity, duration: 2, ease: "linear" }} className="absolute top-0 left-0 w-full h-1/2 bg-[#800020]" />
       </div>
     </motion.div>
