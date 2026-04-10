@@ -444,7 +444,7 @@ const PasswordModal = ({ isOpen, onClose, onConfirm }: { isOpen: boolean, onClos
 };
 
 // --- Navbar (Horizontal Top Bar — Dark) ---
-const Navbar = ({ setView, currentView, onNavClick, isEditing, setIsEditing, activeSection }: { setView: (v: 'home' | 'resume' | 'project-detail' | 'portfolio' | 'all-projects') => void, currentView: string, onNavClick: (id: string) => void, isEditing: boolean, setIsEditing: (v: boolean) => void, activeSection: string }) => {
+const Navbar = ({ setView, currentView, onNavClick, isEditing, setIsEditing, activeSection, theme, setTheme }: { setView: (v: 'home' | 'resume' | 'project-detail' | 'portfolio' | 'all-projects' | 'game-history') => void, currentView: string, onNavClick: (id: string) => void, isEditing: boolean, setIsEditing: (v: boolean) => void, activeSection: string, theme: string, setTheme: (v: string) => void }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isPasswordModalOpen, setIsPasswordModalOpen] = useState(false);
   const [scrolledPastHero, setScrolledPastHero] = useState(false);
