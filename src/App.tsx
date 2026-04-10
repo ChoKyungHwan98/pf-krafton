@@ -471,7 +471,7 @@ const Navbar = ({ setView, currentView, onNavClick, isEditing, setIsEditing, act
 
   return (
     <>
-      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${navBgClass}`}>
+      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${navBgClass} print:hidden`}>
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
           <div className="flex items-center gap-3 cursor-pointer" onClick={() => { setView('home'); window.scrollTo({ top: 0, behavior: 'smooth' }); setIsMenuOpen(false); }}>
             <span className="font-display font-bold tracking-tight text-xl text-[#e8e4dc]">지망생 조경환</span>
@@ -1342,7 +1342,7 @@ const RightRail = ({ view, onNavClick, activeSection }: { view: string, onNavCli
   return (
     <>
       {view === 'home' && (
-        <div className="fixed right-8 top-1/2 -translate-y-1/2 z-40 hidden xl:flex flex-col items-center gap-6">
+        <div className="fixed right-8 top-1/2 -translate-y-1/2 z-40 hidden xl:flex flex-col items-center gap-6 print:hidden">
           <div className="w-px h-24 bg-[#2a2a2a]"></div>
           <div className="flex flex-col gap-5">
             {sections.map(section => {
@@ -1375,7 +1375,7 @@ const RightRail = ({ view, onNavClick, activeSection }: { view: string, onNavCli
         {isVisible && (
           <motion.button initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.8 }}
             onClick={scrollToTop}
-            className={`fixed bottom-8 right-8 z-50 w-12 h-12 bg-[#111]/90 backdrop-blur-md border border-[#2a2a2a] rounded-xl flex items-center justify-center text-[#e8e4dc] hover:bg-[#1a1a1a] hover:border-[#800020] transition-all shadow-md ${view === 'home' ? 'xl:hidden' : ''}`}>
+            className={`fixed bottom-8 right-8 z-50 w-12 h-12 bg-[#111]/90 backdrop-blur-md border border-[#2a2a2a] rounded-xl flex items-center justify-center text-[#e8e4dc] hover:bg-[#1a1a1a] hover:border-[#800020] transition-all shadow-md ${view === 'home' ? 'xl:hidden' : ''} print:hidden`}>
             <ArrowUp className="w-6 h-6" />
           </motion.button>
         )}
@@ -1688,7 +1688,7 @@ export default function App() {
       <RightRail view={view} onNavClick={handleNavClick} activeSection={activeSection} />
       
       {isEditing && (
-        <div className="fixed bottom-24 left-8 z-50 flex flex-col gap-2">
+        <div className="fixed bottom-24 left-8 z-50 flex flex-col gap-2 print:hidden">
           <div className="bg-[#111]/90 backdrop-blur-xl p-4 rounded-2xl flex items-center gap-3 border border-[#2a2a2a] shadow-xl">
             <div className="w-10 h-10 bg-[#800020] rounded-xl flex items-center justify-center text-white">
               <Edit3 className="w-5 h-5" />
