@@ -495,9 +495,9 @@ const Navbar = ({ setView, currentView, onNavClick, isEditing, setIsEditing, act
                 <a 
                   href={`#${id}`}
                   onClick={(e) => handleLinkClick(e, id)}
-                  className={`text-[13px] font-medium transition-all flex items-center gap-1.5 relative py-1 ${activeSection === id ? 'text-[#e8e4dc]' : 'text-[#666] hover:text-[#e8e4dc]'}`}
+                  className={`text-[14px] font-bold transition-all flex items-center gap-1.5 relative py-1 ${activeSection === id ? 'text-[#e8e4dc]' : 'text-[#666] hover:text-[#e8e4dc]'}`}
                 >
-                  <span className={`text-[10px] font-mono transition-opacity ${activeSection === id ? 'opacity-100 text-[#800020]' : 'opacity-40'}`}>{num}.</span>
+                  <span className={`text-[12px] font-bold transition-opacity ${activeSection === id ? 'opacity-100 text-[#800020]' : 'opacity-40'}`}>{num}.</span>
                   {label}
                   {activeSection === id && (
                     <motion.div layoutId="nav-indicator" className="absolute -bottom-1 left-0 right-0 h-[2px] bg-[#800020] rounded-full" />
@@ -513,7 +513,7 @@ const Navbar = ({ setView, currentView, onNavClick, isEditing, setIsEditing, act
                 { key: 'game-history', label: '플레이 이력', icon: <Gamepad2 className="w-3.5 h-3.5" /> },
               ].map(item => (
                 <button key={item.key} onClick={() => { setView(item.key as any); window.scrollTo(0,0); }} 
-                  className={`px-3 py-1.5 rounded-lg text-[11px] font-bold tracking-wide transition-all flex items-center gap-1.5 ${currentView === item.key ? 'bg-[#800020]/15 text-[#800020]' : 'text-[#555] hover:text-[#e8e4dc] hover:bg-[#1a1a1a]'}`}>
+                  className={`px-3 py-1.5 rounded-lg text-xs font-bold tracking-wide transition-all flex items-center gap-1.5 ${currentView === item.key ? 'bg-[#800020]/15 text-[#800020]' : 'text-[#555] hover:text-[#e8e4dc] hover:bg-[#1a1a1a]'}`}>
                   {item.icon}
                   <span className="hidden lg:inline">{item.label}</span>
                 </button>
@@ -557,7 +557,7 @@ const Navbar = ({ setView, currentView, onNavClick, isEditing, setIsEditing, act
               ].map(({ id, label, num }) => (
                 <a key={id} href={`#${id}`} onClick={(e) => handleLinkClick(e, id)}
                   className="font-medium flex items-center gap-3 pb-4 border-b border-[#1e1e1e] text-[#e8e4dc]">
-                  <span className="text-xs font-mono opacity-50">{num}.</span>
+                  <span className="text-sm font-bold opacity-50">{num}.</span>
                   {label}
                 </a>
               ))}
