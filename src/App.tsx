@@ -373,26 +373,37 @@ const EditableText = ({
   value, 
   onSave, 
   isEditing, 
-  className = "", 
+  className = "",
   multiline = false,
+  markdown = false
 }: { 
   value: string, 
   onSave: (v: string) => void, 
   isEditing: boolean, 
   className?: string,
   multiline?: boolean,
-  light?: boolean
+  markdown?: boolean
 }) => {
-  if (!isEditing) return <span className={className}>{value}</span>;
+  if (!isEditing) {
+    if (markdown) {
+      return (
+        <div className={`markdown-body !text-inherit !p-0 !bg-transparent !border-none [&>p]:!mb-0 ${className}`}>
+          <ReactMarkdown remarkPlugins={[remarkGfm]}>{value}</ReactMarkdown>
+        </div>
+      );
+    }
+    return <span className={className}>{value}</span>;
+  }
 
   const baseClasses = "bg-[#1a1a1a] border-[#2a2a2a] text-[#e8e4dc] focus:border-[#800020]";
 
-  return multiline ? (
+  return multiline || markdown ? (
     <textarea
-      className={`w-full max-w-full border rounded-lg p-2 focus:outline-none font-sans ${baseClasses} ${className}`}
+      className={`w-full max-w-full border rounded-lg p-3 focus:outline-none font-mono text-[13px] leading-relaxed resize-y ${markdown ? 'min-h-[120px]' : ''} ${baseClasses} ${className}`}
       value={value}
       onChange={(e) => onSave(e.target.value)}
       rows={Math.max(3, value.split('\n').length)}
+      placeholder={markdown ? "마크다운 문법을 지원합니다 (*볼드*, - 리스트 등)" : ""}
     />
   ) : (
     <input
@@ -1065,7 +1076,7 @@ const Resume = ({ setView, isEditing, data, setData }: ResumeProps) => {
 
   return (
     <motion.section initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }}
-      className="py-[120px] px-6 md:px-12 max-w-5xl mx-auto print:pt-0 print:pb-0 print:max-w-none">
+      className="py-12 md:py-20 px-6 md:px-12 max-w-5xl mx-auto print:pt-0 print:pb-0 print:max-w-none w-full">
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12 print:hidden">
         <button onClick={() => setView('home')} className="flex items-center gap-2 text-[#888] hover:text-[#800020] transition-colors group font-sans tracking-tight text-sm">
           <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" /> RETURN TO HOME
@@ -1076,9 +1087,9 @@ const Resume = ({ setView, isEditing, data, setData }: ResumeProps) => {
         </motion.button>
       </div>
 
-      <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 print:grid-cols-12 print:gap-8">
+      <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 print:grid-cols-12 print:gap-8">
         {/* Sidebar */}
-        <div className="lg:col-span-4 print:col-span-4 space-y-12 print:space-y-6 lg:sticky lg:top-24 self-start">
+        <div className="lg:col-span-4 print:col-span-4 space-y-8 print:space-y-6 lg:sticky lg:top-24 self-start">
           <div className="text-center lg:text-left">
             <div className="w-40 h-40 print:w-32 print:h-32 print:mb-4 rounded-3xl overflow-hidden mb-8 mx-auto lg:mx-0 border border-[#1e1e1e] shadow-sm print:shadow-none">
               <img src="https://picsum.photos/seed/profile/400/400" alt="Profile" className="w-full h-full object-cover grayscale opacity-80" />
@@ -1158,19 +1169,19 @@ const Resume = ({ setView, isEditing, data, setData }: ResumeProps) => {
         </div>
 
         {/* Main Content */}
-        <div className="lg:col-span-8 print:col-span-8 space-y-8 print:space-y-4">
+        <div className="lg:col-span-8 print:col-span-8 space-y-6 print:space-y-4">
           {/* Summary */}
-          <section className="bg-[#111] rounded-3xl p-8 lg:p-12 print:p-6 shadow-sm border border-[#1e1e1e]">
-            <h3 className="text-xl font-bold mb-6 print:mb-3 flex items-center gap-3 text-[#e8e4dc]"><User className="w-6 h-6" /> 자기소개</h3>
-            <p className="text-[#888] print:text-[13px] print:leading-relaxed leading-relaxed font-medium">
-              <EditableText value={data.summary} onSave={(v) => setData({...data, summary: v})} isEditing={isEditing} multiline />
-            </p>
+          <section className="bg-[#111] rounded-3xl p-6 lg:p-8 print:p-6 shadow-sm border border-[#1e1e1e]">
+            <h3 className="text-xl font-bold mb-4 print:mb-3 flex items-center gap-3 text-[#e8e4dc]"><User className="w-6 h-6" /> 자기소개</h3>
+            <div className="text-[#888] print:text-[13px] print:leading-relaxed leading-relaxed font-medium">
+              <EditableText value={data.summary} onSave={(v) => setData({...data, summary: v})} isEditing={isEditing} markdown={true} />
+            </div>
           </section>
 
           {/* Education */}
-          <section className="bg-[#111] rounded-3xl p-8 lg:p-12 print:p-6 shadow-sm border border-[#1e1e1e]">
-            <h3 className="text-xl font-bold mb-8 print:mb-4 flex items-center gap-3 text-[#e8e4dc]"><GraduationCap className="w-6 h-6" /> 학력 및 교육</h3>
-            <div className="space-y-10 print:space-y-4">
+          <section className="bg-[#111] rounded-3xl p-6 lg:p-8 print:p-6 shadow-sm border border-[#1e1e1e]">
+            <h3 className="text-xl font-bold mb-6 print:mb-4 flex items-center gap-3 text-[#e8e4dc]"><GraduationCap className="w-6 h-6" /> 학력 및 교육</h3>
+            <div className="space-y-8 print:space-y-4">
               {data.education.map((edu, idx) => (
                 <div key={idx} className="relative pl-8 border-l-2 border-[#2a2a2a]">
                   <div className="absolute -left-[5px] top-1.5 w-2.5 h-2.5 rounded-none bg-[#555]"></div>
@@ -1182,9 +1193,9 @@ const Resume = ({ setView, isEditing, data, setData }: ResumeProps) => {
                       <EditableText value={edu.period} onSave={(v) => { const e = [...data.education]; e[idx].period = v; setData({...data, education: e}); }} isEditing={isEditing} />
                     </span>
                   </div>
-                  <p className="text-sm text-[#888] leading-relaxed mb-4">
-                    <EditableText value={edu.description} onSave={(v) => { const e = [...data.education]; e[idx].description = v; setData({...data, education: e}); }} isEditing={isEditing} />
-                  </p>
+                  <div className="text-sm text-[#888] leading-relaxed mb-4">
+                    <EditableText value={edu.description} onSave={(v) => { const e = [...data.education]; e[idx].description = v; setData({...data, education: e}); }} isEditing={isEditing} markdown={true} />
+                  </div>
                   <ul className="text-xs text-[#888] space-y-2 list-disc list-inside">
                     {edu.details.map((detail, dIdx) => <li key={dIdx}>{detail}</li>)}
                   </ul>
@@ -1194,9 +1205,9 @@ const Resume = ({ setView, isEditing, data, setData }: ResumeProps) => {
           </section>
 
           {/* Experience */}
-          <section className="bg-[#111] rounded-3xl p-8 lg:p-12 print:p-6 shadow-sm border border-[#1e1e1e]">
-            <h3 className="text-xl font-bold mb-8 print:mb-4 flex items-center gap-3 text-[#e8e4dc]"><Briefcase className="text-[#800020] w-6 h-6" /> 프로젝트 경험</h3>
-            <div className="space-y-10 print:space-y-4">
+          <section className="bg-[#111] rounded-3xl p-6 lg:p-8 print:p-6 shadow-sm border border-[#1e1e1e]">
+            <h3 className="text-xl font-bold mb-6 print:mb-4 flex items-center gap-3 text-[#e8e4dc]"><Briefcase className="text-[#800020] w-6 h-6" /> 프로젝트 경험</h3>
+            <div className="space-y-8 print:space-y-4">
               {data.experience.map((exp, idx) => (
                 <div key={idx} className="relative pl-8 border-l-2 border-[#2a2a2a]">
                   <div className="absolute -left-[5px] top-1.5 w-2.5 h-2.5 rounded-none bg-[#800020]"></div>
@@ -1208,9 +1219,9 @@ const Resume = ({ setView, isEditing, data, setData }: ResumeProps) => {
                       <EditableText value={exp.period} onSave={(v) => { const e = [...data.experience]; e[idx].period = v; setData({...data, experience: e}); }} isEditing={isEditing} />
                     </span>
                   </div>
-                  <p className="text-sm text-[#888] mb-4">
-                    <EditableText value={exp.description} onSave={(v) => { const e = [...data.experience]; e[idx].description = v; setData({...data, experience: e}); }} isEditing={isEditing} />
-                  </p>
+                  <div className="text-sm text-[#888] mb-4">
+                    <EditableText value={exp.description} onSave={(v) => { const e = [...data.experience]; e[idx].description = v; setData({...data, experience: e}); }} isEditing={isEditing} markdown={true} />
+                  </div>
                   <ul className="text-xs text-[#888] space-y-2 list-disc list-inside">
                     {exp.details.map((detail, dIdx) => <li key={dIdx}>{detail}</li>)}
                   </ul>
@@ -1220,8 +1231,8 @@ const Resume = ({ setView, isEditing, data, setData }: ResumeProps) => {
           </section>
 
           {/* Awards */}
-          <section className="bg-[#111] rounded-3xl p-8 lg:p-12 print:p-6 shadow-sm border border-[#1e1e1e]">
-            <h3 className="text-xl font-bold mb-8 print:mb-4 flex items-center gap-3 text-[#e8e4dc]"><Award className="text-[#800020] w-6 h-6" /> 자격 및 수상</h3>
+          <section className="bg-[#111] rounded-3xl p-6 lg:p-8 print:p-6 shadow-sm border border-[#1e1e1e]">
+            <h3 className="text-xl font-bold mb-6 print:mb-4 flex items-center gap-3 text-[#e8e4dc]"><Award className="text-[#800020] w-6 h-6" /> 자격 및 수상</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 print:gap-3">
               {data.awards.map((award, idx) => (
                 <div key={idx} className="p-5 bg-[#1a1a1a] rounded-2xl border-l-4 border-l-[#800020]">
@@ -1237,8 +1248,8 @@ const Resume = ({ setView, isEditing, data, setData }: ResumeProps) => {
       </div>
 
       {/* Self Introduction */}
-      <div className="mt-24 pt-24 border-t border-[#1e1e1e] print:break-before-page print:mt-4 print:pt-4 print:border-none">
-        <div className="flex flex-col gap-2 mb-14 print:mb-6">
+      <div className="mt-16 pt-16 border-t border-[#1e1e1e] print:break-before-page print:mt-4 print:pt-4 print:border-none">
+        <div className="flex flex-col gap-2 mb-10 print:mb-6">
           <span className="text-[#800020] font-mono text-xs uppercase tracking-[0.25em] font-bold">Cover Letter</span>
           <h3 className="text-3xl md:text-4xl font-display font-bold text-[#e8e4dc] tracking-[-0.02em]">자기소개서</h3>
         </div>
@@ -1263,14 +1274,8 @@ const Resume = ({ setView, isEditing, data, setData }: ResumeProps) => {
                   </h4>
                 </div>
                 {/* Content body */}
-                <div className="ml-[60px] text-[#999] leading-[2] text-[15px] md:text-base bg-[#111] p-8 md:p-10 print:p-6 print:py-4 rounded-2xl border border-[#1e1e1e] hover:border-[#2a2a2a] transition-colors">
-                  {isEditing ? (
-                    <EditableText value={intro.content} onSave={(v) => { const n = [...(data.selfIntroductions || [])]; n[idx].content = v; setData({...data, selfIntroductions: n}); }} isEditing={isEditing} multiline />
-                  ) : (
-                    <div className="markdown-body">
-                      <ReactMarkdown remarkPlugins={[remarkGfm]}>{intro.content}</ReactMarkdown>
-                    </div>
-                  )}
+                <div className="ml-[60px] text-[#999] leading-[2] text-[15px] md:text-base bg-[#111] p-6 md:p-8 print:p-6 print:py-4 rounded-2xl border border-[#1e1e1e] hover:border-[#2a2a2a] transition-colors">
+                  <EditableText value={intro.content} onSave={(v) => { const n = [...(data.selfIntroductions || [])]; n[idx].content = v; setData({...data, selfIntroductions: n}); }} isEditing={isEditing} markdown={true} />
                 </div>
               </div>
             ))}
