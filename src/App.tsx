@@ -446,7 +446,7 @@ const Navbar = ({ setView, currentView, onNavClick, isEditing, setIsEditing, act
   };
 
   const handlePasswordConfirm = (pw: string) => {
-    if (pw === '0000') {
+    if (pw === '9806') {
       setIsEditing(true);
       setIsPasswordModalOpen(false);
       alert("관리자 모드가 활성화되었습니다. 내용을 클릭하여 수정하세요.");
@@ -1468,7 +1468,7 @@ export default function App() {
     const handleKeyDown = (e: KeyboardEvent) => {
       const newSeq = (inputSequence + e.key).slice(-4);
       setInputSequence(newSeq);
-      if (newSeq === '0000') {
+      if (newSeq === '9806') {
         setIsEditing(!isEditing);
         setInputSequence('');
         if (!isEditing) {
