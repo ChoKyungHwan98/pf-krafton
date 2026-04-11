@@ -1158,25 +1158,14 @@ const Resume = ({ setView, isEditing, data, setData }: ResumeProps) => {
     try {
       const opt = {
         margin: [0, 0, 0, 0], // use internal paddings
+        filename: 'Resume_Portfolio.pdf',
         image: { type: 'jpeg', quality: 1 },
         html2canvas: { scale: 2, useCORS: true, letterRendering: true, windowWidth: 800 },
         jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' as const },
         pagebreak: { mode: 'css' }
       };
       
-      const pdfBlob = await html2pdf().set(opt).from(element).output('blob');
-      const blobUrl = URL.createObjectURL(pdfBlob);
-      const link = document.createElement('a');
-      link.href = blobUrl;
-      link.setAttribute('download', '조경환_이력서.pdf');
-      document.body.appendChild(link);
-      link.click();
-      
-      // 브라우저가 실제로 파일을 다운로드할 시간을 넉넉히 준 뒤 메모리를 정리합니다.
-      setTimeout(() => {
-        document.body.removeChild(link);
-        URL.revokeObjectURL(blobUrl);
-      }, 1500);
+      await html2pdf().set(opt).from(element).save();
       
     } catch (err) {
       console.error('PDF generation failed:', err);
