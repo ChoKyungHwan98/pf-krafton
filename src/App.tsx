@@ -642,7 +642,6 @@ const Hero = ({ onPortfolioClick, onResumeClick, isEditing, content, setContent,
         transition={{ duration: 0.8, ease: "easeOut" }}
         className="w-full lg:w-[55%] flex flex-col items-start text-left"
       >
-        <span className="text-[#800020] font-mono text-sm uppercase tracking-[0.25em] font-bold mb-6 block drop-shadow-sm">01. Game Designer</span>
         <h1 className="mb-8 flex flex-col items-start gap-4">
           <div className="text-2xl md:text-3xl lg:text-4xl font-display font-medium text-zinc-500 tracking-tight">
             <EditableText value={content.titleLine1 || "기획의도를 알고"} onSave={(v) => setContent({...content, titleLine1: v})} isEditing={isEditing} />
@@ -673,28 +672,7 @@ const Hero = ({ onPortfolioClick, onResumeClick, isEditing, content, setContent,
         </div>
       </motion.div>
 
-      {/* Floating Glassmorphism Cards on the right */}
-      <motion.div 
-        initial={{ opacity: 0, x: 30 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-        className="w-full lg:w-[40%] flex flex-col gap-6 relative"
-      >
-        <div className="absolute -inset-10 bg-gradient-to-tr from-[#800020]/5 to-transparent blur-3xl rounded-full z-0 pointer-events-none" />
-        {aboutContent?.stats?.slice(0, 3).map((stat: any, idx: number) => (
-          <div key={idx} className="glass group relative overflow-hidden rounded-[2rem] p-8 flex items-center justify-between gap-4 transition-all duration-500 hover:shadow-[0_8px_30px_rgba(128,0,32,0.1)] hover:-translate-y-1 hover:border-[#800020]/20 z-10 bg-white/70 backdrop-blur-xl">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-[#800020]/5 to-transparent rounded-bl-full pointer-events-none transition-opacity group-hover:opacity-100 opacity-50" />
-            <div className="flex flex-col gap-1 z-10">
-              <div className="text-[11px] font-bold text-[#800020] tracking-widest uppercase">
-                <EditableText value={stat.label} onSave={(v) => { const s = [...aboutContent.stats]; s[idx].label = v; setAboutContent({...aboutContent, stats: s}); }} isEditing={isEditing} />
-              </div>
-            </div>
-            <div className="text-4xl lg:text-5xl font-display font-bold text-[#1A2332] tracking-tighter text-right z-10">
-              <EditableText value={stat.value} onSave={(v) => { const s = [...aboutContent.stats]; s[idx].value = v; setAboutContent({...aboutContent, stats: s}); }} isEditing={isEditing} />
-            </div>
-          </div>
-        ))}
-      </motion.div>
+      {/* Removed stats mapping entirely to accommodate background video */}
     </div>
 
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1, duration: 1 }} className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4">
@@ -713,7 +691,7 @@ const About = ({ isEditing, content, setContent }: { isEditing: boolean, content
     
     <div className="max-w-4xl mx-auto w-full relative z-10">
       <div className="text-center">
-        <span className="text-[#800020] font-mono text-xs uppercase tracking-[0.25em] font-bold mb-6 block">02. Mindset</span>
+        <span className="text-[#800020] font-mono text-xs uppercase tracking-[0.25em] font-bold mb-6 block">01. About Me</span>
         <h2 className="text-4xl md:text-5xl lg:text-5xl font-display font-bold tracking-[-0.03em] text-[#1A2332] leading-[1.2] mb-12">
           <EditableText value={content.title || "안녕하세요."} onSave={(v) => setContent({...content, title: v})} isEditing={isEditing} />
         </h2>
