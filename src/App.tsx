@@ -898,83 +898,69 @@ const Projects = ({ onProjectClick, isEditing, projects, setProjects, limit, set
         {limit ? (
           <div className="flex flex-col lg:flex-row gap-4 h-[auto] lg:h-[500px]">
             {/* Left: Active Project (Master Banner) */}
-            <div className="relative w-full lg:w-[70%] h-[400px] lg:h-full rounded-3xl overflow-hidden flex-shrink-0 z-0">
-              <AnimatePresence mode="popLayout" initial={false}>
-                {displayedProjects.filter(p => p.id === actualFeaturedId).map(masterProject => (
+            <div className="relative w-full lg:w-[70%] h-[400px] lg:h-full flex-shrink-0">
+              <AnimatePresence mode="popLayout">
+                {displayedProjects.map((project) => project.id === actualFeaturedId && (
                   <motion.div 
-                    key={masterProject.id}
-                    layoutId={`project-${masterProject.id}`}
-                    transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-                    onClick={() => onProjectClick(masterProject)}
-                    className="absolute inset-0 w-full h-full rounded-3xl overflow-hidden shadow-md border border-black/5 group cursor-pointer bg-[#FAFAFA]"
+                    layoutId={`project-card-${project.id}`}
+                    key={`master-${project.id}`} 
+                    onClick={() => onProjectClick(project)}
+                    transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                    className="absolute inset-0 w-full h-full rounded-3xl overflow-hidden shadow-md border border-black/5 group cursor-pointer"
                   >
-                    <motion.img 
-                      layoutId={`img-${masterProject.id}`} 
-                      transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-                      src={masterProject.image} 
-                      alt={masterProject.title} 
-                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-[1.02]" 
-                      referrerPolicy="no-referrer" 
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent pointer-events-none" />
+                    <motion.img layoutId={`project-img-${project.id}`} src={project.image} alt={project.title} className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-[1.02]" referrerPolicy="no-referrer" />
+                    <motion.div layoutId={`project-grade-${project.id}`} className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent pointer-events-none" />
                     
                     {/* Unified Top Structure */}
-                    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.15, duration: 0.4 }} className="absolute top-6 left-6 lg:top-8 lg:left-8 flex gap-2 pointer-events-none">
-                      <span className="bg-white/90 text-[#2C2C2C] px-2.5 py-1 rounded-md text-[10px] font-bold tracking-tight shadow-sm uppercase leading-none">{masterProject.category}</span>
-                      {masterProject.status && <span className="bg-[#800020] text-white px-2.5 py-1 rounded-md text-[10px] font-bold tracking-tight shadow-sm leading-none">{masterProject.status}</span>}
-                    </motion.div>
+                    <div className="absolute top-6 left-6 lg:top-8 lg:left-8 flex gap-2 pointer-events-none">
+                      <span className="bg-white/90 text-[#2C2C2C] px-2.5 py-1 rounded-md text-[10px] font-bold tracking-tight shadow-sm uppercase leading-none">{project.category}</span>
+                      {project.status && <span className="bg-[#800020] text-white px-2.5 py-1 rounded-md text-[10px] font-bold tracking-tight shadow-sm leading-none">{project.status}</span>}
+                    </div>
 
                     {/* Unified Bottom Structure */}
-                    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2, duration: 0.4 }} className="absolute bottom-6 left-6 lg:bottom-8 lg:left-8 right-6 lg:right-8 flex items-end justify-between gap-6 pointer-events-none">
+                    <div className="absolute bottom-6 left-6 lg:bottom-8 lg:left-8 right-6 lg:right-8 flex items-end justify-between gap-6 pointer-events-none">
                       <div className="flex flex-col items-start gap-2 flex-1 w-full relative z-10 max-w-[80%]">
-                        <motion.h3 layoutId={`title-${masterProject.id}`} transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }} className="text-3xl md:text-5xl font-display font-bold text-white tracking-tight drop-shadow-md leading-tight line-clamp-1">
-                          <EditableText value={masterProject.title} onSave={(v) => { const p = [...projects]; const i = p.findIndex(pp => pp.id === masterProject.id); p[i].title = v; setProjects(p); }} isEditing={isEditing} />
+                        <motion.h3 layoutId={`project-title-${project.id}`} className="text-3xl md:text-5xl font-display font-bold text-white tracking-tight drop-shadow-md leading-tight line-clamp-1 break-keep">
+                          <EditableText value={project.title} onSave={(v) => { const p = [...projects]; const i = p.findIndex(pp => pp.id === project.id); p[i].title = v; setProjects(p); }} isEditing={isEditing} />
                         </motion.h3>
-                        <p className="text-white/80 text-sm md:text-base font-medium leading-relaxed drop-shadow-md line-clamp-2 w-full"><EditableText value={masterProject.description || ""} onSave={(v) => { const p = [...projects]; const i = p.findIndex(pp => pp.id === masterProject.id); p[i].description = v; setProjects(p); }} isEditing={isEditing} /></p>
+                        <p className="text-white/80 text-sm md:text-base font-medium leading-relaxed drop-shadow-md line-clamp-2 w-full"><EditableText value={project.description || ""} onSave={(v) => { const p = [...projects]; const i = p.findIndex(pp => pp.id === project.id); p[i].description = v; setProjects(p); }} isEditing={isEditing} /></p>
                       </div>
                       
                       {/* Standardized Circular Action Button */}
-                      <button 
-                        className="pointer-events-auto shrink-0 w-12 h-12 md:w-14 md:h-14 bg-white hover:bg-[#800020] text-[#2C2C2C] hover:text-white rounded-full flex items-center justify-center transition-all duration-300 shadow-xl group border border-white/20 hover:-translate-y-1">
-                        <ArrowRight className="w-5 h-5 group-hover:translate-x-0.5 transition-transform" />
+                      <button onClick={(e) => { e.stopPropagation(); onProjectClick(project); }} 
+                        className="pointer-events-auto shrink-0 w-12 h-12 md:w-14 md:h-14 bg-white hover:bg-[#800020] text-[#2C2C2C] hover:text-white rounded-full flex items-center justify-center transition-all duration-300 shadow-xl group/btn border border-white/20 hover:-translate-y-1">
+                        <ArrowRight className="w-5 h-5 group-hover/btn:translate-x-0.5 transition-transform" />
                       </button>
-                    </motion.div>
+                    </div>
                   </motion.div>
                 ))}
               </AnimatePresence>
             </div>
 
-            {/* Right: Remaining Projects */}
+            {/* Right: Remaining Projects (Max 2 via flex-col) */}
             <div className="flex flex-row lg:flex-col lg:w-[30%] gap-4 h-[200px] lg:h-full relative z-10">
-              <AnimatePresence mode="popLayout" initial={false}>
+              <AnimatePresence mode="popLayout">
                 {displayedProjects.filter(p => p.id !== actualFeaturedId).slice(0, 2).map((project) => (
                   <motion.div 
-                    key={project.id}
-                    layoutId={`project-${project.id}`}
-                    transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+                    layoutId={`project-card-${project.id}`}
+                    transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                    key={`sub-${project.id}`} 
                     onClick={() => setFeaturedId(project.id)}
-                    className="relative flex-1 rounded-3xl overflow-hidden cursor-pointer group shadow-sm bg-[#FAFAFA] border border-black/5 hover:shadow-2xl hover:border-[#800020]/30 hover:-translate-y-1 transition-all duration-500 hover:z-20 origin-center"
+                    className="relative flex-1 rounded-3xl overflow-hidden cursor-pointer group shadow-sm hover:shadow-xl bg-[#FAFAFA] border border-black/5"
                   >
-                    <motion.img 
-                      layoutId={`img-${project.id}`} 
-                      transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-                      src={project.image} 
-                      alt={project.title} 
-                      className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-all duration-700" 
-                      referrerPolicy="no-referrer" 
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none" />
+                    <motion.img layoutId={`project-img-${project.id}`} src={project.image} alt={project.title} className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-all duration-700 group-hover:scale-110" referrerPolicy="no-referrer" />
+                    <motion.div layoutId={`project-grade-${project.id}`} className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent transition-opacity duration-500 pointer-events-none" />
                     
                     {/* Unified Top Structure */}
-                    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.15, duration: 0.4 }} className="absolute top-6 left-6 lg:top-8 lg:left-8 flex gap-2 pointer-events-none">
+                    <div className="absolute top-6 left-6 lg:top-8 lg:left-8 flex gap-2 pointer-events-none">
                       <span className="bg-white/20 backdrop-blur-md text-white px-2.5 py-1 rounded-md text-[10px] font-bold uppercase tracking-widest shadow-sm leading-none">{project.category}</span>
                       {project.status && <span className="border border-white/20 text-white px-2.5 py-1 rounded-md text-[10px] font-bold tracking-tight shadow-sm leading-none">{project.status}</span>}
-                    </motion.div>
+                    </div>
 
                     {/* Unified Bottom Structure */}
-                    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2, duration: 0.4 }} className="absolute bottom-6 left-6 lg:bottom-8 lg:left-8 right-6 lg:right-8 flex items-end justify-between gap-4 pointer-events-none">
+                    <div className="absolute bottom-6 left-6 lg:bottom-8 lg:left-8 right-6 lg:right-8 flex items-end justify-between gap-4 pointer-events-none">
                       <div className="flex flex-col items-start gap-2 max-w-[75%] transition-transform duration-500 group-hover:-translate-y-1 relative z-10 w-full">
-                        <motion.h3 layoutId={`title-${project.id}`} transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }} className="text-base md:text-xl font-display font-bold text-white tracking-tight drop-shadow-md line-clamp-1 leading-snug">{project.title}</motion.h3>
+                        <motion.h3 layoutId={`project-title-${project.id}`} className="text-base md:text-xl font-display font-bold text-white tracking-tight drop-shadow-md line-clamp-1 leading-snug break-keep">{project.title}</motion.h3>
                         <p className="text-white/70 text-xs md:text-sm font-medium leading-relaxed drop-shadow-md line-clamp-2 w-full">{project.description}</p>
                       </div>
                       
@@ -982,7 +968,7 @@ const Projects = ({ onProjectClick, isEditing, projects, setProjects, limit, set
                       <div className="shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-full border border-white/20 bg-white/10 backdrop-blur-md flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-all duration-300 shadow-lg group-hover:-translate-y-1">
                         <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
                       </div>
-                    </motion.div>
+                    </div>
                   </motion.div>
                 ))}
               </AnimatePresence>
