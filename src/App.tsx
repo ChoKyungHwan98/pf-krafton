@@ -874,7 +874,10 @@ const Projects = ({ onProjectClick, isEditing, projects, setProjects, limit, set
             <motion.span initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}
               className="text-[#800020] font-sans text-[11px] font-bold tracking-widest uppercase mb-3 block">02. 프로젝트</motion.span>
             <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-              className="text-3xl md:text-5xl lg:text-5xl font-display font-bold tracking-[-0.03em] text-[#2C2C2C] leading-tight">실전으로 증명한 결과물</motion.h2>
+              className="flex flex-col gap-1 items-start mt-2">
+              <span className="text-xl md:text-2xl text-zinc-400 font-display font-medium tracking-tight">실전으로 증명한</span>
+              <span className="text-5xl md:text-6xl lg:text-[5rem] font-display font-black tracking-tighter text-[#2C2C2C] leading-none">결과물</span>
+            </motion.h2>
           </div>
           <div className="flex flex-col items-start md:items-end gap-3">
             <motion.p initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }}
