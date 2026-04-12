@@ -731,22 +731,23 @@ const Hero = ({ onPortfolioClick, onResumeClick, isEditing, content, setContent,
 
 // --- About ---
 const About = ({ isEditing, content, setContent }: { isEditing: boolean, content: any, setContent: (c: any) => void }) => (
-  <section id="about" className="scroll-mt-20 py-[120px] px-6 md:px-12 relative border-t border-black/5 min-h-screen flex items-center bg-[#FAFAFA] overflow-hidden">
+  <section id="about" className="scroll-mt-20 py-[120px] lg:py-[160px] px-6 md:px-12 relative border-t border-black/5 min-h-screen flex flex-col justify-center bg-[#FAFAFA] overflow-hidden">
     <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.02)_1px,transparent_1px)] bg-[size:32px_32px]"></div>
     
-    <div className="max-w-7xl mx-auto w-full relative z-10 grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
-      {/* Sticky Left: Manifesto Headers */}
-      <div className="lg:sticky lg:top-40 relative">
-        <span className="text-[#800020] font-sans text-[11px] font-bold tracking-widest uppercase mb-3 block">01. 소개</span>
-        <h2 className="flex flex-col gap-1 items-start mt-2 mb-8">
-          <span className="text-xl md:text-2xl text-zinc-400 font-display font-medium tracking-tight">논리와 감성으로,</span>
-          <span className="text-5xl md:text-6xl lg:text-[5rem] font-display font-black tracking-tighter text-[#2C2C2C] leading-none">0 에서 +로</span>
-        </h2>
-        <div className="w-16 h-1.5 bg-[#800020] mb-8"></div>
+    <div className="max-w-7xl mx-auto w-full relative z-10 flex flex-col h-full">
+      <div className="mb-8 grid lg:grid-cols-2 gap-6 items-end border-b border-black/5 pb-6">
+        <div>
+          <span className="text-[#800020] font-sans text-[11px] font-bold tracking-widest uppercase mb-3 block">01. 소개</span>
+          <h2 className="flex flex-col gap-1 items-start mt-2">
+            <span className="text-xl md:text-2xl text-zinc-400 font-display font-medium tracking-tight">논리와 감성으로,</span>
+            <span className="text-5xl md:text-6xl lg:text-[5rem] font-display font-black tracking-tighter text-[#2C2C2C] leading-none">0 에서 +로</span>
+          </h2>
+        </div>
+        <p className="text-zinc-500 text-sm leading-[1.6] lg:text-right font-medium">프로젝트의 뼈대를 세우고 재미의 본질을 설계하는 핵심 철학입니다.</p>
       </div>
       
       {/* Scrolling Right: Split Screen Biography */}
-      <div className="space-y-12 text-zinc-600 font-medium text-lg lg:text-xl leading-[2] pt-4 lg:pt-0">
+      <div className="space-y-12 text-zinc-600 font-medium text-lg lg:text-xl leading-[2] pt-8 max-w-4xl mx-auto w-full">
         <div className="relative pl-8 border-l-[3px] border-black/10 hover:border-[#800020] transition-colors duration-500 group">
           <div className="absolute -left-[9px] top-2 w-4 h-4 bg-white border-[3px] border-black/10 rounded-full group-hover:border-[#800020] transition-colors duration-500"></div>
           <EditableText value={content.p1} onSave={(v) => setContent({...content, p1: v})} isEditing={isEditing} multiline />
@@ -812,7 +813,7 @@ const ProjectCard = ({ project, idx, isEditing, projects, setProjects, onProject
   }
 
   return (
-    <motion.div whileHover={{ scale: 1.02 }} className="group relative bg-white border border-black/5 rounded-2xl overflow-hidden hover:border-black/10 hover:shadow-lg transition-all duration-500 flex flex-col">
+    <motion.div whileHover={{ scale: 1.02 }} className="group relative bg-white border border-black/5 rounded-3xl overflow-hidden hover:border-black/10 hover:shadow-xl transition-all duration-500 flex flex-col">
       {isEditing && (
         <button onClick={(e) => { e.stopPropagation(); if (confirm("삭제하시겠습니까?")) { setProjects(projects.filter(p => p.id !== project.id)); }}}
           className="absolute top-4 right-4 z-20 p-2 bg-red-500 text-white rounded-full hover:bg-red-600 transition-colors shadow-lg" title="삭제">
@@ -865,7 +866,7 @@ const Projects = ({ onProjectClick, isEditing, projects, setProjects, limit, set
   const displayedProjects = limit ? projects.slice(0, limit) : projects;
 
   return (
-    <section id="projects" className="scroll-mt-20 py-[120px] px-6 md:px-12 relative min-h-screen flex flex-col items-center justify-center bg-[#FFFFFF] overflow-hidden border-t border-black/5">
+    <section id="projects" className="scroll-mt-20 py-[120px] lg:py-[160px] px-6 md:px-12 relative min-h-screen flex flex-col justify-center bg-[#FFFFFF] overflow-hidden border-t border-black/5">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[60%] h-px bg-gradient-to-r from-transparent via-black/10 to-transparent" />
       <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.03)_1px,transparent_1px)] bg-[size:32px_32px]"></div>
       
@@ -1032,7 +1033,7 @@ const ICON_OPTIONS = [
 // --- Skills ---
 const Skills = ({ isEditing, skills, setSkills }: { isEditing: boolean, skills: Skill[], setSkills: (s: Skill[]) => void }) => {
   return (
-    <section id="skills" className="scroll-mt-20 py-[120px] px-6 md:px-12 relative min-h-screen flex flex-col justify-center bg-[#FAFAFA] overflow-hidden rounded-t-[3rem] mt-[-3rem] z-20 shadow-[0_-10px_30px_rgba(0,0,0,0.03)] border-t border-black/5">
+    <section id="skills" className="scroll-mt-20 py-[120px] lg:py-[160px] px-6 md:px-12 relative min-h-screen flex flex-col justify-center bg-[#FAFAFA] overflow-hidden border-t border-black/5">
       <div className="absolute inset-0 pointer-events-none opacity-[0.15] object-cover bg-repeat bg-[size:100px_100px]" style={{backgroundImage: "url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E')"}}></div>
       
       <div className="max-w-7xl mx-auto w-full relative z-10 flex flex-col h-full bg-white border border-black/5 rounded-3xl p-8 md:p-12 shadow-sm">
@@ -1160,7 +1161,7 @@ const PlayHistory = ({ isEditing, history, setHistory, onViewAll }: { isEditing:
   };
 
   return (
-    <section id="play-history" className="scroll-mt-20 py-[120px] px-6 md:px-12 relative min-h-screen flex flex-col justify-center bg-[#FFFFFF] overflow-hidden border-t border-black/5">
+    <section id="play-history" className="scroll-mt-20 py-[120px] lg:py-[160px] px-6 md:px-12 relative min-h-screen flex flex-col justify-center bg-[#FFFFFF] overflow-hidden border-t border-black/5">
       <div className="max-w-7xl mx-auto w-full relative z-10 flex flex-col h-full">
         
         <div className="mb-8 grid lg:grid-cols-2 gap-6 items-end border-b border-black/5 pb-6">
