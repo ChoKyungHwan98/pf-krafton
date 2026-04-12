@@ -1731,31 +1731,27 @@ const CoverLetter = ({ setView, isEditing, data, setData }: ResumeProps) => {
 
 // --- Contact ---
 const Contact = () => (
-  <section id="contact" className="min-h-screen px-0 relative flex flex-col items-center justify-center bg-[#800020] overflow-hidden group/contact border-t border-black/10">
-    {/* Default State: Massive Typo */}
-    <div className="absolute inset-0 flex items-center justify-center pointer-events-none transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/contact:scale-[1.15] group-hover/contact:opacity-0 mix-blend-overlay">
-       <span className="text-[14vw] font-display font-black text-white tracking-tighter leading-[0.8] m-0 p-0 text-center uppercase">
-         LET'S<br/>WORK.
-       </span>
-    </div>
+  <section id="contact" className="py-[120px] lg:py-[160px] px-6 md:px-12 relative min-h-[60vh] flex flex-col justify-center bg-[#FAFAFA] overflow-hidden border-t border-black/5">
+    <div className="absolute inset-0 pointer-events-none opacity-[0.15] object-cover bg-repeat bg-[size:100px_100px]" style={{backgroundImage: "url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E')"}}></div>
+    
+    <div className="max-w-7xl mx-auto w-full relative z-10 flex flex-col h-full">
+      <div className="mb-8 grid lg:grid-cols-2 gap-6 items-end border-b border-black/5 pb-6">
+        <div>
+          <motion.span initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}
+            className="text-[#800020] font-sans text-[11px] font-bold tracking-widest uppercase mb-3 block">05. 문의하기</motion.span>
+          <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+            className="flex flex-col gap-1 items-start mt-2">
+            <span className="text-xl md:text-2xl text-zinc-400 font-display font-medium tracking-tight">저는</span>
+            <span className="text-5xl md:text-6xl lg:text-[5rem] font-display font-black tracking-tighter text-[#2C2C2C] leading-none">준비되었습니다</span>
+          </motion.h2>
+        </div>
+        <p className="text-zinc-500 text-sm leading-[1.6] lg:text-right font-medium">새로운 프로젝트나 협업 제안은 언제나 환영입니다.</p>
+      </div>
 
-    {/* Hover Revealed State: Details */}
-    <div className="absolute inset-0 flex flex-col items-center justify-center opacity-0 scale-95 group-hover/contact:opacity-100 group-hover/contact:scale-100 transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] bg-[#1A1A1A]">
-      <div className="absolute inset-0 pointer-events-none opacity-20 object-cover bg-repeat bg-[size:100px_100px]" style={{backgroundImage: "url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E')"}}></div>
-      
-      <div className="text-center relative z-10 w-full px-6 max-w-4xl mx-auto">
-        <span className="text-[#800020] font-mono text-xs uppercase tracking-[0.4em] font-bold mb-8 block">05. 문의</span>
-        <h2 className="flex flex-col items-center justify-center mb-16">
-          <span className="text-xl md:text-2xl text-zinc-500 font-display font-medium tracking-[0.3em] mb-4">저는</span>
-          <span className="text-[12vw] sm:text-7xl md:text-8xl lg:text-[9rem] font-display font-black tracking-tighter text-white leading-none drop-shadow-2xl">준비되었습니다</span>
-        </h2>
-        <p className="text-zinc-400 text-xl mb-16 max-w-2xl mx-auto font-medium leading-relaxed hidden sm:block">
-          새로운 프로젝트나 협업 제안은 언제나 환영입니다.
-        </p>
-        
+      <div className="flex flex-col items-center justify-center py-16 md:py-24">
         <a href="mailto:kh980624@naver.com" 
-          className="inline-flex items-center justify-center gap-5 px-14 py-7 bg-transparent border-2 border-white/20 text-white font-bold hover:bg-[#800020] hover:border-[#800020] transition-all duration-500 rounded-full tracking-widest text-lg sm:text-xl lg:text-2xl shadow-2xl">
-          <Mail className="w-6 h-6 sm:w-8 sm:h-8" /> kh980624@naver.com
+          className="group inline-flex items-center justify-center gap-4 px-10 py-5 bg-[#800020] text-white font-bold hover:bg-[#A10028] transition-all duration-300 rounded-full tracking-widest text-sm uppercase shadow-xl hover:shadow-[0_20px_40px_rgba(128,0,32,0.3)] hover:-translate-y-1">
+          <Mail className="w-5 h-5 group-hover:scale-110 transition-transform" /> kh980624@naver.com
         </a>
       </div>
     </div>
