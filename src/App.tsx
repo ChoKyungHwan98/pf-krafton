@@ -905,20 +905,27 @@ const Projects = ({ onProjectClick, isEditing, projects, setProjects, limit, set
                     className="absolute inset-0 w-full h-full">
                     <img src={project.image} alt={project.title} className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-[1.02]" referrerPolicy="no-referrer" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent pointer-events-none" />
-                    <div className="absolute inset-x-0 bottom-0 p-6 lg:p-8 flex flex-col justify-end pointer-events-none w-full">
-                      <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-6 w-full">
-                        <div className="flex flex-col items-start gap-4 flex-1 w-full relative z-10">
-                          <div className="flex items-center gap-2">
-                            <span className="bg-white/90 text-[#2C2C2C] px-3 py-1 rounded-full text-[10px] font-bold tracking-tight shadow-sm uppercase">{project.category}</span>
-                            {project.status && <span className="bg-[#800020] text-white px-3 py-1 rounded-full text-[10px] font-bold tracking-tight shadow-sm">{project.status}</span>}
-                          </div>
-                          <h3 className="text-3xl md:text-5xl font-display font-bold text-white tracking-tight drop-shadow-md leading-tight line-clamp-1">{project.title}</h3>
-                          <p className="text-white/80 text-sm md:text-base font-medium leading-relaxed max-w-xl drop-shadow-md line-clamp-2 w-full"><EditableText value={project.description || ""} onSave={(v) => { const p = [...projects]; const i = p.findIndex(pp => pp.id === project.id); p[i].description = v; setProjects(p); }} isEditing={isEditing} /></p>
-                        </div>
-                        <button onClick={(e) => { e.stopPropagation(); onProjectClick(project); }} className="pointer-events-auto mt-4 md:mt-0 md:ml-auto shrink-0 px-6 py-3 bg-white text-[#800020] hover:bg-[#800020] hover:text-white font-bold text-xs uppercase tracking-widest flex items-center justify-center rounded-full transition-all duration-300 border border-white/10 hover:border-transparent gap-2 shadow-xl hover:-translate-y-1">
-                          자세히 보기 <ArrowRight className="w-4 h-4" />
-                        </button>
+                    
+                    {/* Unified Top Structure */}
+                    <div className="absolute top-6 left-6 lg:top-8 lg:left-8 flex gap-2 pointer-events-none">
+                      <span className="bg-white/90 text-[#2C2C2C] px-2.5 py-1 rounded-md text-[10px] font-bold tracking-tight shadow-sm uppercase leading-none">{project.category}</span>
+                      {project.status && <span className="bg-[#800020] text-white px-2.5 py-1 rounded-md text-[10px] font-bold tracking-tight shadow-sm leading-none">{project.status}</span>}
+                    </div>
+
+                    {/* Unified Bottom Structure */}
+                    <div className="absolute bottom-6 left-6 lg:bottom-8 lg:left-8 right-6 lg:right-8 flex items-end justify-between gap-6 pointer-events-none">
+                      <div className="flex flex-col items-start gap-2 flex-1 w-full relative z-10 max-w-[80%]">
+                        <h3 className="text-3xl md:text-5xl font-display font-bold text-white tracking-tight drop-shadow-md leading-tight line-clamp-1">
+                          <EditableText value={project.title} onSave={(v) => { const p = [...projects]; const i = p.findIndex(pp => pp.id === project.id); p[i].title = v; setProjects(p); }} isEditing={isEditing} />
+                        </h3>
+                        <p className="text-white/80 text-sm md:text-base font-medium leading-relaxed drop-shadow-md line-clamp-2 w-full"><EditableText value={project.description || ""} onSave={(v) => { const p = [...projects]; const i = p.findIndex(pp => pp.id === project.id); p[i].description = v; setProjects(p); }} isEditing={isEditing} /></p>
                       </div>
+                      
+                      {/* Standardized Circular Action Button */}
+                      <button onClick={(e) => { e.stopPropagation(); onProjectClick(project); }} 
+                        className="pointer-events-auto shrink-0 w-12 h-12 md:w-14 md:h-14 bg-white hover:bg-[#800020] text-[#2C2C2C] hover:text-white rounded-full flex items-center justify-center transition-all duration-300 shadow-xl group border border-white/20 hover:-translate-y-1">
+                        <ArrowRight className="w-5 h-5 group-hover:translate-x-0.5 transition-transform" />
+                      </button>
                     </div>
                   </motion.div>
                 ))}
@@ -940,19 +947,24 @@ const Projects = ({ onProjectClick, isEditing, projects, setProjects, limit, set
                     className="relative flex-1 rounded-3xl overflow-hidden cursor-pointer group shadow-sm hover:shadow-xl transition-all duration-500 bg-[#FAFAFA] border border-black/5"
                   >
                     <img src={project.image} alt={project.title} className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-all duration-700 group-hover:scale-110" referrerPolicy="no-referrer" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent transition-opacity duration-500" />
-                    <div className="absolute inset-0 p-6 lg:p-8 flex flex-col justify-end z-10 w-full h-full">
-                      <div className="flex flex-col items-start gap-2 max-w-[85%] transition-transform duration-500 group-hover:-translate-y-1">
-                        <span className="bg-white/20 backdrop-blur-md text-white px-2.5 py-1 rounded-md text-[9px] font-bold uppercase tracking-widest shadow-sm leading-none">{project.category}</span>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent transition-opacity duration-500 pointer-events-none" />
+                    
+                    {/* Unified Top Structure */}
+                    <div className="absolute top-6 left-6 lg:top-8 lg:left-8 flex gap-2 pointer-events-none">
+                      <span className="bg-white/20 backdrop-blur-md text-white px-2.5 py-1 rounded-md text-[10px] font-bold uppercase tracking-widest shadow-sm leading-none">{project.category}</span>
+                      {project.status && <span className="border border-white/20 text-white px-2.5 py-1 rounded-md text-[10px] font-bold tracking-tight shadow-sm leading-none">{project.status}</span>}
+                    </div>
+
+                    {/* Unified Bottom Structure */}
+                    <div className="absolute bottom-6 left-6 lg:bottom-8 lg:left-8 right-6 lg:right-8 flex items-end justify-between gap-4 pointer-events-none">
+                      <div className="flex flex-col items-start gap-2 max-w-[75%] transition-transform duration-500 group-hover:-translate-y-1 relative z-10 w-full">
                         <h3 className="text-base md:text-xl font-display font-bold text-white tracking-tight drop-shadow-md line-clamp-1 leading-snug">{project.title}</h3>
-                        <p className="text-white/70 text-xs md:text-sm font-medium leading-relaxed drop-shadow-md line-clamp-2 hidden sm:block">
-                          {project.description}
-                        </p>
+                        <p className="text-white/70 text-xs md:text-sm font-medium leading-relaxed drop-shadow-md line-clamp-2 w-full">{project.description}</p>
                       </div>
                       
-                      {/* Action Icon explicitly aligned to bottom right, matching the master card button location visually */}
-                      <div className="absolute bottom-6 right-6 lg:bottom-8 lg:right-8 w-8 h-8 md:w-10 md:h-10 rounded-full border border-white/20 bg-white/10 backdrop-blur-md flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-all duration-300 translate-x-2 group-hover:translate-x-0">
-                        <ArrowRight className="w-4 h-4" />
+                      {/* Standardized Circular Action Button */}
+                      <div className="shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-full border border-white/20 bg-white/10 backdrop-blur-md flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-all duration-300 shadow-lg group-hover:-translate-y-1">
+                        <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
                       </div>
                     </div>
                   </motion.div>
@@ -1065,38 +1077,31 @@ const Skills = ({ isEditing, skills, setSkills }: { isEditing: boolean, skills: 
         <div className="flex flex-col w-full flex-1 justify-center">
           {skills.map((skill, idx) => (
             <motion.div key={idx} initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: idx * 0.1 }}
-              className="relative group border-b border-black/5 py-5 px-4 md:px-8 hover:pl-10 lg:hover:pl-12 transition-all duration-500 overflow-hidden flex flex-col md:flex-row md:items-center justify-between gap-4 cursor-default">
+              className="relative group border-b border-black/5 h-[90px] px-6 md:px-8 hover:pl-10 lg:hover:pl-12 transition-all duration-500 overflow-hidden flex flex-row items-center justify-between gap-6 cursor-default bg-transparent">
               
-              {/* Gamified Background Progress Bar with Neon Hatch */}
               <motion.div 
-                initial={{ width: 0 }}
-                whileInView={{ width: `${skill.level}%` }}
-                viewport={{ once: true }}
-                transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+                initial={{ width: 0 }} whileInView={{ width: `${skill.level}%` }} viewport={{ once: true }} transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
                 className="absolute top-0 left-0 bottom-0 bg-gradient-to-r from-[#800020]/10 to-[#800020]/5 z-0 origin-left flex items-center overflow-hidden"
               >
                 <div className="absolute inset-0 opacity-10 bg-[linear-gradient(45deg,rgba(0,0,0,1)_25%,transparent_25%,transparent_50%,rgba(0,0,0,1)_50%,rgba(0,0,0,1)_75%,transparent_75%,transparent)] bg-[length:20px_20px] animate-bg-pan"></div>
               </motion.div>
               <div className="absolute top-0 left-0 bottom-0 w-1.5 bg-gradient-to-b from-[#A10028] to-[#800020] z-0 scale-y-0 group-hover:scale-y-100 transition-transform duration-300 ease-out shadow-[0_0_15px_rgba(161, 0, 40,0.6)]" />
 
-              <div className="relative z-10 flex items-center gap-6 md:w-[45%]">
-                <div className="text-black/10 group-hover:text-[#800020] transition-all duration-500 transform group-hover:scale-110 mb-auto pt-1 hidden md:block">
+              <div className="relative z-10 flex items-center gap-6 w-[40%] shrink-0 pr-4">
+                <div className="w-8 h-8 md:w-10 md:h-10 shrink-0 text-black/10 group-hover:text-[#800020] transition-colors flex items-center justify-center">
                   {skill.icon}
                 </div>
-                <div>
-                  <h3 className="text-xl md:text-2xl lg:text-3xl font-display font-black text-[#2C2C2C] tracking-tighter uppercase group-hover:text-[#800020] transition-colors duration-300 break-keep">
-                    <EditableText value={skill.name} onSave={(v) => { const s = [...skills]; s[idx].name = v; setSkills(s); }} isEditing={isEditing} />
-                  </h3>
-                </div>
+                <h3 className="text-lg md:text-2xl font-display font-black text-[#2C2C2C] tracking-tight uppercase group-hover:text-[#800020] transition-colors duration-300 truncate w-full">
+                  <EditableText value={skill.name} onSave={(v) => { const s = [...skills]; s[idx].name = v; setSkills(s); }} isEditing={isEditing} />
+                </h3>
               </div>
               
-              <div className="relative z-10 flex-1 flex flex-col gap-1.5 ml-auto md:text-right md:items-end">
-                 <p className="text-xs md:text-sm font-medium text-zinc-500 group-hover:text-[#2C2C2C] transition-colors duration-300 max-w-sm line-clamp-1">
+              <div className="relative z-10 flex-1 flex flex-row items-center justify-between gap-4 shrink-0 pl-2 md:pl-4 border-l border-dashed border-black/10 w-full min-w-0">
+                 <p className="text-xs md:text-sm font-medium text-zinc-500 group-hover:text-[#2C2C2C] transition-colors duration-300 line-clamp-1 flex-1">
                    <EditableText value={skill.caption || ""} onSave={(v) => { const s = [...skills]; s[idx].caption = v; setSkills(s); }} isEditing={isEditing} />
                  </p>
-                 <div className="flex items-center md:flex-row-reverse gap-3">
-                    <span className="text-[9px] font-bold text-zinc-400 tracking-[0.2em] uppercase">Proficiency</span>
-                    <span className="text-[#800020] font-bold font-mono text-base transition-colors">{skill.level}%</span>
+                 <div className="flex flex-row items-center gap-3 shrink-0 ml-auto justify-end w-[80px]">
+                    <span className="text-[#800020] font-bold font-mono text-base md:text-lg transition-colors">{skill.level}%</span>
                  </div>
               </div>
 
@@ -1140,31 +1145,30 @@ const PlayHistory = ({ isEditing, history, setHistory, onViewAll }: { isEditing:
           </div>
         </div>
         
-        <div className="flex flex-col gap-1 flex-1">
+        <div className="flex flex-col gap-0 flex-1 mt-2">
           {items.slice(0, 3).map((game, idx) => (
-            <div key={game.id} className="group relative flex flex-col p-3 hover:bg-black/80 hover:shadow-2xl rounded-xl transition-all duration-500 cursor-default border border-transparent hover:border-[#A10028]/30 flex-1 justify-center max-h-[64px] overflow-hidden">
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-700 bg-[url('https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=600&auto=format&fit=crop')] bg-cover bg-center mix-blend-overlay pointer-events-none"></div>
-              <div className="absolute left-0 top-1/2 -translate-y-1/2 bottom-auto h-full w-1 bg-[#A10028] scale-y-0 group-hover:scale-y-100 transition-transform duration-300 shadow-[0_0_15px_rgba(161, 0, 40,0.8)] z-10"></div>
+            <div key={game.id} className="group relative flex items-center justify-between py-3 px-2 border-b border-black/5 hover:border-[#800020]/20 hover:bg-zinc-50 transition-colors h-[56px] flex-none">
+              <div className="absolute left-0 top-1/2 -translate-y-1/2 bottom-auto h-[60%] w-[3px] bg-[#800020] scale-y-0 group-hover:scale-y-100 transition-transform duration-300 rounded-r z-10 w-[3px]"></div>
               
-              <div className="flex items-center justify-between mb-1 pl-2 relative z-10">
-                 <span className="text-[9px] font-bold text-zinc-500 group-hover:text-zinc-400 uppercase tracking-widest leading-none transition-colors">{game.genre}</span>
-                 {game.playTime && (
-                    <span className="font-mono text-[10px] text-[#800020] group-hover:text-[#A10028] font-bold leading-none transition-colors">{game.playTime}</span>
-                 )}
+              <div className="flex items-center gap-3 min-w-0 pr-4 pl-3 relative z-10">
+                 <span className="text-[10px] font-bold text-[#800020]/60 group-hover:text-[#800020] uppercase tracking-widest shrink-0 truncate w-16">{game.genre}</span>
+                 <h4 className="font-bold text-sm text-[#2C2C2C] truncate">
+                   <EditableText value={game.title || ""} onSave={(v) => { const h = {...history}; h[dataKey][idx].title = v; setHistory(h); }} isEditing={isEditing} />
+                 </h4>
               </div>
-              <h4 className="font-bold text-sm text-[#2C2C2C] group-hover:text-white transition-colors truncate pl-2 relative z-10">
-                 <EditableText value={game.title || ""} onSave={(v) => { const h = {...history}; h[dataKey][idx].title = v; setHistory(h); }} isEditing={isEditing} />
-              </h4>
+              {game.playTime && (
+                 <span className="font-mono text-[10px] text-zinc-400 group-hover:text-zinc-600 font-bold shrink-0 relative z-10 pr-2">{game.playTime}</span>
+              )}
                {isEditing && (
-                  <button onClick={() => { const h = {...history}; h[dataKey].splice(idx, 1); setHistory(h); }} className="absolute right-2 top-1/2 -translate-y-1/2 text-zinc-300 hover:text-red-500 transition-colors bg-white rounded-full p-1 shadow-sm">
+                  <button onClick={() => { const h = {...history}; h[dataKey].splice(idx, 1); setHistory(h); }} className="text-zinc-300 hover:text-red-500 transition-colors p-1 relative z-20">
                     <X className="w-3 h-3" />
                   </button>
                 )}
             </div>
           ))}
           {items.length > 3 && !isEditing && (
-            <div className="text-center pt-3 mt-auto border-t border-dashed border-black/10">
-              <span className="text-[10px] font-bold text-zinc-400 tracking-widest uppercase">+ {items.length - 3} More</span>
+            <div className="text-center pt-2 mt-auto">
+              <span className="text-[10px] font-bold text-zinc-300 tracking-[0.2em] uppercase">+ {items.length - 3} TITLES HIDDEN</span>
             </div>
           )}
         </div>
