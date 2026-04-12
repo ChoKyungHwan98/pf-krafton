@@ -1037,7 +1037,7 @@ const Skills = ({ isEditing, skills, setSkills }: { isEditing: boolean, skills: 
             <motion.span initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}
               className="text-[#800020] font-sans text-[11px] font-bold tracking-widest uppercase mb-3 block">03. 핵심 역량</motion.span>
             <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-              className="text-3xl md:text-4xl lg:text-5xl font-display font-bold tracking-[-0.03em] text-[#2C2C2C] leading-tight break-keep">논리와 구조를 AI로 확장하는 기획 역량</motion.h2>
+              className="text-3xl md:text-4xl lg:text-5xl font-display font-bold tracking-[-0.03em] text-[#2C2C2C] leading-tight break-keep">논리와 구조를 AI로 확장하는<br className="hidden md:block"/> 기획 역량</motion.h2>
           </div>
           <p className="text-zinc-500 text-sm leading-[1.6] lg:text-right font-medium">프로젝트의 성공을 이끄는 실무 중심의 기술적 토대입니다.</p>
         </div>
@@ -1161,7 +1161,7 @@ const PlayHistory = ({ isEditing, history, setHistory, onViewAll }: { isEditing:
             <motion.span initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}
               className="text-[#800020] font-sans text-[11px] font-bold tracking-widest uppercase mb-3 block">04. 플레이 이력</motion.span>
             <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-              className="text-3xl md:text-4xl lg:text-5xl font-display font-bold tracking-[-0.03em] text-[#2C2C2C] leading-tight break-keep">방대한 플레이 경험이 만든 인사이트</motion.h2>
+              className="text-3xl md:text-4xl lg:text-5xl font-display font-bold tracking-[-0.03em] text-[#2C2C2C] leading-tight break-keep">방대한 플레이 경험이 만든<br className="hidden md:block"/> 인사이트</motion.h2>
           </div>
           <p className="text-zinc-500 text-sm leading-[1.6] lg:text-right font-medium">플랫폼과 장르를 넘나드는 심층 분석 데이터베이스입니다.</p>
         </div>
@@ -1718,9 +1718,9 @@ const Contact = () => (
       
       <div className="text-center relative z-10 w-full px-6 max-w-4xl mx-auto">
         <span className="text-[#800020] font-mono text-xs uppercase tracking-[0.4em] font-bold mb-8 block">05. 문의</span>
-        <h2 className="flex flex-col items-center justify-center gap-2 mb-12">
-          <span className="text-2xl md:text-4xl lg:text-5xl text-zinc-400 font-display font-medium tracking-tight mb-2">저는</span>
-          <span className="text-6xl md:text-8xl lg:text-[7rem] font-display font-bold tracking-tighter text-white leading-none">준비되었습니다</span>
+        <h2 className="flex flex-col items-center justify-center mb-16">
+          <span className="text-xl md:text-2xl text-zinc-500 font-display font-medium tracking-[0.3em] mb-4">저는</span>
+          <span className="text-[12vw] sm:text-7xl md:text-8xl lg:text-[9rem] font-display font-black tracking-tighter text-white leading-none drop-shadow-2xl">준비되었습니다</span>
         </h2>
         <p className="text-zinc-400 text-xl mb-16 max-w-2xl mx-auto font-medium leading-relaxed hidden sm:block">
           새로운 프로젝트나 협업 제안은 언제나 환영입니다.
