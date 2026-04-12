@@ -738,8 +738,9 @@ const About = ({ isEditing, content, setContent }: { isEditing: boolean, content
       {/* Sticky Left: Manifesto Headers */}
       <div className="lg:sticky lg:top-40 relative">
         <span className="text-[#800020] font-sans text-[11px] font-bold tracking-widest uppercase mb-3 block">01. 소개</span>
-        <h2 className="text-4xl md:text-5xl lg:text-5xl font-display font-bold tracking-[-0.03em] text-[#2C2C2C] leading-[1.15] mb-8 break-keep">
-          <EditableText value={content.title || "안녕하세요."} onSave={(v) => setContent({...content, title: v})} isEditing={isEditing} />
+        <h2 className="flex flex-col gap-1 items-start mt-2 mb-8">
+          <span className="text-xl md:text-2xl text-zinc-400 font-display font-medium tracking-tight">논리와 감성의</span>
+          <span className="text-5xl md:text-6xl lg:text-[5rem] font-display font-black tracking-tighter text-[#2C2C2C] leading-none">균형으로</span>
         </h2>
         <div className="w-16 h-1.5 bg-[#800020] mb-8"></div>
       </div>
