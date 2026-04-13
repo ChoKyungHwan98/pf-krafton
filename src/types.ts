@@ -46,6 +46,8 @@ export interface ResumeData {
   selfIntroductions?: {
     logline: string;
     content: string;
+    navTitle?: string;
+    badge?: string;
   }[];
   education: {
     title: string;

@@ -16,7 +16,7 @@ interface CoverLetterProps {
 export const CoverLetter = ({ setView, isEditing, data, setData }: CoverLetterProps) => {
   return (
     <motion.section initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }}
-      className="pt-32 pb-20 md:pt-[160px] px-6 md:px-12 max-w-5xl mx-auto w-full">
+      className="pt-32 pb-20 md:pt-[160px] px-6 md:px-12 max-w-7xl mx-auto w-full relative">
       
       <div className="flex items-center justify-between mb-16">
         <button onClick={() => setView('resume')} className="flex items-center gap-2 text-zinc-500 hover:text-[#0047BB] transition-colors group font-sans tracking-tight text-sm font-bold">
@@ -31,10 +31,11 @@ export const CoverLetter = ({ setView, isEditing, data, setData }: CoverLetterPr
       </div>
 
       {data.selfIntroductions ? (
-        <div className="relative border-l-[3px] border-zinc-200/80 ml-2 md:ml-[40px] lg:ml-[80px] w-full max-w-[880px]">
+        <div className="flex justify-between items-start xl:gap-20">
+          <div className="relative border-l-[3px] border-zinc-200/80 ml-2 md:ml-[40px] lg:ml-[80px] w-full max-w-[880px] flex-1">
           {data.selfIntroductions.map((intro, idx) => (
             <React.Fragment key={idx}>
-              <article className="relative w-full pl-8 md:pl-16 pb-20 md:pb-24">
+              <article className="relative w-full pl-8 md:pl-16 pb-20 md:pb-32" id={`intro-${idx}`}>
                 {isEditing && (
                   <button onClick={() => { if (confirm("삭제하시겠습니까?")) { const n = [...(data.selfIntroductions || [])]; n.splice(idx, 1); setData({...data, selfIntroductions: n}); }}}
                     className="absolute -top-4 right-0 z-20 p-2 bg-red-500 text-white rounded-full hover:bg-red-600 transition-colors shadow-lg" title="삭제">
@@ -52,20 +53,40 @@ export const CoverLetter = ({ setView, isEditing, data, setData }: CoverLetterPr
                   </h3>
                 </div>
 
-                <div className="max-w-[760px] text-[#333F48] leading-[1.85] md:leading-[1.9] text-[15px] md:text-[17px] font-medium tracking-[-0.01em] [&>p]:mb-11 md:[&>p]:mb-14 [&>p]:break-keep [&>p:first-of-type]:text-[17px] md:[&>p:first-of-type]:text-[19px] [&>p:first-of-type]:font-semibold [&>p:first-of-type]:mb-9 md:[&>p:first-of-type]:mb-10 [&>p:first-of-type]:text-[#333F48] [&>p:first-of-type]:border-b [&>p:first-of-type]:border-[#0047BB]/10 [&>p:first-of-type]:pb-6 [&_strong]:text-[#111] [&_strong]:font-extrabold [&_strong]:bg-[linear-gradient(to_top,#0047BB33_40%,transparent_40%)] [&_strong]:px-1 [&>blockquote]:border-l-[3px] [&>blockquote]:border-[#0047BB]/25 [&>blockquote]:bg-[#F2F0EB]/60 [&>blockquote]:py-4 [&>blockquote]:px-6 [&>blockquote]:italic [&>blockquote]:text-[#76787A] [&>blockquote]:my-8 [&>blockquote]:rounded-r-lg [&_ul]:flex [&_ul]:flex-col [&_ul]:gap-3 [&_ul]:my-10 [&_ul]:pl-0 [&_ul>li]:list-none [&_ul>li]:relative [&_ul>li]:pl-5 md:[&_ul>li]:pl-6 [&_ul>li]:py-3 [&_ul>li]:pr-4 [&_ul>li]:bg-white [&_ul>li]:border [&_ul>li]:border-zinc-200/80 [&_ul>li]:rounded-xl [&_ul>li]:shadow-[0_2px_8px_-4px_rgba(0,0,0,0.1)] [&_ul>li::before]:content-[''] [&_ul>li::before]:absolute [&_ul>li::before]:left-0 [&_ul>li::before]:top-0 [&_ul>li::before]:bottom-0 [&_ul>li::before]:w-1.5 [&_ul>li::before]:bg-[#0047BB] [&_ul>li::before]:rounded-l-xl [&_ul>li_strong]:text-[#0047BB] [&_ul>li_strong]:font-black [&_ul>li_strong]:bg-none [&_ul>li_strong]:px-0 [&_ul>li_strong]:mr-1.5 [&_ol]:list-decimal [&_ol]:list-outside [&_ol]:ml-6 [&_ol]:mb-8 [&_ol>li]:mb-3 [&_ol>li]:pl-2">
+                <div className="max-w-[760px] text-[#333F48] leading-[1.85] md:leading-[1.9] text-[15px] md:text-[17px] font-medium tracking-[-0.01em] [&>p]:mb-12 md:[&>p]:mb-16 [&>p]:break-keep [&>p:first-of-type]:text-[17px] md:[&>p:first-of-type]:text-[19px] [&>p:first-of-type]:font-semibold [&>p:first-of-type]:mb-10 md:[&>p:first-of-type]:mb-12 [&>p:first-of-type]:border-b [&>p:first-of-type]:border-[#0047BB]/10 [&>p:first-of-type]:pb-6 [&_strong]:text-[#111] [&_strong]:font-extrabold [&_strong]:bg-[linear-gradient(to_top,#0047BB33_40%,transparent_40%)] [&_strong]:px-1 [&>blockquote]:border-l-[4px] [&>blockquote]:border-[#0047BB] [&>blockquote]:bg-gradient-to-r [&>blockquote]:from-blue-50/50 [&>blockquote]:to-transparent [&>blockquote]:py-6 md:[&>blockquote]:py-8 [&>blockquote]:px-6 md:[&>blockquote]:px-10 [&>blockquote]:font-bold [&>blockquote]:text-lg md:[&>blockquote]:text-xl [&>blockquote]:text-[#0047BB] [&>blockquote]:my-12 md:[&>blockquote]:my-16 [&>blockquote]:rounded-r-2xl [&_ul]:grid md:[&_ul]:grid-cols-4 [&_ul]:gap-3 md:[&_ul]:gap-4 [&_ul]:my-14 md:[&_ul]:my-16 [&_ul]:pl-0 [&_ul>li]:list-none [&_ul>li]:relative [&_ul>li]:px-5 md:[&_ul>li]:px-6 [&_ul>li]:py-5 md:[&_ul>li]:py-6 [&_ul>li]:bg-white [&_ul>li]:border [&_ul>li]:border-[#0047BB]/10 [&_ul>li]:rounded-2xl [&_ul>li]:shadow-[0_4px_20px_-4px_rgba(0,71,187,0.05)] md:[&_ul>li:not(:last-child)::after]:content-[''] md:[&_ul>li:not(:last-child)::after]:absolute md:[&_ul>li:not(:last-child)::after]:-right-[14px] lg:[&_ul>li:not(:last-child)::after]:-right-[18px] md:[&_ul>li:not(:last-child)::after]:top-1/2 md:[&_ul>li:not(:last-child)::after]:-translate-y-1/2 md:[&_ul>li:not(:last-child)::after]:border-t-[2.5px] md:[&_ul>li:not(:last-child)::after]:border-r-[2.5px] md:[&_ul>li:not(:last-child)::after]:border-zinc-300 md:[&_ul>li:not(:last-child)::after]:w-[10px] lg:[&_ul>li:not(:last-child)::after]:w-[12px] md:[&_ul>li:not(:last-child)::after]:h-[10px] lg:[&_ul>li:not(:last-child)::after]:h-[12px] md:[&_ul>li:not(:last-child)::after]:rotate-45 [&_ul>li_strong]:text-[#0047BB] [&_ul>li_strong]:font-black [&_ul>li_strong]:text-[16px] md:[&_ul>li_strong]:text-[18px] [&_ul>li_strong]:block [&_ul>li_strong]:mb-2 [&_ul>li_strong]:bg-none [&_ul>li_strong]:px-0">
                   <EditableText value={intro.content} onSave={(v) => { const n = [...(data.selfIntroductions || [])]; n[idx].content = v; setData({...data, selfIntroductions: n}); }} isEditing={isEditing} markdown={true} />
                 </div>
+
+                {intro.badge && (
+                  <div className="absolute right-0 bottom-6 md:bottom-12 translate-x-2 md:translate-x-8 rotate-[-3deg] bg-gradient-to-r from-[#0047BB] to-[#0A3277] text-white px-5 py-2.5 flex items-center gap-2 rounded-xl font-black text-sm md:text-base shadow-xl border-4 border-white z-10 hover:rotate-0 transition-transform">
+                    <span className="text-[#00D4FF] mr-1">✦</span>
+                    {intro.badge}
+                  </div>
+                )}
               </article>
             </React.Fragment>
           ))}
 
           {isEditing && (
             <button onClick={() => { const n = [...(data.selfIntroductions || [])]; n.push({ logline: "새로운 항목의 로그라인을 입력하세요.", content: "내용을 입력하세요." }); setData({...data, selfIntroductions: n}); }}
-              className="flex flex-col items-center justify-center border-2 border-dashed border-zinc-200 bg-zinc-50 hover:bg-zinc-100 transition-colors min-h-[200px] cursor-pointer rounded-3xl">
+              className="flex flex-col items-center justify-center border-2 border-dashed border-zinc-200 bg-zinc-50 hover:bg-zinc-100 transition-colors min-h-[200px] cursor-pointer rounded-3xl w-full">
               <Plus className="w-8 h-8 text-zinc-400 mb-2" />
               <span className="text-zinc-500 font-bold">새 자기소개 항목 추가</span>
             </button>
           )}
+          </div>
+
+          <aside className="hidden xl:block sticky top-40 w-48 shrink-0">
+            <div className="flex flex-col gap-6 border-l-[2px] border-[#0047BB]/10 pl-6 py-2">
+              <div className="text-xs font-black tracking-[0.2em] text-[#0047BB]/60 mb-2">INDEX</div>
+              {data.selfIntroductions.map((intro, idx) => (
+                <a key={idx} href={`#intro-${idx}`} className="text-[14px] font-semibold text-zinc-400 hover:text-[#0047BB] transition-colors relative group block">
+                  <span className="opacity-0 group-hover:opacity-100 absolute -left-[29px] top-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-[#0047BB] transition-opacity"/>
+                  {String(idx + 1).padStart(2, '0')}. {intro.navTitle || '섹션 ' + (idx + 1)}
+                </a>
+              ))}
+            </div>
+          </aside>
         </div>
       ) : (
         <div className="bg-white p-8 md:p-12 rounded-2xl border border-black/5 markdown-body">
