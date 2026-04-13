@@ -31,6 +31,7 @@ export const CoverLetter = ({ setView, isEditing, data, setData }: CoverLetterPr
       </div>
 
       {data.selfIntroductions ? (
+        <div className="max-w-5xl mx-auto w-full">
         <div className="flex justify-between items-start xl:gap-16">
           <div className="relative border-l-[3px] border-[#0047BB]/15 ml-2 md:ml-[40px] lg:ml-[60px] w-full max-w-[900px] flex-1">
           {data.selfIntroductions.map((intro, idx) => (
@@ -61,9 +62,9 @@ export const CoverLetter = ({ setView, isEditing, data, setData }: CoverLetterPr
                     whileInView={{ opacity: 1, y: 0 }} 
                     viewport={{ once: true }} 
                     transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-                    className="mb-8 md:mb-10 w-full max-w-[800px] mx-auto flex flex-col items-center justify-center text-center"
+                    className="mb-8 md:mb-10"
                   >
-                    <h3 className="text-[32px] md:text-[42px] lg:text-[48px] font-display font-black text-[#1A1A1A] leading-[1.3] tracking-tighter break-keep [&_p]:m-0 [&_p]:leading-[1.3] [&_strong]:text-[#0047BB] [&_strong]:font-black text-opacity-90 w-full">
+                    <h3 className="text-[32px] md:text-[42px] lg:text-[48px] font-display font-black text-[#1A1A1A] leading-[1.3] tracking-tighter break-keep [&_p]:m-0 [&_p]:leading-[1.3] [&_strong]:text-[#0047BB] [&_strong]:font-black text-opacity-90">
                       <EditableText value={intro.logline} onSave={(v) => { const n = [...(data.selfIntroductions || [])]; n[idx].logline = v; setData({...data, selfIntroductions: n}); }} isEditing={isEditing} markdown={true} />
                     </h3>
                   </motion.div>
@@ -165,6 +166,7 @@ export const CoverLetter = ({ setView, isEditing, data, setData }: CoverLetterPr
               ))}
             </div>
           </motion.aside>
+        </div>
         </div>
       ) : (
         <div className="bg-white p-8 md:p-12 rounded-2xl border border-black/5 markdown-body">
