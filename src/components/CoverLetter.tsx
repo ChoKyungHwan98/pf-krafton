@@ -31,7 +31,7 @@ export const CoverLetter = ({ setView, isEditing, data, setData }: CoverLetterPr
       </div>
 
       {data.selfIntroductions ? (
-        <div className="max-w-[1100px] mx-auto w-full">
+        <div className="ml-[6%] xl:ml-[10%] w-full max-w-[1050px]">
         <div className="flex items-start gap-10 xl:gap-14">
 
           {/* 메인 타임라인 */}
