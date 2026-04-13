@@ -43,7 +43,7 @@ export const CoverLetter = ({ setView, isEditing, data, setData }: CoverLetterPr
                   </button>
                 )}
 
-                <div className="absolute -left-[19px] md:-left-[24px] top-0 w-9 h-9 md:w-11 md:h-11 bg-white border-[3px] border-[#0047BB]/30 rounded-full flex items-center justify-center text-[#0047BB] font-mono font-bold text-xs md:text-sm shadow-md ring-4 ring-white">
+                <div className="absolute -left-[19px] md:-left-[24px] top-[50px] md:top-[68px] lg:top-[72px] w-9 h-9 md:w-11 md:h-11 bg-white border-[3px] border-[#0047BB]/30 rounded-full flex items-center justify-center text-[#0047BB] font-mono font-bold text-xs md:text-sm shadow-md ring-4 ring-white">
                   {String(idx + 1).padStart(2, '0')}
                 </div>
 
