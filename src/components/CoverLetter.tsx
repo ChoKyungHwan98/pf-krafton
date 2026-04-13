@@ -60,8 +60,78 @@ export const CoverLetter = ({ setView, isEditing, data, setData }: CoverLetterPr
                     <EditableText value={intro.content} onSave={(v) => { const n = [...(data.selfIntroductions || [])]; n[idx].content = v; setData({...data, selfIntroductions: n}); }} isEditing={isEditing} markdown={true} />
                   </div>
 
+                  {/* 섹션 0 전용: 타이포그래픽 대비 블록 */}
+                  {idx === 0 && (
+                    <>
+                      {/* -→0 vs 0→+ 시각 대비 */}
+                      <div className="mt-10 mb-10 rounded-2xl border border-zinc-100 bg-gradient-to-br from-slate-50 to-white p-6 md:p-10">
+                        <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12">
+                          {/* 법학 */}
+                          <div className="text-center">
+                            <div className="text-[11px] font-black uppercase tracking-[0.25em] text-zinc-400 mb-3">법학</div>
+                            <div className="flex items-baseline justify-center gap-1 md:gap-2">
+                              <span className="text-[52px] md:text-[68px] font-black text-zinc-300 leading-none">−</span>
+                              <span className="text-[22px] md:text-[26px] font-semibold text-zinc-400 leading-none self-end mb-1">에서</span>
+                              <span className="text-[52px] md:text-[68px] font-black text-zinc-500 leading-none">0</span>
+                            </div>
+                            <div className="text-[13px] text-zinc-400 mt-2 font-medium">으로 되돌리는 일</div>
+                          </div>
+
+                          {/* vs 구분자 */}
+                          <div className="flex flex-col items-center gap-1">
+                            <div className="w-px h-8 md:h-12 bg-zinc-200 md:w-12 md:h-px"></div>
+                            <span className="text-[13px] font-bold text-zinc-300 tracking-widest">VS</span>
+                            <div className="w-px h-8 md:h-12 bg-zinc-200 md:w-12 md:h-px"></div>
+                          </div>
+
+                          {/* 게임 */}
+                          <div className="text-center">
+                            <div className="text-[11px] font-black uppercase tracking-[0.25em] text-[#0047BB]/60 mb-3">게임</div>
+                            <div className="flex items-baseline justify-center gap-1 md:gap-2">
+                              <span className="text-[52px] md:text-[68px] font-black text-zinc-500 leading-none">0</span>
+                              <span className="text-[22px] md:text-[26px] font-semibold text-zinc-500 leading-none self-end mb-1">에서</span>
+                              <span className="text-[64px] md:text-[84px] font-black text-[#0047BB] leading-none drop-shadow-sm">+</span>
+                            </div>
+                            <div className="text-[13px] text-[#0047BB]/70 mt-2 font-medium">가 되는 경험</div>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* 의도 → 구조화 → 시스템 플로우 */}
+                      <div className="mb-4">
+                        <div className="text-[11px] font-black uppercase tracking-[0.25em] text-zinc-400 mb-5">법학에서 배운 사고 메커니즘</div>
+                        <div className="flex items-center gap-2 md:gap-3 flex-wrap">
+                          {[
+                            { ko: '의도', en: 'Intent' },
+                            { ko: '구조화', en: 'Structure' },
+                            { ko: '시스템', en: 'System' },
+                          ].map((item, i) => (
+                            <React.Fragment key={i}>
+                              <div className="flex flex-col items-center gap-1">
+                                <div className="px-5 md:px-7 py-2.5 rounded-full border border-[#0047BB]/25 bg-white shadow-[0_2px_12px_-4px_rgba(0,71,187,0.12)] hover:border-[#0047BB]/50 hover:shadow-[0_4px_16px_-4px_rgba(0,71,187,0.2)] transition-all">
+                                  <span className="font-black text-[#0047BB] text-[15px] md:text-[17px] tracking-tight">{item.ko}</span>
+                                </div>
+                                <span className="text-[10px] text-zinc-400 font-semibold tracking-wider uppercase">{item.en}</span>
+                              </div>
+                              {i < 2 && (
+                                <div className="flex flex-col items-center pb-4">
+                                  <span className="text-[#0047BB]/30 text-[22px] font-thin leading-none">→</span>
+                                </div>
+                              )}
+                            </React.Fragment>
+                          ))}
+                          <div className="flex items-center gap-2 ml-1 md:ml-2 pb-4">
+                            <span className="text-zinc-300 text-[18px]">=</span>
+                            <span className="text-[14px] md:text-[15px] font-bold text-zinc-500">게임 기획의 본질</span>
+                          </div>
+                        </div>
+                      </div>
+                    </>
+                  )}
+
                 </div>
               </article>
+
             </React.Fragment>
           ))}
 
