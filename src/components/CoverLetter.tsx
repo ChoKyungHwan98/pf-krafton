@@ -63,8 +63,8 @@ export const CoverLetter = ({ setView, isEditing, data, setData }: CoverLetterPr
                     transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
                     className="mb-8 md:mb-10"
                   >
-                    <h3 className="text-[32px] md:text-[42px] lg:text-[48px] font-display font-black text-[#1A1A1A] leading-[1.25] tracking-tighter break-keep">
-                      <EditableText value={intro.logline} onSave={(v) => { const n = [...(data.selfIntroductions || [])]; n[idx].logline = v; setData({...data, selfIntroductions: n}); }} isEditing={isEditing} multiline />
+                    <h3 className="text-[32px] md:text-[42px] lg:text-[48px] font-display font-black text-[#1A1A1A] leading-[1.3] tracking-tighter break-keep [&_p]:m-0 [&_p]:leading-[1.3] [&_strong]:text-[#0047BB] [&_strong]:font-black text-opacity-90">
+                      <EditableText value={intro.logline} onSave={(v) => { const n = [...(data.selfIntroductions || [])]; n[idx].logline = v; setData({...data, selfIntroductions: n}); }} isEditing={isEditing} markdown={true} />
                     </h3>
                   </motion.div>
 
