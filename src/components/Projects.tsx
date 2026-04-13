@@ -1,0 +1,156 @@
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
+import { ArrowRight } from 'lucide-react';
+import { EditableText } from './EditableText';
+import { ProjectCard } from './ProjectCard';
+import type { Project } from '../types';
+
+interface ProjectsProps {
+  onProjectClick: (p: Project) => void;
+  isEditing: boolean;
+  projects: Project[];
+  setProjects: (p: Project[]) => void;
+  limit?: number;
+  setView?: (v: any) => void;
+}
+
+export const Projects = ({ onProjectClick, isEditing, projects, setProjects, limit, setView }: ProjectsProps) => {
+  const [featuredId, setFeaturedId] = useState<number | null>(null);
+  const actualFeaturedId = featuredId || (projects[0] ? projects[0].id : null);
+  const displayedProjects = limit ? projects.slice(0, limit) : projects;
+  
+  const topProjects = limit ? [...displayedProjects].sort((a, b) => {
+    if (a.id === actualFeaturedId) return -1;
+    if (b.id === actualFeaturedId) return 1;
+    return 0;
+  }) : displayedProjects;
+
+  return (
+    <section id="projects" className="py-[120px] lg:py-[160px] px-6 md:px-12 relative min-h-screen flex flex-col justify-center bg-[#FFFFFF] overflow-hidden border-t border-black/5">
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[60%] h-px bg-gradient-to-r from-transparent via-black/10 to-transparent" />
+      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.03)_1px,transparent_1px)] bg-[size:32px_32px]"></div>
+      
+      <div className="max-w-7xl mx-auto w-full relative z-10">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-6 border-b border-black/5 pb-6">
+          <div>
+            <motion.span initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}
+              className="text-[#0047BB] font-sans text-[11px] font-bold tracking-widest uppercase mb-3 block">02. 프로젝트</motion.span>
+            <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+              className="flex flex-col gap-1 items-start mt-2">
+              <span className="text-xl md:text-2xl text-zinc-400 font-display font-medium tracking-tight">실전으로 증명한</span>
+              <span className="text-5xl md:text-6xl lg:text-[5rem] font-display font-black tracking-tighter text-[#2C2C2C] leading-none">결과물</span>
+            </motion.h2>
+          </div>
+          <div className="flex flex-col items-start md:items-end gap-3">
+            <motion.p initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }}
+              className="text-zinc-500 text-xs md:text-sm font-medium md:text-right max-w-sm">
+              시스템 기획 및 레벨 디자인, 프로토타입 개발 결과물입니다.
+            </motion.p>
+            {limit && setView && (
+              <button onClick={() => setView('portfolio')}
+                className="group flex items-center gap-2 text-[#0047BB] font-bold text-[10px] uppercase tracking-[0.2em] hover:text-[#1A1A1A] transition-colors bg-[#0047BB]/5 hover:bg-[#0047BB]/10 px-4 py-2.5 rounded-full mt-2">
+                전체 찾아보기 <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+              </button>
+            )}
+          </div>
+        </div>
+
+        {limit ? (
+          <div className="flex flex-col lg:grid lg:grid-cols-3 lg:grid-rows-2 gap-4 h-[auto] lg:h-[500px]">
+            <AnimatePresence mode="popLayout">
+              {topProjects.map((project, index) => {
+                const isMaster = index === 0;
+
+                return (
+                  <motion.div
+                    key={project.id}
+                    layoutId={`project-card-${project.id}`}
+                    layout
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.9 }}
+                    transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+                    onClick={() => !isMaster && setFeaturedId(project.id)}
+                    className={`relative w-full rounded-3xl overflow-hidden shadow-md group border border-black/5 ${
+                      isMaster
+                        ? 'lg:col-span-2 lg:row-span-2 h-[400px] lg:h-full cursor-default z-50 bg-[#1A1A1A]'
+                        : 'lg:col-span-1 lg:row-span-1 h-[150px] lg:h-full cursor-pointer z-10 bg-[#FAFAFA] hover:shadow-xl'
+                    }`}
+                  >
+                    <motion.img 
+                      layout="position" 
+                      src={project.image} 
+                      alt={project.title} 
+                      className={`absolute inset-0 w-full h-full object-cover transition-all duration-700 ${
+                        isMaster ? 'opacity-100 group-hover:scale-[1.02]' : 'opacity-60 group-hover:opacity-100 group-hover:scale-110'
+                      }`} 
+                      referrerPolicy="no-referrer" 
+                    />
+                    <motion.div 
+                      layout="position" 
+                      className={`absolute inset-0 bg-gradient-to-t pointer-events-none transition-colors duration-500 ${
+                        isMaster ? 'from-black/70 via-black/10 to-transparent' : 'from-black/80 via-black/20 to-transparent'
+                      }`} 
+                    />
+                    
+                    <motion.div layout="position" className="absolute top-6 left-6 lg:top-8 lg:left-8 flex gap-2 pointer-events-none z-10">
+                      <span className={`px-2.5 py-1 rounded-md text-[10px] font-bold uppercase tracking-widest shadow-sm leading-none transition-colors duration-500 ${isMaster ? 'bg-white/90 text-[#2C2C2C]' : 'bg-white/20 backdrop-blur-md text-white'}`}>{project.category}</span>
+                      {project.status && <span className={`px-2.5 py-1 rounded-md text-[10px] font-bold tracking-tight shadow-sm leading-none transition-colors duration-500 ${isMaster ? 'bg-[#0047BB] text-white' : 'border border-white/20 text-white'}`}>{project.status}</span>}
+                    </motion.div>
+
+                    <motion.div layout="position" className="absolute bottom-6 left-6 lg:bottom-8 lg:left-8 right-6 lg:right-8 flex items-end justify-between gap-6 pointer-events-none z-10 min-w-0">
+                      <div className={`flex flex-col items-start gap-2 flex-1 w-full relative z-10 min-w-0 ${!isMaster && 'transition-transform duration-500 group-hover:-translate-y-1 max-w-[75%]'}`}>
+                        <motion.h3 
+                          layout="position" 
+                          className={`font-display font-bold text-white tracking-tight drop-shadow-md leading-tight line-clamp-1 truncate w-full ${
+                             isMaster ? 'text-3xl md:text-5xl' : 'text-base md:text-xl leading-snug'
+                          }`}
+                        >
+                          <EditableText value={project.title} onSave={(v) => { const p = [...projects]; const i = p.findIndex(pp => pp.id === project.id); p[i].title = v; setProjects(p); }} isEditing={isEditing} />
+                        </motion.h3>
+                        
+                        {isMaster ? (
+                          <motion.div
+                            initial={{ opacity: 0, y: 10, height: 0 }}
+                            animate={{ opacity: 1, y: 0, height: 'auto' }}
+                            transition={{ duration: 0.4, delay: 0.2 }}
+                            className="overflow-hidden w-full"
+                          >
+                            <p className="text-white/80 text-sm md:text-base font-medium leading-relaxed drop-shadow-md line-clamp-2 w-full mt-2">
+                              <EditableText value={project.description || ""} onSave={(v) => { const p = [...projects]; const i = p.findIndex(pp => pp.id === project.id); p[i].description = v; setProjects(p); }} isEditing={isEditing} />
+                            </p>
+                          </motion.div>
+                        ) : (
+                          <p className="text-white/70 text-xs md:text-sm font-medium leading-relaxed drop-shadow-md line-clamp-2 w-full truncate">{project.description}</p>
+                        )}
+                      </div>
+                      
+                      {isMaster ? (
+                        <motion.button 
+                          initial={{ opacity: 0, scale: 0.5 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.2 }}
+                          onClick={(e) => { e.stopPropagation(); onProjectClick(project); }} 
+                          className="pointer-events-auto shrink-0 w-12 h-12 md:w-14 md:h-14 bg-white hover:bg-[#0047BB] text-[#2C2C2C] hover:text-white rounded-full flex items-center justify-center transition-all duration-300 shadow-xl group border border-white/20 hover:-translate-y-1">
+                          <ArrowRight className="w-5 h-5 group-hover:translate-x-0.5 transition-transform" />
+                        </motion.button>
+                      ) : (
+                        <div className="shrink-0 w-10 h-10 md:w-12 md:h-12 rounded-full border border-white/20 bg-white/10 backdrop-blur-md flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-all duration-300 shadow-lg group-hover:-translate-y-1">
+                          <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+                        </div>
+                      )}
+                    </motion.div>
+                  </motion.div>
+                );
+              })}
+            </AnimatePresence>
+          </div>
+        ) : (
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {projects.map((project, idx) => (
+              <ProjectCard key={project.id} project={project} idx={idx} isEditing={isEditing} projects={projects} setProjects={setProjects} onProjectClick={onProjectClick} layout="default" />
+            ))}
+          </div>
+        )}
+      </div>
+    </section>
+  );
+};
