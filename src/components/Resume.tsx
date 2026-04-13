@@ -144,10 +144,10 @@ export const Resume = ({ setView, isEditing, data, setData }: ResumeProps) => {
             </div>
             <div className="flex-1 min-w-0">
               <div className="hidden md:flex items-center gap-2 mb-1.5">
-                <span className="text-[10px] font-bold tracking-widest uppercase text-[#0047BB]">COVER LETTER</span>
+                <span className="text-[10px] font-bold tracking-widest text-[#0047BB]">자기소개서</span>
               </div>
               <h3 className="text-lg md:text-[22px] font-bold text-[#2C2C2C] tracking-tight leading-snug group-hover:text-[#0047BB] transition-colors line-clamp-2">
-                "{data.selfIntroductions?.[0]?.logline || '자기소개서를 확인해주세요.'}"
+                "{(data.selfIntroductions?.[0]?.logline || '자기소개서를 확인해주세요.').replace(/\*\*/g, '').replace(/  \n/g, ' ')}"
               </h3>
             </div>
           </div>
