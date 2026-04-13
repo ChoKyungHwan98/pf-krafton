@@ -31,37 +31,11 @@ export const CoverLetter = ({ setView, isEditing, data, setData }: CoverLetterPr
       </div>
 
       {data.selfIntroductions ? (
-        <div className="max-w-5xl mx-auto w-full">
-        <div className="relative">
-          {/* INDEX 사이드바 - absolute 포지션으로 메인 콘텐츠 레이아웃에서 분리 */}
-          <motion.aside 
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            className="hidden xl:block absolute top-0 right-0 w-44 sticky-inside"
-            style={{ position: 'absolute', top: 0, right: 0 }}
-          >
-            <div className="sticky top-40 flex flex-col gap-6 border-l-[2px] border-[#0047BB]/10 pl-6 py-2">
-              <div className="text-xs font-black tracking-[0.2em] text-[#0047BB]/60 mb-2">INDEX</div>
-              {data.selfIntroductions.map((intro, idx) => (
-                <a 
-                  key={idx} 
-                  href={`#intro-${idx}`} 
-                  onClick={(e) => {
-                    e.preventDefault();
-                    document.getElementById(`intro-${idx}`)?.scrollIntoView({ behavior: 'smooth' });
-                  }}
-                  className="text-[14px] font-medium text-zinc-400 hover:text-[#0047BB] transition-colors relative group block"
-                >
-                  <span className="opacity-0 group-hover:opacity-100 absolute -left-[29px] top-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-[#0047BB] transition-opacity"/>
-                  {String(idx + 1).padStart(2, '0')}. {intro.navTitle || '섹션 ' + (idx + 1)}
-                </a>
-              ))}
-            </div>
-          </motion.aside>
+        <div className="max-w-[1100px] mx-auto w-full">
+        <div className="flex items-start gap-10 xl:gap-14">
 
-          {/* 메인 타임라인 - 중앙 정렬 */}
-          <div className="relative border-l-[3px] border-[#0047BB]/15 w-full max-w-[900px] mx-auto">
+          {/* 메인 타임라인 */}
+          <div className="relative border-l-[3px] border-[#0047BB]/15 flex-1 min-w-0">
           {data.selfIntroductions.map((intro, idx) => (
             <React.Fragment key={idx}>
               <article className="relative w-full pl-8 md:pl-16 pb-[80px] md:pb-[120px] scroll-mt-24 md:scroll-mt-[140px]" id={`intro-${idx}`}>
@@ -169,6 +143,33 @@ export const CoverLetter = ({ setView, isEditing, data, setData }: CoverLetterPr
             </button>
           )}
           </div>
+
+          {/* INDEX 사이드바 */}
+          <motion.aside 
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            className="hidden xl:block sticky top-40 w-44 shrink-0"
+          >
+            <div className="flex flex-col gap-6 border-l-[2px] border-[#0047BB]/10 pl-6 py-2">
+              <div className="text-xs font-black tracking-[0.2em] text-[#0047BB]/60 mb-2">INDEX</div>
+              {data.selfIntroductions.map((intro, idx) => (
+                <a 
+                  key={idx} 
+                  href={`#intro-${idx}`} 
+                  onClick={(e) => {
+                    e.preventDefault();
+                    document.getElementById(`intro-${idx}`)?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className="text-[14px] font-medium text-zinc-400 hover:text-[#0047BB] transition-colors relative group block"
+                >
+                  <span className="opacity-0 group-hover:opacity-100 absolute -left-[29px] top-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-[#0047BB] transition-opacity"/>
+                  {String(idx + 1).padStart(2, '0')}. {intro.navTitle || '섹션 ' + (idx + 1)}
+                </a>
+              ))}
+            </div>
+          </motion.aside>
+
         </div>
         </div>
       ) : (
