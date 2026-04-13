@@ -146,16 +146,16 @@ const RESUME_DATA: ResumeData = {
   summary: "기획 의도를 알고, 그것을 관통하는 목차를 작성할 줄 아는 게임 기획자 지망생입니다. 법학에서 단련한 논리적 구조 설계 능력을 게임 기획에 그대로 적용합니다.",
   selfIntroductions: [
     {
-      logline: “14년간 달려온 꿈을 포기하게 만든 계기는 메이플스토리입니다.”,
-      content: “사람을 돕고 싶어 법학과에 진학했습니다. **12시간 이상 공부하며** 한계에 부딪힐 때마다 그 이유를 되뇌며 버텼습니다.\n\n달리면 달릴수록 외면할 수 없는 사실과 마주했습니다. **하고 싶은 것, 좋아하는 것, 잘하는 것은 다르다는 것을.**\n\n대학교 마지막 학기였습니다. 졸업을 앞두고도 방향을 찾지 못한 채, 반년을 **\”나는 어떻게 살아가야 하는가?\”**라는 질문 하나에 매달렸습니다. 제 인생에서 가장 깊게 몰입했던 순간이었습니다.\n\n그러던 중 홀린 듯이 찾아간 **메이플 콘 오프라인 행사**에서 답을 찾았습니다.\n\n> 쇼케이스가 시작되자 동시에 터지는 환호. 가족들이 함께 웃는 표정.\n> **나도 게임을 할 때 저렇게 기뻤었다는 것을.**\n\n학업에 치여 제대로 하지 못했지만, **게임 앞에서만큼은 언제나 진심이었습니다.**\n\n그 자리에서 확신했습니다. 법학이 **’-에서 0으로 되돌리는 일’**이라면, 게임은 **’0에서 +가 되는 경험’**을 만드는 일이라는 것을. 저도 누군가의 하루를 움직이는 사람이 되고 싶었습니다.\n\n모든 제도는 입법 **’의도’**를 바탕으로 **’구조화’**되고, 사회라는 하나의 **’시스템’**으로 작동합니다. 저는 이 원리가 게임 기획과 같다고 생각합니다.\n\n저는 그 **+를 설계하는 기획자**가 되겠습니다.”
+      logline: "14년간 달려온 꿈을 포기하게 만든 계기는 메이플스토리입니다.",
+      content: "사람을 돕고 싶어 법학과에 진학했습니다. 12시간 이상 공부하며 한계에 부딪힐 때마다 그 이유를 되뇌며 버텼습니다.\n\n그러나 달리면 달릴수록 외면할 수 없는 사실과 마주했습니다. **하고 싶은 것, 좋아하는 것, 잘하는 것은 다르다는 것을.**\n\n법학으로 사람을 돕고 싶었지만, 그것이 제가 좋아하는 일이 아니라는 사실을 마주한 순간 더 이상 법학을 공부할 수 없게 되었습니다.\n\n대학교 마지막 학기였습니다. 졸업을 앞두고도 방향을 찾지 못한 채, 반년을 **“나는 어떻게 살아가야 하는가?”**라는 질문 하나에 매달렸습니다. 제 인생에서 가장 깊게 몰입했던 순간이었습니다.\n\n그러던 중 홀린 듯이 찾아간 **메이플 콘 오프라인 행사**에서 답을 찾았습니다. 쇼케이스가 시작되자 동시에 터지는 환호, 가족들이 함께 웃는 표정.\n\n그 장면을 보며 문득 떠올랐습니다. 나도 게임을 할 때 저렇게 기뻤었다는 것을. 학업에 치여 제대로 하지 못했지만, **게임 앞에서만큼은 언제나 진심이었다는 것을. ‘나는 게임을 진짜 좋아했구나.’**\n\n그 자리에서 확신했습니다. 법학이 ‘-에서 0으로 되돌리는 일’이라면, 게임은 누군가의 하루를 움직이는 **‘0에서 +가 되는 경험’**을 만든다는 것. 저도 누군가의 하루를 움직이는 사람이 되고 싶었습니다.\n\n법학을 공부하며 배운 것이 있습니다. 모든 제도는 입법 **‘의도’**를 바탕으로 **‘구조화’**되고, 사회라는 하나의 **‘시스템’**으로 작동한다는 것입니다. 저는 이 원리가 게임 기획과 같다고 생각합니다.\n\n저는 그 **+를 설계하는 기획자**가 되겠습니다."
     },
     {
-      logline: “저는 기획 의도를 알고, 그것을 관통하는 목차를 작성할 줄 아는 사람입니다.”,
-      content: “저는 원래 논리적인 사람이 아니었습니다. **문학을 좋아하는 감성적인 학생**이었고, 그것이 법학과에서 가장 큰 벽이 되었습니다.\n\n대학교 2학년 형법 시험에서 **C학점**을 받았습니다. 교수님께 피드백을 받으러 찾아갔고, 교수님은 말없이 1등 학생의 답안을 보여주셨습니다.\n\n> **목차**가 눈에 들어왔습니다. 대전제에서 소전제로, 논리의 위계가 한눈에 보였습니다.\n> 내용은 그 구조에 따라 자연스럽게 읽혔습니다.\n\n부끄러웠습니다. 제 답안에는 목차가 없었습니다. **그날부터 목차를 작성하는 훈련을 시작했습니다.**\n\n21살부터 7년간 반복했습니다. 법학 답안은 **문제상황 → 학설 → 판례 → 검토** 순으로 전개됩니다.\n\n저는 매 시험마다 **핵심 주장을 한 문장으로 정한 뒤**, 모든 항목이 그것을 관통하는지 반복해서 검증했습니다. 주장이 흔들리면 목차 전체가 무너졌고, 목차가 흔들리면 답안 전체가 설득력을 잃었습니다.\n\n그 훈련의 결과가 졸업 논문이었습니다. 동기들이 자료를 먼저 뒤지고 본문부터 채워나갈 때, 저는 **목차를 먼저 완성**했습니다. 동기들보다 빠르게 논문을 마쳤고, **결과는 95점**이었습니다.\n\n**설득력 있는 주장은 논리가 아니라, 그 논리를 담는 구조에서 나옵니다.** 기획 의도를 알고 목차를 작성하는 능력은, 7년간의 실패가 만들어준 저의 역량입니다.”
+      logline: "저는 기획 의도를 알고, 그것을 관통하는 목차를 작성할 줄 아는 사람입니다.",
+      content: "저는 원래 논리적인 사람이 아니었습니다. 문학을 좋아하는 감성적인 학생이었고, 그것이 법학과에서 가장 큰 벽이 되었습니다.\n\n대학교 2학년 형법 시험에서 C학점을 받았습니다. 교수님께 피드백을 받으러 찾아갔고, 교수님은 말없이 1등 학생의 답안을 보여주셨습니다.\n\n그 답안에서 **목차**가 눈에 들어왔습니다. 대전제에서 소전제로, 논리의 위계가 한눈에 보였고, 내용이 그 구조에 따라 자연스럽게 읽혔습니다.\n\n부끄러웠습니다. 제 답안에는 목차가 없었습니다. 그날부터 **목차를 작성하는 훈련**을 시작했습니다.\n\n21살부터 7년간 반복했습니다. 법학 답안은 **문제상황 → 학설 →판례 → 검토** 순으로 전개됩니다.\n\n저는 매 시험마다 **핵심 주장을 한 문장으로 정한 뒤**, 모든 항목이 그것을 관통하는지 반복해서 검증했습니다. 주장이 흔들리면 목차 전체가 무너졌고, 목차가 흔들리면 답안 전체가 설득력을 잃었습니다. 그 실패를 반복하며 구조를 다듬었습니다.\n\n그 훈련의 결과가 졸업 논문이었습니다. 동기들이 자료를 먼저 뒤지고 본문부터 채워나갈 때, 저는 **목차를 먼저 완성**했습니다.\n\n탄탄한 목차가 완성된 뒤 본문 작성은 그 내용을 채우는 일에 불과했고, 동기들보다 빠르게 논문을 마쳤습니다. 결과는 **95점**이었습니다.\n\n**설득력 있는 주장은 논리가 아니라, 그 논리를 담는 구조에서 나옵니다.** 기획 의도를 알고 목차를 작성하는 능력은, 7년간의 실패가 만들어준 저의 역량입니다."
     },
     {
-      logline: “기획 의도를 알고 목차를 작성하는 능력은 AI 프롬프트 설계에서도 빛납니다.”,
-      content: “팀 프로젝트를 진행하며 **회의록 작성이 매번 작업 시간을 빼앗는 문제**가 발생했습니다.\n\n저는 AI봇 설계 도구인 Eve를 활용해 **LLM 기반 회의록 자동화 봇**을 직접 설계했습니다. 회의록에 필요한 양식을 지식팩으로 구성한 뒤, **Role → Goals → Behaviors → Output** 순으로 프롬프트 구조를 설계했습니다.\n\n정해진 양식을 채우는 것에 그치지 않고, 회의 내용을 설명하면 그 **의도를 파악해 맥락에 맞는 문서를 스스로 구성**하도록 했습니다.\n\n두 개의 팀 프로젝트에 걸쳐 **총 20건 이상의 회의록**을 생성했습니다.\n\n> 회의록 작성 시간: **1시간 → 3분.** 확보된 시간을 다른 작업에 온전히 활용했습니다.\n\n**프롬프트 엔지니어링이 목차 작성과 본질적으로 같은 원리**라는 것을 이 과정에서 깨달았습니다. 기획 의도를 아는 능력이 AI 설계에도 그대로 통한다는 것을, 현장에서 직접 검증했습니다.”
+      logline: "기획 의도를 알고 목차를 작성하는 능력은 AI 프롬프트 설계에서도 빛납니다.",
+      content: "팀 프로젝트를 진행하며 회의록 작성이 매번 작업 시간을 빼앗는 문제가 발생했습니다.\n\n저는 AI봇 설계 도구인 Eve를 활용해 **LLM 기반 회의록 자동화 봇**을 직접 설계했습니다. 회의록에 필요한 양식을 지식팩으로 구성한 뒤, **Role → Goals → Behaviors → Output** 순으로 프롬프트 구조를 설계했습니다.\n\n정해진 양식을 채우는 것에 그치지 않고, 회의 내용을 설명하면 그 의도를 파악해 맥락에 맞는 문서를 스스로 구성하도록 했습니다.\n\n두 개의 팀 프로젝트에 걸쳐 총 20건 이상의 회의록을 생성했습니다. 회의록 작성에 소요되던 시간을 **1시간에서 3분으로 줄여**, 확보된 시간을 다른 작업에 활용할 수 있었습니다.\n\n이 과정에서 **프롬프트 엔지니어링이 목차 작성과 본질적으로 같은 원리**임을 알게 되었습니다. 이 능력이 AI 설계에도 그대로 통한다는 것을 현장에서 검증했습니다."
     }
   ],
   education: [
@@ -679,7 +679,7 @@ const Hero = ({ onPortfolioClick, onResumeClick, isEditing, content, setContent,
         transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
         className="hidden lg:flex lg:w-1/2 justify-end relative"
       >
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[500px] h-full bg-gradient-to-tr from-[#0047BB]/15 to-transparent blur-[80px] rounded-full mix-blend-multiply opacity-50"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[500px] h-full bg-gradient-to-tr from-[#0047BB]/10 to-transparent blur-[80px] rounded-full mix-blend-multiply opacity-50"></div>
         
         {/* Playable Video Frame Interface */}
         <div className="relative w-full max-w-[520px] aspect-video sm:aspect-[4/3] lg:aspect-[16/10] mt-4 z-10 rounded-[1.5rem] overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.06)] border border-black/5 bg-zinc-900 flex flex-col group hover:shadow-[0_20px_60px_rgba(128,0,32,0.15)] transition-shadow duration-500">
@@ -1681,32 +1681,28 @@ const Resume = ({ setView, isEditing, data, setData }: ResumeProps) => {
 const CoverLetter = ({ setView, isEditing, data, setData }: ResumeProps) => {
   return (
     <motion.section initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }}
-      className="pt-32 pb-20 md:pt-[160px] px-6 md:px-12 max-w-4xl mx-auto w-full">
+      className="pt-32 pb-20 md:pt-[160px] px-6 md:px-12 max-w-3xl mx-auto w-full">
       
       {/* Top Bar */}
-      <div className="flex items-center justify-between mb-12 md:mb-20">
+      <div className="flex items-center justify-between mb-16">
         <button onClick={() => setView('resume')} className="flex items-center gap-2 text-zinc-500 hover:text-[#0047BB] transition-colors group font-sans tracking-tight text-sm font-bold">
           <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" /> 이력서로 돌아가기
         </button>
       </div>
 
       {/* Title */}
-      <div className="text-center mb-16 md:mb-24">
-        <span className="text-[#0047BB] font-mono text-xs uppercase tracking-[0.4em] font-bold mb-5 block">Cover Letter</span>
-        <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-black text-[#1A1A1A] tracking-[-0.03em] mb-6 leading-tight">자기소개서</h2>
-        <div className="flex items-center justify-center gap-3">
-          <div className="w-12 h-[2px] bg-[#0047BB]"></div>
-          <div className="w-2 h-2 rounded-full bg-[#0047BB]/30"></div>
-          <div className="w-12 h-[2px] bg-[#0047BB]"></div>
-        </div>
+      <div className="text-center mb-16">
+        <span className="text-[#0047BB] font-mono text-xs uppercase tracking-[0.3em] font-bold mb-4 block">Cover Letter</span>
+        <h2 className="text-4xl md:text-5xl font-display font-bold text-[#2C2C2C]  tracking-[-0.02em] mb-6">자기소개서</h2>
+        <div className="w-16 h-px bg-[#0047BB]/30 mx-auto"></div>
       </div>
 
       {/* Self Introduction Entries */}
       {data.selfIntroductions ? (
-        <div className="flex flex-col gap-20 md:gap-28 items-center">
+        <div className="flex flex-col gap-16 md:gap-24 items-center">
           {data.selfIntroductions.map((intro, idx) => (
             <React.Fragment key={idx}>
-              <article className="relative w-full max-w-[860px] mx-auto">
+              <article className="relative w-full max-w-[760px] mx-auto">
                 {isEditing && (
                   <button onClick={() => { if (confirm("삭제하시겠습니까?")) { const n = [...(data.selfIntroductions || [])]; n.splice(idx, 1); setData({...data, selfIntroductions: n}); }}}
                     className="absolute -top-4 -right-4 md:right-0 z-20 p-2 bg-red-500 text-white rounded-full hover:bg-red-600 transition-colors shadow-lg" title="삭제">
@@ -1715,37 +1711,33 @@ const CoverLetter = ({ setView, isEditing, data, setData }: ResumeProps) => {
                 )}
 
                 {/* Number Badge & Separator - Minimalist */}
-                <div className="flex items-center gap-5 mb-10 md:mb-12">
-                  <div className="text-[56px] md:text-[72px] font-display font-black text-[#0047BB]/[0.08] leading-none select-none inline-flex">
+                <div className="flex items-center gap-4 mb-8 md:mb-10 opacity-60">
+                  <div className="w-8 h-8 md:w-10 md:h-10 rounded-full border border-[#0047BB]/15 flex items-center justify-center text-[#0047BB]/60 font-mono font-bold text-xs md:text-sm bg-[#0047BB]/[0.04]">
                     {String(idx + 1).padStart(2, '0')}
                   </div>
-                  <div className="flex-1 h-px bg-gradient-to-r from-[#0047BB]/15 to-transparent"></div>
+                  <div className="flex-1 h-px bg-gradient-to-r from-[#0047BB]/10 to-transparent"></div>
                 </div>
 
                 {/* Logline - Captivating Editorial Headline with Nexon Blue vertical bar */}
-                <div className="border-l-[5px] border-[#0047BB] pl-6 md:pl-8 mb-12 md:mb-14 py-2">
-                  <h3 className="text-[28px] md:text-[38px] lg:text-[44px] font-display font-black text-[#1A1A1A] leading-[1.2] tracking-[-0.03em] break-keep">
+                <div className="border-l-4 border-[#0047BB] pl-5 md:pl-7 mb-10 md:mb-12">
+                  <h3 className="text-[26px] md:text-4xl lg:text-[42px] font-display font-black text-[#1A1A1A] leading-[1.25] tracking-tighter break-keep">
                     <EditableText value={intro.logline} onSave={(v) => { const n = [...(data.selfIntroductions || [])]; n[idx].logline = v; setData({...data, selfIntroductions: n}); }} isEditing={isEditing} multiline />
                   </h3>
                 </div>
 
                 {/* Body Text - Nexon Blue Highlight System */}
-                <div className="text-[#2C2C2C] leading-[2.0] md:leading-[2.1] text-[17px] md:text-[19px] font-medium tracking-[-0.005em]
-                    [&>p]:mb-7 md:[&>p]:mb-8 [&>p]:break-keep
-                    [&>p:first-of-type]:text-[19px] md:[&>p:first-of-type]:text-[21px] [&>p:first-of-type]:font-semibold [&>p:first-of-type]:mb-10 md:[&>p:first-of-type]:mb-12 [&>p:first-of-type]:text-[#1A1A1A] [&>p:first-of-type]:border-b [&>p:first-of-type]:border-[#0047BB]/10 [&>p:first-of-type]:pb-8
-                    [&>p_strong]:text-[#0047BB] [&>p_strong]:font-extrabold [&>p_strong]:bg-[#0047BB]/[0.07] [&>p_strong]:px-1.5 [&>p_strong]:py-0.5 [&>p_strong]:rounded-sm [&>p_strong]:not-italic
-                    [&>p:last-child]:mb-0 [&>p:last-child]:text-[#1A1A1A] [&>p:last-child]:font-bold [&>p:last-child]:text-[19px] md:[&>p:last-child]:text-[21px] [&>p:last-child]:border-t [&>p:last-child]:border-[#0047BB]/10 [&>p:last-child]:pt-8 [&>p:last-child]:mt-2
-                    [&>blockquote]:not-italic [&>blockquote]:border-l-[4px] [&>blockquote]:border-[#0047BB] [&>blockquote]:bg-[#EEF4FF] [&>blockquote]:py-5 [&>blockquote]:px-7 [&>blockquote]:text-[#1A1A1A] [&>blockquote]:font-semibold [&>blockquote]:my-10 [&>blockquote]:rounded-r-xl [&>blockquote]:text-[17px] md:[&>blockquote]:text-[18px] [&>blockquote]:shadow-[inset_0_0_0_1px_rgba(0,71,187,0.08)]
-                    [&>blockquote_strong]:text-[#0047BB] [&>blockquote_strong]:font-extrabold [&>blockquote_strong]:not-italic
-                    [&>blockquote_p]:mb-0
-                    [&>hr]:border-0 [&>hr]:h-px [&>hr]:bg-gradient-to-r [&>hr]:from-transparent [&>hr]:via-[#0047BB]/20 [&>hr]:to-transparent [&>hr]:my-10">
+                <div className="text-[#333F48] leading-[1.85] md:leading-[1.9] text-[15px] md:text-[17px] font-medium tracking-[-0.01em]
+                    [&>p]:mb-7 [&>p]:break-keep 
+                    [&>p:first-of-type]:text-[17px] md:[&>p:first-of-type]:text-[19px] [&>p:first-of-type]:font-semibold [&>p:first-of-type]:mb-9 md:[&>p:first-of-type]:mb-10 [&>p:first-of-type]:text-[#333F48] [&>p:first-of-type]:border-b [&>p:first-of-type]:border-[#0047BB]/10 [&>p:first-of-type]:pb-6
+                    [&>p_strong]:text-[#0047BB] [&>p_strong]:font-extrabold [&>p_strong]:bg-[#0047BB]/[0.07] [&>p_strong]:px-1.5 [&>p_strong]:py-0.5 [&>p_strong]:rounded 
+                    [&>blockquote]:border-l-[3px] [&>blockquote]:border-[#0047BB]/25 [&>blockquote]:bg-[#F2F0EB]/60 [&>blockquote]:py-4 [&>blockquote]:px-6 [&>blockquote]:italic [&>blockquote]:text-[#76787A] [&>blockquote]:my-8 [&>blockquote]:rounded-r-lg">
                   <EditableText value={intro.content} onSave={(v) => { const n = [...(data.selfIntroductions || [])]; n[idx].content = v; setData({...data, selfIntroductions: n}); }} isEditing={isEditing} markdown={true} />
                 </div>
               </article>
 
               {/* Elegant Divider between sections */}
               {idx < data.selfIntroductions!.length - 1 && (
-                <div className="w-full max-w-[860px] mx-auto flex justify-center py-2 md:py-4 opacity-30">
+                <div className="w-full max-w-[760px] mx-auto flex justify-center py-2 md:py-4 opacity-30">
                   <span className="tracking-[1em] md:tracking-[2em] text-zinc-400 font-bold text-xs md:text-sm">•••</span>
                 </div>
               )}
