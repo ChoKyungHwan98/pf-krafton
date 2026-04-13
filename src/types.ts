@@ -48,9 +48,6 @@ export interface ResumeData {
     content: string;
     navTitle?: string;
     badge?: string;
-    tags?: string[];
-    stepSummary?: string;
-    metric?: { before: string; after: string; label: string; };
   }[];
   education: {
     title: string;
