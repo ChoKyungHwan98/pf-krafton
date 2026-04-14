@@ -102,6 +102,12 @@ export const RESUME_DATA: ResumeData = {
   awards: [
     { title: "글로벌 인디 게임 제작 경진대회 기획 부문 우수상", organization: "한국콘텐츠진흥원", year: "2023" },
     { title: "게임 기획 부트캠프 최우수 프로젝트 선정", organization: "OO 교육기관", year: "2024" }
+  ],
+  tools: [
+    { name: "Unreal Engine 5", description: "블루프린트를 활용한 프로토타이핑 및 게임 코어 메카닉 검증" },
+    { name: "Unity", description: "UGUI를 활용한 UI 시스템 구성 및 C# 스크립팅" },
+    { name: "Figma", description: "화면 설계서 및 와이어프레임, 인터랙티브 프로토타입 제작" },
+    { name: "Excel / VBA", description: "복잡한 수치 밸런싱 도구 및 데이터 시뮬레이터 제작" }
   ]
 };
 

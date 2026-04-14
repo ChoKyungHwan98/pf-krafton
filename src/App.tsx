@@ -69,6 +69,11 @@ function App() {
   const handleNavClick = (id: string) => {
     setView('home');
     setTimeout(() => {
+      if (id === 'hero-top') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        setActiveSection('');
+        return;
+      }
       const element = document.getElementById(id);
       if (element) {
         element.scrollIntoView({ behavior: 'smooth' });

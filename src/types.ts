@@ -75,4 +75,8 @@ export interface ResumeData {
     organization: string;
     year: string;
   }[];
+  tools?: {
+    name: string;
+    description: string;
+  }[];
 }

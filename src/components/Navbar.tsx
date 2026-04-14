@@ -63,7 +63,7 @@ export const Navbar = ({ setView, currentView, onNavClick, isEditing, setIsEditi
       <div className={`fixed top-0 left-0 right-0 z-50 flex justify-center px-4 sm:px-6 transition-all duration-500 pointer-events-none print:hidden ${navContainerClass}`}>
         <nav className={`pointer-events-auto w-[98%] max-w-[1440px] rounded-full transition-all duration-500 flex items-center justify-between px-6 lg:px-10 py-3 lg:py-3.5 ${navBgClass}`}>
           
-          <div className="flex shrink-0 items-center gap-3 md:gap-4 cursor-pointer group" onClick={() => { setView('home'); window.scrollTo({ top: 0, behavior: 'smooth' }); setIsMenuOpen(false); }}>
+          <div className="flex shrink-0 items-center gap-3 md:gap-4 cursor-pointer group" onClick={(e) => handleLinkClick(e, 'hero-top')}>
             <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-br from-[#0047BB] to-[#500014] text-white flex items-center justify-center font-display font-black tracking-tighter text-base md:text-lg shadow-lg shadow-[#0047BB]/30 transition-transform group-hover:scale-105">
               조
             </div>
