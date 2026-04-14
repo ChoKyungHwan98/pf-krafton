@@ -22,7 +22,7 @@ export const PlayHistory = ({ onViewAll }: PlayHistoryProps) => {
     ],
     console: [
       { id: 'con1', title: '포켓몬스터 시리즈', genre: 'RPG', highlight: '레이팅 2000점대', image: './images/games/pokemon_logo.jpg' },
-      { id: 'con2', title: '다크소울 3', genre: '액션 RPG', highlight: '플레이 시간 500시간', image: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/374320/capsule_616x353.jpg' },
+      { id: 'con2', title: '다크소울 3', genre: '액션 RPG', highlight: '플레이 시간 500시간', image: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/374320/capsule_616x353.jpg', position: 'bottom' },
       { id: 'con3', title: '역전재판 시리즈', genre: '법정배틀', highlight: '법학과 진학의 계기', image: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/787480/capsule_616x353.jpg' },
     ],
     mobile: [
