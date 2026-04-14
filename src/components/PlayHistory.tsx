@@ -17,18 +17,18 @@ export const PlayHistory = ({ onViewAll }: PlayHistoryProps) => {
   const DASHBOARD_HIGHLIGHTS = {
     pc: [
       { id: 'pc1', title: '메이플스토리', genre: 'RPG', highlight: '15년 플레이', image: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/216150/capsule_616x353.jpg' },
-      { id: 'pc2', title: 'OSU!', genre: '리듬', highlight: '전세계 1000위 달성', image: '/images/games/osu_manual.png' },
-      { id: 'pc3', title: '메이플스토리 월드', genre: '캐주얼', highlight: '출시 경험 有', image: '/images/games/maple_worlds_manual.png' },
+      { id: 'pc2', title: 'OSU!', genre: '리듬', highlight: '전세계 1000위 달성', image: './images/games/osu_manual.png' },
+      { id: 'pc3', title: '메이플스토리 월드', genre: '캐주얼', highlight: '출시 경험 有', image: './images/games/maple_worlds_manual.png' },
     ],
     console: [
-      { id: 'con1', title: '포켓몬스터 시리즈', genre: 'RPG', highlight: '레이팅 2000점대', image: '/images/games/pokemon_logo.png' },
+      { id: 'con1', title: '포켓몬스터 시리즈', genre: 'RPG', highlight: '레이팅 2000점대', image: './images/games/pokemon_logo.png' },
       { id: 'con2', title: '다크소울 3', genre: '액션 RPG', highlight: '플레이 시간 500시간', image: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/374320/capsule_616x353.jpg' },
       { id: 'con3', title: '역전재판 시리즈', genre: '법정배틀', highlight: '법학과 진학의 계기', image: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/787480/capsule_616x353.jpg' },
     ],
     mobile: [
-      { id: 'mob1', title: '무기미도', genre: '타워디펜스', highlight: '상위 랭커 달성', image: '/images/games/ptn.jpg' },
-      { id: 'mob2', title: '삼국지 천하포무', genre: '역사 전략', highlight: '300시간 이상 플레이', image: '/images/games/three_kingdoms.png' },
-      { id: 'mob3', title: '하스스톤', genre: 'TCG', highlight: '전설 등급 달성 경험', image: '/images/games/hearthstone.jpg' },
+      { id: 'mob1', title: '무기미도', genre: '타워디펜스', highlight: '상위 랭커 달성', image: './images/games/ptn.jpg' },
+      { id: 'mob2', title: '삼국지 천하포무', genre: '역사 전략', highlight: '300시간 이상 플레이', image: './images/games/three_kingdoms.png' },
+      { id: 'mob3', title: '하스스톤', genre: 'TCG', highlight: '전설 등급 달성 경험', image: './images/games/hearthstone.jpg' },
     ]
   };
 
