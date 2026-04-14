@@ -45,15 +45,11 @@ export const GameHistoryView = ({ onBack }: GameHistoryViewProps) => {
           <button onClick={onBack} className="flex items-center gap-2 text-zinc-500 hover:text-[#0047BB] transition-colors mb-6 group font-sans tracking-tight text-sm uppercase font-bold">
             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" /> 대시보드로 돌아가기
           </button>
-          <div className="flex items-center gap-4 mb-6">
-            <span className="text-zinc-400 font-mono text-sm uppercase tracking-widest font-bold">DOC. 04-A</span>
-            <div className="w-12 h-px bg-zinc-300"></div>
-          </div>
           <h2 className="text-4xl lg:text-5xl font-display font-bold tracking-tighter text-[#2C2C2C] leading-tight">
-             All Play Database
+             플레이 이력
           </h2>
-          <p className="mt-4 text-zinc-500 text-lg font-medium max-w-xl">
-            플레이 경험과 데이터 분석을 기반으로 최신 트렌드를 파악하고, 시스템 기획의 영감을 얻는 방대한 레퍼런스 목록입니다.
+          <p className="mt-4 text-zinc-400 text-sm font-medium max-w-xl">
+            아래 리스트는 플레이한 게임의 일부이며, 실제 플레이 이력은 {ALL_GAMES.length}종 이상입니다.
           </p>
         </div>
         

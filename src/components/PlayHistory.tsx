@@ -93,12 +93,12 @@ export const PlayHistory = ({ onViewAll }: PlayHistoryProps) => {
               className="text-[#0047BB] font-sans text-[11px] font-bold tracking-widest uppercase mb-3 block">04. 플레이 이력</motion.span>
             <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
               className="flex flex-col gap-1 items-start mt-2">
-              <span className="text-xl md:text-2xl text-zinc-500 font-display font-medium tracking-tight">다양한 장르와 딥다이브 경험이 만든</span>
+              <span className="text-xl md:text-2xl text-zinc-500 font-display font-medium tracking-tight">다양한 장르를 플레이한</span>
               <span className="text-4xl md:text-5xl lg:text-6xl font-display font-black tracking-tighter text-[#2C2C2C] leading-none mt-1">인사이트</span>
             </motion.h2>
           </div>
           <p className="text-zinc-500 text-sm leading-[1.6] lg:text-right font-medium max-w-sm">
-            단순 플레이를 넘어, 각 게임의 철학과 구조를 분석하며 기획자로서의 통찰력을 넓혀왔습니다.
+            방대한 게임을 플레이한 경험으로 기획자로서의 통찰력을 넓혀왔습니다.
           </p>
         </div>
 
@@ -109,12 +109,6 @@ export const PlayHistory = ({ onViewAll }: PlayHistoryProps) => {
         </div>
 
         <div className="flex flex-col items-center justify-center mt-4">
-          <div className="flex items-center gap-4 text-center mb-6">
-            <div className="h-[1px] w-12 bg-black/10" />
-            <span className="text-sm font-bold text-zinc-400 uppercase tracking-widest">분석을 완료한 플레이 이력 +{allGamesCount}개</span>
-            <div className="h-[1px] w-12 bg-black/10" />
-          </div>
-          
           <button onClick={onViewAll}
             className="group py-5 px-10 bg-[#2C2C2C] text-white rounded-2xl font-bold tracking-widest text-sm hover:bg-[#0047BB] transition-all duration-300 shadow-xl shadow-black/10 flex items-center gap-4 hover:-translate-y-1">
             전체 목록 보기 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
