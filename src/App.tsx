@@ -71,6 +71,8 @@ function App() {
     setTimeout(() => {
       if (id === 'hero-top') {
         window.scrollTo({ top: 0, behavior: 'smooth' });
+        setActiveSection('');
+        return;
       }
       const element = document.getElementById(id);
       if (element) {
@@ -107,7 +109,7 @@ function App() {
         </main>
       )}
 
-      {view === 'resume' && <Resume setView={setView} isEditing={isEditing} data={resumeData} setData={setResumeData} onBack={() => handleNavClick('about')} />}
+      {view === 'resume' && <Resume setView={setView} isEditing={isEditing} data={resumeData} setData={setResumeData} onBack={() => handleNavClick('hero-top')} />}
       {view === 'cover-letter' && <CoverLetter setView={setView} isEditing={isEditing} data={resumeData} setData={setResumeData} />}
       {view === 'project-detail' && selectedProject && (
         <ProjectDetail project={selectedProject} isEditing={isEditing} onBack={() => handleNavClick('projects')} onSaveContent={(c) => { const p = [...projectsData]; const index = p.findIndex(pp => pp.id === selectedProject.id); if (index !== -1) { p[index].content = c; setProjectsData(p); setSelectedProject(p[index]); } }} />
