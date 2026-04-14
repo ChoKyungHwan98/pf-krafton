@@ -113,6 +113,24 @@ export const Resume = ({ setView, isEditing, data, setData }: ResumeProps) => {
                   <Phone className="w-4 h-4 text-zinc-400" />
                   <EditableText value={data.phone} onSave={(v) => setData({...data, phone: v})} isEditing={isEditing} />
                 </div>
+                
+                {data.tools && data.tools.length > 0 && (
+                  <div className="mt-5 flex flex-wrap gap-1.5">
+                    {data.tools.map((tool, idx) => (
+                      <div key={idx} className="group relative">
+                        <span className="inline-flex px-2.5 py-1.5 bg-[#0047BB]/5 border border-[#0047BB]/10 text-[#0047BB] font-bold text-[11px] rounded-md cursor-default hover:bg-[#0047BB] hover:text-white transition-all duration-300">
+                          <EditableText value={tool.name} onSave={(v) => { const t = [...(data.tools||[])]; t[idx].name = v; setData({...data, tools: t}); }} isEditing={isEditing} />
+                        </span>
+                        <div className="absolute left-1/2 -translate-x-1/2 top-full mt-2 w-48 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 pointer-events-none">
+                          <div className="bg-[#2C2C2C] text-white text-[11px] p-2.5 rounded-lg shadow-xl border border-white/10 leading-relaxed font-medium text-center">
+                            <EditableText value={tool.description} onSave={(v) => { const t = [...(data.tools||[])]; t[idx].description = v; setData({...data, tools: t}); }} isEditing={isEditing} />
+                            <div className="absolute -top-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-[#2C2C2C] rotate-45 border-t border-l border-white/10"></div>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
             </div>
 
@@ -193,27 +211,6 @@ export const Resume = ({ setView, isEditing, data, setData }: ResumeProps) => {
                       <EditableText value={award.title} onSave={(v) => { const a = [...data.awards]; a[idx].title = v; setData({...data, awards: a}); }} isEditing={isEditing} />
                     </h4>
                     <p className="text-[11px] text-zinc-500">{award.organization} · {award.year}</p>
-                  </div>
-                ))}
-              </div>
-            </section>
-
-            <section className="bg-white rounded-3xl p-6 lg:p-8 shadow-sm border border-black/5 transition-colors">
-              <h3 className="text-lg font-bold mb-5 flex items-center gap-3 text-[#2C2C2C]">
-                <Wrench className="text-[#0047BB] w-5 h-5" /> 사용 가능한 툴
-              </h3>
-              <div className="flex flex-wrap gap-2.5">
-                {data.tools?.map((tool, idx) => (
-                  <div key={idx} className="group relative">
-                    <span className="inline-block px-3.5 py-1.5 bg-zinc-50 border border-black/5 text-[#2C2C2C] font-bold text-[13px] rounded-lg cursor-default hover:bg-[#0047BB] hover:text-white hover:border-[#0047BB] hover:shadow-md transition-all duration-300">
-                      <EditableText value={tool.name} onSave={(v) => { const t = [...(data.tools||[])]; t[idx].name = v; setData({...data, tools: t}); }} isEditing={isEditing} />
-                    </span>
-                    <div className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 w-56 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-10 pointer-events-none">
-                      <div className="bg-[#2C2C2C] text-white text-[11px] p-3 rounded-xl shadow-xl border border-white/10 leading-relaxed font-medium text-center">
-                        <EditableText value={tool.description} onSave={(v) => { const t = [...(data.tools||[])]; t[idx].description = v; setData({...data, tools: t}); }} isEditing={isEditing} />
-                        <div className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-[#2C2C2C] rotate-45 border-b border-r border-white/10"></div>
-                      </div>
-                    </div>
                   </div>
                 ))}
               </div>

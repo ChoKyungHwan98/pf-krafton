@@ -17,30 +17,30 @@ export const PlayHistory = ({ onViewAll }: PlayHistoryProps) => {
   const DASHBOARD_HIGHLIGHTS = {
     pc: [
       { id: 'pc1', title: '메이플스토리', genre: 'RPG', highlight: '15년 플레이', image: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/216150/capsule_616x353.jpg' },
-      { id: 'pc2', title: 'OSU!', genre: '리듬', highlight: '전세계 1000위 달성', image: 'https://upload.wikimedia.org/wikipedia/commons/e/e3/Osu%21Logo_%282015%29.png' },
-      { id: 'pc3', title: '메이플스토리 월드', genre: '캐주얼', highlight: '출시 경험 有', image: 'https://upload.wikimedia.org/wikipedia/en/a/a7/MapleStory_logo.png' },
+      { id: 'pc2', title: 'OSU!', genre: '리듬', highlight: '전세계 1000위 달성', image: 'https://images.igdb.com/igdb/image/upload/t_cover_big/co1x77.jpg' },
+      { id: 'pc3', title: '메이플스토리 월드', genre: '캐주얼', highlight: '출시 경험 有', image: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/216150/capsule_616x353.jpg' },
     ],
     console: [
-      { id: 'con1', title: '포켓몬스터 시리즈', genre: 'RPG', highlight: '레이팅 2000점대', image: 'https://upload.wikimedia.org/wikipedia/en/9/93/Pok%C3%A9mon_Scarlet_and_Violet_Double_Pack_Box_Art.png' },
+      { id: 'con1', title: '포켓몬스터 시리즈', genre: 'RPG', highlight: '레이팅 2000점대', image: 'https://images.igdb.com/igdb/image/upload/t_cover_big/co4bce.jpg' },
       { id: 'con2', title: '다크소울 3', genre: '액션 RPG', highlight: '플레이 시간 500시간', image: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/374320/capsule_616x353.jpg' },
       { id: 'con3', title: '역전재판 시리즈', genre: '법정배틀', highlight: '법학과 진학의 계기', image: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/787480/capsule_616x353.jpg' },
     ],
     mobile: [
-      { id: 'mob1', title: '무기미도', genre: '타워디펜스', highlight: '상위 랭커 달성', image: 'https://upload.wikimedia.org/wikipedia/en/2/2f/Path_to_Nowhere_cover.jpg' },
-      { id: 'mob2', title: '삼국지 천하포무', genre: '역사 전략', highlight: '300시간 이상 플레이', image: 'https://upload.wikimedia.org/wikipedia/en/f/fc/Romance_of_the_Three_Kingdoms_XIV_cover_art.jpg' },
-      { id: 'mob3', title: '하스스톤', genre: 'TCG', highlight: '전설 등급 달성 경험', image: 'https://upload.wikimedia.org/wikipedia/en/1/1c/Hearthstone_Logo.png' },
+      { id: 'mob1', title: '무기미도', genre: '타워디펜스', highlight: '상위 랭커 달성', image: 'https://images.igdb.com/igdb/image/upload/t_cover_big/co5p1d.jpg' },
+      { id: 'mob2', title: '삼국지 천하포무', genre: '역사 전략', highlight: '300시간 이상 플레이', image: 'https://images.igdb.com/igdb/image/upload/t_cover_big/co1wyo.jpg' },
+      { id: 'mob3', title: '하스스톤', genre: 'TCG', highlight: '전설 등급 달성 경험', image: 'https://images.igdb.com/igdb/image/upload/t_cover_big/co1x62.jpg' },
     ]
   };
 
   const renderSection = (category: string, items: any[], icon: React.ReactNode) => (
     <div className="flex flex-col gap-4">
       <div className="flex items-center gap-3">
-        <div className="w-10 h-10 bg-[#0047BB]/10 rounded-xl flex items-center justify-center text-[#0047BB]">
+        <div className="w-10 h-10 bg-[#0047BB]/10 rounded-xl flex items-center justify-center text-[#0047BB] shrink-0">
           {icon}
         </div>
-        <h3 className="font-display font-bold text-xl text-[#2C2C2C]">{category}</h3>
+        <h3 className="font-display font-bold text-lg md:text-xl text-[#2C2C2C]">{category}</h3>
       </div>
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-3">
         {items.map((item, idx) => (
           <motion.div 
             key={item.id}
@@ -48,24 +48,24 @@ export const PlayHistory = ({ onViewAll }: PlayHistoryProps) => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: idx * 0.1 }}
-            className="group relative h-[180px] rounded-2xl overflow-hidden shadow-lg cursor-pointer flex items-end p-5 bg-[#2C2C2C]"
+            className="relative h-[110px] md:h-[130px] rounded-2xl overflow-hidden shadow border border-black/10 flex items-end p-4 md:p-5 bg-[#2C2C2C]"
           >
             {/* Background Image */}
             <div 
-              className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110 opacity-60"
-              style={{ backgroundImage: `url('${item.image}')`, backgroundSize: item.image.includes('wikipedia') ? 'contain' : 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center' }}
+              className="absolute inset-0 bg-cover bg-center opacity-60"
+              style={{ backgroundImage: `url('${item.image}')` }}
             />
             {/* Gradient Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/50 to-transparent" />
             
             {/* Content */}
-            <div className="relative z-10 w-full transform transition-transform duration-300 group-hover:-translate-y-1">
-              <span className="inline-block px-2 py-1 bg-[#0047BB] text-white text-[10px] font-bold rounded mb-2 tracking-wider">
+            <div className="relative z-10 w-full flex flex-col justify-end">
+              <span className="inline-block px-1.5 md:px-2 py-0.5 md:py-1 bg-[#0047BB] text-white text-[9px] md:text-[10px] font-bold rounded mb-1.5 md:mb-2 tracking-wider w-fit">
                 {item.genre}
               </span>
-              <h4 className="text-white font-bold text-xl mb-1">{item.title}</h4>
-              <p className="text-zinc-300 text-sm font-medium flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-yellow-400" />
+              <h4 className="text-white font-bold text-base md:text-lg mb-0.5 md:mb-1 truncate">{item.title}</h4>
+              <p className="text-zinc-300 text-xs md:text-sm font-medium flex items-center gap-1.5 md:gap-2">
+                <span className="w-1 h-1 md:w-1.5 md:h-1.5 rounded-full bg-yellow-400" />
                 {item.highlight}
               </p>
             </div>
