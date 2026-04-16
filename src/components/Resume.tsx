@@ -83,50 +83,38 @@ export const Resume = ({ setView, onBack, isEditing, data, setData }: ResumeProp
             <div className="flex items-center bg-zinc-200/50 p-1.5 rounded-[2rem] border border-black/5 shadow-inner relative">
               <button 
                 onClick={() => setActiveTab('resume')}
-                className={`relative px-8 py-3 rounded-full text-sm sm:text-[15px] font-bold transition-colors ${activeTab === 'resume' ? 'text-white' : 'text-zinc-500 hover:text-[#2C2C2C]'}`}
+                className={`relative px-12 py-3.5 rounded-full text-base font-extrabold transition-colors tracking-tight ${activeTab === 'resume' ? 'text-white' : 'text-zinc-500 hover:text-[#2C2C2C]'}`}
               >
                 {activeTab === 'resume' && (
                   <motion.div layoutId="activeTabBadge" className="absolute inset-0 bg-[#0047BB] rounded-full shadow-md" transition={{ type: 'spring', bounce: 0.2, duration: 0.6 }} />
                 )}
-                <span className="relative z-10 flex items-center gap-2">이력서 훑어보기</span>
+                <span className="relative z-10 flex items-center gap-2">이력서</span>
               </button>
               
               <button 
                 onClick={() => setActiveTab('cover-letter')}
-                className={`relative px-8 py-3 rounded-full text-sm sm:text-[15px] font-bold transition-colors ${activeTab === 'cover-letter' ? 'text-white' : 'text-zinc-500 hover:text-[#2C2C2C]'}`}
+                className={`relative px-12 py-3.5 rounded-full text-base font-extrabold transition-colors tracking-tight ${activeTab === 'cover-letter' ? 'text-white' : 'text-zinc-500 hover:text-[#2C2C2C]'}`}
               >
                 {activeTab === 'cover-letter' && (
                   <motion.div layoutId="activeTabBadge" className="absolute inset-0 bg-[#0047BB] rounded-full shadow-md" transition={{ type: 'spring', bounce: 0.2, duration: 0.6 }} />
                 )}
-                <span className="relative z-10 flex items-center gap-2">
-                  <Star className={`w-4 h-4 ${activeTab === 'cover-letter' ? 'text-yellow-300' : 'text-[#0047BB]'}`} fill="currentColor" /> 자기소개서 읽기
-                </span>
-                
-                {/* Hooking Badge (채용 담당자 시선 유도) */}
-                {activeTab !== 'cover-letter' && (
-                  <motion.div 
-                    initial={{ y: 0 }}
-                    animate={{ y: [-4, 0, -4] }}
-                    transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-                    className="absolute -top-3.5 -right-2 bg-rose-500 text-white text-[10px] font-black px-2 py-0.5 rounded-full shadow-md whitespace-nowrap rotate-6 border border-rose-400"
-                  >
-                    MUST READ!
-                  </motion.div>
-                )}
+                <span className="relative z-10 flex items-center gap-2">자기소개서</span>
               </button>
             </div>
           </div>
 
           {/* Right: Actions */}
           <div className="flex justify-end w-[180px]">
-            <button onClick={handleDownload} disabled={isGeneratingPdf}
-              className="px-5 py-2.5 bg-white border border-black/10 rounded-xl text-[#2C2C2C] font-bold flex items-center justify-center gap-2 hover:border-[#0047BB] hover:text-[#0047BB] transition-all duration-300 text-xs tracking-widest shadow-sm disabled:opacity-50 group">
-              {isGeneratingPdf ? (
-                <><span className="animate-spin inline-block w-4 h-4 border-2 border-[#0047BB] border-t-transparent rounded-full" /> ...</>
-              ) : (
-                <><ScrollText className="w-3.5 h-3.5 text-zinc-400 group-hover:text-[#0047BB] transition-colors" /> PDF 저장</>
-              )}
-            </button>
+            {isEditing && (
+              <button onClick={handleDownload} disabled={isGeneratingPdf}
+                className="px-5 py-2.5 bg-white border border-black/10 rounded-xl text-[#2C2C2C] font-bold flex items-center justify-center gap-2 hover:border-[#0047BB] hover:text-[#0047BB] transition-all duration-300 text-xs tracking-widest shadow-sm disabled:opacity-50 group">
+                {isGeneratingPdf ? (
+                  <><span className="animate-spin inline-block w-4 h-4 border-2 border-[#0047BB] border-t-transparent rounded-full" /> ...</>
+                ) : (
+                  <><ScrollText className="w-3.5 h-3.5 text-zinc-400 group-hover:text-[#0047BB] transition-colors" /> PDF 저장</>
+                )}
+              </button>
+            )}
           </div>
         </div>
 
