@@ -70,11 +70,7 @@ export interface ResumeData {
     description: string;
     details: string[];
   }[];
-  awards: {
-    title: string;
-    organization: string;
-    year: string;
-  }[];
+  certificates?: string[];
   tools?: {
     name: string;
     description: string;

@@ -7,7 +7,6 @@ import { Portfolio } from './components/Portfolio';
 import { Skills } from './components/Skills';
 import { PlayHistory } from './components/PlayHistory';
 import { Resume } from './components/Resume';
-import { CoverLetter } from './components/CoverLetter';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 import { RightRail } from './components/RightRail';
@@ -19,7 +18,7 @@ import { RESUME_DATA, PROJECTS, PORTFOLIO_PROJECTS, GAME_HISTORY, SKILLS } from 
 import type { Project, ResumeData, GameHistory, Skill } from './types';
 
 function App() {
-  const [view, setView] = useState<'home' | 'resume' | 'cover-letter' | 'project-detail' | 'portfolio' | 'all-projects' | 'game-history'>('home');
+  const [view, setView] = useState<'home' | 'resume' | 'project-detail' | 'portfolio' | 'all-projects' | 'game-history'>('home');
   const [isEditing, setIsEditing] = useState(false);
   const [activeSection, setActiveSection] = useState('about');
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
@@ -106,7 +105,6 @@ function App() {
       )}
 
       {view === 'resume' && <Resume setView={setView} isEditing={isEditing} data={resumeData} setData={setResumeData} onBack={() => handleNavClick('hero-top')} />}
-      {view === 'cover-letter' && <CoverLetter setView={setView} isEditing={isEditing} data={resumeData} setData={setResumeData} />}
       {view === 'project-detail' && selectedProject && (
         <ProjectDetail project={selectedProject} isEditing={isEditing} onBack={() => handleNavClick('projects')} onSaveContent={(c) => { const p = [...projectsData]; const index = p.findIndex(pp => pp.id === selectedProject.id); if (index !== -1) { p[index].content = c; setProjectsData(p); setSelectedProject(p[index]); } }} />
       )}

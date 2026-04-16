@@ -99,9 +99,10 @@ export const RESUME_DATA: ResumeData = {
       ]
     }
   ],
-  awards: [
-    { title: "글로벌 인디 게임 제작 경진대회 기획 부문 우수상", organization: "한국콘텐츠진흥원", year: "2023" },
-    { title: "게임 기획 부트캠프 최우수 프로젝트 선정", organization: "OO 교육기관", year: "2024" }
+  certificates: [
+    "TOEIC",
+    "TOEFL",
+    "신HSK5급"
   ],
   tools: [
     { name: "Excel", description: "VLOOKUP, 사칙연산, 조건부 서식 활용 및 데이터 구조화/티어화를 통한 밸런싱 도구 제작" },

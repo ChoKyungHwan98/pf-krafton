@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { PasswordModal } from './PasswordModal';
 
 interface NavbarProps {
-  setView: (v: 'home' | 'resume' | 'cover-letter' | 'project-detail' | 'portfolio' | 'all-projects' | 'game-history') => void;
+  setView: (v: 'home' | 'resume' | 'project-detail' | 'portfolio' | 'all-projects' | 'game-history') => void;
   currentView: string;
   onNavClick: (id: string) => void;
   isEditing: boolean;

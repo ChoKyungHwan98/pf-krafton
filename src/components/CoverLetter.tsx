@@ -15,20 +15,7 @@ interface CoverLetterProps {
 
 export const CoverLetter = ({ setView, isEditing, data, setData }: CoverLetterProps) => {
   return (
-    <motion.section initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }}
-      className="pt-32 pb-20 md:pt-[160px] px-6 md:px-12 max-w-7xl mx-auto w-full relative">
-      
-      <div className="flex items-center justify-between mb-16">
-        <button onClick={() => setView('resume')} className="flex items-center gap-2 text-zinc-500 hover:text-[#0047BB] transition-colors group font-sans tracking-tight text-sm font-bold">
-          <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" /> 이력서로 돌아가기
-        </button>
-      </div>
-
-      <div className="text-center mb-16">
-        <span className="text-[#0047BB] font-mono text-xs uppercase tracking-[0.3em] font-bold mb-4 block">Cover Letter</span>
-        <h2 className="text-4xl md:text-5xl font-display font-bold text-[#2C2C2C] tracking-[-0.02em] mb-6">자기소개서</h2>
-        <div className="w-16 h-px bg-[#0047BB]/30 mx-auto"></div>
-      </div>
+    <div className="w-full relative">
 
       {data.selfIntroductions ? (
         <div className="ml-[6%] xl:ml-[10%] w-full max-w-[1050px]">
@@ -182,6 +169,6 @@ export const CoverLetter = ({ setView, isEditing, data, setData }: CoverLetterPr
           )}
         </div>
       )}
-    </motion.section>
+    </div>
   );
 };
