@@ -41,17 +41,16 @@ export const Portfolio = ({ isEditing, projects, setProjects, onBack, initialPro
         animate={{ opacity: 1 }}
         className="relative z-10 pt-[140px] pb-[120px] px-6 md:px-12 max-w-7xl mx-auto"
       >
+        {/* Utility Bar */}
+        <div className="relative flex flex-col md:flex-row md:items-center justify-between gap-4 py-4 md:py-6 border-y border-black/5 mb-16 -mx-6 px-6 md:-mx-12 md:px-12">
+          <button onClick={onBack} className="flex items-center gap-2 text-zinc-500 hover:text-[#0047BB] transition-colors group font-sans tracking-tight text-sm font-bold w-[200px]">
+            <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" /> 메인으로 돌아가기
+          </button>
+        </div>
+
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-20">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-20 px-0 md:px-0">
           <div className="max-w-2xl">
-            <motion.button
-              initial={{ opacity: 0, x: -10 }}
-              animate={{ opacity: 1, x: 0 }}
-              onClick={onBack}
-              className="flex items-center gap-2 text-zinc-400 hover:text-[#0047BB] transition-all mb-8 group font-mono tracking-[0.2em] text-[11px] uppercase font-black"
-            >
-              <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-1 transition-transform" /> Back to Projects
-            </motion.button>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}

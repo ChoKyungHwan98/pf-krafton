@@ -40,11 +40,15 @@ export const GameHistoryView = ({ onBack }: GameHistoryViewProps) => {
     <motion.section initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }}
       className="pt-[160px] pb-[120px] px-6 md:px-12 max-w-7xl mx-auto min-h-screen">
       
+      {/* Utility Bar */}
+      <div className="relative flex flex-col md:flex-row md:items-center justify-between gap-4 py-4 md:py-6 border-y border-black/5 mb-12 -mx-6 px-6 md:-mx-12 md:px-12">
+        <button onClick={onBack} className="flex items-center gap-2 text-zinc-500 hover:text-[#0047BB] transition-colors group font-sans tracking-tight text-sm font-bold w-[200px]">
+          <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" /> 메인으로 돌아가기
+        </button>
+      </div>
+
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
         <div>
-          <button onClick={onBack} className="flex items-center gap-2 text-zinc-500 hover:text-[#0047BB] transition-colors mb-6 group font-sans tracking-tight text-sm uppercase font-bold">
-            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" /> 대시보드로 돌아가기
-          </button>
           <h2 className="text-4xl lg:text-5xl font-display font-bold tracking-tighter text-[#2C2C2C] leading-tight">
              플레이 이력
           </h2>

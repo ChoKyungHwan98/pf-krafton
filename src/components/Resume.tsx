@@ -74,8 +74,8 @@ export const Resume = ({ setView, onBack, isEditing, data, setData }: ResumeProp
         {/* Utility Bar (Top Navigation) */}
         <div className="relative flex flex-col md:flex-row md:items-center justify-between gap-4 py-4 md:py-6 border-y border-black/5 mb-12 -mx-6 px-6 md:-mx-12 md:px-12">
           {/* Left: Go Back */}
-          <button onClick={onBack} className="flex items-center gap-2 text-zinc-500 hover:text-[#0047BB] transition-colors group font-sans tracking-tight text-sm font-bold w-[180px]">
-            <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" /> 대시보드
+          <button onClick={onBack} className="flex items-center gap-2 text-zinc-500 hover:text-[#0047BB] transition-colors group font-sans tracking-tight text-sm font-bold w-[200px]">
+            <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" /> 메인으로 돌아가기
           </button>
 
           {/* Center: Segmented Control */}
