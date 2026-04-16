@@ -103,7 +103,7 @@ export const Navbar = ({ setView, currentView, onNavClick, isEditing, setIsEditi
                 { key: 'game-history', label: '플레이 이력', icon: React.createElement(Gamepad2, { className: "w-4 h-4" }) },
               ].map(item => (
                 <button key={item.key} onClick={() => { setView(item.key as any); window.scrollTo(0,0); }} 
-                  className={`px-5 py-2.5 rounded-full text-[14px] font-bold tracking-wide transition-all duration-300 flex items-center gap-2 ${currentView === item.key ? 'bg-white text-[#0047BB] shadow-md scale-100' : 'text-zinc-500 hover:text-[#2C2C2C] hover:bg-white hover:shadow-sm'}`}>
+                  className={`w-[125px] py-2.5 rounded-full text-[14px] font-bold tracking-wide transition-all duration-300 flex items-center justify-center gap-2 ${currentView === item.key ? 'bg-white text-[#0047BB] shadow-md' : 'text-zinc-500 hover:text-[#2C2C2C] hover:bg-white hover:shadow-sm'}`}>
                   {item.icon}
                   <span>{item.label}</span>
                 </button>
