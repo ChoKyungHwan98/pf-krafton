@@ -30,7 +30,7 @@ function App() {
   const [projectsData, setProjectsData, projectsLoaded] = useEditableContent(PROJECTS, 'projects_data');
   const [portfolioProjects, setPortfolioProjects, portfolioLoaded] = useEditableContent(PORTFOLIO_PROJECTS, 'portfolio_projects');
   const [gameHistory, setGameHistory, gameHistoryLoaded] = useEditableContent(GAME_HISTORY, 'game_history');
-  const [skillsData, setSkillsData, skillsLoaded] = useEditableContent(SKILLS, 'skills_data');
+  const [skillsData, setSkillsData] = useState(SKILLS);
   const [heroContent, setHeroContent, heroLoaded] = useEditableContent({
     titleLine1: "기획의도를 알고",
     titleLine2: "목차를 쓸줄 아는 기획자",
@@ -41,7 +41,7 @@ function App() {
     p2: "저는 단순히 엑셀 수치를 채우는 것을 넘어, 코어 루프와 연계된 경제 시스템의 근본적인 문제(인플레이션 등)를 예측하고 이를 제어하는 기획을 지향합니다. 구조가 탄탄한 문서를 통해 팀원들을 설득하고 프로젝트의 비전을 이끌겠습니다."
   }, 'about_content');
 
-  const isDataLoaded = resumeLoaded && projectsLoaded && portfolioLoaded && gameHistoryLoaded && skillsLoaded && heroLoaded && aboutLoaded;
+  const isDataLoaded = resumeLoaded && projectsLoaded && portfolioLoaded && gameHistoryLoaded && heroLoaded && aboutLoaded;
 
   useEffect(() => {
     document.documentElement.classList.remove('light', 'dark');
