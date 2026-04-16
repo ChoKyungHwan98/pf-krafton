@@ -20,10 +20,10 @@ import type { Project, ResumeData, GameHistory, Skill } from './types';
 
 function App() {
   const [view, setView] = useState<'home' | 'resume' | 'cover-letter' | 'project-detail' | 'portfolio' | 'all-projects' | 'game-history'>('home');
-  const [theme, setTheme] = useState<'light' | 'dark'>('light');
   const [isEditing, setIsEditing] = useState(false);
   const [activeSection, setActiveSection] = useState('about');
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [targetProjectId, setTargetProjectId] = useState<number | null>(null);
 
   // Supabase Data
   const [resumeData, setResumeData, resumeLoaded] = useEditableContent(RESUME_DATA, 'resume_data');
@@ -43,10 +43,6 @@ function App() {
 
   const isDataLoaded = resumeLoaded && projectsLoaded && portfolioLoaded && gameHistoryLoaded && heroLoaded && aboutLoaded;
 
-  useEffect(() => {
-    document.documentElement.classList.remove('light', 'dark');
-    document.documentElement.classList.add(theme);
-  }, [theme]);
 
   // Section Observer
   useEffect(() => {
@@ -95,14 +91,14 @@ function App() {
 
   return (
     <div className="min-h-screen font-sans selection:bg-[#0047BB]/20 text-[#2C2C2C] bg-[#FAFAFA]">
-      <Navbar setView={setView} currentView={view} onNavClick={handleNavClick} isEditing={isEditing} setIsEditing={setIsEditing} activeSection={activeSection} theme={theme} setTheme={setTheme} />
+      <Navbar setView={setView} currentView={view} onNavClick={handleNavClick} isEditing={isEditing} setIsEditing={setIsEditing} activeSection={activeSection} />
       <RightRail view={view} onNavClick={handleNavClick} activeSection={activeSection} />
 
       {view === 'home' && (
         <main>
           <Hero onPortfolioClick={() => setView('portfolio')} onResumeClick={() => setView('resume')} isEditing={isEditing} content={heroContent} setContent={setHeroContent} aboutContent={aboutContent} setAboutContent={setAboutContent} />
           <About isEditing={isEditing} content={aboutContent} setContent={setAboutContent} />
-          <Projects onProjectClick={(p) => { setSelectedProject(p); setView('project-detail'); }} isEditing={isEditing} projects={projectsData} setProjects={setProjectsData} limit={3} setView={setView} />
+          <Projects onProjectClick={(p) => { setTargetProjectId(p.id); setView('portfolio'); }} isEditing={isEditing} projects={projectsData} setProjects={setProjectsData} limit={3} setView={setView} />
           <Skills isEditing={isEditing} skills={skillsData} setSkills={setSkillsData} />
           <PlayHistory isEditing={isEditing} history={gameHistory} setHistory={setGameHistory} onViewAll={() => { setView('game-history'); window.scrollTo(0,0); }} />
           <Contact />
@@ -115,7 +111,7 @@ function App() {
         <ProjectDetail project={selectedProject} isEditing={isEditing} onBack={() => handleNavClick('projects')} onSaveContent={(c) => { const p = [...projectsData]; const index = p.findIndex(pp => pp.id === selectedProject.id); if (index !== -1) { p[index].content = c; setProjectsData(p); setSelectedProject(p[index]); } }} />
       )}
       {view === 'portfolio' && (
-        <Portfolio onProjectClick={(p) => { setSelectedProject(p); setView('project-detail'); }} isEditing={isEditing} projects={portfolioProjects} setProjects={setPortfolioProjects} setView={setView} onBack={() => handleNavClick('projects')} />
+        <Portfolio onProjectClick={(p) => { setSelectedProject(p); setView('project-detail'); }} isEditing={isEditing} projects={portfolioProjects} setProjects={setPortfolioProjects} setView={setView} onBack={() => { setTargetProjectId(null); handleNavClick('projects'); }} initialProjectId={targetProjectId} />
       )}
       {view === 'game-history' && <GameHistoryView onBack={() => handleNavClick('play-history')} history={gameHistory} setHistory={setGameHistory} isEditing={isEditing} />}
 

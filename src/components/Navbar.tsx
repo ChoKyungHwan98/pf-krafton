@@ -10,11 +10,9 @@ interface NavbarProps {
   isEditing: boolean;
   setIsEditing: (v: boolean) => void;
   activeSection: string;
-  theme: string;
-  setTheme: (v: string) => void;
 }
 
-export const Navbar = ({ setView, currentView, onNavClick, isEditing, setIsEditing, activeSection, theme, setTheme }: NavbarProps) => {
+export const Navbar = ({ setView, currentView, onNavClick, isEditing, setIsEditing, activeSection }: NavbarProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isPasswordModalOpen, setIsPasswordModalOpen] = useState(false);
   const [scrolledPastHero, setScrolledPastHero] = useState(false);

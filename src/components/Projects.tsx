@@ -70,10 +70,10 @@ export const Projects = ({ onProjectClick, isEditing, projects, setProjects, lim
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.9 }}
                     transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                    onClick={() => !isMaster && setFeaturedId(project.id)}
+                    onClick={() => isMaster ? onProjectClick(project) : setFeaturedId(project.id)}
                     className={`relative w-full rounded-3xl overflow-hidden shadow-md group border border-black/5 ${
                       isMaster
-                        ? 'lg:col-span-2 lg:row-span-2 h-[400px] lg:h-full cursor-default z-50 bg-[#1A1A1A]'
+                        ? 'lg:col-span-2 lg:row-span-2 h-[400px] lg:h-full cursor-pointer z-50 bg-[#1A1A1A]'
                         : 'lg:col-span-1 lg:row-span-1 h-[150px] lg:h-full cursor-pointer z-10 bg-[#FAFAFA] hover:shadow-xl'
                     }`}
                   >
