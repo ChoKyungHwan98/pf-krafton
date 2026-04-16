@@ -104,10 +104,12 @@ export const RESUME_DATA: ResumeData = {
     { title: "게임 기획 부트캠프 최우수 프로젝트 선정", organization: "OO 교육기관", year: "2024" }
   ],
   tools: [
-    { name: "Unreal Engine 5", description: "블루프린트를 활용한 프로토타이핑 및 게임 코어 메카닉 검증" },
-    { name: "Unity", description: "UGUI를 활용한 UI 시스템 구성 및 C# 스크립팅" },
-    { name: "Figma", description: "화면 설계서 및 와이어프레임, 인터랙티브 프로토타입 제작" },
-    { name: "Excel / VBA", description: "복잡한 수치 밸런싱 도구 및 데이터 시뮬레이터 제작" }
+    { name: "Excel", description: "VLOOKUP, 사칙연산, 조건부 서식 활용 및 데이터 구조화/티어화를 통한 밸런싱 도구 제작" },
+    { name: "PowerPoint", description: "슬라이드 마스터 기반의 커스텀 템플릿 제작, 기획 의도 시각화 및 논리학 기반 목차 구성에 강점" },
+    { name: "Word", description: "체계적이고 가독성 높은 기획 문서 및 사양서 작성" },
+    { name: "Figma", description: "UI 와이어프레임 작성 및 프로토타입 제작" },
+    { name: "Notion", description: "일반적인 문서 작성 및 간트차트를 활용한 일정 관리" },
+    { name: "Unity", description: "UGUI를 활용한 UI 시스템 구성 및 C# 스크립팅" }
   ]
 };
 
