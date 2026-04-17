@@ -8,29 +8,6 @@ interface AboutProps {
   setContent: (c: any) => void;
 }
 
-const stats = [
-  {
-    symbol: '0',
-    arrow: '→',
-    result: '+',
-    label: '재미 설계',
-    desc: '0에서 플러스가 되는\n경험을 만드는 기획자',
-  },
-  {
-    symbol: '3',
-    suffix: '건+',
-    label: '프로젝트 기획',
-    desc: '시스템 · 밸런스 · 레벨\n처음부터 끝까지 단독 설계',
-  },
-  {
-    symbol: 'A',
-    arrow: '→',
-    result: 'Z',
-    label: '전체 기획 담당',
-    desc: '아이디어 발굴부터\n출시 전략까지 전담',
-  },
-];
-
 export const About = ({ isEditing, content, setContent }: AboutProps) => (
   <section
     id="about"
@@ -47,9 +24,8 @@ export const About = ({ isEditing, content, setContent }: AboutProps) => (
       <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4 border-b border-black/5 pb-6">
         <div>
           <span className="text-[#0047BB] font-sans text-[11px] font-bold tracking-widest uppercase mb-3 block">01. 소개</span>
-        <h2 className="flex flex-col gap-1 items-start mt-2">
+          <h2 className="flex flex-col gap-1 items-start mt-2">
             <span className="text-2xl md:text-3xl text-zinc-400 font-display font-medium tracking-tight">논리와 감성으로,</span>
-            {/* Typographic contrast — same style as CoverLetter */}
             <span className="flex items-baseline gap-2 leading-none mt-1">
               <span className="text-[72px] md:text-[90px] lg:text-[110px] font-display font-black tracking-tighter text-zinc-200 leading-none">0</span>
               <span className="text-3xl md:text-4xl lg:text-5xl font-display font-black text-zinc-400">에서</span>
@@ -64,13 +40,13 @@ export const About = ({ isEditing, content, setContent }: AboutProps) => (
       </div>
 
       {/* ── TWO-COLUMN LAYOUT ── */}
-      <div className="grid lg:grid-cols-[1fr_400px] xl:grid-cols-[1fr_440px] gap-10 lg:gap-16 items-stretch">
+      <div className="grid lg:grid-cols-[1fr_420px] xl:grid-cols-[1fr_460px] gap-10 lg:gap-14 items-stretch">
 
         {/* LEFT: editorial body copy */}
         <div className="flex flex-col justify-between gap-8">
 
           <div className="flex flex-col gap-8">
-            {/* P1 — Large editorial intro, no box */}
+            {/* P1 */}
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -78,7 +54,6 @@ export const About = ({ isEditing, content, setContent }: AboutProps) => (
               transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
               className="relative"
             >
-              {/* Left accent line */}
               <div className="absolute -left-6 top-1 bottom-1 w-[3px] bg-gradient-to-b from-[#0047BB]/40 via-[#0047BB]/15 to-transparent rounded-full" />
               <div className="text-[17px] md:text-[19px] lg:text-[21px] text-zinc-700 leading-[1.95] font-medium tracking-[-0.01em] break-keep">
                 <EditableText value={content.p1} onSave={(v) => setContent({ ...content, p1: v })} isEditing={isEditing} multiline />
@@ -95,7 +70,7 @@ export const About = ({ isEditing, content, setContent }: AboutProps) => (
               className="h-px bg-gradient-to-r from-[#0047BB]/20 via-black/5 to-transparent"
             />
 
-            {/* P2 — secondary in smaller, warmer tone */}
+            {/* P2 */}
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -107,57 +82,44 @@ export const About = ({ isEditing, content, setContent }: AboutProps) => (
             </motion.div>
           </div>
 
-          {/* Bottom: Dark manifesto card — fills remaining height */}
+          {/* Bottom: Light Quote Block — matches site tone */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="relative bg-[#1A1A1A] rounded-2xl px-8 py-7 overflow-hidden flex-1 flex flex-col justify-center min-h-[140px]"
+            className="bg-white rounded-2xl border border-[#0047BB]/10 shadow-[0_4px_24px_-8px_rgba(0,71,187,0.08)] px-8 py-7 flex-1 flex items-center gap-6 min-h-[120px]"
           >
-            {/* Subtle dot grid */}
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:20px_20px] pointer-events-none" />
-            {/* Blue glow top-left */}
-            <div className="absolute -top-10 -left-10 w-48 h-48 bg-[#0047BB]/20 rounded-full blur-3xl pointer-events-none" />
-
-            <div className="relative z-10 flex items-center gap-6">
-              {/* Tight typographic symbol */}
-              <div className="shrink-0 flex items-baseline gap-1 leading-none opacity-90">
-                <span className="text-[44px] font-black text-white/20 leading-none">0</span>
-                <span className="text-[20px] font-black text-white/20 mx-0.5">→</span>
-                <span className="text-[52px] font-black text-[#0047BB] leading-none drop-shadow-[0_0_16px_rgba(0,71,187,0.6)]">+</span>
-              </div>
-              <div>
-                <p className="text-[10px] font-black tracking-[0.22em] text-white/30 uppercase mb-2">핵심 철학</p>
-                <p className="text-[14px] md:text-[15px] text-white/80 font-semibold leading-[1.7] break-keep">
-                  저도 누군가의 하루를 움직이는<br />
-                  <span className="text-white font-black">그 +를 설계하는 기획자</span>가 되겠습니다.
-                </p>
-              </div>
+            {/* Left blue accent bar */}
+            <div className="w-1 self-stretch bg-gradient-to-b from-[#0047BB] to-[#0047BB]/20 rounded-full shrink-0" />
+            <div>
+              <p className="text-[11px] font-black tracking-[0.2em] text-[#0047BB]/60 uppercase mb-2">핵심 철학</p>
+              <p className="text-[15px] md:text-[16px] text-zinc-700 font-semibold leading-[1.75] break-keep">
+                저도 누군가의 하루를 움직이는,<br />
+                <span className="text-[#0047BB] font-black">그 +를 설계하는 기획자</span>가 되겠습니다.
+              </p>
             </div>
           </motion.div>
         </div>
 
-
-
-        {/* RIGHT: stat cards */}
-        <div className="flex flex-col gap-3">
-          {/* Card 1 — "0 → +" typographic */}
+        {/* RIGHT: stat cards — flex stretch + equal height distribution */}
+        <div className="flex flex-col gap-4">
+          {/* Card 1 — "0 → +" */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.0, ease: [0.16, 1, 0.3, 1] }}
-            className="bg-white rounded-2xl border border-black/5 shadow-[0_4px_20px_-8px_rgba(0,0,0,0.06)] px-7 py-6 flex items-center gap-6 group hover:border-[#0047BB]/20 hover:shadow-[0_8px_32px_-8px_rgba(0,71,187,0.12)] transition-all duration-300"
+            className="bg-white rounded-2xl border border-black/5 shadow-[0_4px_20px_-8px_rgba(0,0,0,0.06)] px-8 py-8 flex items-center gap-7 group hover:border-[#0047BB]/20 hover:shadow-[0_8px_32px_-8px_rgba(0,71,187,0.12)] transition-all duration-300 flex-1"
           >
             <div className="flex items-baseline gap-1 shrink-0 leading-none">
-              <span className="text-[52px] font-black text-zinc-200 leading-none group-hover:text-zinc-300 transition-colors duration-300">0</span>
-              <span className="text-[22px] font-black text-zinc-300 mx-1">→</span>
-              <span className="text-[60px] font-black text-[#0047BB] leading-none drop-shadow-[0_0_14px_rgba(0,71,187,0.25)] group-hover:drop-shadow-[0_0_24px_rgba(0,71,187,0.4)] transition-all duration-300">+</span>
+              <span className="text-[58px] font-black text-zinc-200 leading-none group-hover:text-zinc-300 transition-colors duration-300">0</span>
+              <span className="text-[24px] font-black text-zinc-300 mx-1">→</span>
+              <span className="text-[68px] font-black text-[#0047BB] leading-none drop-shadow-[0_0_14px_rgba(0,71,187,0.25)] group-hover:drop-shadow-[0_0_28px_rgba(0,71,187,0.45)] transition-all duration-300">+</span>
             </div>
             <div>
-              <p className="text-[12px] font-black tracking-[0.14em] text-[#0047BB] uppercase mb-1.5">재미 설계</p>
-              <p className="text-[14px] text-zinc-400 font-medium leading-[1.55]">0에서 플러스가 되는<br />경험을 만드는 기획자</p>
+              <p className="text-[11px] font-black tracking-[0.16em] text-[#0047BB] uppercase mb-2">재미 설계</p>
+              <p className="text-[14px] lg:text-[15px] text-zinc-400 font-medium leading-[1.65]">0에서 플러스가 되는<br />경험을 만드는 기획자</p>
             </div>
           </motion.div>
 
@@ -167,15 +129,15 @@ export const About = ({ isEditing, content, setContent }: AboutProps) => (
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="bg-white rounded-2xl border border-black/5 shadow-[0_4px_20px_-8px_rgba(0,0,0,0.06)] px-7 py-6 flex items-center gap-6 group hover:border-[#0047BB]/20 hover:shadow-[0_8px_32px_-8px_rgba(0,71,187,0.12)] transition-all duration-300"
+            className="bg-white rounded-2xl border border-black/5 shadow-[0_4px_20px_-8px_rgba(0,0,0,0.06)] px-8 py-8 flex items-center gap-7 group hover:border-[#0047BB]/20 hover:shadow-[0_8px_32px_-8px_rgba(0,71,187,0.12)] transition-all duration-300 flex-1"
           >
-            <div className="flex items-baseline gap-0.5 shrink-0 leading-none">
-              <span className="text-[64px] font-black text-[#2C2C2C] leading-none group-hover:text-[#0047BB] transition-colors duration-300">3</span>
-              <span className="text-[28px] font-black text-zinc-400 leading-none">건+</span>
+            <div className="flex items-baseline gap-1 shrink-0 leading-none">
+              <span className="text-[72px] font-black text-[#2C2C2C] leading-none group-hover:text-[#0047BB] transition-colors duration-300">3</span>
+              <span className="text-[30px] font-black text-zinc-400 leading-none">건+</span>
             </div>
             <div>
-              <p className="text-[12px] font-black tracking-[0.14em] text-[#0047BB] uppercase mb-1.5">프로젝트 기획</p>
-              <p className="text-[14px] text-zinc-400 font-medium leading-[1.55]">시스템 · 밸런스 · 레벨<br />처음부터 끝까지 단독 설계</p>
+              <p className="text-[11px] font-black tracking-[0.16em] text-[#0047BB] uppercase mb-2">프로젝트 기획</p>
+              <p className="text-[14px] lg:text-[15px] text-zinc-400 font-medium leading-[1.65]">시스템 · 밸런스 · 레벨<br />처음부터 끝까지 단독 설계</p>
             </div>
           </motion.div>
 
@@ -185,44 +147,38 @@ export const About = ({ isEditing, content, setContent }: AboutProps) => (
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="bg-white rounded-2xl border border-black/5 shadow-[0_4px_20px_-8px_rgba(0,0,0,0.06)] px-7 py-6 flex items-center gap-6 group hover:border-[#0047BB]/20 hover:shadow-[0_8px_32px_-8px_rgba(0,71,187,0.12)] transition-all duration-300"
+            className="bg-white rounded-2xl border border-black/5 shadow-[0_4px_20px_-8px_rgba(0,0,0,0.06)] px-8 py-8 flex items-center gap-7 group hover:border-[#0047BB]/20 hover:shadow-[0_8px_32px_-8px_rgba(0,71,187,0.12)] transition-all duration-300 flex-1"
           >
             <div className="flex items-baseline gap-1 shrink-0 leading-none">
-              <span className="text-[50px] font-black text-zinc-300 leading-none group-hover:text-zinc-400 transition-colors duration-300">A</span>
-              <span className="text-[22px] font-black text-zinc-300 mx-1">→</span>
-              <span className="text-[50px] font-black text-[#2C2C2C] leading-none group-hover:text-[#0047BB] transition-colors duration-300">Z</span>
+              <span className="text-[56px] font-black text-zinc-300 leading-none group-hover:text-zinc-400 transition-colors duration-300">A</span>
+              <span className="text-[24px] font-black text-zinc-300 mx-1">→</span>
+              <span className="text-[56px] font-black text-[#2C2C2C] leading-none group-hover:text-[#0047BB] transition-colors duration-300">Z</span>
             </div>
             <div>
-              <p className="text-[12px] font-black tracking-[0.14em] text-[#0047BB] uppercase mb-1.5">전체 기획 담당</p>
-              <p className="text-[14px] text-zinc-400 font-medium leading-[1.55]">아이디어 발굴부터<br />출시 전략까지 전담</p>
+              <p className="text-[11px] font-black tracking-[0.16em] text-[#0047BB] uppercase mb-2">전체 기획 담당</p>
+              <p className="text-[14px] lg:text-[15px] text-zinc-400 font-medium leading-[1.65]">아이디어 발굴부터<br />출시 전략까지 전담</p>
             </div>
           </motion.div>
         </div>
       </div>
 
-      {/* ── PHILOSOPHY STATEMENT (full-width, fills bottom breathing space) ── */}
+      {/* ── PHILOSOPHY BANNER ── */}
       <motion.div
         initial={{ opacity: 0, y: 32 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-80px" }}
         transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-        className="max-w-7xl mx-auto w-full relative z-10 mt-16 lg:mt-24"
+        className="mt-16 lg:mt-24"
       >
         <div className="relative bg-[#0047BB] rounded-3xl px-8 md:px-14 lg:px-20 py-10 md:py-14 lg:py-16 overflow-hidden">
-          {/* Background grid overlay */}
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.04)_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none" />
-          {/* Blue glow */}
           <div className="absolute -top-24 -right-24 w-96 h-96 bg-white/5 rounded-full blur-3xl pointer-events-none" />
-
           <div className="relative z-10 flex flex-col md:flex-row md:items-center gap-8 md:gap-14">
-            {/* Left: big symbolic number */}
             <div className="shrink-0 flex items-baseline gap-1 leading-none">
               <span className="text-[80px] md:text-[100px] lg:text-[120px] font-black text-white/10 leading-none tracking-tighter">0</span>
               <span className="text-[40px] md:text-[52px] lg:text-[60px] font-black text-white/30 mx-2">→</span>
               <span className="text-[90px] md:text-[112px] lg:text-[136px] font-black text-white leading-none tracking-tighter drop-shadow-[0_0_40px_rgba(255,255,255,0.3)]">+</span>
             </div>
-
-            {/* Right: statement */}
             <div className="flex flex-col gap-4">
               <p className="text-[11px] font-black tracking-[0.25em] text-white/40 uppercase">핵심 철학</p>
               <p className="text-xl md:text-2xl lg:text-3xl font-bold text-white leading-[1.6] tracking-tight break-keep">
