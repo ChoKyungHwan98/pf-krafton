@@ -49,24 +49,41 @@ export const Resume = ({ setView, onBack, isEditing, data, setData, activeTab, i
           body * {
             visibility: hidden;
           }
+          
+          /* Force browser to print all background colors and images */
+          * {
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+          }
+
           #print-root, #print-root * {
             visibility: visible;
           }
+
           #print-root {
             position: absolute;
             left: 0;
             top: 0;
-            width: 100%;
-            opacity: 1 !important;
-          }
-          @page {
-            size: A4;
-            margin: 0;
-          }
-          .pdf-page {
+            width: 210mm !important;
             margin: 0 !important;
+            padding: 0 !important;
+            opacity: 1 !important;
+            background: #f8f9fa !important;
+          }
+
+          @page {
+            size: A4 portrait;
+            margin: 0mm !important; /* Removes all default browser margins */
+          }
+
+          .pdf-page {
+            width: 210mm !important;
+            height: 297mm !important;
+            margin: 0 !important;
+            box-sizing: border-box;
             page-break-after: always;
             break-after: page;
+            background: #f8f9fa !important;
           }
         }
       `;
