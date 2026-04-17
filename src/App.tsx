@@ -213,14 +213,7 @@ function App() {
 
       <Footer />
     </div>
-    {/* Portal: PrintTemplate을 #root 바깥 body 직계 자식(#print-root-wrapper)에 마운트 */}
-    {/* @media print에서 #root를 숨기고 #print-root-wrapper만 보이게 하는 CSS와 쌍을 이룸 */}
-    {typeof document !== 'undefined' && document.getElementById('print-root-wrapper')
-      ? ReactDOM.createPortal(
-          <PrintTemplate data={resumeData} />,
-          document.getElementById('print-root-wrapper')!
-        )
-      : null}
+
     </>
   );
 }
