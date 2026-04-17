@@ -291,18 +291,21 @@
 
   /* 규칙 4: 페이지 경계 — 사이에만 break, 마지막에는 break 없음 */
   .pdf-page {
-    display: block !important;
+    display: flex !important;
+    flex-direction: column !important;
     width: 210mm !important;
-    height: 297mm !important;
-    max-height: 297mm !important;
-    overflow: hidden !important;
+    min-height: 297mm !important;
+    max-height: none !important;
     box-sizing: border-box !important;
     padding: 15mm !important;
-    page-break-after: always !important;
-    break-after: page !important;
     page-break-inside: avoid !important;
     break-inside: avoid !important;
     position: relative !important;
+  }
+
+  .pdf-page + .pdf-page {
+    page-break-before: always !important;
+    break-before: page !important;
   }
 
   .pdf-page:last-child {
@@ -358,18 +361,14 @@
     -webkit-appearance: none !important;
   }
 
-  /* Framer Motion 및 조상 요소의 페이지 브레이크 킬러(transform/overflow) 제거 */
-  html, body, #root, main, section, div, 
-  [class*="motion-"], [style*="transform"] {
+  /* Framer Motion 및 조상 요소의 페이지 브레이크 킬러(transform/overflow) 제거
+     주의: 전체 div가 아닌 필요한 조상 요소만 타겟팅 */
+  #print-root-wrapper, #print-root, 
+  .motion-safe-print, [style*="translate"] {
     transform: none !important;
     overflow: visible !important;
     contain: none !important;
     position: static !important;
-  }
-  
-  /* Framer Motion 인라인 스타일 죽이기 (translate 포함) */
-  [style*="translate"] {
-    transform: none !important;
   }
 
   /* ── A4 배율 100% 강제 ──

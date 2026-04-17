@@ -59,8 +59,8 @@ function CoverParagraphs({ text }: { text?: string }) {
 /* ── Page 1: 이력서 ────────────────────────────────────────────── */
 const ResumePrintPage: React.FC<{ data: ResumeData }> = ({ data }) => (
   <div className="pdf-page print-page-resume">
-    {/* 전체 컨테이너: 10mm 패딩 */}
-    <div style={{ padding: '10mm 12mm', height: '100%', boxSizing: 'border-box', display: 'flex', flexDirection: 'column', gap: '10px' }}>
+    {/* 전체 컨테이너: 외부 패딩에 의존 */}
+    <div style={{ flex: 1, boxSizing: 'border-box', display: 'flex', flexDirection: 'column', gap: '10px' }}>
 
       {/* ── Profile Card ── */}
       <div style={{ background: '#fff', borderRadius: '16px', border: '1px solid rgba(0,0,0,0.07)', padding: '18px 22px', display: 'flex', gap: '18px', alignItems: 'flex-start', flexShrink: 0 }}>
