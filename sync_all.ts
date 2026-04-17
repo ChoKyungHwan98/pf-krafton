@@ -1,5 +1,5 @@
 import { createClient } from '@supabase/supabase-js';
-import { RESUME_DATA, PROJECTS, PORTFOLIO_PROJECTS, GAME_HISTORY } from './src/data.js';
+import { RESUME_DATA, PROJECTS, GAME_HISTORY } from './src/data.js';
 
 const SUPABASE_URL = 'https://wfxmenunojwolgfnlqcs.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndmeG1lbnVub2p3b2xnZm5scWNzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU3NjMyNTUsImV4cCI6MjA5MTMzOTI1NX0.YmcAuyziw1kZiWcRTzxSjvOS-N0u14_jJLp2xlz13G0';
@@ -12,7 +12,7 @@ async function syncAll() {
   const syncItems = [
     { key: 'resume_data', content: RESUME_DATA },
     { key: 'projects_data', content: PROJECTS },
-    { key: 'portfolio_projects', content: PORTFOLIO_PROJECTS },
+    { key: 'portfolio_projects', content: PROJECTS },
     { key: 'game_history', content: GAME_HISTORY },
     { key: 'hero_content', content: {
       titleLine1: "기획의도를 알고",

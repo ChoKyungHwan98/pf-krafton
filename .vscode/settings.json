@@ -1,3 +1,21 @@
 {
-    "git.ignoreLimitWarning": true
+    "git.ignoreLimitWarning": true,
+    "files.watcherExclude": {
+        "**/node_modules/**": true,
+        "**/dist/**": true,
+        "**/.git/**": true,
+        "**/.claude/worktrees/**": true,
+        "**/scratch/**": true
+    },
+    "files.exclude": {
+        "**/node_modules": true,
+        "**/dist": true,
+        ".claude/worktrees": true
+    },
+    "search.exclude": {
+        "**/node_modules": true,
+        "**/dist": true,
+        "**/package-lock.json": true,
+        "**/.claude/worktrees/**": true
+    }
 }

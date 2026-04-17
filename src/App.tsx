@@ -18,11 +18,11 @@ import { motion } from 'motion/react';
 import { FileText, FolderOpen, Gamepad2 } from 'lucide-react';
 
 import { useEditableContent } from './hooks/useEditableContent';
-import { RESUME_DATA, PROJECTS, PORTFOLIO_PROJECTS, GAME_HISTORY, SKILLS } from './data';
+import { RESUME_DATA, PROJECTS, GAME_HISTORY, SKILLS } from './data';
 import type { Project, ResumeData, GameHistory, Skill } from './types';
 
 function App() {
-  const [view, setView] = useState<'home' | 'resume' | 'project-detail' | 'portfolio' | 'all-projects' | 'game-history'>('home');
+  const [view, setView] = useState<'home' | 'resume' | 'project-detail' | 'portfolio' | 'all-projects' | 'game-history' | 'cover-letter'>('home');
   const [isEditing, setIsEditing] = useState(false);
   const [activeSection, setActiveSection] = useState('about');
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
@@ -33,7 +33,7 @@ function App() {
   // Supabase Data
   const [resumeData, setResumeData, resumeLoaded] = useEditableContent(RESUME_DATA, 'resume_data');
   const [projectsData, setProjectsData, projectsLoaded] = useEditableContent(PROJECTS, 'projects_data');
-  const [portfolioProjects, setPortfolioProjects, portfolioLoaded] = useEditableContent(PORTFOLIO_PROJECTS, 'portfolio_projects');
+  const [portfolioProjects, setPortfolioProjects, portfolioLoaded] = useEditableContent(PROJECTS, 'portfolio_projects');
   const [gameHistory, setGameHistory, gameHistoryLoaded] = useEditableContent(GAME_HISTORY, 'game_history');
   const [skillsData, setSkillsData] = useState(SKILLS);
   const [heroContent, setHeroContent, heroLoaded] = useEditableContent({
