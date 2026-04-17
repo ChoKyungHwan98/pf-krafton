@@ -151,6 +151,7 @@ function App() {
         activeSection={activeSection}
         onBack={view !== 'home' ? handleBack : undefined}
         centerSlot={centerSlot}
+        isGeneratingPdf={isGeneratingPdf}
       />
       <RightRail view={view} onNavClick={handleNavClick} activeSection={activeSection} />
 

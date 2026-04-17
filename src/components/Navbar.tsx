@@ -22,9 +22,11 @@ interface NavbarProps {
   onBack?: () => void;
   /** Resume 탭 전환용 중앙 슬롯 (이력서/자기소개서 탭) */
   centerSlot?: React.ReactNode;
+  /** PDF 생성 진행중 여부 */
+  isGeneratingPdf?: boolean;
 }
 
-export const Navbar = ({ setView, currentView, onNavClick, isEditing, setIsEditing, activeSection, onBack, centerSlot }: NavbarProps) => {
+export const Navbar = ({ setView, currentView, onNavClick, isEditing, setIsEditing, activeSection, onBack, centerSlot, isGeneratingPdf }: NavbarProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isPasswordModalOpen, setIsPasswordModalOpen] = useState(false);
   const [scrolledPastHero, setScrolledPastHero] = useState(false);
@@ -74,8 +76,24 @@ export const Navbar = ({ setView, currentView, onNavClick, isEditing, setIsEditi
   return (
     <>
       <div className={`fixed top-0 left-0 right-0 z-50 flex justify-center px-4 sm:px-6 transition-all duration-500 pointer-events-none print:hidden ${navContainerClass}`}>
-        <nav className={`pointer-events-auto w-[98%] max-w-[1440px] rounded-full transition-all duration-500 flex items-center justify-between px-6 lg:px-8 py-3 ${navBgClass}`}>
+        <nav className={`relative pointer-events-auto w-[98%] max-w-[1440px] rounded-full transition-all duration-500 flex items-center justify-between px-6 lg:px-8 py-3 ${navBgClass}`}>
           
+          {/* Floating PDF (Admin Only, Resume Only) */}
+          {currentView === 'resume' && isEditing && (
+            <div className="absolute top-1/2 -right-2 lg:-right-4 transform translate-x-full -translate-y-1/2 pointer-events-auto">
+              <button
+                onClick={() => window.dispatchEvent(new CustomEvent('triggerPdfDownload'))}
+                disabled={isGeneratingPdf}
+                className="flex items-center gap-1.5 px-4 py-2.5 rounded-full bg-white shadow-sm border border-black/5 hover:border-[#0047BB]/30 hover:shadow text-zinc-600 hover:text-[#0047BB] text-[13px] font-bold transition-all disabled:opacity-50 group"
+              >
+                <svg className="w-4 h-4 group-hover:-translate-y-0.5 transition-transform" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"/>
+                </svg>
+                <span className="whitespace-nowrap">{isGeneratingPdf ? '생성 중...' : 'PDF 저장'}</span>
+              </button>
+            </div>
+          )}
+
           {/* ── LEFT ── */}
           <div className="flex shrink-0 items-center gap-3 min-w-[200px]">
             {isSubView && onBack ? (

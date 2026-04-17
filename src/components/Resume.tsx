@@ -67,7 +67,12 @@ export const Resume = ({ setView, onBack, isEditing, data, setData, activeTab, i
     }
   };
 
-  // PDF 생성 모달 로직을 내부적으로만 사용하므로 이벤트 수신 제거
+  // Navbar PDF 버튼 → CustomEvent 수신
+  React.useEffect(() => {
+    const handler = () => handleDownload();
+    window.addEventListener('triggerPdfDownload', handler);
+    return () => window.removeEventListener('triggerPdfDownload', handler);
+  }, [handleDownload]);
   return (
     <>
       <motion.section initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }}
@@ -88,21 +93,6 @@ export const Resume = ({ setView, onBack, isEditing, data, setData, activeTab, i
             >
               {/* TOP PROFILE BOX */}
               <div className="relative bg-white rounded-3xl p-6 lg:p-10 shadow-sm border border-black/5 transition-colors">
-                {/* PDF Download Button (Admin Only) */}
-                {isEditing && (
-                  <div className="absolute top-6 right-6 lg:top-8 lg:right-8 z-10 print:hidden">
-                    <button
-                      onClick={handleDownload}
-                      disabled={isGeneratingPdf}
-                      className="flex items-center gap-1.5 px-3 py-1.5 md:px-4 md:py-2 rounded-full bg-zinc-50 border border-black/5 shadow-[0_2px_8px_-4px_rgba(0,0,0,0.1)] hover:bg-[#0047BB]/5 hover:border-[#0047BB]/30 hover:text-[#0047BB] text-zinc-500 text-[12px] md:text-[13px] font-bold transition-all disabled:opacity-50 group"
-                    >
-                      <svg className="w-3.5 h-3.5 group-hover:-translate-y-0.5 transition-transform" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"/>
-                      </svg>
-                      <span>{isGeneratingPdf ? '생성 중...' : 'PDF 저장'}</span>
-                    </button>
-                  </div>
-                )}
                 <div className="flex flex-col lg:flex-row items-center lg:items-start gap-8">
                   {/* Left: Avatar & Contact */}
                   <div className="flex flex-col sm:flex-row items-center gap-6 shrink-0">
