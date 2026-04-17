@@ -240,3 +240,86 @@
     background-position: 40px 0;
   }
 }
+
+/* ══════════════════════════════════════════════════════════
+   PRINT / PDF STYLES  —  window.print() 전용
+   브라우저 네이티브 인쇄 엔진 사용 → oklch / 웹폰트 완벽 지원
+   ══════════════════════════════════════════════════════════ */
+
+/* 규칙 1: @page — A4 크기, 여백 0, 배율 100% 강제 */
+@page {
+  size: A4;
+  margin: 0;
+}
+
+/* 규칙 2: 인쇄 루트 강제 너비 — 화면 레이아웃 (max-w-[1300px] 등) 덮어씀 */
+@media print {
+  html,
+  body {
+    width: 210mm !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: white !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* 규칙 5: 배경 + 색상 강제 인쇄 */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* 규칙 3: 화면 전용 UI 완전 숨김 (빈 페이지 원인 제거) */
+  body > *:not(#print-root-wrapper),
+  nav,
+  footer,
+  header,
+  .screen-only,
+  button,
+  [data-admin-only],
+  [data-edit-control],
+  .edit-controls,
+  .edit-indicator,
+  .hover-tooltip {
+    display: none !important;
+    visibility: hidden !important;
+  }
+
+  /* 규칙 6: 화면 레이아웃 재정의 — print-root만 표시                */
+  #print-root-wrapper {
+    display: block !important;
+    visibility: visible !important;
+    position: static !important;
+    width: 210mm !important;
+    max-width: 210mm !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    transform: none !important;
+    overflow: visible !important;
+  }
+
+  #print-root {
+    display: block !important;
+    visibility: visible !important;
+    width: 210mm !important;
+  }
+
+  /* 규칙 4: 페이지 경계 — 마지막 요소에 break 없음, 사이에만 break */
+  .pdf-page {
+    width: 210mm !important;
+    height: 297mm !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+    background: #f8f9fa !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    display: block !important;
+    visibility: visible !important;
+  }
+
+  .pdf-page + .pdf-page {
+    page-break-before: always !important;
+    break-before: page !important;
+  }
+}

@@ -7,6 +7,7 @@ import { Portfolio } from './components/Portfolio';
 import { Skills } from './components/Skills';
 import { PlayHistory } from './components/PlayHistory';
 import { Resume } from './components/Resume';
+import { PrintTemplate } from './components/PrintTemplate';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 import { RightRail } from './components/RightRail';
@@ -206,6 +207,11 @@ function App() {
           isEditing={isEditing}
         />
       )}
+
+      {/* ── 인쇄 전용 레이아웃: 화면에선 숨김, @media print에서만 표시 ── */}
+      <div id="print-root-wrapper" style={{ display: 'none' }}>
+        <PrintTemplate data={resumeData} />
+      </div>
 
       <Footer />
     </div>

@@ -5,6 +5,7 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { EditableText } from './EditableText';
 import { CoverLetter } from './CoverLetter';
+import { PrintTemplate } from './PrintTemplate';
 import type { ResumeData } from '../types';
 
 const TOOL_ICONS: Record<string, React.ReactNode> = {
@@ -34,64 +35,17 @@ import { PdfTemplate } from './PdfTemplate';
 
 export const Resume = ({ setView, onBack, isEditing, data, setData, activeTab, isGeneratingPdf, setIsGeneratingPdf }: ResumeProps) => {
 
-  const handleDownload = async () => {
-    setIsGeneratingPdf(true);
-    let pdfRoot: ReturnType<typeof createRoot> | null = null;
-    let container: HTMLDivElement | null = null;
-
-    try {
-      // ① Off-screen container — visible to html2canvas but outside viewport
-      container = document.createElement('div');
-      container.style.cssText = [
-        'position:absolute',
-        'left:0',
-        'top:0',
-        'width:794px',  // 210mm @ 96 dpi
-        'background:#f8f9fa',
-        'z-index:-1',
-        'pointer-events:none',
-      ].join(';');
-      document.body.appendChild(container);
-
-      // ② Mount React tree — PdfTemplate uses 100% inline styles (no Tailwind → no oklch crash)
-      pdfRoot = createRoot(container);
-      pdfRoot.render(<PdfTemplate data={data} />);
-
-      // ③ Wait for React paint + font/image load
-      await new Promise(r => setTimeout(r, 1200));
-
-      const scrollWidth = container.scrollWidth || 794;
-      const scrollHeight = container.scrollHeight || 1123;
-
-      // ④ Generate & download PDF
-      const opt = {
-        margin: 0,
-        filename: '조경환_게임기획자_포트폴리오.pdf',
-        image: { type: 'jpeg' as const, quality: 0.98 },
-        html2canvas: {
-          scale: 2,
-          useCORS: true,
-          allowTaint: true,
-          logging: false,
-          scrollX: 0,
-          scrollY: 0,
-          windowWidth: scrollWidth,
-          windowHeight: scrollHeight,
-          backgroundColor: '#f8f9fa',
-        },
-        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' as const },
-        pagebreak: { mode: ['css', 'legacy'] },
-      };
-      await html2pdf().set(opt).from(container).save();
-
-    } catch (err) {
-      console.error('PDF generation failed', err);
-    } finally {
-      // ⑤ Clean up
-      if (pdfRoot) pdfRoot.unmount();
-      if (container && document.body.contains(container)) document.body.removeChild(container);
-      setIsGeneratingPdf(false);
-    }
+  const handleDownload = () => {
+    // document.title을 파일명으로 임시 변경 → 시스템 인쇄 대화상자 기본 파일명이 됨
+    const prevTitle = document.title;
+    document.title = '조경환_게임기획자_포트폴리오';
+    window.print();
+    // afterprint 이벤트로 원래 title 복원
+    const restore = () => {
+      document.title = prevTitle;
+      window.removeEventListener('afterprint', restore);
+    };
+    window.addEventListener('afterprint', restore);
   };
 
   // Navbar PDF 버튼 → CustomEvent 수신
@@ -100,6 +54,7 @@ export const Resume = ({ setView, onBack, isEditing, data, setData, activeTab, i
     window.addEventListener('triggerPdfDownload', handler);
     return () => window.removeEventListener('triggerPdfDownload', handler);
   }, [activeTab, data]);
+
   return (
     <>
       <motion.section initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }}
