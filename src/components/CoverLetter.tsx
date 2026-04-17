@@ -88,51 +88,59 @@ export const CoverLetter = ({ setView, isEditing, data, setData }: CoverLetterPr
                     whileInView={{ opacity: 1, y: 0 }} 
                     viewport={{ once: true }} 
                     transition={{ duration: 0.7, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                    className="max-w-[800px] mx-auto text-[#333F48] leading-[1.85] text-[15px] md:text-[17px] font-medium tracking-[-0.01em] [&_p]:mb-4 md:[&_p]:mb-5 [&_hr]:border-none [&_hr]:h-3 md:[&_hr]:h-4 [&_hr]:m-0 [&_hr]:p-0 [&_p]:break-keep [&_blockquote_p]:!mb-0 [&_strong]:text-[#0047BB] [&_strong]:font-extrabold [&_strong]:bg-[linear-gradient(to_top,rgba(0,71,187,0.18)_50%,transparent_50%)] [&_strong]:px-[3px] [&_strong]:rounded-sm [&_blockquote]:border-l-[5px] [&_blockquote]:border-[#0047BB] [&_blockquote]:bg-gradient-to-r [&_blockquote]:from-blue-50/80 [&_blockquote]:to-blue-50/10 [&_blockquote]:py-8 md:[&_blockquote]:py-10 [&_blockquote]:px-8 md:[&_blockquote]:px-12 [&_blockquote]:font-black [&_blockquote]:not-italic [&_blockquote]:text-[22px] md:[&_blockquote]:text-[28px] lg:[&_blockquote]:text-[32px] [&_blockquote]:leading-[1.5] [&_blockquote]:text-[#0047BB] [&_blockquote]:my-10 md:[&_blockquote]:my-12 [&_blockquote]:rounded-r-2xl [&_ul]:grid md:[&_ul]:grid-cols-4 [&_ul]:gap-3 md:[&_ul]:gap-4 [&_ul]:my-10 md:[&_ul]:my-12 [&_ul]:pl-0 [&_ul>li]:list-none [&_ul>li]:relative [&_ul>li]:px-4 md:[&_ul>li]:px-5 [&_ul>li]:py-5 md:[&_ul>li]:py-6 [&_ul>li]:bg-[#F8F9FF] [&_ul>li]:border [&_ul>li]:border-[#0047BB]/15 [&_ul>li]:rounded-2xl [&_ul>li]:shadow-[0_4px_20px_-4px_rgba(0,71,187,0.08)] [&_ul>li]:break-normal md:[&_ul>li:not(:last-child)::after]:content-[''] md:[&_ul>li:not(:last-child)::after]:absolute md:[&_ul>li:not(:last-child)::after]:-right-[14px] md:[&_ul>li:not(:last-child)::after]:top-1/2 md:[&_ul>li:not(:last-child)::after]:-translate-y-1/2 md:[&_ul>li:not(:last-child)::after]:border-t-[2.5px] md:[&_ul>li:not(:last-child)::after]:border-r-[2.5px] md:[&_ul>li:not(:last-child)::after]:border-[#0047BB]/40 md:[&_ul>li:not(:last-child)::after]:w-[10px] md:[&_ul>li:not(:last-child)::after]:h-[10px] md:[&_ul>li:not(:last-child)::after]:rotate-45 [&_ul>li_strong]:text-[#0047BB] [&_ul>li_strong]:font-black [&_ul>li_strong]:text-[15px] md:[&_ul>li_strong]:text-[18px] [&_ul>li_strong]:block [&_ul>li_strong]:mb-2 [&_ul>li_strong]:bg-none [&_ul>li_strong]:px-0 [&_ul>li_em]:not-italic [&_ul>li_em]:text-[13px] md:[&_ul>li_em]:text-[14px] [&_ul>li_em]:text-[#555F6B] [&_ul>li_em]:leading-[1.5] [&_ul>li_em]:block [&_ul>li_em]:mt-2 [&_ul>li_em]:break-keep"
+                    className="max-w-[800px] mx-auto text-[#333F48] leading-[1.85] text-[15px] md:text-[17px] font-medium tracking-[-0.01em] [&_p]:mb-4 md:[&_p]:mb-5 [&_p]:break-keep [&_strong]:text-[#0047BB] [&_strong]:font-extrabold [&_strong]:bg-[linear-gradient(to_top,rgba(0,71,187,0.18)_50%,transparent_50%)] [&_strong]:px-[3px] [&_strong]:rounded-sm"
                   >
-                    <EditableText value={intro.content} onSave={(v) => { const n = [...(data.selfIntroductions || [])]; n[idx].content = v; setData({...data, selfIntroductions: n}); }} isEditing={isEditing} markdown={true} />
+                    {/* Hook */}
+                    {isEditing && <div className="text-xs text-blue-500 font-bold mb-1">도입부 (Hook)</div>}
+                    <EditableText value={intro.hook} onSave={(v) => { const n = [...(data.selfIntroductions || [])]; n[idx].hook = v; setData({...data, selfIntroductions: n}); }} isEditing={isEditing} markdown={true} />
+
+                    {/* PullQuote */}
+                    {(intro.pullQuote || isEditing) && (
+                      <div className="my-10 md:my-12">
+                        {isEditing && <div className="text-xs text-blue-500 font-bold mb-1">인용구 (PullQuote)</div>}
+                        <blockquote className="border-l-[5px] border-[#0047BB] bg-gradient-to-r from-blue-50/80 to-blue-50/10 py-8 md:py-10 px-8 md:px-12 font-black text-[22px] md:text-[28px] lg:text-[32px] leading-[1.5] text-[#0047BB] rounded-r-2xl">
+                          <EditableText value={intro.pullQuote || ""} onSave={(v) => { const n = [...(data.selfIntroductions || [])]; n[idx].pullQuote = v; setData({...data, selfIntroductions: n}); }} isEditing={isEditing} markdown={false} />
+                        </blockquote>
+                      </div>
+                    )}
+
+                    {/* Highlights */}
+                    {(intro.highlights || isEditing) && (
+                      <div className="my-10 md:my-12">
+                        {isEditing && <div className="text-xs text-blue-500 font-bold mb-2">핵심 강조 수치 (Highlights) - 삭제는 빈칸으로 저장하세요</div>}
+                        <ul className="grid md:grid-cols-4 gap-3 md:gap-4 pl-0">
+                          {(intro.highlights || Array(4).fill({ bold: "", em: "" })).map((hl, hlIdx) => (
+                            <li key={hlIdx} className="list-none relative px-4 md:px-5 py-5 md:py-6 bg-[#F8F9FF] border border-[#0047BB]/15 rounded-2xl shadow-[0_4px_20px_-4px_rgba(0,71,187,0.08)] break-normal md:[&:not(:last-child)]::after:content-[''] md:[&:not(:last-child)]::after:absolute md:[&:not(:last-child)]::after:-right-[14px] md:[&:not(:last-child)]::after:top-1/2 md:[&:not(:last-child)]::after:-translate-y-1/2 md:[&:not(:last-child)]::after:border-t-[2.5px] md:[&:not(:last-child)]::after:border-r-[2.5px] md:[&:not(:last-child)]::after:border-[#0047BB]/40 md:[&:not(:last-child)]::after:w-[10px] md:[&:not(:last-child)]::after:h-[10px] md:[&:not(:last-child)]::after:rotate-45">
+                              <strong className="text-[#0047BB] font-black text-[15px] md:text-[18px] block mb-2 px-0 bg-none!">
+                                <EditableText value={hl.bold} onSave={(v) => { const n = [...(data.selfIntroductions || [])]; if(!n[idx].highlights) n[idx].highlights = Array(4).fill({bold:"", em:""}); n[idx].highlights![hlIdx] = { ...n[idx].highlights![hlIdx], bold: v }; setData({...data, selfIntroductions: n}); }} isEditing={isEditing} markdown={false} />
+                              </strong>
+                              <em className="not-italic text-[13px] md:text-[14px] text-[#555F6B] leading-[1.5] block mt-2 break-keep">
+                                <EditableText value={hl.em} onSave={(v) => { const n = [...(data.selfIntroductions || [])]; if(!n[idx].highlights) n[idx].highlights = Array(4).fill({bold:"", em:""}); n[idx].highlights![hlIdx] = { ...n[idx].highlights![hlIdx], em: v }; setData({...data, selfIntroductions: n}); }} isEditing={isEditing} markdown={false} />
+                              </em>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+
+                    {/* Body */}
+                    {isEditing && <div className="text-xs text-blue-500 font-bold mb-1">본문 (Body)</div>}
+                    <EditableText value={intro.body} onSave={(v) => { const n = [...(data.selfIntroductions || [])]; n[idx].body = v; setData({...data, selfIntroductions: n}); }} isEditing={isEditing} markdown={true} />
+
+                    {/* Closing */}
+                    {isEditing ? (
+                      <>
+                        <div className="text-xs text-blue-500 font-bold mb-1 mt-6">마무리 (Closing)</div>
+                        <EditableText value={intro.closing || ""} onSave={(v) => { const n = [...(data.selfIntroductions || [])]; n[idx].closing = v; setData({...data, selfIntroductions: n}); }} isEditing={isEditing} markdown={true} />
+                      </>
+                    ) : (
+                      intro.closing && (
+                        <div className="mt-8">
+                          <EditableText value={intro.closing || ""} onSave={(v) => {}} isEditing={isEditing} markdown={true} />
+                        </div>
+                      )
+                    )}
                   </motion.div>
-
-                  {/* 섹션 0 전용: 인라인 타이포그래픽 대비 */}
-                  {idx === 0 && (
-                    <motion.div 
-                      initial={{ opacity: 0, y: 20 }} 
-                      whileInView={{ opacity: 1, y: 0 }} 
-                      viewport={{ once: true }} 
-                      transition={{ duration: 0.7, delay: 0.45, ease: [0.16, 1, 0.3, 1] }}
-                      className="max-w-[800px] mx-auto mt-2 mb-8 text-[#333F48] leading-[1.9] text-[16px] md:text-[18px] font-medium tracking-[-0.01em] break-keep"
-                    >
-                      <p className="mb-4 md:mb-5">
-                        그 자리에서 확신했습니다.{' '}
-                        법학이{' '}
-                        <span className="inline-flex items-baseline gap-[2px] mx-[2px]">
-                          <span className="text-[30px] md:text-[40px] font-black text-zinc-300 leading-none">−</span>
-                          <span className="text-[15px] md:text-[17px] font-semibold text-zinc-400">에서</span>
-                          <span className="text-[30px] md:text-[40px] font-black text-zinc-400 leading-none">0</span>
-                        </span>
-                        으로 되돌리는 일이라면, 게임은{' '}
-                        <span className="inline-flex items-baseline gap-[2px] mx-[2px]">
-                          <span className="text-[30px] md:text-[40px] font-black text-zinc-500 leading-none">0</span>
-                          <span className="text-[15px] md:text-[17px] font-semibold text-zinc-500">에서</span>
-                          <span className="text-[38px] md:text-[52px] font-black text-[#0047BB] leading-none">+</span>
-                        </span>
-                        가 되는 경험을 만든다는 것을.{' '}
-                        저도 누군가의 하루를 움직이는 사람이 되고 싶었습니다.
-                      </p>
-                      <p className="text-[15px] md:text-[17px]">
-                        법학을 공부하며 배운 것이 있습니다. 모든 제도는 입법{' '}
-                        <strong className="text-[#0047BB] font-extrabold bg-[linear-gradient(to_top,rgba(0,71,187,0.18)_50%,transparent_50%)] px-[3px] rounded-sm">'의도'</strong>를 바탕으로{' '}
-                        <strong className="text-[#0047BB] font-extrabold bg-[linear-gradient(to_top,rgba(0,71,187,0.18)_50%,transparent_50%)] px-[3px] rounded-sm">'구조화'</strong>되며, 사회라는 하나의{' '}
-                        <strong className="text-[#0047BB] font-extrabold bg-[linear-gradient(to_top,rgba(0,71,187,0.18)_50%,transparent_50%)] px-[3px] rounded-sm">'시스템'</strong>으로 작동한다는 것입니다.
-                        저는 이 원리가{' '}
-                        <strong className="text-[#0047BB] font-extrabold bg-[linear-gradient(to_top,rgba(0,71,187,0.18)_50%,transparent_50%)] px-[3px] rounded-sm">게임 기획의 본질</strong>과 같다고 믿습니다.
-                      </p>
-                      <p className="mt-4 md:mt-5 text-[15px] md:text-[17px] font-bold text-[#1A1A1A]">
-                        저는 그 <strong className="text-[#0047BB] font-extrabold bg-[linear-gradient(to_top,rgba(0,71,187,0.18)_50%,transparent_50%)] px-[3px] rounded-sm">+를 설계하는 기획자</strong>가 되겠습니다.
-                      </p>
-                    </motion.div>
-                  )}
-
 
                 </motion.div>
 
@@ -148,7 +156,7 @@ export const CoverLetter = ({ setView, isEditing, data, setData }: CoverLetterPr
           ))}
 
           {isEditing && (
-            <button onClick={() => { const n = [...(data.selfIntroductions || [])]; n.push({ logline: "새로운 항목의 로그라인을 입력하세요.", content: "내용을 입력하세요." }); setData({...data, selfIntroductions: n}); }}
+            <button onClick={() => { const n = [...(data.selfIntroductions || [])]; n.push({ navTitle: "새 항목", logline: "새로운 항목의 로그라인을 입력하세요.", hook: "도입부를 입력하세요.", body: "본문을 입력하세요." }); setData({...data, selfIntroductions: n}); }}
               className="flex flex-col items-center justify-center border-2 border-dashed border-zinc-200 bg-zinc-50 hover:bg-zinc-100 transition-colors min-h-[200px] cursor-pointer rounded-3xl w-full">
               <Plus className="w-8 h-8 text-zinc-400 mb-2" />
               <span className="text-zinc-500 font-bold">새 자기소개 항목 추가</span>

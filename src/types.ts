@@ -64,10 +64,13 @@ export interface ResumeData {
   summary: string;
   selfIntroduction?: string;
   selfIntroductions?: {
+    navTitle: string;
     logline: string;
-    content: string;
-    navTitle?: string;
-    badge?: string;
+    hook: string;
+    body: string;
+    pullQuote?: string;
+    highlights?: { bold: string; em: string }[];
+    closing?: string;
   }[];
   education: {
     title: string;

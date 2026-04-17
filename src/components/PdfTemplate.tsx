@@ -49,83 +49,45 @@ function inlineRender(text: string): React.ReactNode {
   return nodes.length === 1 && typeof nodes[0] === 'string' ? nodes[0] : nodes;
 }
 
-/* ─── block-level markdown parser ───────────────────────────────── */
-type MdBlock =
-  | { type: 'p'; text: string }
-  | { type: 'bq'; text: string }
-  | { type: 'cards'; items: { bold: string; em: string }[] }
-  | { type: 'spacer' };
-
-function parseBlocks(md: string): MdBlock[] {
-  const blocks: MdBlock[] = [];
-  let pBuf: string[] = [];
-  let cardBuf: { bold: string; em: string }[] = [];
-
-  const flushP = () => {
-    const t = pBuf.join('\n').trim();
-    if (t) blocks.push({ type: 'p', text: t });
-    pBuf = [];
-  };
-  const flushCards = () => {
-    if (cardBuf.length) { blocks.push({ type: 'cards', items: [...cardBuf] }); cardBuf = []; }
-  };
-
-  for (const line of md.split('\n')) {
-    if (line === '') {
-      flushP();
-    } else if (line === '---') {
-      flushP(); flushCards(); blocks.push({ type: 'spacer' });
-    } else if (line.startsWith('> ')) {
-      flushP(); flushCards(); blocks.push({ type: 'bq', text: line.slice(2) });
-    } else if (line.startsWith('* ')) {
-      flushP();
-      const m = line.match(/^\* \*\*(.*?)\*\* \*(.*?)\*$/);
-      if (m) cardBuf.push({ bold: m[1], em: m[2] });
-      else { const b2 = line.match(/^\* \*\*(.*?)\*\*(.*)$/); cardBuf.push(b2 ? { bold: b2[1], em: b2[2].trim() } : { bold: line.slice(2), em: '' }); }
-    } else {
-      flushCards(); pBuf.push(line);
-    }
-  }
-  flushP(); flushCards();
-  return blocks;
+/* ─── paragraphs renderer ────────────────────────────────────────── */
+function renderParagraphs(text: string): React.ReactNode {
+  if (!text) return null;
+  return text.split('\n\n').map((p, i) => (
+    <p key={i} style={{ margin: '0 0 9px', lineHeight: 1.78, fontSize: '12px', color: BODY, wordBreak: 'keep-all' }}>
+      {inlineRender(p)}
+    </p>
+  ));
 }
 
-function renderBlocks(blocks: MdBlock[]): React.ReactNode {
-  return blocks.map((b, i) => {
-    if (b.type === 'spacer') return <div key={i} style={{ height: '10px' }} />;
+/* ─── pullQuote renderer ─────────────────────────────────────────── */
+function renderPullQuote(text?: string): React.ReactNode {
+  if (!text) return null;
+  return (
+    <div style={{ borderLeft: `4px solid ${BLUE}`, background: BLUE_FAINT, padding: '14px 20px', margin: '14px 0', borderRadius: '0 10px 10px 0' }}>
+      <span style={{ fontWeight: 800, fontSize: '16px', color: BLUE }}>{text}</span>
+    </div>
+  );
+}
 
-    if (b.type === 'bq') return (
-      <div key={i} style={{ borderLeft: `4px solid ${BLUE}`, background: BLUE_FAINT, padding: '14px 20px', margin: '14px 0', borderRadius: '0 10px 10px 0' }}>
-        <span style={{ fontWeight: 800, fontSize: '16px', color: BLUE }}>{b.text}</span>
-      </div>
-    );
-
-    if (b.type === 'cards' && b.items) {
-      const n = b.items.length;
-      return (
-        <div key={i} style={{ display: 'grid', gridTemplateColumns: `repeat(${n}, 1fr)`, gap: '9px', margin: '14px 0' }}>
-          {b.items.map((item, j) => (
-            <div key={j} style={{ position: 'relative' }}>
-              <div style={{ background: '#F8F9FF', border: `1px solid ${BLUE_BORDER}`, borderRadius: '10px', padding: '12px 10px' }}>
-                <div style={{ fontWeight: 700, fontSize: '11px', color: BLUE, marginBottom: '6px' }}>{item.bold}</div>
-                <div style={{ fontSize: '10px', color: MUTED, lineHeight: 1.5 }}>{item.em}</div>
-              </div>
-              {j < n - 1 && (
-                <div style={{ position: 'absolute', right: '-9px', top: '50%', transform: 'translateY(-50%)', color: FAINT, fontSize: '14px', fontWeight: 600 }}>›</div>
-              )}
-            </div>
-          ))}
+/* ─── highlights renderer ────────────────────────────────────────── */
+function renderHighlights(items?: { bold: string; em: string }[]): React.ReactNode {
+  if (!items || items.length === 0) return null;
+  const n = items.length;
+  return (
+    <div style={{ display: 'grid', gridTemplateColumns: `repeat(${n}, 1fr)`, gap: '9px', margin: '14px 0' }}>
+      {items.map((item, j) => (
+        <div key={j} style={{ position: 'relative' }}>
+          <div style={{ background: '#F8F9FF', border: `1px solid ${BLUE_BORDER}`, borderRadius: '10px', padding: '12px 10px' }}>
+            <div style={{ fontWeight: 700, fontSize: '11px', color: BLUE, marginBottom: '6px' }}>{item.bold}</div>
+            <div style={{ fontSize: '10px', color: MUTED, lineHeight: 1.5 }}>{item.em}</div>
+          </div>
+          {j < n - 1 && (
+            <div style={{ position: 'absolute', right: '-9px', top: '50%', transform: 'translateY(-50%)', color: FAINT, fontSize: '14px', fontWeight: 600 }}>›</div>
+          )}
         </div>
-      );
-    }
-
-    if (b.type === 'p' && b.text) return (
-      <p key={i} style={{ margin: '0 0 9px', lineHeight: 1.78, fontSize: '12px', color: BODY, wordBreak: 'keep-all' }}>
-        {inlineRender(b.text)}
-      </p>
-    );
-    return null;
-  });
+      ))}
+    </div>
+  );
 }
 
 /* ─── logline renderer ───────────────────────────────────────────── */
@@ -283,7 +245,6 @@ const ResumePage: React.FC<{ data: ResumeData }> = ({ data }) => (
 type IntroItem = NonNullable<ResumeData['selfIntroductions']>[0];
 
 const CoverPage: React.FC<{ intro: IntroItem; idx: number; isLast: boolean; data: ResumeData }> = ({ intro, idx, isLast, data }) => {
-  const blocks = parseBlocks(intro.content);
   const number = String(idx + 1).padStart(2, '0');
 
   return (
@@ -310,37 +271,27 @@ const CoverPage: React.FC<{ intro: IntroItem; idx: number; isLast: boolean; data
           {renderLogline(intro.logline)}
         </div>
 
-        {/* Rendered markdown */}
+        {/* Rendered structured fields */}
         <div style={{ flex: 1, overflow: 'hidden' }}>
-          {renderBlocks(blocks)}
+          {renderParagraphs(intro.hook)}
+          
+          {intro.pullQuote && renderPullQuote(intro.pullQuote)}
+          {intro.highlights && renderHighlights(intro.highlights)}
 
-          {/* Section 01 exclusive: special closing typography */}
-          {idx === 0 && (
-            <div style={{ marginTop: '10px', fontSize: '12px', color: BODY, lineHeight: 1.78 }}>
-              <p style={{ margin: '0 0 9px', wordBreak: 'keep-all' }}>
-                그 자리에서 확신했습니다. 법학이{' '}
-                <span style={{ fontSize: '17px', fontWeight: 900, color: LIGHTER }}>−</span>
-                <span style={{ fontSize: '10px', color: FAINT }}>에서</span>
-                <span style={{ fontSize: '17px', fontWeight: 900, color: FAINT }}>0</span>
-                으로 되돌리는 일이라면, 게임은{' '}
-                <span style={{ fontSize: '17px', fontWeight: 900, color: MUTED }}>0</span>
-                <span style={{ fontSize: '10px', color: MUTED }}>에서</span>
-                <span style={{ fontSize: '22px', fontWeight: 900, color: BLUE }}>+</span>
-                {' '}가 되는 경험을 만든다는 것을. 저도 누군가의 하루를 움직이는 사람이 되고 싶었습니다.
-              </p>
-              <p style={{ margin: '0 0 9px', wordBreak: 'keep-all', fontSize: '12px' }}>
-                법학을 공부하며 배운 것이 있습니다. 모든 제도는 입법{' '}
-                <strong style={{ color: BLUE, fontWeight: 800 }}>'의도'</strong>를 바탕으로{' '}
-                <strong style={{ color: BLUE, fontWeight: 800 }}>'구조화'</strong>되며, 사회라는 하나의{' '}
-                <strong style={{ color: BLUE, fontWeight: 800 }}>'시스템'</strong>으로 작동한다는 것입니다.
-                저는 이 원리가{' '}
-                <strong style={{ color: BLUE, fontWeight: 800 }}>게임 기획의 본질</strong>과 같다고 믿습니다.
-              </p>
-              <p style={{ margin: 0, fontWeight: 700, fontSize: '12px', color: DARK }}>
-                저는 그 <strong style={{ color: BLUE, fontWeight: 800 }}>+를 설계하는 기획자</strong>가 되겠습니다.
-              </p>
+          {intro.body && (
+            <div style={{ marginTop: '10px' }}>
+              {renderParagraphs(intro.body)}
             </div>
           )}
+
+          {intro.closing && (
+            <div style={{ marginTop: '10px' }}>
+              {renderParagraphs(intro.closing)}
+            </div>
+          )}
+          
+          {/* Section 01 exclusive: special typography (optional fallback if closing is basic text, but now we use closing directly. We already split this logic, wait. I will just render closing text styled with the bold/em matching like we do. Wait, in Data we already have closing with markdown-like ** **! Let's ensure inlineRender supports it. Yes, it does inline bold.) */}
+          
         </div>
 
         {/* Footer on last page */}
