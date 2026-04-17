@@ -81,13 +81,18 @@ export const Navbar = ({ setView, currentView, onNavClick, isEditing, setIsEditi
           {/* ── LEFT ── */}
           <div className="flex shrink-0 items-center gap-3 min-w-[200px]">
             {isSubView && onBack ? (
-              /* Sub-view: 왼쪽에 Back 버튼 + 현재 페이지명 */
               <button
                 onClick={onBack}
-                className="flex items-center justify-center w-10 h-10 rounded-full bg-zinc-100 hover:bg-zinc-200 border border-black/[0.06] text-zinc-500 hover:text-[#0047BB] transition-all duration-200"
-                title="닫기"
+                className="flex items-center gap-2.5 px-4 py-2 rounded-full bg-zinc-100 hover:bg-zinc-200 border border-black/[0.06] text-zinc-600 hover:text-[#0047BB] font-bold text-sm transition-all duration-200 group"
               >
-                <X className="w-4 h-4" />
+                <motion.span
+                  className="flex items-center"
+                  whileHover={{ x: -2 }}
+                  transition={{ type: 'spring', stiffness: 500, damping: 30 }}
+                >
+                  <ArrowLeft className="w-4 h-4" />
+                </motion.span>
+                <span>메인으로 돌아가기</span>
               </button>
             ) : (
               /* Home: 로고 */

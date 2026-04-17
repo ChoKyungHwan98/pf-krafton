@@ -22,21 +22,7 @@ export const ProjectDetail = ({ project, onBack, isEditing, onSaveContent }: Pro
       <div className="max-w-[1200px] mx-auto w-full">
         <div className="relative flex flex-col md:flex-row md:items-center justify-between gap-4 py-4 md:py-6 border-y border-black/5 mb-12 -mx-6 px-6 md:-mx-12 md:px-12">
           <div className="flex items-center gap-4">
-            <button 
-              onClick={onBack} 
-              className="w-[190px] h-[46px] flex items-center justify-center gap-3 bg-zinc-100/80 hover:bg-white hover:shadow-md border border-black/5 rounded-full text-zinc-500 hover:text-[#0047BB] transition-all duration-300 group font-sans tracking-tight text-sm font-bold"
-            >
-              <motion.div
-                whileHover={{ x: -4 }}
-                transition={{ type: "spring", stiffness: 400, damping: 25 }}
-                className="flex items-center"
-              >
-                <ArrowLeft className="w-4 h-4" />
-              </motion.div>
-              <span>메인으로 돌아가기</span>
-            </button>
-            <div className="hidden sm:flex items-center gap-3 w-[110px]">
-              <div className="w-px h-4 bg-black/10 shrink-0"></div>
+            <div className="flex items-center gap-3">
               <span className="text-[11px] font-black tracking-widest text-zinc-300 uppercase truncate">Project Detail</span>
             </div>
           </div>
