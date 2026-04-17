@@ -56,7 +56,7 @@ export const About = ({ isEditing, content, setContent }: AboutProps) => (
             >
               <div className="absolute -left-6 top-1 bottom-1 w-[3px] bg-gradient-to-b from-[#0047BB]/40 via-[#0047BB]/15 to-transparent rounded-full" />
               <div className="text-[17px] md:text-[19px] lg:text-[21px] text-zinc-700 leading-[1.95] font-medium tracking-[-0.01em] break-keep">
-                <EditableText value={content.p1} onSave={(v) => setContent({ ...content, p1: v })} isEditing={isEditing} multiline />
+                <EditableText value={content.p1} onSave={(v) => setContent({ ...content, p1: v })} isEditing={isEditing} markdown />
               </div>
             </motion.div>
 
@@ -78,7 +78,7 @@ export const About = ({ isEditing, content, setContent }: AboutProps) => (
               transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
               className="text-[14px] md:text-[15px] lg:text-[16px] text-zinc-400 leading-[2] font-medium tracking-[-0.005em] break-keep"
             >
-              <EditableText value={content.p2} onSave={(v) => setContent({ ...content, p2: v })} isEditing={isEditing} multiline />
+              <EditableText value={content.p2} onSave={(v) => setContent({ ...content, p2: v })} isEditing={isEditing} markdown />
             </motion.div>
           </div>
 
