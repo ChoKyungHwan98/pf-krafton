@@ -11,7 +11,7 @@ interface AboutProps {
 export const About = ({ isEditing, content, setContent }: AboutProps) => (
   <section
     id="about"
-    className="pt-[100px] lg:pt-[130px] pb-16 lg:pb-24 px-6 md:px-12 relative border-t border-black/5 flex flex-col justify-start bg-[#FAFAFA] overflow-hidden"
+    className="pt-[100px] lg:pt-[130px] pb-24 lg:pb-32 px-6 md:px-12 relative border-t border-black/5 flex flex-col justify-start bg-[#FAFAFA] overflow-hidden"
   >
     {/* Subtle dot grid */}
     <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.025)_1px,transparent_1px)] bg-[size:28px_28px]" />
