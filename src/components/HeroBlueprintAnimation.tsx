@@ -14,7 +14,7 @@ export const HeroBlueprintAnimation = () => {
     hidden: { pathLength: 0, opacity: 0 },
     show: { 
       pathLength: 1, 
-      opacity: 0.5,
+      opacity: 0.4,
       transition: { duration: 2, ease: "easeInOut" } 
     }
   };
@@ -28,19 +28,19 @@ export const HeroBlueprintAnimation = () => {
     }
   };
 
-  // Using a 500x300 viewBox coordinate system for perfect scaling
+  // Using a 1000x500 viewBox. We shift everything to the right half (X > 500)
   const startPoints = [
-    { y: 80, label: "01. CORE INTENT" },
-    { y: 150, label: "02. SYSTEMS" },
-    { y: 220, label: "03. BALANCE" }
+    { y: 150, label: "01. CORE INTENT" },
+    { y: 250, label: "02. SYSTEMS" },
+    { y: 350, label: "03. BALANCE" }
   ];
 
   const endNodes = [
-    { x: 260, y: 50, label: "META_GAME" },
-    { x: 380, y: 100, label: "COMBAT_LOOP" },
-    { x: 300, y: 150, label: "ECONOMY" },
-    { x: 420, y: 200, label: "USER_EXP" },
-    { x: 320, y: 250, label: "RETENTION" }
+    { x: 650, y: 100, label: "META_GAME" },
+    { x: 850, y: 180, label: "COMBAT_LOOP" },
+    { x: 700, y: 250, label: "ECONOMY" },
+    { x: 900, y: 320, label: "USER_EXP" },
+    { x: 750, y: 400, label: "RETENTION" }
   ];
 
   const connections = [
@@ -55,30 +55,41 @@ export const HeroBlueprintAnimation = () => {
   ];
 
   return (
-    <div className="absolute inset-0 bg-[#0A0F1C] overflow-hidden font-mono selection:bg-transparent">
-      {/* Blueprint Grid */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(0,71,187,0.15)_1px,transparent_1px),linear-gradient(90deg,rgba(0,71,187,0.15)_1px,transparent_1px)] bg-[size:20px_20px] opacity-40"></div>
+    <div className="absolute inset-0 bg-transparent overflow-hidden font-mono selection:bg-transparent">
+      {/* Blueprint Grid - Light Theme */}
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(0,71,187,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(0,71,187,0.05)_1px,transparent_1px)] bg-[size:32px_32px]"></div>
       
       {/* Scanning Line Animation */}
       <motion.div 
         animate={{ y: ["-10%", "110%"] }}
-        transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
-        className="absolute left-0 right-0 h-1 bg-gradient-to-b from-transparent via-[#0047BB]/30 to-transparent w-full z-0"
+        transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
+        className="absolute left-0 right-0 h-1 bg-gradient-to-b from-transparent via-[#0047BB]/10 to-transparent w-full z-0"
       />
 
       <motion.div 
         variants={containerVariants}
         initial="hidden"
         animate="show"
-        className="absolute inset-0 w-full h-full flex items-center justify-center p-6"
+        className="absolute inset-0 w-full h-full flex items-center justify-center pointer-events-none"
       >
-        <svg viewBox="0 0 500 300" className="w-full h-full overflow-visible">
+        {/* We use preserveAspectRatio="xMidYMid slice" to make it act like object-cover */}
+        <svg viewBox="0 0 1000 500" preserveAspectRatio="xMidYMid slice" className="w-full h-full overflow-visible">
+          
+          {/* Subtle tech circle on the right */}
+          <motion.circle 
+             cx="800" cy="250" r="180" 
+             fill="none" stroke="rgba(0,71,187,0.03)" strokeWidth="1" strokeDasharray="4 4"
+             animate={{ rotate: 360 }}
+             transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+             style={{ transformOrigin: "800px 250px" }}
+          />
+
           {/* Connections */}
           {connections.map((conn, i) => {
             const start = startPoints[conn.start];
             const end = endNodes[conn.end];
-            const startX = 140; // End of the text box
-            const pathData = `M ${startX} ${start.y} C ${startX + 60} ${start.y}, ${end.x - 60} ${end.y}, ${end.x} ${end.y}`;
+            const startX = 450; // Start lines near the middle-left
+            const pathData = `M ${startX} ${start.y} C ${startX + 100} ${start.y}, ${end.x - 100} ${end.y}, ${end.x} ${end.y}`;
             return (
               <motion.path 
                 key={`path-${i}`}
@@ -91,22 +102,22 @@ export const HeroBlueprintAnimation = () => {
             );
           })}
 
-          {/* Start Points (Table of Contents) */}
+          {/* Start Points */}
           {startPoints.map((pt, i) => (
             <motion.g key={`start-${i}`} variants={nodeVariants}>
-              <rect x="20" y={pt.y - 12} width="110" height="24" rx="4" fill="#0A0F1C" stroke="rgba(0,71,187,0.6)" strokeWidth="1" />
-              <text x="30" y={pt.y + 3.5} fill="#0047BB" fontSize="10" fontWeight="bold" letterSpacing="1" fontFamily="monospace">{pt.label}</text>
-              <circle cx="140" cy={pt.y} r="3" fill="#0047BB" />
-              <circle cx="140" cy={pt.y} r="7" fill="rgba(0,71,187,0.3)" />
+              <rect x="290" y={pt.y - 14} width="140" height="28" rx="6" fill="#FDFDFB" stroke="rgba(0,71,187,0.2)" strokeWidth="1" />
+              <text x="305" y={pt.y + 4} fill="#0047BB" fontSize="12" fontWeight="bold" letterSpacing="1" fontFamily="monospace">{pt.label}</text>
+              <circle cx="450" cy={pt.y} r="4" fill="#0047BB" />
+              <circle cx="450" cy={pt.y} r="10" fill="rgba(0,71,187,0.15)" />
             </motion.g>
           ))}
 
-          {/* End Nodes (Systems) */}
+          {/* End Nodes */}
           {endNodes.map((node, i) => (
             <motion.g key={`node-${i}`} variants={nodeVariants}>
-              <circle cx={node.x} cy={node.y} r="3" fill="#FFFFFF" />
-              <circle cx={node.x} cy={node.y} r="10" fill="none" stroke="rgba(255,255,255,0.2)" strokeWidth="1" />
-              <text x={node.x + 12} y={node.y + 3} fill="rgba(255,255,255,0.8)" fontSize="9" letterSpacing="1" fontFamily="monospace">{node.label}</text>
+              <circle cx={node.x} cy={node.y} r="4" fill="#0047BB" />
+              <circle cx={node.x} cy={node.y} r="12" fill="none" stroke="rgba(0,71,187,0.1)" strokeWidth="1" />
+              <text x={node.x + 16} y={node.y + 4} fill="#2C2C2C" fontSize="11" letterSpacing="1" fontFamily="monospace" fontWeight="bold">{node.label}</text>
             </motion.g>
           ))}
           
@@ -114,16 +125,13 @@ export const HeroBlueprintAnimation = () => {
           {endNodes.map((node, i) => (
             <motion.circle
               key={`pulse-${i}`}
-              cx={node.x} cy={node.y} r="3" fill="none" stroke="#FFFFFF" strokeWidth="1"
-              animate={{ r: [3, 16, 3], opacity: [0.8, 0, 0.8] }}
-              transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut", delay: i * 0.3 }}
+              cx={node.x} cy={node.y} r="4" fill="none" stroke="#0047BB" strokeWidth="1"
+              animate={{ r: [4, 20, 4], opacity: [0.6, 0, 0.6] }}
+              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: i * 0.4 }}
             />
           ))}
         </svg>
       </motion.div>
-
-      {/* Vignette Overlay to blend edges */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_30%,#0A0F1C_100%)] pointer-events-none opacity-80"></div>
     </div>
   );
 };

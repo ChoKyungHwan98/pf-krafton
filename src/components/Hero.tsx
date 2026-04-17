@@ -16,14 +16,19 @@ interface HeroProps {
 
 export const Hero = ({ onPortfolioClick, onResumeClick, isEditing, content, setContent, aboutContent, setAboutContent }: HeroProps) => (
   <section id="hero" className="relative min-h-screen flex flex-col justify-center px-6 md:px-12 py-[120px] overflow-hidden bg-[#FDFDFB] border-b border-black/10">
-    <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.05)_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+    {/* Full-bleed Background Animation */}
+    <div className="absolute inset-0 z-0 pointer-events-none">
+      <HeroBlueprintAnimation />
+      {/* Gradient to protect text visibility on the left side */}
+      <div className="absolute inset-0 bg-gradient-to-r from-[#FDFDFB] via-[#FDFDFB]/80 to-transparent"></div>
+    </div>
     
     <div className="max-w-7xl mx-auto w-full relative z-10 flex flex-col lg:flex-row items-center justify-between gap-16 lg:gap-8 mt-12">
       <motion.div 
         initial={{ opacity: 0, x: -30 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="w-full lg:w-[55%] flex flex-col items-start text-left"
+        className="w-full lg:w-[60%] flex flex-col items-start text-left"
       >
         <h1 className="mb-8 flex flex-col items-start gap-4">
           <div className="text-2xl md:text-3xl lg:text-4xl font-display font-medium text-zinc-500 tracking-tight">
@@ -52,42 +57,6 @@ export const Hero = ({ onPortfolioClick, onResumeClick, isEditing, content, setC
           >
             포트폴리오 보기 <ArrowUpRight className="w-4 h-4" />
           </motion.button>
-        </div>
-      </motion.div>
-
-      <motion.div 
-        initial={{ opacity: 0, scale: 0.95 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
-        className="hidden lg:flex lg:w-1/2 justify-end relative"
-      >
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[500px] h-full bg-gradient-to-tr from-[#0047BB]/10 to-transparent blur-[80px] rounded-full mix-blend-multiply opacity-50"></div>
-        
-        <div className="relative w-full max-w-[520px] aspect-video sm:aspect-[4/3] lg:aspect-[16/10] mt-4 z-10 rounded-[1.5rem] overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.06)] border border-black/5 bg-zinc-900 flex flex-col group hover:shadow-[0_20px_60px_rgba(0,71,187,0.15)] transition-shadow duration-500">
-           <div className="h-10 bg-[#1A1A1A] border-b border-white/5 flex items-center px-4 gap-2 text-white shrink-0 z-20">
-             <div className="w-2.5 h-2.5 rounded-full bg-red-400"></div>
-             <div className="w-2.5 h-2.5 rounded-full bg-amber-400"></div>
-             <div className="w-2.5 h-2.5 rounded-full bg-green-400"></div>
-             <div className="flex-1 text-center font-mono text-[10px] text-zinc-400 uppercase tracking-widest mr-8">INDEX_BLUEPRINT.exe</div>
-           </div>
-           
-           <div className="flex-1 relative bg-[#0A0F1C]">
-             <HeroBlueprintAnimation />
-             
-             {/* Overlay Content */}
-             <div className="absolute inset-x-0 bottom-0 p-6 xl:p-8 flex items-end justify-between pointer-events-none z-10">
-               <div>
-                 <span className="text-white/60 font-mono text-[10px] tracking-widest uppercase mb-2 block">00 . INITIALIZE</span>
-                 <h3 className="text-white font-display font-medium text-2xl xl:text-3xl leading-tight">
-                   The Master <br/><span className="font-bold text-[#0047BB]">Blueprint.</span>
-                 </h3>
-               </div>
-               
-               <div className="w-12 h-12 rounded-full border border-white/20 bg-white/10 backdrop-blur-md flex items-center justify-center text-white shrink-0 group-hover:bg-white group-hover:text-[#0047BB] transition-colors duration-300">
-                 <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4 ml-1"><path d="M8 5v14l11-7z" /></svg>
-               </div>
-             </div>
-           </div>
         </div>
       </motion.div>
     </div>
