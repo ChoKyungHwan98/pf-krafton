@@ -76,7 +76,7 @@ export const GameHistoryView = ({ onBack }: GameHistoryViewProps) => {
 
   return (
     <motion.section initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-      className="min-h-screen bg-[#FDFDFB] pt-36 pb-32">
+      className="min-h-screen bg-[#FDFDFB] pt-44 pb-32">
 
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="flex flex-col gap-3 mb-16 mt-4">
