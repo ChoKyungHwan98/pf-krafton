@@ -34,7 +34,7 @@ const stats = [
 export const About = ({ isEditing, content, setContent }: AboutProps) => (
   <section
     id="about"
-    className="pt-[100px] lg:pt-[130px] pb-[80px] lg:pb-[100px] px-6 md:px-12 relative border-t border-black/5 flex flex-col justify-start bg-[#FAFAFA] overflow-hidden"
+    className="pt-[100px] lg:pt-[130px] pb-[240px] lg:pb-[320px] px-6 md:px-12 relative border-t border-black/5 min-h-[110vh] flex flex-col justify-start bg-[#FAFAFA] overflow-hidden"
   >
     {/* Subtle dot grid */}
     <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.025)_1px,transparent_1px)] bg-[size:28px_28px]" />
@@ -47,14 +47,14 @@ export const About = ({ isEditing, content, setContent }: AboutProps) => (
       <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4 border-b border-black/5 pb-6">
         <div>
           <span className="text-[#0047BB] font-sans text-[11px] font-bold tracking-widest uppercase mb-3 block">01. 소개</span>
-          <h2 className="flex flex-col gap-0.5 items-start mt-2">
-            <span className="text-xl md:text-2xl text-zinc-400 font-display font-medium tracking-tight">논리와 감성으로,</span>
+        <h2 className="flex flex-col gap-1 items-start mt-2">
+            <span className="text-2xl md:text-3xl text-zinc-400 font-display font-medium tracking-tight">논리와 감성으로,</span>
             {/* Typographic contrast — same style as CoverLetter */}
-            <span className="flex items-baseline gap-2 leading-none">
-              <span className="text-5xl md:text-6xl lg:text-[5rem] font-display font-black tracking-tighter text-zinc-300">0</span>
-              <span className="text-2xl md:text-3xl lg:text-4xl font-display font-black text-zinc-400">에서</span>
-              <span className="text-5xl md:text-6xl lg:text-[5.5rem] font-display font-black tracking-tighter text-[#0047BB] drop-shadow-[0_0_24px_rgba(0,71,187,0.18)]">+</span>
-              <span className="text-2xl md:text-3xl lg:text-4xl font-display font-black text-zinc-500">로</span>
+            <span className="flex items-baseline gap-2 leading-none mt-1">
+              <span className="text-[72px] md:text-[90px] lg:text-[110px] font-display font-black tracking-tighter text-zinc-200 leading-none">0</span>
+              <span className="text-3xl md:text-4xl lg:text-5xl font-display font-black text-zinc-400">에서</span>
+              <span className="text-[82px] md:text-[100px] lg:text-[124px] font-display font-black tracking-tighter text-[#0047BB] leading-none drop-shadow-[0_0_32px_rgba(0,71,187,0.22)]">+</span>
+              <span className="text-3xl md:text-4xl lg:text-5xl font-display font-black text-zinc-500">로</span>
             </span>
           </h2>
         </div>
@@ -64,7 +64,7 @@ export const About = ({ isEditing, content, setContent }: AboutProps) => (
       </div>
 
       {/* ── TWO-COLUMN LAYOUT ── */}
-      <div className="grid lg:grid-cols-[1fr_340px] xl:grid-cols-[1fr_380px] gap-8 lg:gap-12 items-start">
+      <div className="grid lg:grid-cols-[1fr_400px] xl:grid-cols-[1fr_440px] gap-10 lg:gap-16 items-start">
 
         {/* LEFT: body copy */}
         <div className="flex flex-col gap-6">
@@ -74,9 +74,9 @@ export const About = ({ isEditing, content, setContent }: AboutProps) => (
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-            className="bg-white rounded-2xl border border-black/5 shadow-[0_4px_24px_-8px_rgba(0,71,187,0.07)] p-6 md:p-8"
+            className="bg-white rounded-2xl border border-black/5 shadow-[0_4px_24px_-8px_rgba(0,71,187,0.07)] p-7 md:p-10"
           >
-            <div className="text-base md:text-lg text-zinc-600 leading-[1.95] font-medium">
+            <div className="text-lg md:text-xl lg:text-2xl text-zinc-600 leading-[2] font-medium">
               <EditableText value={content.p1} onSave={(v) => setContent({ ...content, p1: v })} isEditing={isEditing} multiline />
             </div>
           </motion.div>
@@ -87,7 +87,7 @@ export const About = ({ isEditing, content, setContent }: AboutProps) => (
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="text-sm md:text-[15px] text-zinc-400 leading-[1.9] font-medium pl-1"
+            className="text-base md:text-[17px] text-zinc-400 leading-[1.95] font-medium pl-1"
           >
             <EditableText value={content.p2} onSave={(v) => setContent({ ...content, p2: v })} isEditing={isEditing} multiline />
           </motion.div>
@@ -101,16 +101,16 @@ export const About = ({ isEditing, content, setContent }: AboutProps) => (
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.0, ease: [0.16, 1, 0.3, 1] }}
-            className="bg-white rounded-2xl border border-black/5 shadow-[0_4px_20px_-8px_rgba(0,0,0,0.06)] px-6 py-5 flex items-center gap-5 group hover:border-[#0047BB]/20 hover:shadow-[0_8px_32px_-8px_rgba(0,71,187,0.12)] transition-all duration-300"
+            className="bg-white rounded-2xl border border-black/5 shadow-[0_4px_20px_-8px_rgba(0,0,0,0.06)] px-7 py-6 flex items-center gap-6 group hover:border-[#0047BB]/20 hover:shadow-[0_8px_32px_-8px_rgba(0,71,187,0.12)] transition-all duration-300"
           >
             <div className="flex items-baseline gap-1 shrink-0 leading-none">
-              <span className="text-[36px] font-black text-zinc-200 leading-none group-hover:text-zinc-300 transition-colors duration-300">0</span>
-              <span className="text-[16px] font-black text-zinc-300 mx-0.5">→</span>
-              <span className="text-[42px] font-black text-[#0047BB] leading-none drop-shadow-[0_0_12px_rgba(0,71,187,0.22)] group-hover:drop-shadow-[0_0_20px_rgba(0,71,187,0.35)] transition-all duration-300">+</span>
+              <span className="text-[52px] font-black text-zinc-200 leading-none group-hover:text-zinc-300 transition-colors duration-300">0</span>
+              <span className="text-[22px] font-black text-zinc-300 mx-1">→</span>
+              <span className="text-[60px] font-black text-[#0047BB] leading-none drop-shadow-[0_0_14px_rgba(0,71,187,0.25)] group-hover:drop-shadow-[0_0_24px_rgba(0,71,187,0.4)] transition-all duration-300">+</span>
             </div>
             <div>
-              <p className="text-[12px] font-black tracking-[0.12em] text-[#0047BB] uppercase mb-1">재미 설계</p>
-              <p className="text-[13px] text-zinc-400 font-medium leading-[1.5]">0에서 플러스가 되는<br />경험을 만드는 기획자</p>
+              <p className="text-[12px] font-black tracking-[0.14em] text-[#0047BB] uppercase mb-1.5">재미 설계</p>
+              <p className="text-[14px] text-zinc-400 font-medium leading-[1.55]">0에서 플러스가 되는<br />경험을 만드는 기획자</p>
             </div>
           </motion.div>
 
@@ -120,15 +120,15 @@ export const About = ({ isEditing, content, setContent }: AboutProps) => (
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="bg-white rounded-2xl border border-black/5 shadow-[0_4px_20px_-8px_rgba(0,0,0,0.06)] px-6 py-5 flex items-center gap-5 group hover:border-[#0047BB]/20 hover:shadow-[0_8px_32px_-8px_rgba(0,71,187,0.12)] transition-all duration-300"
+            className="bg-white rounded-2xl border border-black/5 shadow-[0_4px_20px_-8px_rgba(0,0,0,0.06)] px-7 py-6 flex items-center gap-6 group hover:border-[#0047BB]/20 hover:shadow-[0_8px_32px_-8px_rgba(0,71,187,0.12)] transition-all duration-300"
           >
             <div className="flex items-baseline gap-0.5 shrink-0 leading-none">
-              <span className="text-[48px] font-black text-[#2C2C2C] leading-none group-hover:text-[#0047BB] transition-colors duration-300">3</span>
-              <span className="text-[22px] font-black text-zinc-400 leading-none">건+</span>
+              <span className="text-[64px] font-black text-[#2C2C2C] leading-none group-hover:text-[#0047BB] transition-colors duration-300">3</span>
+              <span className="text-[28px] font-black text-zinc-400 leading-none">건+</span>
             </div>
             <div>
-              <p className="text-[12px] font-black tracking-[0.12em] text-[#0047BB] uppercase mb-1">프로젝트 기획</p>
-              <p className="text-[13px] text-zinc-400 font-medium leading-[1.5]">시스템 · 밸런스 · 레벨<br />처음부터 끝까지 단독 설계</p>
+              <p className="text-[12px] font-black tracking-[0.14em] text-[#0047BB] uppercase mb-1.5">프로젝트 기획</p>
+              <p className="text-[14px] text-zinc-400 font-medium leading-[1.55]">시스템 · 밸런스 · 레벨<br />처음부터 끝까지 단독 설계</p>
             </div>
           </motion.div>
 
@@ -138,16 +138,16 @@ export const About = ({ isEditing, content, setContent }: AboutProps) => (
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="bg-white rounded-2xl border border-black/5 shadow-[0_4px_20px_-8px_rgba(0,0,0,0.06)] px-6 py-5 flex items-center gap-5 group hover:border-[#0047BB]/20 hover:shadow-[0_8px_32px_-8px_rgba(0,71,187,0.12)] transition-all duration-300"
+            className="bg-white rounded-2xl border border-black/5 shadow-[0_4px_20px_-8px_rgba(0,0,0,0.06)] px-7 py-6 flex items-center gap-6 group hover:border-[#0047BB]/20 hover:shadow-[0_8px_32px_-8px_rgba(0,71,187,0.12)] transition-all duration-300"
           >
             <div className="flex items-baseline gap-1 shrink-0 leading-none">
-              <span className="text-[38px] font-black text-zinc-300 leading-none group-hover:text-zinc-400 transition-colors duration-300">A</span>
-              <span className="text-[16px] font-black text-zinc-300 mx-0.5">→</span>
-              <span className="text-[38px] font-black text-[#2C2C2C] leading-none group-hover:text-[#0047BB] transition-colors duration-300">Z</span>
+              <span className="text-[50px] font-black text-zinc-300 leading-none group-hover:text-zinc-400 transition-colors duration-300">A</span>
+              <span className="text-[22px] font-black text-zinc-300 mx-1">→</span>
+              <span className="text-[50px] font-black text-[#2C2C2C] leading-none group-hover:text-[#0047BB] transition-colors duration-300">Z</span>
             </div>
             <div>
-              <p className="text-[12px] font-black tracking-[0.12em] text-[#0047BB] uppercase mb-1">전체 기획 담당</p>
-              <p className="text-[13px] text-zinc-400 font-medium leading-[1.5]">아이디어 발굴부터<br />출시 전략까지 전담</p>
+              <p className="text-[12px] font-black tracking-[0.14em] text-[#0047BB] uppercase mb-1.5">전체 기획 담당</p>
+              <p className="text-[14px] text-zinc-400 font-medium leading-[1.55]">아이디어 발굴부터<br />출시 전략까지 전담</p>
             </div>
           </motion.div>
         </div>
