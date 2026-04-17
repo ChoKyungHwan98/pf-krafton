@@ -243,7 +243,7 @@
 
 /* ══════════════════════════════════════════════════════════
    PRINT / PDF STYLES  —  window.print() 전용
-   브라우저 네이티브 인쇄 엔진 사용 → oklch / 웹폰트 완벽 지원
+   브라우저 네이티브 인쇄 엔진 → oklch / 웹폰트 완벽 지원
    ══════════════════════════════════════════════════════════ */
 
 /* 규칙 1: @page — A4 크기, 여백 0, 배율 100% 강제 */
@@ -252,16 +252,15 @@
   margin: 0;
 }
 
-/* 규칙 2: 인쇄 루트 강제 너비 — 화면 레이아웃 (max-w-[1300px] 등) 덮어씀 */
 @media print {
+  /* 규칙 2: html/body 기본 리셋 */
   html,
   body {
     width: 210mm !important;
     margin: 0 !important;
     padding: 0 !important;
     background: white !important;
-    -webkit-print-color-adjust: exact !important;
-    print-color-adjust: exact !important;
+    overflow: visible !important;
   }
 
   /* 규칙 5: 배경 + 색상 강제 인쇄 */
@@ -270,23 +269,14 @@
     print-color-adjust: exact !important;
   }
 
-  /* 규칙 3: 화면 전용 UI 완전 숨김 (빈 페이지 원인 제거) */
-  body > *:not(#print-root-wrapper),
-  nav,
-  footer,
-  header,
-  .screen-only,
-  button,
-  [data-admin-only],
-  [data-edit-control],
-  .edit-controls,
-  .edit-indicator,
-  .hover-tooltip {
+  /* ── 규칙 3: 화면 UI 완전 숨김 ──
+     #root 전체(앱 화면)를 숨기고 #print-root-wrapper만 표시
+     → footer/nav/관리자버튼이 자동으로 인쇄에 포함되지 않음 */
+  #root {
     display: none !important;
-    visibility: hidden !important;
   }
 
-  /* 규칙 6: 화면 레이아웃 재정의 — print-root만 표시                */
+  /* 규칙 6: print-root-wrapper 표시 */
   #print-root-wrapper {
     display: block !important;
     visibility: visible !important;
@@ -299,13 +289,7 @@
     overflow: visible !important;
   }
 
-  #print-root {
-    display: block !important;
-    visibility: visible !important;
-    width: 210mm !important;
-  }
-
-  /* 규칙 4: 페이지 경계 — 마지막 요소에 break 없음, 사이에만 break */
+  /* 규칙 4: 페이지 경계 — 사이에만 break, 마지막에는 break 없음 */
   .pdf-page {
     width: 210mm !important;
     height: 297mm !important;
@@ -316,10 +300,34 @@
     break-inside: avoid !important;
     display: block !important;
     visibility: visible !important;
+    position: relative !important;
   }
 
   .pdf-page + .pdf-page {
     page-break-before: always !important;
     break-before: page !important;
   }
-}
+
+  /* ── 검은 박스 버그 수정 ──
+     bg-clip-text + text-transparent → 인쇄 시 검은 박스 현상 방지
+     Tailwind gradient text 클래스 전부 초기화 */
+  [class*="bg-clip-text"],
+  [class*="text-transparent"] {
+    background: none !important;
+    -webkit-background-clip: initial !important;
+    background-clip: initial !important;
+    color: #1a1a1a !important;
+    -webkit-text-fill-color: #1a1a1a !important;
+  }
+
+  /* oklch 폴백: 혹시 oklch 색상이 남아있을 경우 대비 */
+  [style*="background-clip: text"],
+  [style*="-webkit-background-clip: text"] {
+    background: none !important;
+    -webkit-background-clip: initial !important;
+    background-clip: initial !important;
+    color: #1a1a1a !important;
+    -webkit-text-fill-color: #1a1a1a !important;
+  }
+}
+

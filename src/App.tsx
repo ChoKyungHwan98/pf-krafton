@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import ReactDOM from 'react-dom';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { About } from './components/About';
@@ -142,6 +143,7 @@ function App() {
   }
 
   return (
+    <>
     <div className="min-h-screen font-sans selection:bg-[#0047BB]/20 text-[#2C2C2C] bg-[#FAFAFA]">
       <Navbar
         setView={setView}
@@ -208,13 +210,17 @@ function App() {
         />
       )}
 
-      {/* ── 인쇄 전용 레이아웃: 화면에선 숨김, @media print에서만 표시 ── */}
-      <div id="print-root-wrapper" style={{ display: 'none' }}>
-        <PrintTemplate data={resumeData} />
-      </div>
-
       <Footer />
     </div>
+    {/* Portal: PrintTemplate을 #root 바깥 body 직계 자식(#print-root-wrapper)에 마운트 */}
+    {/* @media print에서 #root를 숨기고 #print-root-wrapper만 보이게 하는 CSS와 쌍을 이룸 */}
+    {typeof document !== 'undefined' && document.getElementById('print-root-wrapper')
+      ? ReactDOM.createPortal(
+          <PrintTemplate data={resumeData} />,
+          document.getElementById('print-root-wrapper')!
+        )
+      : null}
+    </>
   );
 }
 
