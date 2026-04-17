@@ -43,8 +43,8 @@ export const Resume = ({ setView, onBack, isEditing, data, setData, activeTab, i
       // ① Off-screen container — visible to html2canvas but outside viewport
       container = document.createElement('div');
       container.style.cssText = [
-        'position:fixed',
-        'left:-9999px',
+        'position:absolute',
+        'left:0',
         'top:0',
         'width:794px',  // 210mm @ 96 dpi
         'background:#f8f9fa',
@@ -60,6 +60,9 @@ export const Resume = ({ setView, onBack, isEditing, data, setData, activeTab, i
       // ③ Wait for React paint + font/image load
       await new Promise(r => setTimeout(r, 1200));
 
+      const scrollWidth = container.scrollWidth || 794;
+      const scrollHeight = container.scrollHeight || 1123;
+
       // ④ Generate & download PDF
       const opt = {
         margin: 0,
@@ -72,6 +75,8 @@ export const Resume = ({ setView, onBack, isEditing, data, setData, activeTab, i
           logging: false,
           scrollX: 0,
           scrollY: 0,
+          windowWidth: scrollWidth,
+          windowHeight: scrollHeight,
           backgroundColor: '#f8f9fa',
         },
         jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' as const },
