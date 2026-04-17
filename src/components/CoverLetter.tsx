@@ -98,7 +98,7 @@ export const CoverLetter = ({ setView, isEditing, data, setData }: CoverLetterPr
                     {(intro.pullQuote || isEditing) && (
                       <div className="my-10 md:my-12">
                         {isEditing && <div className="text-xs text-blue-500 font-bold mb-1">인용구 (PullQuote)</div>}
-                        <blockquote className="border-l-[5px] border-[#0047BB] bg-gradient-to-r from-blue-50/80 to-blue-50/10 py-8 md:py-10 px-8 md:px-12 font-black text-[22px] md:text-[28px] lg:text-[32px] leading-[1.5] text-[#0047BB] rounded-r-2xl">
+                        <blockquote className="border-l-4 border-[#0047BB]/70 bg-gradient-to-r from-blue-50/60 to-transparent py-6 md:py-8 px-6 md:px-10 font-bold text-[19px] md:text-[22px] lg:text-[26px] leading-[1.6] text-[#0047BB]/90 rounded-r-2xl italic tracking-tight shadow-sm">
                           <EditableText value={intro.pullQuote || ""} onSave={(v) => { const n = [...(data.selfIntroductions || [])]; n[idx].pullQuote = v; setData({...data, selfIntroductions: n}); }} isEditing={isEditing} markdown={false} />
                         </blockquote>
                       </div>

@@ -9,11 +9,11 @@ export const RESUME_DATA: ResumeData = {
   selfIntroductions: [
     {
       navTitle: "지원 동기",
-      logline: "14년의 꿈을 포기한 계기는  \n**메이플스토리입니다.**",
+      logline: "14년간의 꿈을 포기하게 만든 계기는  \n**메이플스토리입니다.**",
       hook: "사람을 돕고 싶어 법학과에 진학했습니다. 12시간 이상 공부하며 한계에 부딪힐 때마다 그 이유를 되뇌며 버텼습니다.\n\n그러나 달리면 달릴수록 외면할 수 없는 사실과 마주했습니다. **하고 싶은 것**, **좋아하는 것**, **잘하는 것**은 다르다는 것을.\n\n법학으로 사람을 돕고 싶었지만, 그것이 제가 좋아하는 일이 아니라는 사실을 마주한 순간 더 이상 공부를 이어나갈 수 없게 되었습니다.\n\n대학교 마지막 학기였습니다. 방향을 찾지 못한 채, 반년이라는 시간 동안 \"**나는 어떻게 살아가야 하는가?**\"라는 질문 하나에 매달렸습니다.\n\n제 인생에서 가장 깊게 몰입했던 순간이었습니다.\n\n그러던 중 홀린 듯이 찾아간 **메이플 콘 오프라인 행사**에서 답을 찾았습니다. 가족들이 즐겁게 웃는 표정, 쇼케이스가 시작되자 터지는 환호.\n\n그 장면을 보며 저도 게임을 할 때 저렇게 기뻤다는 것을 문득 떠올렸습니다. 학업에 치여 잠시 잊고 있었지만, 게임 앞에서만큼은 언제나 진심이었습니다.",
       pullQuote: "'나는 게임을 진짜 좋아했구나.'",
-      body: "그 자리에서 확신했습니다. 법학이 <span className=\"text-[32px] md:text-[38px] font-black text-zinc-300 leading-none align-middle inline-block -translate-y-0.5 mx-[2px]\">-</span>에서 <span className=\"text-[32px] md:text-[38px] font-black text-zinc-400 leading-none align-middle inline-block -translate-y-0.5 mx-[2px]\">0</span>으로 되돌리는 일이라면, 게임은 <span className=\"text-[32px] md:text-[38px] font-black text-zinc-400 leading-none align-middle inline-block -translate-y-0.5 mx-[2px]\">0</span>에서 <span className=\"text-[32px] md:text-[38px] font-black text-[#0047BB] leading-none align-middle inline-block -translate-y-0.5 mx-[2px]\">+</span>가 되는 경험을 만든다는 것을. 저도 누군가의 하루를 움직이는 사람이 되고 싶었습니다.",
-      closing: "법학을 공부하며 배운 것이 있습니다. 모든 제도는 입법 <strong>'의도'</strong>를 바탕으로 <strong>'구조화'</strong>되며, 사회라는 하나의 <strong>'시스템'</strong>으로 작동한다는 것입니다. 저는 이 원리가 <strong>게임 기획의 본질</strong>과 같다고 믿습니다.\n\n저는 그 <strong><span className=\"text-[28px] md:text-[32px] font-black text-[#0047BB] align-middle inline-block -translate-y-0.5\">+</span>를 설계하는 기획자</strong>가 되겠습니다."
+      body: "그 자리에서 확신했습니다. 법학이 ‘<span className=\"text-[32px] md:text-[38px] font-black text-zinc-300 leading-none align-middle inline-block -translate-y-0.5 mx-[2px]\">-</span>에서 <span className=\"text-[32px] md:text-[38px] font-black text-zinc-400 leading-none align-middle inline-block -translate-y-0.5 mx-[2px]\">0</span>으로 되돌리는 일’이라면, 게임은 누군가의 하루를 ‘<span className=\"text-[32px] md:text-[38px] font-black text-zinc-400 leading-none align-middle inline-block -translate-y-0.5 mx-[2px]\">0</span>에서 <span className=\"text-[32px] md:text-[38px] font-black text-[#0047BB] leading-none align-middle inline-block -translate-y-0.5 mx-[2px]\">+</span>가 되는 경험’을 만든다는 것을. 저도 누군가의 하루를 움직이는 사람이 되고 싶었습니다.",
+      closing: "법학을 공부하며 배운 것은, 모든 제도는 입법 <strong>'의도'</strong>를 바탕으로 <strong>'구조화'</strong>되며, 사회라는 하나의 <strong>'시스템'</strong>으로 작동한다는 것입니다. 저는 이 원리가 <strong>게임 기획의 본질</strong>과 같다고 믿습니다.\n\n저는 그 <strong><span className=\"text-[28px] md:text-[32px] font-black text-[#0047BB] align-middle inline-block -translate-y-0.5\">+</span>를 설계하는 기획자</strong>가 되겠습니다."
     },
     {
       navTitle: "핵심 역량",
@@ -38,7 +38,7 @@ export const RESUME_DATA: ResumeData = {
         { bold: "Behaviors", em: "입력을 분류하는 행동지침 부여" },
         { bold: "Output", em: "결과물의 포맷 수준 지정" }
       ],
-      body: "단순히 칸을 채우는 수준을 넘어, 회의 내용을 설명하면 그 의도를 파악해 맥락에 맞는 문서를 스스로 구성하도록 했습니다.\n\n도입 직후, <strong>1시간 이상 → 3분 내외</strong>로 작업 시간이 단축되었습니다.\n\n이 시스템은 두 개의 프로젝트에 걸쳐 <strong>총 20여 건</strong>의 회의록을 생성하였고, 확보된 시간을 다른 작업에 활용할 수 있었습니다.",
+      body: "단순히 칸을 채우는 수준을 넘어, 회의 내용을 설명하면 그 의도를 파악해 맥락에 맞는 문서를 스스로 구성하도록 했습니다.\n\n도입 직후, <strong>1시간 이상 소요되던 회의록 작성 작업이 3분 내외로</strong> 단축되었습니다.\n\n이 시스템은 두 개의 프로젝트에 걸쳐 <strong>총 20여 건</strong>의 회의록을 생성하였고, 확보된 시간을 다른 작업에 활용할 수 있었습니다.",
       closing: "이 과정에서 저는 <strong>프롬프트 엔지니어링 역시 목차 작성과 본질적으로 같은 원리</strong>임을 알게 되었습니다. 저의 논리적 설계 능력이 AI 툴 활용에도 직결됨을 현장에서 입증한 경험입니다."
     }
   ],
