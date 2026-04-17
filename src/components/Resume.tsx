@@ -29,86 +29,62 @@ interface ResumeProps {
 }
 
 import { createRoot } from 'react-dom/client';
+import html2pdf from 'html2pdf.js';
 import { PdfTemplate } from './PdfTemplate';
 
 export const Resume = ({ setView, onBack, isEditing, data, setData, activeTab, isGeneratingPdf, setIsGeneratingPdf }: ResumeProps) => {
 
   const handleDownload = async () => {
     setIsGeneratingPdf(true);
+    let pdfRoot: ReturnType<typeof createRoot> | null = null;
+    let container: HTMLDivElement | null = null;
 
     try {
-      // Create an isolated container for print
-      const container = document.createElement('div');
-      container.id = 'print-root';
-      // It is visually hidden from screen but visible in print media
-      container.style.cssText = 'position:absolute;top:0;left:0;width:100%;z-index:-9999;opacity:0;pointer-events:none;';
-      
-      const styleHack = document.createElement('style');
-      styleHack.innerHTML = `
-        @media print {
-          body * {
-            visibility: hidden;
-          }
-          
-          /* Force browser to print all background colors and images */
-          * {
-            -webkit-print-color-adjust: exact !important;
-            print-color-adjust: exact !important;
-          }
-
-          #print-root, #print-root * {
-            visibility: visible;
-          }
-
-          #print-root {
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 210mm !important;
-            margin: 0 !important;
-            padding: 0 !important;
-            opacity: 1 !important;
-            background: #f8f9fa !important;
-          }
-
-          @page {
-            size: A4 portrait;
-            margin: 0mm !important; /* Removes all default browser margins */
-          }
-
-          .pdf-page {
-            width: 210mm !important;
-            height: 297mm !important;
-            margin: 0 !important;
-            box-sizing: border-box;
-            page-break-after: always;
-            break-after: page;
-            background: #f8f9fa !important;
-          }
-        }
-      `;
-      container.appendChild(styleHack);
+      // ① Off-screen container — visible to html2canvas but outside viewport
+      container = document.createElement('div');
+      container.style.cssText = [
+        'position:fixed',
+        'left:-9999px',
+        'top:0',
+        'width:794px',  // 210mm @ 96 dpi
+        'background:#f8f9fa',
+        'z-index:-1',
+        'pointer-events:none',
+      ].join(';');
       document.body.appendChild(container);
 
-      // Render the PdfTemplate into the container
-      const root = createRoot(container);
-      root.render(<PdfTemplate data={data} />);
+      // ② Mount React tree — PdfTemplate uses 100% inline styles (no Tailwind → no oklch crash)
+      pdfRoot = createRoot(container);
+      pdfRoot.render(<PdfTemplate data={data} />);
 
-      // Wait a tick for React to mount, layout to compute, and images/fonts to load
-      await new Promise(r => setTimeout(r, 600));
+      // ③ Wait for React paint + font/image load
+      await new Promise(r => setTimeout(r, 1200));
 
-      // Trigger native print dialog
-      window.print();
-
-      // Clean up after dialog closes
-      setTimeout(() => {
-        root.unmount();
-        document.body.removeChild(container);
-      }, 1000);
+      // ④ Generate & download PDF
+      const opt = {
+        margin: 0,
+        filename: '조경환_게임기획자_포트폴리오.pdf',
+        image: { type: 'jpeg' as const, quality: 0.98 },
+        html2canvas: {
+          scale: 2,
+          useCORS: true,
+          allowTaint: true,
+          logging: false,
+          scrollX: 0,
+          scrollY: 0,
+          backgroundColor: '#f8f9fa',
+        },
+        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' as const },
+        pagebreak: { mode: ['css', 'legacy'] },
+      };
+      await html2pdf().set(opt).from(container).save();
 
     } catch (err) {
       console.error('PDF generation failed', err);
     } finally {
+      // ⑤ Clean up
+      if (pdfRoot) pdfRoot.unmount();
+      if (container && document.body.contains(container)) document.body.removeChild(container);
       setIsGeneratingPdf(false);
     }
   };
