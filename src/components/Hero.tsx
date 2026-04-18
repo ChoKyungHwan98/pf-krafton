@@ -15,7 +15,7 @@ interface HeroProps {
 }
 
 export const Hero = ({ onPortfolioClick, onResumeClick, isEditing, content, setContent }: HeroProps) => (
-  <section id="hero" className="relative min-h-screen flex flex-col justify-center px-6 md:px-12 py-[120px] overflow-hidden bg-[#FDFCF8] border-b border-black/10">
+  <section id="hero" className="relative min-h-screen flex flex-col justify-center px-6 md:px-12 py-[120px] overflow-hidden bg-transparent border-b border-black/10">
     
     {/* Subtle dot grid background */}
     <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,rgba(0,71,187,0.04)_1px,transparent_1px)] bg-size-[40px_40px]" />
