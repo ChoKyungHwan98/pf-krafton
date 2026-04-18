@@ -122,12 +122,6 @@ export const GameHistoryView = ({ onBack }: GameHistoryViewProps) => {
                         onMouseEnter={() => setHoveredPoint(i)}
                         onMouseLeave={() => setHoveredPoint(null)}
                       />
-                      {isHovered && (
-                        <g className="pointer-events-none">
-                          <rect x={Number(px) - 24} y={Number(py) - 34} width="48" height="24" rx="4" fill="#1A2332" />
-                          <text x={px} y={Number(py) - 21} textAnchor="middle" alignmentBaseline="middle" fill="white" className="text-[12px] font-bold">{d.score}점</text>
-                        </g>
-                      )}
                     </g>
                   );
                 })}
@@ -151,6 +145,22 @@ export const GameHistoryView = ({ onBack }: GameHistoryViewProps) => {
                     </g>
                   );
                 })}
+
+                {/* Tooltip (Drawn last to ensure it is always on top) */}
+                {hoveredPoint !== null && (
+                  <g className="pointer-events-none">
+                    {(() => {
+                      const d = CHART_DATA[hoveredPoint];
+                      const [px, py] = getPt(d.score, d.angle, svgSize).split(',');
+                      return (
+                        <>
+                          <rect x={Number(px) - 24} y={Number(py) - 34} width="48" height="24" rx="4" fill="#1A2332" />
+                          <text x={px} y={Number(py) - 21} textAnchor="middle" alignmentBaseline="middle" fill="white" className="text-[12px] font-bold tracking-widest">{d.score}점</text>
+                        </>
+                      );
+                    })()}
+                  </g>
+                )}
               </svg>
             </div>
             
