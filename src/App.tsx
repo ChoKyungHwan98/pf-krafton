@@ -13,7 +13,6 @@ import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 import { RightRail } from './components/RightRail';
 import { ProjectDetail } from './components/ProjectDetail';
-import notebookBg from './assets/notebook_bg.png';
 import { GameHistoryView } from './components/GameHistoryView';
 import { motion } from 'motion/react';
 import { FileText, FolderOpen, Gamepad2 } from 'lucide-react';
@@ -179,21 +178,6 @@ function App() {
 
       {view === 'home' && (
         <main className="relative">
-          {/* ── Fixed notebook background layer (01.소개 ~ 05.문의하기) ── */}
-          {/* Hero는 독립적인 공간이라 제외, 스크롤 시 이미지는 고정 parallax */}
-          <div
-            aria-hidden="true"
-            style={{
-              backgroundImage: `url(${notebookBg})`,
-              backgroundAttachment: 'fixed',
-              backgroundSize: 'cover',
-              backgroundPosition: 'center top',
-              opacity: 0.07,
-              filter: 'blur(0.5px) sepia(0.2)',
-              mixBlendMode: 'multiply',
-            }}
-            className="pointer-events-none fixed inset-0 z-0"
-          />
           <Hero onPortfolioClick={() => changeView('portfolio')} onResumeClick={() => changeView('resume')} isEditing={isEditing} content={heroContent} setContent={setHeroContent} aboutContent={aboutContent} setAboutContent={setAboutContent} />
           <About isEditing={isEditing} content={aboutContent} setContent={setAboutContent} />
           <Projects onProjectClick={(p) => { setTargetProjectId(p.id); changeView('portfolio'); }} isEditing={isEditing} projects={projectsData} setProjects={setProjectsData} limit={3} setView={changeView} />
