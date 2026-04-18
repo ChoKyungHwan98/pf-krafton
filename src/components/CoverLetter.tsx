@@ -43,8 +43,8 @@ export const CoverLetter = ({ setView, isEditing, data, setData }: CoverLetterPr
     <div className="w-full relative">
 
       {data.selfIntroductions ? (
-        <div className="ml-[6%] xl:ml-[10%] w-full max-w-[1050px]">
-        <div className="flex items-start gap-10 xl:gap-14">
+        <div className="ml-[4%] xl:ml-[6%] w-full max-w-[1200px]">
+        <div className="flex items-start gap-8 xl:gap-12">
 
           {/* 메인 타임라인 */}
           <div className="relative border-l-[3px] border-[#0047BB]/15 flex-1 min-w-0">
@@ -68,7 +68,7 @@ export const CoverLetter = ({ setView, isEditing, data, setData }: CoverLetterPr
                   whileInView={{ opacity: 1, y: 0 }} 
                   viewport={{ once: true, margin: "-50px" }} 
                   transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                  className="bg-white rounded-3xl border border-zinc-100 shadow-[0_8px_40px_-12px_rgba(0,71,187,0.08)] px-8 md:px-12 lg:px-14 pt-10 md:pt-14 pb-12 md:pb-16 mt-2"
+                  className="bg-white rounded-3xl border border-zinc-100 shadow-[0_8px_40px_-12px_rgba(0,71,187,0.08)] px-8 md:px-10 lg:px-12 pt-10 md:pt-14 pb-12 md:pb-16 mt-2"
                 >
 
                   <motion.div 
@@ -78,7 +78,7 @@ export const CoverLetter = ({ setView, isEditing, data, setData }: CoverLetterPr
                     transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
                     className="mb-8 md:mb-10"
                   >
-                    <h3 className="text-[32px] md:text-[42px] lg:text-[48px] font-display font-black text-[#1A1A1A] leading-[1.3] tracking-tighter break-keep [&_p]:m-0 [&_p]:leading-[1.3] [&_strong]:text-[#0047BB] [&_strong]:font-black text-opacity-90">
+                    <h3 className="text-[30px] md:text-[40px] lg:text-[44px] xl:text-[46px] font-display font-black text-[#1A1A1A] leading-[1.3] tracking-tighter break-keep [&_p]:m-0 [&_p]:leading-[1.3] [&_strong]:text-[#0047BB] [&_strong]:font-black text-opacity-90">
                       <EditableText value={intro.logline} onSave={(v) => { const n = [...(data.selfIntroductions || [])]; n[idx].logline = v; setData({...data, selfIntroductions: n}); }} isEditing={isEditing} markdown={true} />
                     </h3>
                   </motion.div>
@@ -88,7 +88,7 @@ export const CoverLetter = ({ setView, isEditing, data, setData }: CoverLetterPr
                     whileInView={{ opacity: 1, y: 0 }} 
                     viewport={{ once: true }} 
                     transition={{ duration: 0.7, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                    className="max-w-[800px] mx-auto text-[#333F48] leading-[1.85] text-[15px] md:text-[17px] font-medium tracking-[-0.01em] [&_p]:mb-4 md:[&_p]:mb-5 [&_p]:break-keep [&_strong]:text-[#0047BB] [&_strong]:font-extrabold [&_strong]:bg-[linear-gradient(to_top,rgba(0,71,187,0.18)_50%,transparent_50%)] [&_strong]:px-[3px] [&_strong]:rounded-sm"
+                    className="max-w-[950px] mx-auto text-[#333F48] leading-[1.85] text-[15px] md:text-[17px] font-medium tracking-[-0.01em] [&_p]:mb-4 md:[&_p]:mb-5 [&_p]:break-keep [&_strong]:text-[#0047BB] [&_strong]:font-extrabold [&_strong]:bg-[linear-gradient(to_top,rgba(0,71,187,0.18)_50%,transparent_50%)] [&_strong]:px-[3px] [&_strong]:rounded-sm"
                   >
                     {/* Hook */}
                     {isEditing && <div className="text-xs text-blue-500 font-bold mb-1">도입부 (Hook)</div>}
