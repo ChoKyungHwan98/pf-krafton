@@ -76,11 +76,20 @@ export const CoverLetter = ({ setView, isEditing, data, setData }: CoverLetterPr
                     whileInView={{ opacity: 1, y: 0 }} 
                     viewport={{ once: true }} 
                     transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-                    className="mb-8 md:mb-10"
+                    className="mb-6 md:mb-8"
                   >
                     <h3 className="text-[30px] md:text-[40px] lg:text-[44px] xl:text-[46px] font-display font-black text-[#1A1A1A] leading-[1.3] tracking-tighter break-keep [&_p]:m-0 [&_p]:leading-[1.3] [&_strong]:text-[#0047BB] [&_strong]:font-black text-opacity-90">
                       <EditableText value={intro.logline} onSave={(v) => { const n = [...(data.selfIntroductions || [])]; n[idx].logline = v; setData({...data, selfIntroductions: n}); }} isEditing={isEditing} markdown={true} />
                     </h3>
+                    {/* Ruled line — 에디토리얼 잡지 스타일 */}
+                    <motion.div
+                      initial={{ scaleX: 0 }}
+                      whileInView={{ scaleX: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.8, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                      style={{ transformOrigin: 'left' }}
+                      className="mt-5 h-px bg-linear-to-r from-[#0047BB]/30 via-[#0047BB]/10 to-transparent"
+                    />
                   </motion.div>
 
                   <motion.div 
@@ -88,7 +97,7 @@ export const CoverLetter = ({ setView, isEditing, data, setData }: CoverLetterPr
                     whileInView={{ opacity: 1, y: 0 }} 
                     viewport={{ once: true }} 
                     transition={{ duration: 0.7, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                    className="max-w-[780px] text-[#2C2C2C] leading-[1.75] text-[16px] md:text-[17.5px] font-medium tracking-[-0.01em] [&_p]:mb-4 md:[&_p]:mb-6 [&_p]:break-keep [&_strong]:text-[#0047BB] [&_strong]:font-extrabold [&_strong]:bg-[linear-gradient(to_top,rgba(0,71,187,0.18)_50%,transparent_50%)] [&_strong]:px-[3px] [&_strong]:rounded-sm"
+                    className="max-w-[780px] text-[#1C1C1C] leading-[1.9] text-[16.5px] md:text-[18px] font-medium tracking-[-0.01em] [&_p]:mb-5 md:[&_p]:mb-7 [&_p]:break-keep [&_strong]:text-[#0047BB] [&_strong]:font-extrabold [&_strong]:bg-[linear-gradient(to_top,rgba(0,71,187,0.22)_50%,transparent_50%)] [&_strong]:px-[3px] [&_strong]:rounded-sm"
                   >
                     {/* Hook */}
                     {isEditing && <div className="text-xs text-blue-500 font-bold mb-1">도입부 (Hook)</div>}

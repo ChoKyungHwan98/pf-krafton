@@ -76,7 +76,7 @@ export const GameHistoryView = ({ onBack }: GameHistoryViewProps) => {
 
   return (
     <motion.section initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-      className="min-h-screen bg-[#FAFAFA] pt-28 pb-32">
+      className="min-h-screen bg-transparent pt-28 pb-32">
 
       <div className="max-w-7xl mx-auto px-6 md:px-12">
 
@@ -162,8 +162,8 @@ export const GameHistoryView = ({ onBack }: GameHistoryViewProps) => {
             </div>
 
             <div className="grid grid-cols-2 gap-4">
-              <div className="bg-[#2C2C2C] text-white border border-black/5 rounded-2xl p-6 shadow-sm">
-                <span className="block font-bold text-zinc-400 mb-2">PC/콘솔</span>
+              <div className="bg-[#0047BB] text-white border border-[#0047BB] rounded-2xl p-6 shadow-sm">
+                <span className="block font-bold text-blue-200 mb-2">PC/콘솔</span>
                 <span className="text-3xl font-black">{pcConsoleGames.length}종</span>
               </div>
               <div className="bg-white border border-black/5 rounded-2xl p-6 shadow-sm">

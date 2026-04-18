@@ -110,7 +110,7 @@ export const PlayHistory = ({ onViewAll }: PlayHistoryProps) => {
 
         <div className="flex flex-col items-center justify-center mt-4">
           <button onClick={onViewAll}
-            className="group py-5 px-10 bg-[#2C2C2C] text-white rounded-2xl font-bold tracking-widest text-sm hover:bg-[#0047BB] transition-all duration-300 shadow-xl shadow-black/10 flex items-center gap-4 hover:-translate-y-1">
+            className="group py-5 px-10 bg-[#0047BB] text-white rounded-2xl font-bold tracking-widest text-sm hover:bg-[#003399] transition-all duration-300 shadow-xl shadow-[#0047BB]/20 flex items-center gap-4 hover:-translate-y-1">
             전체 목록 보기 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </button>
         </div>
