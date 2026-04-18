@@ -15,12 +15,24 @@ interface HeroProps {
 }
 
 export const Hero = ({ onPortfolioClick, onResumeClick, isEditing, content, setContent, aboutContent, setAboutContent }: HeroProps) => (
-  <section id="hero" className="relative min-h-screen flex flex-col justify-center px-6 md:px-12 py-[120px] overflow-hidden bg-[#FDFDFB] border-b border-black/10">
-    {/* Full-bleed Background Animation */}
-    <div className="absolute inset-0 z-0 pointer-events-none">
-      <HeroBlueprintAnimation />
-      {/* Gradient to protect text visibility on the left side */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#FDFDFB] via-[#FDFDFB]/80 to-transparent"></div>
+  <section id="hero" className="relative min-h-screen flex flex-col justify-center px-6 md:px-12 py-[120px] overflow-hidden bg-[#FDFCF8] border-b border-black/10">
+    {/* Full-bleed Analog Video Background */}
+    <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden flex justify-end">
+      {/* 
+        임시 비디오 URL입니다. 
+        원하시는 '책 넘기는 영상'의 URL(mp4)을 구하셔서 아래 src에 넣어주세요.
+      */}
+      <video 
+        src="https://cdn.pixabay.com/video/2021/08/11/84687-588328639_tiny.mp4" 
+        autoPlay loop muted playsInline 
+        className="w-[120%] lg:w-[80%] h-full object-cover mix-blend-multiply opacity-20 sepia-[.3] object-right"
+      />
+      
+      {/* Gradient Overlay for Text Readability */}
+      <div className="absolute inset-0 bg-gradient-to-r from-[#FDFCF8] via-[#FDFCF8]/90 to-transparent"></div>
+      
+      {/* Subtle Analog Texture overlay */}
+      <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cream-paper.png')] opacity-40 mix-blend-overlay"></div>
     </div>
     
     <div className="max-w-7xl mx-auto w-full relative z-10 flex flex-col lg:flex-row items-center justify-between gap-16 lg:gap-8 mt-12">
