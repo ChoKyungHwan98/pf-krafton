@@ -85,7 +85,7 @@ export const PlayHistory = ({ onViewAll }: PlayHistoryProps) => {
   );
 
   return (
-    <section id="play-history" className="py-[120px] lg:py-[160px] px-6 md:px-12 relative min-h-screen flex flex-col justify-center bg-transparent">
+    <section id="play-history" className="pt-[100px] pb-[80px] lg:pt-[120px] lg:pb-[100px] px-6 md:px-12 relative min-h-screen flex flex-col justify-center bg-transparent">
       <div className="max-w-7xl mx-auto w-full relative z-10 flex flex-col h-full">
         <div className="mb-12 flex flex-col lg:flex-row justify-between lg:items-end gap-6 border-b border-black/10 pb-8">
           <div>

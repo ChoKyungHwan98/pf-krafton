@@ -2,14 +2,14 @@ import React from 'react';
 import { Mail } from 'lucide-react';
 
 export const Contact = () => (
-  <section id="contact" className="min-h-screen px-0 flex flex-col justify-start bg-transparent overflow-hidden group/contact relative">
+  <section id="contact" className="min-h-screen px-0 flex flex-col justify-center bg-transparent overflow-hidden group/contact relative">
     <div className="absolute inset-0 flex items-center justify-center pointer-events-none transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/contact:scale-[1.15] group-hover/contact:opacity-0 z-0">
        <span className="text-[14vw] font-display font-black text-black/[0.03] tracking-tighter leading-[0.8] m-0 p-0 text-center uppercase">
          LET'S<br/>WORK.
        </span>
     </div>
 
-    <div className="absolute inset-0 flex flex-col items-center justify-start pt-[120px] lg:pt-[160px] pb-[120px] opacity-0 scale-95 group-hover/contact:opacity-100 group-hover/contact:scale-100 transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] bg-transparent z-10">
+    <div className="absolute inset-0 flex flex-col items-center justify-center opacity-0 scale-95 group-hover/contact:opacity-100 group-hover/contact:scale-100 transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] bg-transparent z-10">
       <div className="absolute inset-0 pointer-events-none opacity-[0.10] object-cover bg-repeat bg-[size:100px_100px]" style={{backgroundImage: "url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E')"}}></div>
       
       <div className="text-center relative z-10 w-full px-6 max-w-4xl mx-auto flex flex-col items-center">
