@@ -150,46 +150,42 @@ export const Skills = ({ skills }: SkillsProps) => {
                   </React.Fragment>
                 ))}
 
-                {/* ── Leaf Capabilities (non-tiered, as small tags) ── */}
-                {leafCaps.length > 0 && (
-                  <>
-                    <TreeLine height={20} delay={baseDelay + 0.7} />
-                    <motion.div
-                      initial={{ opacity: 0 }}
-                      whileInView={{ opacity: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.5, delay: baseDelay + 0.8 }}
-                      className="flex flex-wrap justify-center gap-2 w-full px-2 mt-1"
-                    >
-                      {leafCaps.map((cap, lIdx) => (
-                        <span
-                          key={lIdx}
-                          className="px-3 py-1.5 bg-zinc-100 text-zinc-600 text-[11px] font-semibold rounded-lg border border-zinc-200/80 hover:border-[#0047BB]/20 hover:text-[#0047BB] hover:bg-[#0047BB]/5 transition-all duration-200"
-                        >
-                          {cap.name}
-                        </span>
-                      ))}
-                    </motion.div>
-                  </>
-                )}
-
-                {/* ── Evidence Metrics ── */}
+                {/* ── Unified Result Card ── */}
+                <TreeLine height={24} delay={baseDelay + 0.7} />
                 <motion.div
                   initial={{ opacity: 0, y: 16 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: baseDelay + 0.9 }}
-                  className="grid grid-cols-3 gap-2.5 w-full mt-8"
+                  transition={{ duration: 0.6, delay: baseDelay + 0.8 }}
+                  className="w-full bg-white rounded-2xl border border-[#0047BB]/15 shadow-[0_8px_32px_-8px_rgba(0,71,187,0.1)] overflow-hidden flex flex-col group/result hover:border-[#0047BB]/30 hover:shadow-[0_12px_40px_-8px_rgba(0,71,187,0.15)] transition-all duration-400"
                 >
-                  {skill.evidences.map((ev, eIdx) => (
-                    <div
-                      key={eIdx}
-                      className="bg-white rounded-xl border border-black/5 shadow-sm px-2 py-3 text-center hover:border-[#0047BB]/20 hover:shadow-md transition-all duration-300 group/ev"
-                    >
-                      <span className="text-[#0047BB] font-black text-[17px] font-mono leading-none block mb-1 group-hover/ev:scale-110 transition-transform duration-200">{ev.value}</span>
-                      <span className="text-zinc-500 text-[10px] font-semibold leading-tight block">{ev.label}</span>
+                  {/* Top: Leaf Capabilities */}
+                  {leafCaps.length > 0 && (
+                    <div className="bg-linear-to-b from-[#0047BB]/[0.02] to-transparent px-4 py-4 border-b border-black/5 flex flex-wrap justify-center gap-1.5">
+                      {leafCaps.map((cap, lIdx) => (
+                        <span
+                          key={lIdx}
+                          className="px-2.5 py-1 bg-white text-zinc-600 text-[11px] font-bold rounded-md border border-zinc-200/80 shadow-[0_2px_8px_-2px_rgba(0,0,0,0.04)]"
+                        >
+                          {cap.name}
+                        </span>
+                      ))}
                     </div>
-                  ))}
+                  )}
+
+                  {/* Bottom: Evidence Metrics Dashboard */}
+                  <div className="grid grid-cols-3 divide-x divide-black/5 bg-white relative">
+                    {skill.evidences.map((ev, eIdx) => (
+                      <div key={eIdx} className="px-1.5 py-4 text-center group/ev hover:bg-[#0047BB]/[0.02] transition-colors flex flex-col justify-center min-h-[76px]">
+                        <span className="text-[#0047BB] font-black text-[16px] xl:text-[18px] font-mono leading-none block mb-1.5 group-hover/ev:scale-105 transition-transform duration-300">
+                          {ev.value}
+                        </span>
+                        <span className="text-zinc-500 text-[10px] xl:text-[11px] font-bold leading-tight block break-keep">
+                          {ev.label}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
                 </motion.div>
               </motion.div>
             );

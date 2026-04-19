@@ -40,7 +40,7 @@ export const HandwrittenTOC = () => {
   const items = [
     { num: '01', label: '지원 동기', sub: '게임이 인생을 바꾼 순간', delay: 0.3 },
     { num: '02', label: '핵심 역량', sub: '목차 설계 → 논리 구조화', delay: 1.3 },
-    { num: '03', label: 'AI 같은 논리', sub: '시스템을 설계하는 감각', delay: 2.3 },
+    { num: '03', label: 'AI 활용능력', sub: '시스템을 설계하는 감각', delay: 2.3 },
   ];
 
   return (
