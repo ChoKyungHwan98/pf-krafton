@@ -40,68 +40,43 @@ export const About = ({ isEditing, content, setContent }: AboutProps) => (
       {/* ── TWO-COLUMN LAYOUT ── */}
       <div className="grid lg:grid-cols-[1fr_400px] xl:grid-cols-[1fr_440px] gap-12 lg:gap-16 items-stretch">
 
-        {/* LEFT */}
-        <div className="flex flex-col justify-between gap-8">
-          <div className="flex flex-col gap-6">
+        {/* LEFT — 2단락 */}
+        <div className="flex flex-col justify-between gap-10">
 
-            {/* P1 — 핵심 주장. bold → 파란색 (markdown-strong-blue) */}
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
-              className="text-[20px] md:text-[22px] lg:text-[24px] text-[#1A1A1A] leading-[1.85] font-semibold tracking-[-0.015em] break-keep"
-            >
-              <EditableText
-                value={content.p1}
-                onSave={(v) => setContent({ ...content, p1: v })}
-                isEditing={isEditing}
-                markdown
-                className="markdown-strong-blue"
-              />
-            </motion.div>
-
-            {/* Thin separator */}
-            <motion.div
-              initial={{ scaleX: 0, opacity: 0 }}
-              whileInView={{ scaleX: 1, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              style={{ transformOrigin: 'left' }}
-              className="h-px bg-linear-to-r from-black/8 to-transparent"
+          {/* ── 단락 1: 법학 vs 게임 대비 ── */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
+            className="text-[20px] md:text-[22px] lg:text-[24px] text-[#1A1A1A] leading-[1.85] font-semibold tracking-[-0.015em] break-keep"
+          >
+            <EditableText
+              value={content.p1}
+              onSave={(v) => setContent({ ...content, p1: v })}
+              isEditing={isEditing}
+              markdown
+              className="markdown-strong-blue"
             />
+          </motion.div>
 
-            {/* P2 — 맥락 설명. bold → 짙은 회색 (markdown-strong-dark) */}
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-              className="text-[16px] md:text-[17px] lg:text-[19px] text-zinc-500 leading-[1.9] font-medium tracking-[-0.005em] break-keep"
-            >
+          {/* ── 단락 2: 핵심 다짐 ── */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="border-t border-[#0047BB]/12 pt-7"
+          >
+            <div className="text-[19px] md:text-[21px] lg:text-[23px] text-[#1A1A1A] font-semibold leading-[1.8] break-keep [&_strong]:text-[#0047BB] [&_strong]:font-black">
               <EditableText
                 value={content.p2}
                 onSave={(v) => setContent({ ...content, p2: v })}
                 isEditing={isEditing}
                 markdown
-                className="markdown-strong-dark"
+                className="markdown-strong-blue"
               />
-            </motion.div>
-          </div>
-
-          {/* Bottom: 핵심 철학 클로징 */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
-            className="border-t border-[#0047BB]/12 pt-6"
-          >
-            <p className="text-[10px] font-black tracking-[0.22em] text-[#0047BB]/45 uppercase mb-3">핵심 철학</p>
-            <p className="text-[17px] md:text-[18px] lg:text-[20px] text-[#1A1A1A] font-semibold leading-[1.8] break-keep">
-              저도 누군가의 하루를 움직이는,<br />
-              <span className="text-[#0047BB] font-black">그 +를 설계하는 기획자</span>가 되겠습니다.
-            </p>
+            </div>
           </motion.div>
         </div>
 
