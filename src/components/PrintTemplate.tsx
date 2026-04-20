@@ -74,6 +74,7 @@ const ResumePrintPage: React.FC<{ data: ResumeData }> = ({ data }) => (
           <p style={{ fontSize: '9px', fontWeight: 700, color: '#0047BB', letterSpacing: '2px', textTransform: 'uppercase', margin: '0 0 8px' }}>{data.role}</p>
           <div style={{ fontSize: '10px', color: '#71717A', display: 'flex', flexDirection: 'column', gap: '2px' }}>
             <span>✉ {data.email}</span>
+            {data.birthDate && <span>🗓 {data.birthDate}</span>}
             <span>☎ {data.phone}</span>
           </div>
         </div>

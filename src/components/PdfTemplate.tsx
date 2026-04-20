@@ -161,6 +161,7 @@ const ResumePage: React.FC<{ data: ResumeData }> = ({ data }) => (
           <p style={{ fontSize: '10.5px', fontWeight: 800, color: BLUE, letterSpacing: '2px', textTransform: 'uppercase', margin: '0 0 12px' }}>{data.role}</p>
           <div style={{ fontSize: '11px', color: MUTED, display: 'flex', flexDirection: 'column', gap: '5px' }}>
             <span>✉ {data.email}</span>
+            {data.birthDate && <span>🗓 {data.birthDate}</span>}
             <span>☎ {data.phone}</span>
           </div>
         </div>
