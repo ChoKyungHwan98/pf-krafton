@@ -68,7 +68,7 @@ export const About = ({ isEditing, content, setContent }: AboutProps) => (
             transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
             className="border-t border-[#0047BB]/12 pt-7"
           >
-            <div className="text-[19px] md:text-[21px] lg:text-[23px] text-[#1A1A1A] font-semibold leading-[1.8] break-keep [&_strong]:text-[#0047BB] [&_strong]:font-black">
+            <div className="text-[19px] md:text-[21px] lg:text-[23px] text-[#1A1A1A] font-semibold leading-[1.8] break-keep">
               <EditableText
                 value={content.p2}
                 onSave={(v) => setContent({ ...content, p2: v })}

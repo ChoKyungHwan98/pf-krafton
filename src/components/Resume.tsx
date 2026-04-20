@@ -154,6 +154,12 @@ export const Resume = ({ setView, onBack, isEditing, setIsEditing, data, setData
                           <Mail className="w-4 h-4 text-zinc-400" />
                           <EditableText value={data.email} onSave={(v) => setData({...data, email: v})} isEditing={isEditing} />
                         </div>
+                        {data.birthDate && (
+                          <div className="flex items-center gap-3 text-sm text-zinc-600 font-medium justify-center sm:justify-start">
+                            <span className="text-zinc-400 text-xs">🎂</span>
+                            <span className="font-medium">{data.birthDate}</span>
+                          </div>
+                        )}
                         {isEditing && (
                           <div className="flex items-center gap-3 text-sm text-zinc-600 font-medium justify-center sm:justify-start">
                             <Phone className="w-4 h-4 text-zinc-400" />

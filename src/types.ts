@@ -61,6 +61,7 @@ export interface ResumeData {
   role: string;
   email: string;
   phone: string;
+  birthDate?: string;
   summary: string;
   selfIntroduction?: string;
   selfIntroductions?: {

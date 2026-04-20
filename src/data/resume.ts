@@ -5,6 +5,7 @@ export const RESUME_DATA: ResumeData = {
   role: "Game Designer",
   email: "ckh980624@gmail.com",
   phone: "010-4826-6256",
+  birthDate: "1998.06.24",
   summary: "기획 의도를 알고, 그것을 관통하는 목차를 작성할 줄 아는 게임 기획자 지망생입니다.\n\n법학에서 단련한 논리적 구조 설계 능력을 게임 기획에 그대로 적용합니다.",
   selfIntroductions: [
     {
