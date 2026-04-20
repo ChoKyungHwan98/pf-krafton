@@ -44,7 +44,7 @@ function App() {
   }, 'hero_content');
   const [aboutContent, setAboutContent, aboutLoaded] = useEditableContent({
     p1: "저는 7년간 법학을 전공하며 **'기획 의도를 먼저 정립하고 그것을 관통하는 목차를 설계하는 훈련'**을 반복했습니다.\n\n이 능력은 **복잡한 시스템 기획을 설계할 때 그 진가를 발휘합니다.**",
-    p2: "법학이 '-에서 0으로 되돌리는 일'이었다면, 게임은 누군가의 하루를 **'0에서 +가 되는 경험'**으로 만드는 일입니다.\n탄탄한 시스템의 논리적 뼈대 위에서, 유저의 마음에 즐거움이라는 감성을 채워넣는 기획자가 되겠습니다."
+    p2: "법학이 '-에서 0으로 되돌리는 일'이었다면, 게임은 누군가의 하루를 **'0에서 +가 되는 경험'**으로 만드는 일입니다.\n탄탄한 시스템의 논리적 뼈대 위에서, 유저의 마음에 즐거움이라는 **감성을 채워넣는 것** — 그것이 제가 생각하는 게임 기획의 본질입니다."
   }, 'about_content');
 
   const isDataLoaded = resumeLoaded && projectsLoaded && portfolioLoaded && gameHistoryLoaded && heroLoaded && aboutLoaded;

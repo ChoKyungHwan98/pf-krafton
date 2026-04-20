@@ -50,7 +50,7 @@ export const About = ({ isEditing, content, setContent }: AboutProps) => (
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
-              className="text-[18px] md:text-[20px] lg:text-[22px] text-[#1A1A1A] leading-[1.85] font-semibold tracking-[-0.015em] break-keep"
+              className="text-[20px] md:text-[22px] lg:text-[24px] text-[#1A1A1A] leading-[1.85] font-semibold tracking-[-0.015em] break-keep"
             >
               <EditableText
                 value={content.p1}
@@ -77,7 +77,7 @@ export const About = ({ isEditing, content, setContent }: AboutProps) => (
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-              className="text-[15px] md:text-[16px] lg:text-[17px] text-zinc-500 leading-[1.9] font-medium tracking-[-0.005em] break-keep"
+              className="text-[16px] md:text-[17px] lg:text-[19px] text-zinc-500 leading-[1.9] font-medium tracking-[-0.005em] break-keep"
             >
               <EditableText
                 value={content.p2}
@@ -98,7 +98,7 @@ export const About = ({ isEditing, content, setContent }: AboutProps) => (
             className="border-t border-[#0047BB]/12 pt-6"
           >
             <p className="text-[10px] font-black tracking-[0.22em] text-[#0047BB]/45 uppercase mb-3">핵심 철학</p>
-            <p className="text-[16px] md:text-[17px] text-[#1A1A1A] font-semibold leading-[1.8] break-keep">
+            <p className="text-[17px] md:text-[18px] lg:text-[20px] text-[#1A1A1A] font-semibold leading-[1.8] break-keep">
               저도 누군가의 하루를 움직이는,<br />
               <span className="text-[#0047BB] font-black">그 +를 설계하는 기획자</span>가 되겠습니다.
             </p>
