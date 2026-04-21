@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Play, FileText, Layout, Tag, Calendar, ScrollText, Grid, X, LayoutGrid, HelpCircle } from 'lucide-react';
+import { Play, FileText, Layout, Tag, Calendar, ScrollText, Grid, X, LayoutGrid, HelpCircle, ExternalLink, Sparkles } from 'lucide-react';
 import type { Project } from '../types';
 import { EBookGallery } from './EBookGallery';
 
@@ -11,18 +11,21 @@ interface ProjectDetailProps {
   onSaveContent?: (content: string) => void;
 }
 
-type TabType = 'overview' | 'document' | 'video';
+type TabType = 'overview' | 'document' | 'video' | 'link';
 
 export const ProjectDetail = ({ project, onClose, isEditing, onSaveContent }: ProjectDetailProps) => {
   const [activeTab, setActiveTab] = useState<TabType>('overview');
   const [currentPage, setCurrentPage] = useState(0);
   const [showThumbnailGrid, setShowThumbnailGrid] = useState(false);
 
-  const tabs: { id: TabType; label: string; icon: React.ReactNode }[] = [
-    { id: 'overview', label: '개요', icon: <Layout className="w-3.5 h-3.5" /> },
-    { id: 'document', label: '기획서', icon: <FileText className="w-3.5 h-3.5" /> },
-    { id: 'video', label: '영상', icon: <Play className="w-3.5 h-3.5" /> },
+  const tabs: { id: TabType; label: string; icon: React.ReactNode; show: boolean }[] = [
+    { id: 'overview', label: '개요', icon: <LayoutGrid className="w-3.5 h-3.5" />, show: true },
+    { id: 'document', label: '기획서', icon: <FileText className="w-3.5 h-3.5" />, show: !!(project.gallery || project.pdfUrl) },
+    { id: 'video', label: '영상', icon: <Play className="w-3.5 h-3.5" />, show: !!project.videoUrl },
+    { id: 'link', label: '링크', icon: <ExternalLink className="w-3.5 h-3.5" />, show: !!project.externalUrl },
   ];
+
+  const visibleTabs = tabs.filter(t => t.show);
 
   const galleryImages = project.gallery || [project.image];
 
@@ -31,6 +34,7 @@ export const ProjectDetail = ({ project, onClose, isEditing, onSaveContent }: Pr
       case 'overview': return { bg: 'bg-white', text: 'text-zinc-900', border: 'border-zinc-200', tabActive: 'bg-white text-zinc-900', accent: '#0047BB' };
       case 'document': return { bg: 'bg-[#0047BB]', text: 'text-white', border: 'border-white/30', tabActive: 'bg-[#0047BB] text-white', accent: '#ffffff' };
       case 'video': return { bg: 'bg-[#1A1A1A]', text: 'text-white', border: 'border-white/20', tabActive: 'bg-[#1A1A1A] text-white', accent: '#0047BB' };
+      case 'link': return { bg: 'bg-[#6D28D9]', text: 'text-white', border: 'border-white/20', tabActive: 'bg-[#6D28D9] text-white', accent: '#ffffff' };
       default: return { bg: 'bg-white', text: 'text-zinc-900', border: 'border-zinc-200', tabActive: 'bg-white', accent: '#0047BB' };
     }
   };
@@ -56,7 +60,7 @@ export const ProjectDetail = ({ project, onClose, isEditing, onSaveContent }: Pr
 
         {/* Center: Persistent Colored Windows Tabs */}
         <div className="flex-1 flex justify-start gap-2">
-          {tabs.map((tab) => {
+          {visibleTabs.map((tab) => {
             const isActive = activeTab === tab.id;
             const tabThemes = {
               overview: isActive 
@@ -68,6 +72,9 @@ export const ProjectDetail = ({ project, onClose, isEditing, onSaveContent }: Pr
               video: isActive 
                 ? 'bg-[#1A1A1A] text-white shadow-md shadow-black/20 border-transparent' 
                 : 'bg-[#1A1A1A]/10 text-zinc-600 hover:bg-[#1A1A1A]/20 border-transparent',
+              link: isActive 
+                ? 'bg-[#6D28D9] text-white shadow-md shadow-[#6D28D9]/20 border-transparent' 
+                : 'bg-[#6D28D9]/10 text-[#6D28D9] hover:bg-[#6D28D9]/20 border-transparent',
             };
 
             return (
@@ -160,6 +167,37 @@ export const ProjectDetail = ({ project, onClose, isEditing, onSaveContent }: Pr
                   </div>
                 </div>
               )}
+            </motion.div>
+          ) : activeTab === 'link' ? (
+            <motion.div key="tab-link" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+              className="flex-1 flex items-center justify-center p-12 bg-[#FCFCFA]"
+            >
+              <div className="max-w-2xl w-full">
+                <div className="relative group p-1 bg-linear-to-br from-[#6D28D9] via-[#C084FC] to-[#6D28D9] rounded-[3rem] shadow-2xl overflow-hidden">
+                  <div className="absolute inset-0 bg-white/40 backdrop-blur-3xl" />
+                  <div className="relative bg-white/80 rounded-[2.8rem] p-12 flex flex-col items-center text-center">
+                    <div className="w-24 h-24 bg-[#6D28D9]/10 rounded-3xl flex items-center justify-center mb-10 group-hover:scale-110 transition-transform duration-500">
+                      <Sparkles className="w-12 h-12 text-[#6D28D9]" />
+                    </div>
+                    <h3 className="text-4xl font-black text-zinc-900 mb-6 tracking-tight">LLM 시나리오 챗봇 체험</h3>
+                    <p className="text-zinc-600 text-lg leading-relaxed mb-12 max-w-md font-medium">
+                      NPC와의 자연스러운 대화를 통해 사건의 실마리를 풀어가는 지능형 시나리오 시스템을 직접 경험해 보세요.
+                    </p>
+                    <a 
+                      href={project.externalUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full h-20 bg-[#6D28D9] text-white rounded-[2rem] flex items-center justify-center gap-4 hover:bg-[#5B21B6] hover:scale-[1.02] active:scale-95 transition-all duration-300 shadow-xl shadow-[#6D28D9]/30 group/btn"
+                    >
+                      <span className="text-xl font-black tracking-tight">시나리오 체험하러 가기</span>
+                      <ExternalLink className="w-6 h-6 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />
+                    </a>
+                    <p className="mt-8 text-zinc-400 text-sm font-black uppercase tracking-[0.2em]">
+                      Link via Gemini Pro
+                    </p>
+                  </div>
+                </div>
+              </div>
             </motion.div>
           ) : activeTab === 'video' ? (
             <motion.div key="tab-video" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}

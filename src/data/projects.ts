@@ -111,6 +111,7 @@ export const PROJECTS: Project[] = [
     description: "LLM 기반의 시나리오 챗봇 시스템입니다. NPC와의 자연스러운 대화를 통해 단서를 찾고 스토리를 진행하는 실험적인 프로젝트입니다.",
     tags: ["LLM", "시나리오", "챗봇"],
     image: "./images/uninvited_guest.png",
+    externalUrl: "https://gemini.google.com/gem/1FRAqchL7euLdBpjObGaZ_P5Ag_G4P2gY?usp=sharing",
     color: "from-purple-500/20 to-indigo-500/20",
     status: "개발 중",
     content: `# 게임 스토어의 불청객
