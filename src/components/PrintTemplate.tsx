@@ -66,7 +66,7 @@ const ResumePrintPage: React.FC<{ data: ResumeData }> = ({ data }) => (
       <div style={{ background: '#fff', borderRadius: '16px', border: '1px solid rgba(0,0,0,0.07)', padding: '18px 22px', display: 'flex', gap: '18px', alignItems: 'flex-start', flexShrink: 0 }}>
         {/* 사진 */}
         <div style={{ width: '80px', height: '80px', borderRadius: '12px', overflow: 'hidden', border: '1px solid rgba(0,0,0,0.07)', flexShrink: 0 }}>
-          <img src="https://picsum.photos/seed/profile/400/400" alt="프로필" style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'grayscale(100%) opacity(0.8)' }} />
+          <img src={resumeData.image || "https://picsum.photos/seed/profile/400/400"} alt="프로필" style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'grayscale(100%) opacity(0.8)' }} />
         </div>
         {/* 이름/연락처 */}
         <div style={{ width: '150px', flexShrink: 0 }}>

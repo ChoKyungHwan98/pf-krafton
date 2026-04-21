@@ -61,6 +61,7 @@ export interface GameHistory {
 
 export interface ResumeData {
   name: string;
+  image?: string;
   role: string;
   email: string;
   phone: string;

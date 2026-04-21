@@ -165,7 +165,7 @@ const ResumePage: React.FC<{ data: ResumeData }> = ({ data }) => (
           border: '1px solid rgba(0,0,0,0.1)', 
           boxShadow: '0 10px 30px rgba(0,0,0,0.1)' 
         }}>
-          <img src="https://picsum.photos/seed/profile/600/800" alt="Profile"
+          <img src={resumeData.image || "https://picsum.photos/seed/profile/600/800"} alt="Profile"
             style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
         </div>
         <div style={{ 

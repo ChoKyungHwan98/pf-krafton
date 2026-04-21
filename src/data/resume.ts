@@ -2,6 +2,7 @@ import type { ResumeData } from '../types';
 
 export const RESUME_DATA: ResumeData = {
   name: "조경환",
+  image: "./images/profile.jpg",
   role: "Game Designer",
   email: "ckh980624@gmail.com",
   phone: "010-4826-6256",
