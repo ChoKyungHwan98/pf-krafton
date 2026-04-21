@@ -142,8 +142,8 @@ export const About = ({ isEditing, content, setContent }: AboutProps) => (
             </div>
             <div className="relative z-10">
               <span className="text-[32px] font-black leading-none block mb-6">3<span className="text-xl opacity-70">건+</span></span>
-              <p className="text-[10px] font-black tracking-widest text-white/60 uppercase mb-2">프로젝트 기획</p>
-              <p className="text-[15px] font-bold leading-snug">시스템 · 콘텐츠 · 밸런스<br/>기획</p>
+              <p className="text-[10px] font-black tracking-widest text-white/60 uppercase mb-2">프로젝트 이력</p>
+              <p className="text-[15px] font-bold leading-snug">출시 경험 2회</p>
             </div>
           </motion.div>
 
