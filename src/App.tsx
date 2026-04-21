@@ -49,7 +49,7 @@ function App() {
   }, 'hero_content');
   const [aboutContent, setAboutContent, aboutLoaded] = useEditableContent({
     p1: "법학이 '-에서 0으로 되돌리는 일'이었다면,<br/>게임은 누군가의 하루를 <strong>'0에서 +가 되는 경험'</strong>으로 만드는 일입니다.<br/>탄탄한 시스템의 논리적 뼈대 위에서,<br/>유저의 마음에 즐거움이라는 <strong>감성을 채워넣는 것</strong> —<br/>그것이 제가 생각하는 게임 기획의 본질입니다.",
-    p2: "저는 누군가의 하루를 움직이는,<br/>그 <strong>+를 설계하는 기획자</strong>가 되겠습니다."
+    p2: "저는 누군가의 하루를 움직이는,<br/><strong>+를 설계하는 기획자</strong>가 되겠습니다."
   }, 'about_content');
 
   const isDataLoaded = resumeLoaded && projectsLoaded && portfolioLoaded && gameHistoryLoaded && heroLoaded && aboutLoaded;
