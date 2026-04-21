@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
-import { motion, AnimatePresence, useAnimation } from 'motion/react';
+import { motion, AnimatePresence, useAnimation, useMotionValue, useTransform } from 'motion/react';
 import { ChevronLeft, ChevronRight, Search, Move, MousePointer2 } from 'lucide-react';
 
 interface EBookGalleryProps {
@@ -12,24 +12,26 @@ const slideVariants = {
   enter: (direction: number) => ({
     x: direction > 0 ? '100%' : '-100%',
     opacity: 0,
-    filter: 'blur(10px)',
+    scale: 0.95,
   }),
   center: { 
     x: 0, 
     opacity: 1, 
-    filter: 'blur(0px)',
+    scale: 1,
     transition: {
-      x: { type: "spring", stiffness: 300, damping: 30 },
-      opacity: { duration: 0.2 }
+      x: { type: "spring", stiffness: 300, damping: 30, mass: 0.8 },
+      opacity: { duration: 0.3 },
+      scale: { duration: 0.4, ease: "easeOut" }
     }
   },
   exit: (direction: number) => ({
     x: direction < 0 ? '100%' : '-100%',
     opacity: 0,
-    filter: 'blur(10px)',
+    scale: 0.95,
     transition: {
-      x: { type: "spring", stiffness: 300, damping: 30 },
-      opacity: { duration: 0.2 }
+      x: { type: "spring", stiffness: 300, damping: 30, mass: 0.8 },
+      opacity: { duration: 0.2 },
+      scale: { duration: 0.3 }
     }
   }),
 };
@@ -41,8 +43,10 @@ export const EBookGallery = ({ images, currentIndex, onPageChange }: EBookGaller
   const [showSwipeTutorial, setShowSwipeTutorial] = useState(true);
   const tutorialControls = useAnimation();
   const containerRef = useRef<HTMLDivElement>(null);
+  
+  // Use motion values for smoother tracking during drag
+  const x = useMotionValue(0);
 
-  // Sync prop changes to internal state with direction calculation
   if (currentIndex !== page) {
     setPage([currentIndex, currentIndex > page ? 1 : -1]);
   }
@@ -149,7 +153,7 @@ export const EBookGallery = ({ images, currentIndex, onPageChange }: EBookGaller
       </AnimatePresence>
 
       <div className="relative w-full h-full flex items-center justify-center overflow-hidden">
-        {/* Navigation Arrows - High contrast editorial style */}
+        {/* Navigation Arrows */}
         <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex justify-between px-8 z-30 pointer-events-none">
           <button onClick={() => paginate(-1)} disabled={!hasPrev}
             className={`w-14 h-14 rounded-2xl flex items-center justify-center shadow-2xl border transition-all duration-500 pointer-events-auto ${hasPrev ? 'bg-white/95 backdrop-blur-xl text-[#1A1A1A] border-black/5 hover:scale-110 active:scale-95 cursor-pointer opacity-0 group-hover:opacity-100' : 'opacity-0 pointer-events-none'}`}
@@ -163,7 +167,7 @@ export const EBookGallery = ({ images, currentIndex, onPageChange }: EBookGaller
           </button>
         </div>
 
-        <div className="h-full w-full flex items-center justify-center overflow-hidden">
+        <div className="h-full w-full flex items-center justify-center overflow-hidden relative">
           <AnimatePresence initial={false} custom={direction} mode="popLayout">
             <motion.div
               key={page}
@@ -186,7 +190,7 @@ export const EBookGallery = ({ images, currentIndex, onPageChange }: EBookGaller
                 }}
                 drag={zoom > 1 ? true : "x"}
                 dragConstraints={getDragConstraints()}
-                dragElastic={zoom > 1 ? 0.1 : 0.05}
+                dragElastic={zoom > 1 ? 0.1 : 0.15} // Increased slightly for better feel
                 onDragEnd={(_, { offset, velocity }) => {
                   if (zoom === 1) {
                     const swipe = swipePower(offset.x, velocity.x);
@@ -196,7 +200,7 @@ export const EBookGallery = ({ images, currentIndex, onPageChange }: EBookGaller
                 }}
                 src={images[currentIndex]}
                 alt={`기획서 ${currentIndex + 1}페이지`}
-                className={`max-h-[90%] max-w-[90%] object-contain block shadow-2xl ${zoom > 1 ? 'cursor-move' : 'cursor-grab active:cursor-grabbing'}`}
+                className={`max-h-[90%] max-w-[90%] object-contain block shadow-2xl rounded-sm ${zoom > 1 ? 'cursor-move' : 'cursor-grab active:cursor-grabbing'}`}
                 referrerPolicy="no-referrer"
                 draggable={false}
               />
