@@ -1,82 +1,98 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { ArrowLeft, Edit2, Play, Calendar, Tag, ChevronDown, List as ListIcon, X, ScrollText, Plus } from 'lucide-react';
-import ReactMarkdown from 'react-markdown';
-import remarkGfm from 'remark-gfm';
-import { EditableText } from './EditableText';
-import { EBookGallery } from './EBookGallery';
+import { X, Play, FileText, Layout, ScrollText, ExternalLink, Calendar, Tag, User } from 'lucide-react';
 import type { Project } from '../types';
+import { EBookGallery } from './EBookGallery';
 
 interface ProjectDetailProps {
   project: Project;
-  onBack: () => void;
-  isEditing: boolean;
-  onSaveContent: (content: string) => void;
+  onClose: () => void;
 }
 
-type TabId = 'overview' | 'document' | 'video';
+type TabType = 'overview' | 'document' | 'video';
 
-export const ProjectDetail = ({ project, onBack, isEditing, onSaveContent }: ProjectDetailProps) => {
-  const [activeTab, setActiveTab] = useState<TabId>('overview');
-  const headings = project.content.match(/^##\s+(.*)/gm)?.map(h => h.replace(/^##\s+/, '')) || [];
-  const generateId = (text: string) => text.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-가-힣]/g, '');
+export const ProjectDetail = ({ project, onClose }: ProjectDetailProps) => {
+  const [activeTab, setActiveTab] = useState<TabType>('document');
+  const [currentPage, setCurrentPage] = useState(0);
 
-  const tabs: { id: TabId; label: string }[] = [
-    { id: 'overview', label: '개요' },
-    { id: 'document', label: '기획서' },
-    { id: 'video', label: '영상' },
+  const tabs: { id: TabType; label: string; icon: React.ReactNode }[] = [
+    { id: 'overview', label: '개요', icon: <Layout className="w-3.5 h-3.5" /> },
+    { id: 'document', label: '기획서', icon: <FileText className="w-3.5 h-3.5" /> },
+    { id: 'video', label: '영상', icon: <Play className="w-3.5 h-3.5" /> },
   ];
+
+  const galleryImages = project.gallery || [project.image];
 
   return (
     <motion.div
       initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
       className="flex-1 flex flex-col min-h-0 bg-transparent"
     >
-      {/* Minimized Header - integrated breadcrumb with tabs to save space */}
+      {/* Minimized Header */}
       <div className="shrink-0 flex items-center justify-between px-6 pt-3 pb-1 border-b border-black/5 bg-zinc-50/50">
         <span className="text-[9px] font-black tracking-[0.2em] text-zinc-400 uppercase">Project Detail</span>
       </div>
 
       {/* Tabs + Content */}
       <div className="flex-1 flex flex-col min-h-0 px-0 pb-0">
-        {/* Tab bar - compact */}
-        <div className="shrink-0 flex flex-wrap gap-1 px-4 pt-2 relative z-20">
-          {tabs.map((tab, idx) => {
-            const isActive = activeTab === tab.id;
-            const colorSchemes = [
-              'bg-zinc-100 text-zinc-600 border-zinc-200',
-              'bg-[#0047BB] text-white border-[#0047BB]',
-              'bg-zinc-800 text-white border-zinc-900',
-            ];
-            const scheme = colorSchemes[idx % colorSchemes.length];
-            return (
-              <motion.div
-                key={tab.id}
-                initial={{ y: 10, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: idx * 0.05 }}
-              >
+        {/* Tab bar - Integrated Counter */}
+        <div className="shrink-0 flex items-center justify-between px-4 pt-2 relative z-20">
+          <div className="flex gap-1">
+            {tabs.map((tab) => {
+              const isActive = activeTab === tab.id;
+              const colorSchemes = {
+                overview: isActive ? 'bg-white border-zinc-200 text-zinc-900' : 'bg-zinc-100/50 border-transparent text-zinc-500 hover:bg-zinc-100',
+                document: isActive ? 'bg-[#0047BB] border-[#0047BB] text-white' : 'bg-zinc-100/50 border-transparent text-zinc-500 hover:bg-zinc-100',
+                video: isActive ? 'bg-[#1A1A1A] border-[#1A1A1A] text-white' : 'bg-zinc-100/50 border-transparent text-zinc-500 hover:bg-zinc-100',
+              };
+
+              return (
                 <button
+                  key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`px-5 py-2 rounded-t-lg border-t border-x font-display font-bold text-[11px] uppercase tracking-wider transition-all shadow-sm flex items-center gap-2 mb-[-1px] relative z-10 ${scheme} ${isActive ? 'translate-y-[-1px] shadow-md pb-3' : 'hover:translate-y-[-1px]'}`}
+                  className={`px-4 py-2 rounded-t-lg border-t border-x font-display font-bold text-[11px] uppercase tracking-wider transition-all shadow-sm flex items-center gap-2 mb-[-1px] relative z-10 ${colorSchemes[tab.id]} ${isActive ? 'translate-y-[-1px] shadow-md pb-3' : 'hover:translate-y-[-1px]'}`}
                 >
                   {tab.label}
                   {tab.id === 'document' && <ScrollText className="w-3.5 h-3.5 opacity-50" />}
-                  {tab.id === 'video' && <Play className="w-3.5 h-3.5 opacity-50" />}
                 </button>
+              );
+            })}
+          </div>
+
+          {/* Center Counter - Only for document tab */}
+          <AnimatePresence>
+            {activeTab === 'document' && galleryImages.length > 1 && (
+              <motion.div 
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 10 }}
+                className="absolute left-1/2 -translate-x-1/2 flex flex-col items-center gap-1"
+              >
+                <div className="px-3 py-1 bg-black rounded-full text-white text-[10px] font-black tracking-[0.2em] flex items-center gap-2 shadow-lg">
+                  <span>{String(currentPage + 1).padStart(2, '0')}</span>
+                  <span className="text-white/30">/</span>
+                  <span className="text-white/60">{String(galleryImages.length).padStart(2, '0')}</span>
+                </div>
+                <div className="flex gap-1">
+                  {galleryImages.map((_, i) => (
+                    <div
+                      key={i}
+                      className={`h-1 rounded-full transition-all duration-300 ${i === currentPage ? 'bg-[#0047BB] w-3' : 'bg-zinc-200 w-1'}`}
+                    />
+                  ))}
+                </div>
               </motion.div>
-            );
-          })}
+            )}
+          </AnimatePresence>
+
+          {/* Right side spacer to balance the flex */}
+          <div className="w-[100px] hidden md:block"></div>
         </div>
 
-        {/* Tab card - fills remaining height - removed rounded corners on bottom to gain space if needed */}
+        {/* Tab card - fills remaining height */}
         <div className="flex-1 flex flex-col min-h-0 bg-white border-t border-black/5 shadow-sm relative z-10">
-          {/* Paper texture */}
-          <div className="absolute inset-0 pointer-events-none opacity-[0.03]" style={{backgroundImage: "url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E')"}}></div>
-
           <AnimatePresence mode="wait">
             {activeTab === 'document' ? (
-              /* Document tab: fills height, no outer scroll */
               <motion.div
                 key="tab-document"
                 initial={{ opacity: 0 }}
@@ -85,128 +101,90 @@ export const ProjectDetail = ({ project, onBack, isEditing, onSaveContent }: Pro
                 className="flex-1 flex flex-col min-h-0 overflow-hidden bg-white"
               >
                 <div className="w-full flex-1 min-h-0">
-                  <EBookGallery images={project.gallery || [project.image]} />
+                  <EBookGallery 
+                    images={galleryImages} 
+                    onPageChange={setCurrentPage}
+                    initialIndex={currentPage}
+                  />
                 </div>
               </motion.div>
-                ) : activeTab === 'video' ? (
-                <motion.div
-                  key="tab-video"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  className="flex-1 relative w-full bg-black flex flex-col"
-                >
-                  {project.videoUrl ? (
-                    <div className="w-full aspect-video bg-black">
-                      {project.videoUrl.includes('youtube.com') || project.videoUrl.includes('youtu.be') ? (
-                        <iframe
-                          src={project.videoUrl.replace('watch?v=', 'embed/').split('&')[0]}
-                          className="w-full h-full"
-                          allowFullScreen
-                          title="Project Video"
-                        />
-                      ) : (
-                        <video src={project.videoUrl} controls className="w-full h-full" />
-                      )}
-                    </div>
-                  ) : (
-                    <div className="w-full aspect-video flex flex-col items-center justify-center text-zinc-500 bg-zinc-900">
-                      <Play className="w-12 h-12 mb-4 opacity-20" />
-                      <p>등록된 영상이 없습니다.</p>
-                    </div>
-                  )}
-                </motion.div>
-              ) : (
-                /* Overview tab: scrollable */
-                <motion.div
-                  key="tab-overview"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  className="flex-1 flex flex-col overflow-y-auto"
-                >
-                  {/* Overview Header Image */}
-                  <div className="aspect-21/9 w-full relative border-b border-black/5 bg-zinc-100 overflow-hidden shrink-0">
-                    <img src={project.image} alt={project.title} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" referrerPolicy="no-referrer" />
-                    <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent"></div>
-                    <div className="absolute bottom-8 left-8 lg:bottom-16 lg:left-16 z-10 w-[90%] max-w-4xl">
-                      <h1 className="text-4xl md:text-6xl font-display font-black text-white tracking-tight drop-shadow-md leading-tight">{project.title}</h1>
+            ) : activeTab === 'video' ? (
+              <motion.div
+                key="tab-video"
+                initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+                className="flex-1 flex flex-col p-8 bg-zinc-900"
+              >
+                <div className="flex-1 rounded-2xl overflow-hidden bg-black shadow-2xl relative group">
+                  <iframe
+                    src={project.videoUrl?.replace('watch?v=', 'embed/')}
+                    className="w-full h-full border-0"
+                    allowFullScreen
+                  />
+                </div>
+              </motion.div>
+            ) : (
+              <motion.div
+                key="tab-overview"
+                initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+                className="flex-1 overflow-y-auto"
+              >
+                <div className="max-w-4xl mx-auto p-8 md:p-12">
+                  <div className="relative h-64 md:h-80 rounded-3xl overflow-hidden mb-12 shadow-xl group">
+                    <img src={project.image} alt={project.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                    <div className="absolute bottom-8 left-8 right-8">
+                      <div className="flex flex-wrap gap-2 mb-4">
+                        {project.tags.map(tag => (
+                          <span key={tag} className="px-3 py-1 bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-white text-[10px] font-bold uppercase tracking-wider">
+                            #{tag}
+                          </span>
+                        ))}
+                      </div>
+                      <h2 className="text-4xl md:text-5xl font-black text-white mb-2 leading-tight">{project.title}</h2>
                     </div>
                   </div>
-                  
-                  {/* Horizontal Metadata Bar */}
-                  <div className="border-b border-black/5 bg-zinc-50/80 backdrop-blur-sm shrink-0">
-                    <div className="max-w-4xl mx-auto w-full px-8 py-6 flex flex-col md:flex-row gap-8 justify-between">
-                      <div className="flex gap-8 flex-wrap">
-                        <div>
-                          <span className="text-[10px] font-mono text-zinc-400 uppercase tracking-widest mb-1.5 flex items-center gap-1.5"><Tag className="w-3 h-3" /> ROLE</span>
-                          <span className="font-bold text-[#2C2C2C] text-[15px]">{project.category}</span>
+
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+                    <div className="md:col-span-2 space-y-8">
+                      <section>
+                        <h3 className="text-lg font-black text-zinc-900 mb-4 flex items-center gap-2">
+                          <FileText className="w-5 h-5 text-[#0047BB]" /> 기획 의도 및 핵심 내용
+                        </h3>
+                        <div className="prose prose-zinc max-w-none text-zinc-600 leading-relaxed whitespace-pre-wrap">
+                          {project.content}
                         </div>
-                        <div>
-                          <span className="text-[10px] font-mono text-zinc-400 uppercase tracking-widest mb-1.5 flex items-center gap-1.5"><Play className="w-3 h-3" /> STATUS</span>
-                          <span className={`inline-flex px-2.5 py-1 rounded text-[11px] font-bold tracking-tight ${project.status === '미출시' ? 'bg-zinc-200 text-zinc-600' : 'bg-[#0047BB]/10 text-[#0047BB]'}`}>{project.status}</span>
-                        </div>
-                        <div>
-                          <span className="text-[10px] font-mono text-zinc-400 uppercase tracking-widest mb-1.5 flex items-center gap-1.5"><Tag className="w-3 h-3" /> TAGS</span>
-                          <div className="flex flex-wrap gap-1.5">
-                            {project.tags.map((tag, idx) => (
-                              <span key={idx} className="px-2.5 py-1 bg-white border border-zinc-200 rounded-md text-[11px] font-bold text-zinc-600">#{tag}</span>
-                            ))}
+                      </section>
+                    </div>
+
+                    <div className="space-y-6">
+                      <div className="bg-zinc-50 rounded-2xl p-6 border border-zinc-100">
+                        <h4 className="text-[11px] font-black text-zinc-400 uppercase tracking-widest mb-6">Project Metadata</h4>
+                        <div className="space-y-5">
+                          <div className="flex items-start gap-4">
+                            <div className="w-8 h-8 rounded-lg bg-white border border-zinc-200 flex items-center justify-center shrink-0">
+                              <Tag className="w-4 h-4 text-[#0047BB]" />
+                            </div>
+                            <div>
+                              <p className="text-[10px] font-bold text-zinc-400 uppercase tracking-wider mb-0.5">Category</p>
+                              <p className="text-sm font-bold text-zinc-900">{project.category}</p>
+                            </div>
+                          </div>
+                          <div className="flex items-start gap-4">
+                            <div className="w-8 h-8 rounded-lg bg-white border border-zinc-200 flex items-center justify-center shrink-0">
+                              <Calendar className="w-4 h-4 text-[#0047BB]" />
+                            </div>
+                            <div>
+                              <p className="text-[10px] font-bold text-zinc-400 uppercase tracking-wider mb-0.5">Status</p>
+                              <p className="text-sm font-bold text-zinc-900">{project.status}</p>
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
-
-                  {/* Inline Table of Contents */}
-                  {!isEditing && headings.length > 0 && (
-                    <div className="max-w-4xl mx-auto w-full px-8 pt-12">
-                      <div className="bg-white border border-black/5 rounded-2xl p-6 shadow-[0_2px_10px_rgba(0,0,0,0.02)]">
-                        <h3 className="text-sm font-display font-bold text-[#2C2C2C] mb-4 flex items-center gap-2 border-b border-black/5 pb-3">
-                          <ListIcon className="w-4 h-4 text-[#0047BB]" /> Contents
-                        </h3>
-                        <nav className="flex flex-wrap gap-x-8 gap-y-3">
-                          {headings.map((heading, idx) => (
-                            <a key={idx} href={`#${generateId(heading)}`} className="text-[13px] text-zinc-500 hover:text-[#0047BB] font-medium transition-colors flex items-center gap-2 group">
-                              <span className="w-1.5 h-1.5 rounded-full bg-zinc-200 group-hover:bg-[#0047BB] transition-colors"></span>
-                              {heading}
-                            </a>
-                          ))}
-                        </nav>
-                      </div>
-                    </div>
-                  )}
-                  
-                  {/* Overview Content */}
-                  <div className="p-8 lg:p-12 max-w-4xl mx-auto w-full">
-                    {isEditing ? (
-                      <div className="flex flex-col h-full min-h-[500px]">
-                        <div className="flex items-center justify-between mb-4 pb-4 border-b border-zinc-200">
-                          <div className="flex items-center gap-2 text-[#0047BB] font-bold"><Edit2 className="w-4 h-4" /> 마크다운 편집 모드</div>
-                          <span className="text-xs text-zinc-500 font-mono">* 지원 문법: # 제목, **강조**, - 목록, [링크](url)</span>
-                        </div>
-                        <textarea value={project.content} onChange={(e) => onSaveContent(e.target.value)}
-                          className="flex-1 w-full p-6 bg-bg-main border border-black/10 rounded-xl focus:outline-none focus:border-[#0047BB] font-mono text-sm leading-relaxed text-[#2C2C2C] resize-y shadow-inner h-[500px]"
-                          placeholder="프로젝트 상세 내용을 마크다운으로 입력하세요..." />
-                      </div>
-                    ) : (
-                      <div className="prose prose-zinc prose-lg max-w-none text-[#2C2C2C] leading-loose
-                        prose-headings:font-display prose-headings:font-bold prose-headings:tracking-tight prose-headings:text-[#2C2C2C]
-                        prose-h1:text-3xl prose-h1:mb-8 prose-h1:pb-6 prose-h1:border-b prose-h1:border-black/5
-                        prose-h2:text-2xl prose-h2:mb-6 prose-h2:mt-12 prose-h2:text-[#0047BB]
-                        prose-h3:text-xl prose-h3:mb-4 prose-h3:mt-8
-                        prose-p:mb-6 prose-p:text-[16px] prose-p:leading-relaxed prose-p:text-zinc-600
-                        prose-strong:text-[#2C2C2C] prose-strong:font-bold prose-strong:bg-[#0047BB]/5 prose-strong:px-1
-                        prose-ul:list-disc prose-ul:pl-6 prose-ul:mb-6 prose-ul:text-zinc-600
-                        prose-li:my-2 prose-li:leading-relaxed
-                        prose-blockquote:border-l-4 prose-blockquote:border-[#0047BB] prose-blockquote:pl-6 prose-blockquote:italic prose-blockquote:text-zinc-500 prose-blockquote:bg-zinc-50 prose-blockquote:py-4 prose-blockquote:rounded-r-lg
-                        prose-a:text-[#0047BB] prose-a:no-underline hover:prose-a:underline">
-                        <ReactMarkdown remarkPlugins={[remarkGfm]}>{project.content}</ReactMarkdown>
-                      </div>
-                    )}
-                  </div>
-                </motion.div>
-              )}
+                </div>
+              </motion.div>
+            )}
           </AnimatePresence>
         </div>
       </div>
