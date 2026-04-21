@@ -159,8 +159,8 @@ export const Projects = ({ onProjectClick, isEditing, projects, setProjects, lim
             </div>
             
             {/* Scroll Hints (Gradients) */}
-            <div className="absolute top-0 bottom-12 right-0 w-32 bg-gradient-to-l from-[#FDFDFB] to-transparent pointer-events-none hidden md:block z-10" />
-            <div className="absolute top-0 bottom-12 left-0 w-32 bg-gradient-to-r from-[#FDFDFB] to-transparent pointer-events-none hidden md:block z-10" />
+            <div className="absolute top-0 right-0 h-full w-24 bg-linear-to-l from-[#FDFDFB] to-transparent pointer-events-none hidden md:block z-10" />
+            <div className="absolute top-0 left-0 h-full w-24 bg-linear-to-r from-[#FDFDFB] to-transparent pointer-events-none hidden md:block z-10" />
             
             {/* Scroll Indicator */}
             <div className="absolute bottom-0 left-1/2 -translate-x-1/2 flex items-center gap-2 text-zinc-400 font-medium text-xs tracking-widest uppercase">
