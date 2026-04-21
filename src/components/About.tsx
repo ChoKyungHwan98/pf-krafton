@@ -140,10 +140,12 @@ export const About = ({ isEditing, content, setContent }: AboutProps) => (
             <div className="absolute top-0 right-0 p-8">
               <span className="text-[64px] font-black leading-none opacity-20 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500 block origin-top-right">3</span>
             </div>
-            <div className="relative z-10">
-              <span className="text-[32px] font-black leading-none block mb-6">3<span className="text-xl opacity-70">건+</span></span>
-              <p className="text-[10px] font-black tracking-widest text-white/60 uppercase mb-2">프로젝트 이력</p>
-              <p className="text-[15px] font-bold leading-snug">출시 경험 2회</p>
+            <div className="relative z-10 flex flex-col h-full justify-between">
+              <span className="text-[32px] font-black leading-none block">3<span className="text-xl opacity-70">건+</span></span>
+              <div className="mt-8">
+                <p className="text-[10px] font-black tracking-widest text-white/60 uppercase mb-2">프로젝트 이력</p>
+                <p className="text-[15px] font-bold leading-snug h-[44px] flex items-end">출시 경험 2회</p>
+              </div>
             </div>
           </motion.div>
 
@@ -158,10 +160,12 @@ export const About = ({ isEditing, content, setContent }: AboutProps) => (
             <div className="absolute top-0 right-0 p-8">
               <span className="text-[64px] font-black leading-none opacity-5 group-hover:opacity-20 group-hover:scale-110 transition-all duration-500 block origin-top-right text-[#0047BB]">A</span>
             </div>
-            <div className="relative z-10">
-              <span className="text-[32px] font-black leading-none block mb-6 group-hover:text-[#0047BB] transition-colors duration-500">A - Z</span>
-              <p className="text-[10px] font-black tracking-widest text-white/50 uppercase mb-2">전체 기획</p>
-              <p className="text-[15px] font-bold leading-snug text-zinc-300">아이디어 발굴부터<br/>출시 전략까지</p>
+            <div className="relative z-10 flex flex-col h-full justify-between">
+              <span className="text-[32px] font-black leading-none block group-hover:text-[#0047BB] transition-colors duration-500">A - Z</span>
+              <div className="mt-8">
+                <p className="text-[10px] font-black tracking-widest text-white/50 uppercase mb-2">전체 기획</p>
+                <p className="text-[15px] font-bold leading-snug text-zinc-300 h-[44px] flex items-end">아이디어 발굴부터<br/>출시 전략까지</p>
+              </div>
             </div>
           </motion.div>
         </div>

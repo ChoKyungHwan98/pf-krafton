@@ -130,34 +130,36 @@ export const Navbar = ({ setView, currentView, onNavClick, isEditing, setIsEditi
           </div>
 
           {/* ── CENTER ── */}
-          <div className="hidden lg:flex flex-1 items-center justify-center">
-            {isSubView && centerSlot ? (
-              /* Sub-view with tabs (e.g. Resume ↔ 자기소개서) */
-              centerSlot
-            ) : isSubView ? (
-              /* Sub-view without tabs: page label breadcrumb */
-              <></>
-            ) : (
-              /* Home: section nav links */
-              <div className="flex items-center justify-center gap-2">
-                {[
-                  { id: 'about', label: '소개', num: '01' },
-                  { id: 'projects', label: '프로젝트 이력', num: '02' },
-                  { id: 'skills', label: '핵심역량', num: '03' },
-                  { id: 'play-history', label: '플레이 이력', num: '04' }
-                ].map(({ id, label, num }) => (
-                  <a
-                    key={id}
-                    href={`#${id}`}
-                    onClick={(e) => handleLinkClick(e, id)}
-                    className={`relative px-5 py-3 rounded-full text-[15px] font-bold transition-all flex items-center gap-2.5 ${activeSection === id ? 'text-[#0047BB] bg-[#0047BB]/5' : 'text-zinc-500 hover:text-[#2C2C2C] hover:bg-zinc-100'}`}
-                  >
-                    <span className={`text-[12px] font-mono uppercase tracking-widest transition-colors duration-300 ${activeSection === id ? 'text-[#0047BB]/70' : 'text-zinc-400'}`}>{num}</span>
-                    <span className="tracking-wide">{label}</span>
-                  </a>
-                ))}
-              </div>
-            )}
+          <div className="hidden lg:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-20">
+            <div className="pointer-events-auto">
+              {isSubView && centerSlot ? (
+                /* Sub-view with tabs (e.g. Resume ↔ 자기소개서) */
+                centerSlot
+              ) : isSubView ? (
+                /* Sub-view without tabs: page label breadcrumb */
+                <></>
+              ) : (
+                /* Home: section nav links */
+                <div className="flex items-center justify-center gap-2">
+                  {[
+                    { id: 'about', label: '소개', num: '01' },
+                    { id: 'projects', label: '프로젝트 이력', num: '02' },
+                    { id: 'skills', label: '핵심역량', num: '03' },
+                    { id: 'play-history', label: '플레이 이력', num: '04' }
+                  ].map(({ id, label, num }) => (
+                    <a
+                      key={id}
+                      href={`#${id}`}
+                      onClick={(e) => handleLinkClick(e, id)}
+                      className={`relative px-5 py-3 rounded-full text-[15px] font-bold transition-all flex items-center gap-2.5 ${activeSection === id ? 'text-[#0047BB] bg-[#0047BB]/5' : 'text-zinc-500 hover:text-[#2C2C2C] hover:bg-zinc-100'}`}
+                    >
+                      <span className={`text-[12px] font-mono uppercase tracking-widest transition-colors duration-300 ${activeSection === id ? 'text-[#0047BB]/70' : 'text-zinc-400'}`}>{num}</span>
+                      <span className="tracking-wide">{label}</span>
+                    </a>
+                  ))}
+                </div>
+              )}
+            </div>
           </div>
 
           {/* ── RIGHT ── */}
