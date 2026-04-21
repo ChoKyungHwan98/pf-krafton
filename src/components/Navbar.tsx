@@ -148,7 +148,7 @@ export const Navbar = ({ setView, currentView, onNavClick, isEditing, setIsEditi
                   { id: 'about', label: '소개', num: '01' },
                   { id: 'projects', label: '프로젝트 이력', num: '02' },
                   { id: 'skills', label: '핵심역량', num: '03' },
-                  { id: 'play-history', label: '게이밍DNA', num: '04' }
+                  { id: 'play-history', label: '플레이 이력', num: '04' }
                 ].map(({ id, label, num }) => (
                   <a
                     key={id}
@@ -229,7 +229,7 @@ export const Navbar = ({ setView, currentView, onNavClick, isEditing, setIsEditi
                     { id: 'about', label: '소개', num: '01' },
                     { id: 'projects', label: '프로젝트 이력', num: '02' },
                     { id: 'skills', label: '핵심역량', num: '03' },
-                    { id: 'contact', label: '문의하기', num: '04' }
+                    { id: 'play-history', label: '플레이 이력', num: '04' }
                   ].map(({ id, label, num }) => (
                     <a key={id} href={`#${id}`} onClick={(e) => handleLinkClick(e, id)}
                       className="group relative font-bold flex items-center gap-4 py-3 px-4 rounded-xl text-[#2C2C2C] hover:bg-zinc-50 transition-colors">
