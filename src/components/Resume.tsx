@@ -234,20 +234,48 @@ export const Resume = ({ setView, onBack, isEditing, setIsEditing, data, setData
                       <h3 className="text-lg font-bold mb-6 flex items-center gap-3 text-[#1A1A1A]">
                         <Award className="text-[#0047BB] w-5 h-5" /> 자격증
                       </h3>
-                      <div className="flex flex-col gap-3">
+                      <div className="flex flex-col gap-2.5">
                         {data.certificates && data.certificates.map((cert, idx) => (
-                          <div key={idx} className="flex items-center justify-between p-4 bg-white border border-zinc-100 rounded-sm shadow-sm">
-                            <div className="flex flex-col gap-0.5">
-                              <h4 className="font-bold text-[14px] text-[#1A1A1A]">
+                          <div key={idx} className="flex items-center justify-between p-3.5 bg-white border border-zinc-100 rounded-lg shadow-sm group hover:border-[#0047BB]/20 hover:shadow-md transition-all duration-200">
+                            <div className="flex flex-col gap-1">
+                              <span className="font-bold text-[13px] text-[#1A1A1A] tracking-tight">
                                 <EditableText value={cert.name} onSave={(v) => { const c = [...(data.certificates||[])]; c[idx].name = v; setData({...data, certificates: c}); }} isEditing={isEditing} />
-                              </h4>
-                              <span className="text-[10px] font-mono text-zinc-400 font-bold uppercase tracking-tighter">{cert.date}</span>
+                              </span>
+                              <span className="text-[10px] font-mono text-zinc-400 font-bold">{cert.date}</span>
                             </div>
-                            <div className="w-1.5 h-1.5 rounded-full bg-[#0047BB]/30"></div>
+                            {cert.score && (
+                              <div className="flex items-center">
+                                <span className="text-[13px] font-black text-[#0047BB] bg-[#0047BB]/8 border border-[#0047BB]/20 px-2.5 py-1 rounded-md leading-none tabular-nums">
+                                  {cert.score}
+                                </span>
+                              </div>
+                            )}
                           </div>
                         ))}
                       </div>
                     </section>
+
+                    {/* Military Service */}
+                    {data.military && (
+                      <section>
+                        <h3 className="text-lg font-bold mb-6 flex items-center gap-3 text-[#1A1A1A]">
+                          <User className="text-[#0047BB] w-5 h-5" /> 병역
+                        </h3>
+                        <div className="p-4 bg-white border border-zinc-100 rounded-lg shadow-sm">
+                          <div className="flex items-start justify-between gap-3">
+                            <div className="flex flex-col gap-1.5">
+                              <span className="font-bold text-[14px] text-[#1A1A1A] leading-snug">{data.military.branch}</span>
+                              <span className="text-[12px] text-zinc-500 font-medium">{data.military.role}</span>
+                            </div>
+                            <div className="flex flex-col items-end gap-1.5 shrink-0">
+                              <span className="text-[12px] font-black text-[#0047BB] bg-[#0047BB]/8 border border-[#0047BB]/20 px-2.5 py-1 rounded-md leading-none">
+                                {data.military.rank} {data.military.status}
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </section>
+                    )}
                   </div>
                 </aside>
 

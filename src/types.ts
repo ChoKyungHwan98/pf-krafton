@@ -93,8 +93,15 @@ export interface ResumeData {
   }[];
   certificates?: {
     name: string;
+    score?: string;
     date: string;
   }[];
+  military?: {
+    branch: string;
+    role: string;
+    rank: string;
+    status: string;
+  };
   tools?: {
     name: string;
     description: string;

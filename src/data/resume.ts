@@ -104,10 +104,16 @@ export const RESUME_DATA: ResumeData = {
     }
   ],
   certificates: [
-    { name: "TOEIC 800", date: "2023" },
-    { name: "TOEFL 100", date: "2017" },
-    { name: "新HSK5급 190점", date: "2016" }
+    { name: "TOEIC", score: "800", date: "2023" },
+    { name: "TOEFL", score: "100", date: "2017" },
+    { name: "新HSK 5급", score: "190점", date: "2016" }
   ],
+  military: {
+    branch: "육군 3사관학교 법무실",
+    role: "법무실 근무",
+    rank: "병장",
+    status: "전역"
+  },
   tools: [
     { name: "Excel", description: "VLOOKUP, INDEX/MATCH, 사칙연산, 조건부 서식 활용 및 데이터 테이블 제작" },
     { name: "PowerPoint", description: "슬라이드 마스터 기반의 커스텀 템플릿 제작, 기획 의도 시각화 및 논리학 기반 목차 구성에 강점" },
