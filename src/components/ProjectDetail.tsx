@@ -59,37 +59,31 @@ export const ProjectDetail = ({ project, onClose, isEditing, onSaveContent }: Pr
           {tabs.map((tab) => {
             const isActive = activeTab === tab.id;
             const tabColors = {
-              overview: isActive ? 'text-zinc-900' : 'text-zinc-400 hover:text-zinc-700',
-              document: isActive ? 'text-[#0047BB]' : 'text-zinc-400 hover:text-zinc-700',
-              video: isActive ? 'text-[#1A1A1A]' : 'text-zinc-400 hover:text-zinc-700',
+              overview: isActive ? 'text-[#0047BB]' : 'text-zinc-400 hover:text-zinc-600',
+              document: isActive ? 'text-white' : 'text-zinc-400 hover:text-[#0047BB]',
+              video: isActive ? 'text-white' : 'text-zinc-400 hover:text-zinc-900',
             };
 
             return (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`h-10 px-5 rounded-lg flex items-center gap-2.5 transition-all duration-300 font-sans font-black text-[10px] uppercase tracking-[0.15em] relative group ${tabColors[tab.id]}`}
+                className={`h-10 px-6 rounded-xl flex items-center gap-2.5 transition-all duration-500 font-sans font-black text-[10px] uppercase tracking-[0.2em] relative group overflow-hidden ${tabColors[tab.id]}`}
               >
                 {isActive && (
                   <motion.div
                     layoutId="activeTabBg"
-                    className="absolute inset-0 bg-zinc-100 rounded-lg -z-10"
-                    transition={{ type: 'spring', bounce: 0, duration: 0.4 }}
+                    className={`absolute inset-0 shadow-md ${
+                      tab.id === 'overview' ? 'bg-white' : 
+                      tab.id === 'document' ? 'bg-[#0047BB]' : 'bg-[#1A1A1A]'
+                    }`}
+                    transition={{ type: 'spring', bounce: 0.1, duration: 0.5 }}
                   />
                 )}
-                <span className={`transition-transform duration-300 ${isActive ? 'scale-110' : 'group-hover:scale-110'}`}>
+                <span className={`relative z-10 transition-transform duration-300 ${isActive ? 'scale-110' : 'group-hover:scale-110'}`}>
                   {tab.icon}
                 </span>
-                {tab.label}
-                {isActive && (
-                  <motion.div 
-                    layoutId="activeTabUnderline" 
-                    className={`absolute bottom-0 left-5 right-5 h-0.5 rounded-full ${
-                      tab.id === 'overview' ? 'bg-[#0047BB]' : 
-                      tab.id === 'document' ? 'bg-[#0047BB]' : 'bg-[#1A1A1A]'
-                    }`} 
-                  />
-                )}
+                <span className="relative z-10">{tab.label}</span>
               </button>
             );
           })}
