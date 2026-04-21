@@ -144,10 +144,27 @@ export const Projects = ({ onProjectClick, isEditing, projects, setProjects, lim
             </AnimatePresence>
           </div>
         ) : (
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {projects.map((project, idx) => (
-              <ProjectCard key={project.id} project={project} idx={idx} isEditing={isEditing} projects={projects} setProjects={setProjects} onProjectClick={onProjectClick} layout="default" />
-            ))}
+          <div className="w-full relative group/gallery">
+            <div className="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-12 pt-4 px-6 md:px-12 -mx-6 md:-mx-12 items-stretch hide-scrollbar" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+              {projects.map((project, idx) => (
+                <div key={project.id} className="snap-start shrink-0 w-[85vw] sm:w-[320px] md:w-[380px] lg:w-[420px] flex transform transition-transform duration-500 hover:-translate-y-2">
+                  <ProjectCard project={project} idx={idx} isEditing={isEditing} projects={projects} setProjects={setProjects} onProjectClick={onProjectClick} layout="default" />
+                </div>
+              ))}
+              {/* Spacer for last item to scroll into center comfortably */}
+              <div className="shrink-0 w-[10vw] md:w-[20vw]" />
+            </div>
+            
+            {/* Scroll Hints (Gradients) */}
+            <div className="absolute top-0 bottom-12 right-0 w-32 bg-gradient-to-l from-[#FDFDFB] to-transparent pointer-events-none hidden md:block z-10" />
+            <div className="absolute top-0 bottom-12 left-0 w-32 bg-gradient-to-r from-[#FDFDFB] to-transparent pointer-events-none hidden md:block z-10" />
+            
+            {/* Scroll Indicator */}
+            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 flex items-center gap-2 text-zinc-400 font-medium text-xs tracking-widest uppercase">
+              <span className="hidden md:block">←</span>
+              <span>Swipe to explore</span>
+              <span className="hidden md:block">→</span>
+            </div>
           </div>
         )}
       </div>
