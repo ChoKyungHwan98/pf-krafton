@@ -105,7 +105,7 @@ export const RESUME_DATA: ResumeData = {
     { name: "新HSK5급", date: "2016" }
   ],
   tools: [
-    { name: "Excel", description: "VLOOKUP, 사칙연산, 조건부 서식 활용 및 데이터 테이블 제작" },
+    { name: "Excel", description: "VLOOKUP, INDEX/MATCH, 사칙연산, 조건부 서식 활용 및 데이터 테이블 제작" },
     { name: "PowerPoint", description: "슬라이드 마스터 기반의 커스텀 템플릿 제작, 기획 의도 시각화 및 논리학 기반 목차 구성에 강점" },
     { name: "Word", description: "체계적이고 가독성 높은 기획 문서 및 사양서 작성" },
     { name: "Figma", description: "UI 와이어프레임 작성 및 프로토타입 제작" },
