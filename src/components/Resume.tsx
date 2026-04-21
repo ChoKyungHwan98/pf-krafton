@@ -140,7 +140,7 @@ export const Resume = ({ setView, onBack, isEditing, setIsEditing, data, setData
                 <div className="relative shrink-0">
                   <div className="w-52 h-[260px] lg:w-60 lg:h-[300px] rounded-sm overflow-hidden border border-black/10 shadow-xl">
                     <img 
-                      src={resumeData.image || "https://picsum.photos/seed/profile/600/800"} 
+                      src={data.image || "https://picsum.photos/seed/profile/600/800"} 
                       alt="Profile" 
                       className="w-full h-full object-cover" 
                     />
