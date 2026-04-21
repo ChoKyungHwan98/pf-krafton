@@ -146,7 +146,7 @@ export const Navbar = ({ setView, currentView, onNavClick, isEditing, setIsEditi
               <div className="flex items-center justify-center gap-2">
                 {[
                   { id: 'about', label: '소개', num: '01' },
-                  { id: 'projects', label: '프로젝트', num: '02' },
+                  { id: 'projects', label: '프로젝트 이력', num: '02' },
                   { id: 'skills', label: '핵심역량', num: '03' },
                   { id: 'play-history', label: '게이밍DNA', num: '04' }
                 ].map(({ id, label, num }) => (
@@ -227,7 +227,7 @@ export const Navbar = ({ setView, currentView, onNavClick, isEditing, setIsEditi
                   <span className="text-[10px] font-mono tracking-widest uppercase text-zinc-500 px-4 mb-1">Navigation</span>
                   {[
                     { id: 'about', label: '소개', num: '01' },
-                    { id: 'projects', label: '프로젝트', num: '02' },
+                    { id: 'projects', label: '프로젝트 이력', num: '02' },
                     { id: 'skills', label: '핵심역량', num: '03' },
                     { id: 'contact', label: '문의하기', num: '04' }
                   ].map(({ id, label, num }) => (
