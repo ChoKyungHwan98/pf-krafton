@@ -58,21 +58,50 @@ export const Portfolio = ({ isEditing, projects, setProjects, onBack, initialPro
         className="relative z-10 pt-48 pb-[120px] px-6 md:px-12 max-w-7xl mx-auto"
       >
 
-        {/* Filter Bar */}
-        <div className="flex flex-wrap items-center justify-center gap-3 mb-16">
-          {categories.map((category) => (
-            <button
-              key={category}
-              onClick={() => setActiveCategory(category)}
-              className={`px-6 py-2.5 rounded-full text-sm font-bold tracking-tight transition-all duration-300 ${
-                activeCategory === category 
-                  ? 'bg-[#0047BB] text-white shadow-md shadow-[#0047BB]/20' 
-                  : 'bg-white text-zinc-500 hover:text-[#1A1A1A] border border-black/5 hover:border-black/10 hover:bg-zinc-50'
-              }`}
-            >
-              {category}
-            </button>
-          ))}
+        {/* Premium Editorial Filter Bar */}
+        <div className="flex flex-col items-center mb-24 relative">
+          <div className="inline-flex items-center p-1.5 bg-white/40 backdrop-blur-xl border border-black/5 rounded-[2rem] shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)]">
+            {categories.map((category) => {
+              const count = category === '전체' 
+                ? projects.length 
+                : projects.filter(p => p.category === category).length;
+              const isActive = activeCategory === category;
+
+              return (
+                <button
+                  key={category}
+                  onClick={() => setActiveCategory(category)}
+                  className={`relative px-8 py-3.5 rounded-[1.75rem] transition-all duration-500 group flex items-center gap-3 overflow-hidden ${
+                    isActive ? 'text-white' : 'text-zinc-500 hover:text-[#1A1A1A]'
+                  }`}
+                >
+                  {isActive && (
+                    <motion.div
+                      layoutId="activeCategoryBg"
+                      className="absolute inset-0 bg-[#0047BB] shadow-[0_10px_25px_-5px_rgba(0,71,187,0.4)]"
+                      transition={{ type: 'spring', bounce: 0.2, duration: 0.6 }}
+                    />
+                  )}
+                  <span className="relative z-10 text-[11px] font-black uppercase tracking-[0.25em] leading-none transition-transform duration-500 group-hover:scale-105">
+                    {category}
+                  </span>
+                  <span className={`relative z-10 text-[9px] font-black px-1.5 py-0.5 rounded-md transition-all duration-500 ${
+                    isActive ? 'bg-white/20 text-white' : 'bg-black/5 text-zinc-400 group-hover:bg-[#0047BB]/10 group-hover:text-[#0047BB]'
+                  }`}>
+                    {String(count).padStart(2, '0')}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+          
+          {/* Subtle indicator of current view */}
+          <motion.div 
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }}
+            className="mt-8 text-[10px] font-black text-[#0047BB]/40 uppercase tracking-[0.5em]"
+          >
+            Displaying {activeCategory} Works
+          </motion.div>
         </div>
 
         {/* Project Grid */}
