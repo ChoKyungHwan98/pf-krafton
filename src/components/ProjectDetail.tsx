@@ -226,22 +226,22 @@ export const ProjectDetail = ({ project, onClose, isEditing, onSaveContent }: Pr
                     <div className="p-2 bg-[#EC4899]/20 rounded-lg border border-[#EC4899]/30">
                       <Sparkles className="w-5 h-5 text-[#EC4899]" />
                     </div>
-                    <span className="text-[10px] font-black text-[#EC4899] uppercase tracking-[0.3em]">AI-Driven Development</span>
+                    <span className="text-[10px] font-black text-[#EC4899] uppercase tracking-[0.3em]">AI 협업 개발</span>
                   </div>
                   <h3 className="text-4xl font-black text-white mb-6 leading-tight tracking-tighter">
-                    Rapid <br />
-                    <span className="text-linear-to-r from-[#EC4899] to-[#8B5CF6] text-transparent bg-clip-text">Prototyping</span>
+                    신속한 <br />
+                    <span className="text-linear-to-r from-[#EC4899] to-[#8B5CF6] text-transparent bg-clip-text">프로토타이핑</span>
                   </h3>
                   <p className="text-zinc-400 text-sm leading-relaxed font-medium">
-                    최신 AI(Claude 3.5 Sonnet)와의 협업을 통해 단 수 시간 만에 기획서의 핵심 메카니즘을 플레이어블 버전으로 구현했습니다.
+                    Google Gemini와의 협업을 통해 단 수 시간 만에 기획서의 핵심 메카니즘을 플레이어블 버전으로 구현했습니다.
                   </p>
                 </div>
 
                 <div className="grid gap-4">
                   {[
-                    { title: "Vibe Coding", desc: "자연어 기반 신속 구현", color: "bg-blue-500" },
-                    { title: "High Fidelity", desc: "실제와 유사한 플레이 경험", color: "bg-emerald-500" },
-                    { title: "Logic Verified", desc: "복잡한 수치 공식 즉시 검증", color: "bg-[#EC4899]" }
+                    { title: "바이브 코딩", desc: "자연어 기반 신속 구현", color: "bg-blue-500" },
+                    { title: "높은 완성도", desc: "실제와 유사한 플레이 경험", color: "bg-emerald-500" },
+                    { title: "로직 검증", desc: "복잡한 수치 공식 즉시 확인", color: "bg-[#EC4899]" }
                   ].map((item, i) => (
                     <motion.div 
                       key={i}
@@ -262,9 +262,9 @@ export const ProjectDetail = ({ project, onClose, isEditing, onSaveContent }: Pr
                 </div>
 
                 <div className="mt-4 p-6 rounded-3xl bg-linear-to-br from-white/5 to-white/[0.02] border border-white/10 text-center">
-                  <div className="text-[10px] text-zinc-500 font-black uppercase tracking-[0.2em] mb-2">Build Speed</div>
-                  <div className="text-3xl font-black text-white tracking-tighter">0 to Playable</div>
-                  <div className="text-sm font-black text-[#EC4899] mt-1">Under 24 Hours</div>
+                  <div className="text-[10px] text-zinc-500 font-black uppercase tracking-[0.2em] mb-2">제작 소요 시간</div>
+                  <div className="text-3xl font-black text-white tracking-tighter">아이디어에서 실행까지</div>
+                  <div className="text-sm font-black text-[#EC4899] mt-1">24시간 이내</div>
                 </div>
               </div>
 
@@ -292,7 +292,7 @@ export const ProjectDetail = ({ project, onClose, isEditing, onSaveContent }: Pr
                 {/* Floating Hint */}
                 <div className="absolute bottom-12 right-12 flex items-center gap-3 px-6 py-3 bg-white/5 backdrop-blur-2xl rounded-full border border-white/10 animate-bounce">
                   <MousePointer2 className="w-4 h-4 text-white" />
-                  <span className="text-xs font-black text-white uppercase tracking-widest">Interact Directly</span>
+                  <span className="text-xs font-black text-white uppercase tracking-widest text-[10px]">화면을 직접 조작해보세요</span>
                 </div>
               </div>
             </motion.div>
