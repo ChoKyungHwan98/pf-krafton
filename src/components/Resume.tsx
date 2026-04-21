@@ -138,11 +138,11 @@ export const Resume = ({ setView, onBack, isEditing, setIsEditing, data, setData
               <header className="flex flex-col md:flex-row items-center md:items-start gap-12 p-10 lg:p-16 bg-[#FAFAFA] border-b border-zinc-100">
                 {/* Vertical Portrait Frame */}
                 <div className="relative shrink-0">
-                  <div className="w-52 h-[260px] lg:w-60 lg:h-[300px] rounded-sm overflow-hidden border border-black/10 shadow-xl">
+                  <div className="w-52 lg:w-60 rounded-sm overflow-hidden border border-black/10 shadow-xl bg-white">
                     <img 
                       src={data.image || "https://picsum.photos/seed/profile/600/800"} 
                       alt="Profile" 
-                      className="w-full h-full object-cover" 
+                      className="w-full h-auto object-contain block" 
                     />
                   </div>
 

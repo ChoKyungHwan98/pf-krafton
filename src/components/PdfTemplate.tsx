@@ -159,14 +159,14 @@ const ResumePage: React.FC<{ data: ResumeData }> = ({ data }) => (
       <div style={{ position: 'relative', flexShrink: 0 }}>
         <div style={{ 
           width: '140px', 
-          height: '180px', 
           borderRadius: '2px', 
           overflow: 'hidden', 
           border: '1px solid rgba(0,0,0,0.1)', 
-          boxShadow: '0 10px 30px rgba(0,0,0,0.1)' 
+          boxShadow: '0 10px 30px rgba(0,0,0,0.1)',
+          background: WHITE
         }}>
-          <img src={resumeData.image || "https://picsum.photos/seed/profile/600/800"} alt="Profile"
-            style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+          <img src={data.image || "https://picsum.photos/seed/profile/600/800"} alt="Profile"
+            style={{ width: '100%', height: 'auto', display: 'block' }} />
         </div>
         <div style={{ 
           position: 'absolute', 
@@ -208,10 +208,11 @@ const ResumePage: React.FC<{ data: ResumeData }> = ({ data }) => (
         <div style={{ fontSize: '13.5px', fontWeight: 600, color: BODY, lineHeight: 1.7, fontStyle: 'italic', wordBreak: 'keep-all', marginBottom: '16px', opacity: 0.9 }}>
           {data.summary}
         </div>
-        <div style={{ display: 'flex', gap: '20px', fontSize: '11px', color: MUTED, fontWeight: 700, textTransform: 'uppercase' }}>
+        <div style={{ display: 'flex', gap: '20px', fontSize: '11px', color: MUTED, fontWeight: 700, textTransform: 'uppercase', flexWrap: 'wrap' }}>
           <span>✉ {data.email.toLowerCase()}</span>
           <span>☎ {data.phone}</span>
           {data.birthDate && <span>🗓 {data.birthDate}</span>}
+          {data.military && <span>🛡 {data.military.branch} {data.military.rank} {data.military.status}</span>}
         </div>
       </div>
     </header>
@@ -249,8 +250,11 @@ const ResumePage: React.FC<{ data: ResumeData }> = ({ data }) => (
           </h3>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
             {data.certificates && data.certificates.map((cert, i) => (
-              <div key={i} style={{ padding: '10px 12px', background: '#FAFAFA', border: `1px solid ${CARD_BORDER}`, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <span style={{ fontWeight: 800, fontSize: '11.5px', color: DARK }}>{cert.name}</span>
+              <div key={i} style={{ padding: '8px 12px', background: '#FAFAFA', border: `1px solid ${CARD_BORDER}`, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <span style={{ fontWeight: 800, fontSize: '11px', color: DARK }}>{cert.name}</span>
+                  {cert.score && <span style={{ fontWeight: 800, fontSize: '9.5px', color: BLUE, background: BLUE_FAINT, padding: '2px 4px', borderRadius: '2px' }}>{cert.score}</span>}
+                </div>
                 <span style={{ fontFamily: 'monospace', fontSize: '10px', color: BLUE, fontWeight: 700 }}>{cert.date}</span>
               </div>
             ))}
