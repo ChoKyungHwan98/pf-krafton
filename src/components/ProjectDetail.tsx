@@ -113,41 +113,53 @@ export const ProjectDetail = ({ project, onClose, isEditing, onSaveContent }: Pr
             <motion.div key="tab-document" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
               className="flex-1 flex flex-col min-h-0 overflow-hidden bg-zinc-50 relative"
             >
-              <EBookGallery images={galleryImages} currentIndex={currentPage} onPageChange={setCurrentPage} />
-              
-              {/* Floating Helper & Navigation Controls */}
-              <div className="absolute bottom-10 left-10 right-10 flex justify-between items-end pointer-events-none z-50">
-                <div className="pointer-events-auto">
-                  <button
-                    onClick={() => setShowThumbnailGrid(true)}
-                    className="flex items-center gap-3 px-6 py-3.5 bg-[#0047BB] text-white rounded-2xl shadow-2xl shadow-[#0047BB]/30 hover:scale-110 active:scale-95 transition-all font-sans font-black text-[11px] uppercase tracking-[0.3em]"
-                  >
-                    <LayoutGrid className="w-4 h-4" />
-                    전체 페이지 보기
-                  </button>
+              {project.gallery ? (
+                <EBookGallery images={galleryImages} currentIndex={currentPage} onPageChange={setCurrentPage} />
+              ) : project.pdfUrl ? (
+                <iframe 
+                  src={`${project.pdfUrl}#toolbar=0`} 
+                  className="w-full h-full border-0"
+                  title="PDF Viewer"
+                />
+              ) : (
+                <div className="flex-1 flex items-center justify-center text-zinc-400 font-sans font-black text-xs uppercase tracking-widest">
+                  기획서가 준비 중입니다.
                 </div>
-
-                <div className="pointer-events-auto flex flex-col items-end gap-4">
-                  {/* Help Tooltip */}
-                  <div className="group relative">
-                    <div className="absolute bottom-full right-0 mb-6 w-72 p-6 bg-black/95 backdrop-blur-2xl rounded-[2rem] text-white text-[12px] leading-relaxed opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none border border-white/10 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)] translate-y-2 group-hover:translate-y-0">
-                      <div className="flex items-center gap-3 mb-4 text-[#0047BB] font-black tracking-widest uppercase text-[10px]">
-                        <div className="w-1.5 h-1.5 rounded-full bg-current" />
-                        조작 가이드
-                      </div>
-                      <ul className="space-y-2.5 text-zinc-300 font-medium">
-                        <li className="flex justify-between items-center bg-white/5 p-2 rounded-lg"><span>마우스 휠</span> <span className="text-[10px] bg-white/10 px-1.5 py-0.5 rounded text-white">이동</span></li>
-                        <li className="flex justify-between items-center bg-white/5 p-2 rounded-lg"><span>Ctrl + 휠</span> <span className="text-[10px] bg-[#0047BB] px-1.5 py-0.5 rounded text-white">확대/축소</span></li>
-                        <li className="flex justify-between items-center bg-white/5 p-2 rounded-lg"><span>드래그</span> <span className="text-[10px] bg-white/10 px-1.5 py-0.5 rounded text-white">화면 이동</span></li>
-                        <li className="flex justify-between items-center bg-white/5 p-2 rounded-lg"><span>방향키</span> <span className="text-[10px] bg-white/10 px-1.5 py-0.5 rounded text-white">이전/다음</span></li>
-                      </ul>
-                    </div>
-                    <button className="w-14 h-14 rounded-full bg-white text-[#0047BB] shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all border border-black/5">
-                      <HelpCircle className="w-7 h-7" />
+              )}
+              
+              {project.gallery && (
+                <div className="absolute bottom-10 left-10 right-10 flex justify-between items-end pointer-events-none z-50">
+                  <div className="pointer-events-auto">
+                    <button
+                      onClick={() => setShowThumbnailGrid(true)}
+                      className="flex items-center gap-3 px-6 py-3.5 bg-[#0047BB] text-white rounded-2xl shadow-2xl shadow-[#0047BB]/30 hover:scale-110 active:scale-95 transition-all font-sans font-black text-[11px] uppercase tracking-[0.3em]"
+                    >
+                      <LayoutGrid className="w-4 h-4" />
+                      전체 페이지 보기
                     </button>
                   </div>
+
+                  <div className="pointer-events-auto flex flex-col items-end gap-4">
+                    {/* Help Tooltip */}
+                    <div className="group relative">
+                      <div className="absolute bottom-full right-0 mb-6 w-72 p-6 bg-black/95 backdrop-blur-2xl rounded-[2rem] text-white text-[12px] leading-relaxed opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none border border-white/10 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)] translate-y-2 group-hover:translate-y-0">
+                        <div className="flex items-center gap-3 mb-4 text-[#0047BB] font-black tracking-widest uppercase text-[10px]">
+                          <div className="w-1.5 h-1.5 rounded-full bg-current" />
+                          조작 가이드
+                        </div>
+                        <ul className="space-y-2.5 text-zinc-300 font-medium">
+                          <li className="flex justify-between items-center bg-white/5 p-2 rounded-lg"><span>마우스 휠</span> <span className="text-[10px] bg-white/10 px-1.5 py-0.5 rounded text-white">이동</span></li>
+                          <li className="flex justify-between items-center bg-white/5 p-2 rounded-lg"><span>Ctrl + 휠</span> <span className="text-[10px] bg-[#0047BB] px-1.5 py-0.5 rounded text-white">확대/축소</span></li>
+                          <li className="flex justify-between items-center bg-white/5 p-2 rounded-lg"><span>드래그</span> <span className="text-[10px] bg-white/10 px-1.5 py-0.5 rounded text-white">화면 이동</span></li>
+                        </ul>
+                      </div>
+                      <button className="w-14 h-14 rounded-full bg-white text-[#0047BB] shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all border border-black/5">
+                        <HelpCircle className="w-7 h-7" />
+                      </button>
+                    </div>
+                  </div>
                 </div>
-              </div>
+              )}
             </motion.div>
           ) : activeTab === 'video' ? (
             <motion.div key="tab-video" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
