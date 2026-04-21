@@ -10,6 +10,7 @@ export const PROJECTS: Project[] = [
     image: "./images/dorothia_main.jpg",
     gallery: Array.from({ length: 33 }, (_, i) => `./images/dorothia_ebook/page_${(i + 1).toString().padStart(3, '0')}.png`),
     hasSimulator: true,
+    simulatorVideoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
     color: "from-zinc-500/20 to-zinc-400/20",
     status: "구글플레이스토어 출시",
     content: `# 도로시아 (Dorothia) 밸런스 기획서
