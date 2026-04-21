@@ -82,9 +82,9 @@ export const ProjectDetail = ({ project, onBack, isEditing, onSaveContent }: Pro
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                className="flex-1 flex flex-col min-h-0 overflow-y-auto bg-[#FDFDFB] p-3 md:p-6"
+                className="flex-1 flex flex-col min-h-0 overflow-hidden bg-[#FDFDFB] p-3 md:p-5"
               >
-                <div className="w-full h-full flex items-center justify-center">
+                <div className="w-full flex-1 flex items-center justify-center min-h-0">
                   <EBookGallery images={project.gallery || [project.image]} />
                 </div>
               </motion.div>
