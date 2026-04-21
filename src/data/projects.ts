@@ -88,7 +88,7 @@ export const PROJECTS: Project[] = [
     description: "바이브코딩 기반으로 직접 제작한 아케이드 스타일의 게임 프로토타입입니다.",
     tags: ["프로토타입", "바이브코딩", "아케이드", "1인 개발"],
     image: "./images/picobang.png",
-    videoUrl: "./videos/picobang_play.mp4",
+    videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
     color: "from-violet-500/20 to-pink-500/20",
     status: "프로토타입",
     content: `# Pico-Bang! 프로토타입 기획서
