@@ -42,71 +42,80 @@ export const ProjectDetail = ({ project, onClose, isEditing, onSaveContent }: Pr
       initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
       className="flex-1 flex flex-col min-h-0 bg-zinc-100 overflow-hidden rounded-4xl"
     >
-      {/* macOS-style Premium Header */}
-      <div className="shrink-0 h-16 bg-white/70 backdrop-blur-2xl flex items-center px-6 border-b border-black/5 gap-8 relative z-50">
-        {/* macOS Traffic Lights */}
-        <div className="flex gap-2.5 group/lights">
-          <button onClick={onClose} className="w-3 h-3 rounded-full bg-[#FF5F57] border border-black/5 flex items-center justify-center hover:shadow-[inset_0_0_10px_rgba(0,0,0,0.1)] transition-all">
-            <X className="w-2 h-2 text-black/40 opacity-0 group-hover/lights:opacity-100" />
-          </button>
-          <div className="w-3 h-3 rounded-full bg-[#FEBC2E] border border-black/5" />
-          <div className="w-3 h-3 rounded-full bg-[#28C840] border border-black/5" />
-        </div>
-
-        {/* Centered Segmented Control Tabs - Refined sliding version */}
-        <div className="flex-1 flex justify-center">
-          <div className="inline-flex p-1.5 bg-zinc-200/40 rounded-2xl border border-black/5 relative shadow-inner">
-            {tabs.map((tab) => {
-              const isActive = activeTab === tab.id;
-              
-              return (
-                <button
-                  key={tab.id}
-                  onClick={() => setActiveTab(tab.id)}
-                  className={`relative h-9 px-8 rounded-xl flex items-center gap-3 transition-all duration-500 font-sans font-black text-[10px] uppercase tracking-[0.2em] group z-10 ${
-                    isActive ? (tab.id === 'overview' ? 'text-zinc-900' : 'text-white') : 'text-zinc-500 hover:text-zinc-800'
-                  }`}
-                >
-                  {isActive && (
-                    <motion.div
-                      layoutId="activeTabPill"
-                      className={`absolute inset-0 rounded-xl shadow-md ${
-                        tab.id === 'overview' ? 'bg-white' : 
-                        tab.id === 'document' ? 'bg-[#0047BB]' : 'bg-[#1A1A1A]'
-                      }`}
-                      transition={{ type: 'spring', bounce: 0.15, duration: 0.6 }}
-                    />
-                  )}
-                  <span className={`relative z-10 transition-transform duration-300 ${isActive ? 'scale-110' : 'group-hover:scale-110'}`}>
-                    {tab.icon}
-                  </span>
-                  <span className="relative z-10">{tab.label}</span>
-                </button>
-              );
-            })}
+      {/* Premium Windows 11-style Header */}
+      <div className="shrink-0 h-14 bg-white/80 backdrop-blur-xl flex items-center px-5 border-b border-black/5 gap-6 relative z-50">
+        {/* Left: Project Identity */}
+        <div className="flex items-center gap-3 min-w-[140px]">
+          <div className="w-6 h-6 rounded-md bg-[#0047BB]/10 flex items-center justify-center">
+            <LayoutGrid className="w-3.5 h-3.5 text-[#0047BB]" />
           </div>
+          <span className="text-[11px] font-bold text-zinc-400 uppercase tracking-widest truncate max-w-[120px]">
+            {project.title}
+          </span>
         </div>
 
-        {/* Dynamic Page Status & Control (Right side) */}
-        <div className="w-[120px] flex justify-end">
-          <AnimatePresence mode="wait">
-            {activeTab === 'document' && (
-              <motion.div 
-                initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 10 }}
-                className="flex items-center gap-3"
+        {/* Center: Fluent Segmented Tabs */}
+        <div className="flex-1 flex justify-start gap-1">
+          {tabs.map((tab) => {
+            const isActive = activeTab === tab.id;
+            const tabColors = {
+              overview: isActive ? 'text-zinc-900' : 'text-zinc-400 hover:text-zinc-700',
+              document: isActive ? 'text-[#0047BB]' : 'text-zinc-400 hover:text-zinc-700',
+              video: isActive ? 'text-[#1A1A1A]' : 'text-zinc-400 hover:text-zinc-700',
+            };
+
+            return (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id)}
+                className={`h-10 px-5 rounded-lg flex items-center gap-2.5 transition-all duration-300 font-sans font-black text-[10px] uppercase tracking-[0.15em] relative group ${tabColors[tab.id]}`}
               >
-                <div className="text-[10px] font-black text-zinc-400 tracking-widest">
-                  {String(currentPage + 1).padStart(2, '0')} / {String(galleryImages.length).padStart(2, '0')}
-                </div>
-                <button 
-                  onClick={() => setShowThumbnailGrid(true)}
-                  className="w-8 h-8 rounded-lg bg-zinc-100 hover:bg-zinc-200 text-zinc-600 flex items-center justify-center transition-all hover:scale-110 active:scale-95"
-                >
-                  <LayoutGrid className="w-3.5 h-3.5" />
-                </button>
-              </motion.div>
-            )}
-          </AnimatePresence>
+                {isActive && (
+                  <motion.div
+                    layoutId="activeTabBg"
+                    className="absolute inset-0 bg-zinc-100 rounded-lg -z-10"
+                    transition={{ type: 'spring', bounce: 0, duration: 0.4 }}
+                  />
+                )}
+                <span className={`transition-transform duration-300 ${isActive ? 'scale-110' : 'group-hover:scale-110'}`}>
+                  {tab.icon}
+                </span>
+                {tab.label}
+                {isActive && (
+                  <motion.div 
+                    layoutId="activeTabUnderline" 
+                    className={`absolute bottom-0 left-5 right-5 h-0.5 rounded-full ${
+                      tab.id === 'overview' ? 'bg-[#0047BB]' : 
+                      tab.id === 'document' ? 'bg-[#0047BB]' : 'bg-[#1A1A1A]'
+                    }`} 
+                  />
+                )}
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Right: Window Controls */}
+        <div className="flex items-center gap-2">
+          {activeTab === 'document' && (
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }}
+              className="flex items-center gap-3 px-3 py-1.5 bg-zinc-100 rounded-lg border border-black/5 mr-2"
+            >
+              <span className="text-[10px] font-black text-zinc-500 tracking-widest">
+                {String(currentPage + 1).padStart(2, '0')} / {String(galleryImages.length).padStart(2, '0')}
+              </span>
+              <button onClick={() => setShowThumbnailGrid(true)} className="hover:text-[#0047BB] transition-colors">
+                <LayoutGrid className="w-3.5 h-3.5" />
+              </button>
+            </motion.div>
+          )}
+          <button 
+            onClick={onClose}
+            className="w-10 h-10 rounded-lg hover:bg-[#E81123] hover:text-white text-zinc-500 flex items-center justify-center transition-all duration-200 group"
+          >
+            <X className="w-4 h-4 group-hover:rotate-90 transition-transform duration-300" />
+          </button>
         </div>
       </div>
 
