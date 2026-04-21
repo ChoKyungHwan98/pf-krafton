@@ -145,9 +145,7 @@ export const Resume = ({ setView, onBack, isEditing, setIsEditing, data, setData
                       className="w-full h-full object-cover" 
                     />
                   </div>
-                  <div className="absolute -bottom-4 -right-4 w-12 h-12 bg-[#0047BB] rounded-sm flex items-center justify-center text-white font-mono text-[10px] font-black tracking-widest shadow-lg">
-                    PRFL
-                  </div>
+
                 </div>
 
                 {/* Identity & Summary */}
