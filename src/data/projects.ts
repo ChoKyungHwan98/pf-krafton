@@ -81,8 +81,8 @@ export const PROJECTS: Project[] = [
   {
     id: 4,
     title: "Pico-Bang!",
-    category: "프로토타입",
-    description: "바이브코딩 기반으로 직접 제작한 아케이드 스타일의 게임 프로토타입입니다. 기획 아이디어를 빠르게 플레이어블한 형태로 구현하는 능력을 보여줍니다.",
+    category: "AI 활용",
+    description: "바이브코딩 기반으로 직접 제작한 아케이드 스타일의 게임 프로토타입입니다.",
     tags: ["프로토타입", "바이브코딩", "아케이드", "1인 개발"],
     image: "./images/picobang.png",
     color: "from-violet-500/20 to-pink-500/20",
@@ -107,7 +107,7 @@ export const PROJECTS: Project[] = [
   {
     id: 5,
     title: "게임 스토어의 불청객",
-    category: "시스템 기획",
+    category: "AI 활용",
     description: "LLM 기반의 시나리오 챗봇 시스템입니다. NPC와의 자연스러운 대화를 통해 단서를 찾고 스토리를 진행하는 실험적인 프로젝트입니다.",
     tags: ["LLM", "시나리오", "챗봇"],
     image: "./images/uninvited_guest.png",
