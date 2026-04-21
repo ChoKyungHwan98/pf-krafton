@@ -45,7 +45,7 @@ export const Portfolio = ({ isEditing, projects, setProjects, onBack, initialPro
   }, [selectedProject]);
 
   return (
-    <div className="relative min-h-screen bg-bg-main overflow-x-hidden pt-32 pb-20">
+    <div className="min-h-screen bg-transparent relative">
       {/* Subtle background effects */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
         <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full blur-[120px]" style={{background: 'rgba(0,71,187,0.04)'}}></div>
