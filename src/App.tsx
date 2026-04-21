@@ -45,7 +45,7 @@ function App() {
   const [heroContent, setHeroContent, heroLoaded] = useEditableContent({
     titleLine1: "기획의도를 알고",
     titleLine2: "목차를 쓸줄 아는 기획자",
-    description: "법학의 치밀한 논리 구조를 게임 시스템 기획에 적용합니다.\n기획 의도가 흔들리지 않는 튼튼한 뼈대를 설계하여,\n어떤 변수에도 대응할 수 있는 견고한 재미를 구축합니다."
+    description: "법학의 치밀한 논리 구조를 게임 기획에 적용합니다.\n기획 의도가 흔들리지 않는 튼튼한 뼈대를 설계하여,\n다양한 변수 속에서도 본연의 재미가 유지되는 환경을 만듭니다."
   }, 'hero_content');
   const [aboutContent, setAboutContent, aboutLoaded] = useEditableContent({
     p1: "법학이 '-에서 0으로 되돌리는 일'이었다면,<br/>게임은 누군가의 하루를 <strong>'0에서 +가 되는 경험'</strong>으로 만드는 일입니다.<br/>탄탄한 시스템의 논리적 뼈대 위에서,<br/>유저의 마음에 즐거움이라는 <strong>감성을 채워넣는 것</strong> —<br/>그것이 제가 생각하는 게임 기획의 본질입니다.",
