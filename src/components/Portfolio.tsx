@@ -53,14 +53,16 @@ export const Portfolio = ({ isEditing, projects, setProjects, onBack, initialPro
       </div>
 
       <motion.section
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        className="relative z-10 pt-48 pb-[120px] px-6 md:px-12 max-w-7xl mx-auto"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="relative z-10 pt-32 pb-24 px-4 md:px-8 max-w-7xl mx-auto"
       >
+        <div className="bg-white/80 backdrop-blur-sm rounded-[2.5rem] shadow-[0_40px_100px_-20px_rgba(0,0,0,0.1)] border border-black/5 p-8 md:p-16 min-h-[80vh]">
+
 
         {/* Premium Editorial Filter Bar */}
-        <div className="flex flex-col items-center mb-24 relative">
-          <div className="inline-flex items-center p-1.5 bg-white/40 backdrop-blur-xl border border-black/5 rounded-[2rem] shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)]">
+        <div className="flex flex-col items-center mb-16 relative">
+          <div className="inline-flex flex-wrap items-center justify-center p-2 bg-zinc-100/50 rounded-[2rem] border border-black/5">
             {categories.map((category) => {
               const count = category === '전체' 
                 ? projects.length 
@@ -71,7 +73,7 @@ export const Portfolio = ({ isEditing, projects, setProjects, onBack, initialPro
                 <button
                   key={category}
                   onClick={() => setActiveCategory(category)}
-                  className={`relative px-8 py-3.5 rounded-[1.75rem] transition-all duration-500 group flex items-center gap-3 overflow-hidden ${
+                  className={`relative px-8 py-3 rounded-[1.75rem] transition-all duration-500 group flex items-center gap-3 overflow-hidden ${
                     isActive ? 'text-white' : 'text-zinc-500 hover:text-[#1A1A1A]'
                   }`}
                 >
@@ -82,10 +84,10 @@ export const Portfolio = ({ isEditing, projects, setProjects, onBack, initialPro
                       transition={{ type: 'spring', bounce: 0.2, duration: 0.6 }}
                     />
                   )}
-                  <span className="relative z-10 text-[11px] font-black uppercase tracking-[0.25em] leading-none transition-transform duration-500 group-hover:scale-105">
+                  <span className="relative z-10 text-[13px] font-black uppercase tracking-[0.15em] leading-none transition-transform duration-500 group-hover:scale-105">
                     {category}
                   </span>
-                  <span className={`relative z-10 text-[9px] font-black px-1.5 py-0.5 rounded-md transition-all duration-500 ${
+                  <span className={`relative z-10 text-[10px] font-black px-2 py-0.5 rounded-md transition-all duration-500 ${
                     isActive ? 'bg-white/20 text-white' : 'bg-black/5 text-zinc-400 group-hover:bg-[#0047BB]/10 group-hover:text-[#0047BB]'
                   }`}>
                     {String(count).padStart(2, '0')}
@@ -94,14 +96,6 @@ export const Portfolio = ({ isEditing, projects, setProjects, onBack, initialPro
               );
             })}
           </div>
-          
-          {/* Subtle indicator of current view */}
-          <motion.div 
-            initial={{ opacity: 0 }} animate={{ opacity: 1 }}
-            className="mt-8 text-[10px] font-black text-[#0047BB]/40 uppercase tracking-[0.5em]"
-          >
-            Displaying {activeCategory} Works
-          </motion.div>
         </div>
 
         {/* Project Grid */}
@@ -185,6 +179,7 @@ export const Portfolio = ({ isEditing, projects, setProjects, onBack, initialPro
             ))}
           </AnimatePresence>
         </motion.div>
+        </div>
       </motion.section>
 
       {/* Detail Overlay */}
