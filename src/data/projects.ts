@@ -114,7 +114,7 @@ export const PROJECTS: Project[] = [
     image: "./images/uninvited_guest.png",
     externalUrl: "https://gemini.google.com/gem/1FRAqchL7euLdBpjObGaZ_P5Ag_G4P2gY?usp=sharing",
     color: "from-purple-500/20 to-indigo-500/20",
-    status: "완료",
+    status: "제작 완료",
     content: `# 게임 스토어의 불청객
 LLM(대규모 언어 모델)을 활용한 시나리오 챗봇 프로젝트입니다.
 
