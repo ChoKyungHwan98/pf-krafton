@@ -38,7 +38,7 @@ const slideVariants = {
 
 export const EBookGallery = ({ images, currentIndex, onPageChange }: EBookGalleryProps) => {
   const [[page, direction], setPage] = useState([currentIndex, 0]);
-  const [zoom, setZoom] = useState(1);
+  const [zoom, setZoom] = useState(1.3);
   const [showHint, setShowHint] = useState(true);
   const [showSwipeTutorial, setShowSwipeTutorial] = useState(true);
   const tutorialControls = useAnimation();
@@ -119,8 +119,9 @@ export const EBookGallery = ({ images, currentIndex, onPageChange }: EBookGaller
 
   const getDragConstraints = () => {
     if (zoom <= 1) return { left: 0, right: 0, top: 0, bottom: 0 };
-    const overflow = (zoom - 1) * 600;
-    return { left: -overflow, right: overflow, top: -overflow, bottom: overflow };
+    const overflowX = Math.max(0, (zoom * 800 - 800) / 2);
+    const overflowY = Math.max(0, (zoom * 1000 - 1000) / 2);
+    return { left: -overflowX, right: overflowX, top: -overflowY, bottom: overflowY };
   };
 
   return (
@@ -198,8 +199,8 @@ export const EBookGallery = ({ images, currentIndex, onPageChange }: EBookGaller
               <motion.img
                 animate={{ 
                   scale: zoom,
-                  x: zoom === 1 ? 0 : undefined,
-                  y: zoom === 1 ? 0 : undefined
+                  x: zoom <= 1.3 ? 0 : undefined,
+                  y: zoom <= 1.3 ? 0 : undefined
                 }}
                 transition={{
                   x: { type: "spring", stiffness: 300, damping: 30 },
@@ -209,7 +210,7 @@ export const EBookGallery = ({ images, currentIndex, onPageChange }: EBookGaller
                 dragConstraints={getDragConstraints()}
                 dragElastic={zoom > 1 ? 0.1 : 0.15}
                 onDragEnd={(_, { offset, velocity }) => {
-                  if (zoom === 1) {
+                  if (zoom <= 1.3) {
                     const swipe = swipePower(offset.x, velocity.x);
                     if (swipe < -swipeConfidenceThreshold && hasNext) paginate(1);
                     else if (swipe > swipeConfidenceThreshold && hasPrev) paginate(-1);
