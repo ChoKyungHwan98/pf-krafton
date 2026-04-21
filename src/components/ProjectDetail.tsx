@@ -83,17 +83,10 @@ export const ProjectDetail = ({ project, onBack, isEditing, onSaveContent }: Pro
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
-                    className="relative w-full bg-[#FDFDFB] p-6 lg:p-12 flex flex-col items-center justify-center"
-                    style={{ minHeight: '800px' }}
+                    className="relative w-full bg-[#FDFDFB] p-6 lg:p-10"
                   >
-                    <div className="w-full h-full max-w-[1400px] mx-auto flex flex-col">
-                      <div className="flex flex-col items-center mb-6 text-center">
-                        <span className="text-[11px] font-black tracking-[0.3em] text-[#0047BB] uppercase mb-2">Interactive Planning Document</span>
-                        <h2 className="text-2xl lg:text-3xl font-display font-bold text-[#2C2C2C]">{project.title}</h2>
-                      </div>
-                      <div className="w-full flex-1 min-h-[60vh] max-h-[85vh] shadow-2xl rounded-2xl overflow-hidden border border-black/10 bg-[#E8E8E8] relative">
-                        <EBookGallery images={project.gallery || [project.image]} />
-                      </div>
+                    <div className="max-w-[900px] mx-auto">
+                      <EBookGallery images={project.gallery || [project.image]} />
                     </div>
                   </motion.div>
                 ) : activeTab === 'video' ? (
