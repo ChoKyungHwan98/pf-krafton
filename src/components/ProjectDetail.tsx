@@ -42,57 +42,58 @@ export const ProjectDetail = ({ project, onClose, isEditing, onSaveContent }: Pr
       initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
       className="flex-1 flex flex-col min-h-0 bg-zinc-100 overflow-hidden rounded-4xl"
     >
-      {/* Windows-style Tab Bar Header */}
-      <div className="shrink-0 h-14 bg-zinc-200/50 backdrop-blur-md flex items-center px-4 border-b border-zinc-300 gap-1">
-        {tabs.map((tab) => {
-          const isActive = activeTab === tab.id;
-          const tabColors = {
-            overview: isActive 
-              ? 'bg-white text-zinc-900 shadow-sm z-30' 
-              : 'bg-white/40 text-zinc-500 hover:bg-white/60 hover:text-zinc-700 z-10',
-            document: isActive 
-              ? 'bg-[#0047BB] text-white shadow-md z-30' 
-              : 'bg-[#0047BB]/30 text-[#0047BB] hover:bg-[#0047BB]/50 hover:text-white z-10',
-            video: isActive 
-              ? 'bg-[#1A1A1A] text-white shadow-md z-30' 
-              : 'bg-[#1A1A1A]/30 text-zinc-600 hover:bg-[#1A1A1A]/50 hover:text-white z-10',
-          };
+      {/* macOS-style Premium Header */}
+      <div className="shrink-0 h-16 bg-white/70 backdrop-blur-2xl flex items-center px-6 border-b border-black/5 gap-8 relative z-50">
+        {/* macOS Traffic Lights */}
+        <div className="flex gap-2.5 group/lights">
+          <button onClick={onClose} className="w-3 h-3 rounded-full bg-[#FF5F57] border border-black/5 flex items-center justify-center hover:shadow-[inset_0_0_10px_rgba(0,0,0,0.1)] transition-all">
+            <X className="w-2 h-2 text-black/40 opacity-0 group-hover/lights:opacity-100" />
+          </button>
+          <div className="w-3 h-3 rounded-full bg-[#FEBC2E] border border-black/5" />
+          <div className="w-3 h-3 rounded-full bg-[#28C840] border border-black/5" />
+        </div>
 
-          return (
-            <button
-              key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
-              className={`h-11 px-6 rounded-t-xl flex items-center gap-2.5 transition-all duration-300 font-display font-black text-[11px] uppercase tracking-wider relative group border-t border-x border-transparent ${isActive ? 'border-zinc-300/30' : ''} ${tabColors[tab.id]}`}
-            >
-              <span className={`transition-transform duration-300 ${isActive ? 'scale-110' : 'group-hover:scale-110'}`}>
-                {tab.icon}
-              </span>
-              {tab.label}
-              {isActive && (
-                <motion.div layoutId="activeTabUnderline" className="absolute -bottom-1 left-4 right-4 h-0.5 bg-current opacity-20 rounded-full" />
-              )}
-            </button>
-          );
-        })}
-
-        {/* Dynamic Center Page Control (Integrated into header) */}
+        {/* Centered Segmented Control Tabs */}
         <div className="flex-1 flex justify-center">
+          <div className="inline-flex p-1 bg-zinc-200/50 rounded-xl border border-black/5">
+            {tabs.map((tab) => {
+              const isActive = activeTab === tab.id;
+              const tabColors = {
+                overview: isActive ? 'bg-white text-zinc-900 shadow-sm' : 'text-zinc-500 hover:text-zinc-800',
+                document: isActive ? 'bg-[#0047BB] text-white shadow-md shadow-[#0047BB]/20' : 'text-zinc-500 hover:text-zinc-800',
+                video: isActive ? 'bg-[#1A1A1A] text-white shadow-md shadow-black/20' : 'text-zinc-500 hover:text-zinc-800',
+              };
+
+              return (
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveTab(tab.id)}
+                  className={`h-9 px-6 rounded-lg flex items-center gap-2.5 transition-all duration-500 font-sans font-black text-[10px] uppercase tracking-[0.2em] relative group ${tabColors[tab.id]}`}
+                >
+                  <span className={`transition-transform duration-300 ${isActive ? 'scale-110' : 'group-hover:scale-110'}`}>
+                    {tab.icon}
+                  </span>
+                  {tab.label}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Dynamic Page Status & Control (Right side) */}
+        <div className="w-[100px] flex justify-end">
           <AnimatePresence mode="wait">
             {activeTab === 'document' && (
               <motion.div 
-                initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.9 }}
-                className="flex items-center gap-4 bg-white/80 backdrop-blur-md px-5 py-1.5 rounded-full border border-zinc-300/50 shadow-sm"
+                initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 10 }}
+                className="flex items-center gap-3"
               >
-                <div className="text-[11px] font-black text-zinc-900 tracking-widest flex items-center gap-2">
-                  <span>{String(currentPage + 1).padStart(2, '0')}</span>
-                  <span className="text-zinc-300">/</span>
-                  <span className="text-zinc-400">{String(galleryImages.length).padStart(2, '0')}</span>
+                <div className="text-[10px] font-black text-zinc-400 tracking-widest">
+                  {String(currentPage + 1).padStart(2, '0')} / {String(galleryImages.length).padStart(2, '0')}
                 </div>
-                <div className="w-px h-3 bg-zinc-200" />
                 <button 
                   onClick={() => setShowThumbnailGrid(true)}
-                  className="hover:text-[#0047BB] transition-colors p-1"
-                  title="전체 페이지 보기"
+                  className="w-8 h-8 rounded-lg bg-zinc-100 hover:bg-zinc-200 text-zinc-600 flex items-center justify-center transition-all hover:scale-110 active:scale-95"
                 >
                   <LayoutGrid className="w-3.5 h-3.5" />
                 </button>
@@ -100,15 +101,6 @@ export const ProjectDetail = ({ project, onClose, isEditing, onSaveContent }: Pr
             )}
           </AnimatePresence>
         </div>
-
-        {/* Windows Close Button Style - Circular Hover */}
-        <button 
-          onClick={onClose}
-          className="w-12 h-12 rounded-full bg-transparent hover:bg-[#FF4B4B] hover:text-white text-zinc-600 flex items-center justify-center transition-all duration-300 group ml-4 relative z-130"
-          title="닫기"
-        >
-          <X className="w-5 h-5 group-hover:scale-110 group-hover:rotate-90 transition-transform duration-300" />
-        </button>
       </div>
 
       {/* Main Content Area - Maximized Space */}
