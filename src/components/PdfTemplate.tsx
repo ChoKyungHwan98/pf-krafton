@@ -154,13 +154,13 @@ const renderToolIcon = (name: string) => {
 
 /* ─── PAGE 1: RESUME ─────────────────────────────────────────────── */
 const ResumePage: React.FC<{ data: ResumeData }> = ({ data }) => (
-  <div className="pdf-page bg-white mx-auto flex flex-col font-sans" style={{ width: '210mm', height: '297mm', overflow: 'hidden' }}>
+  <div className="pdf-page bg-white mx-auto flex flex-col font-sans" style={{ width: '210mm', minHeight: '297mm' }}>
     
     {/* 1. EDITORIAL HEADER SECTION */}
-    <header className="flex items-start gap-6 p-8 bg-[#FAFAFA] border-b border-zinc-100">
+    <header className="flex items-start gap-5 p-6 bg-[#FAFAFA] border-b border-zinc-100">
       {/* Portrait */}
       <div className="relative shrink-0">
-        <div className="w-[120px] rounded-sm overflow-hidden border border-black/10 shadow-xl bg-white">
+        <div className="w-[100px] rounded-sm overflow-hidden border border-black/10 shadow-xl bg-white">
           <img 
             src={data.image || "https://picsum.photos/seed/profile/600/800"} 
             alt="Profile" 
@@ -171,14 +171,14 @@ const ResumePage: React.FC<{ data: ResumeData }> = ({ data }) => (
 
       {/* Identity & Summary */}
       <div className="flex-1 flex flex-col items-start pt-1">
-        <h1 className="text-[36px] font-bold text-[#1A1A1A] tracking-tighter leading-none mb-2">
+        <h1 className="text-[30px] font-bold text-[#1A1A1A] tracking-tighter leading-none mb-2">
           {data.name}
         </h1>
-        <p className="text-[#0047BB] font-black font-mono tracking-[0.4em] text-[10px] uppercase mb-4 pb-1 border-b-2 border-[#0047BB]">
+        <p className="text-[#0047BB] font-black font-mono tracking-[0.4em] text-[9.5px] uppercase mb-3 pb-1 border-b-2 border-[#0047BB]">
           {data.role}
         </p>
         
-        <div className="max-w-2xl text-[12px] text-[#2C2C2C] leading-relaxed font-medium [&_strong]:text-[#0047BB] [&_strong]:font-bold break-keep italic opacity-90 mb-4">
+        <div className="max-w-2xl text-[11px] text-[#2C2C2C] leading-relaxed font-medium [&_strong]:text-[#0047BB] [&_strong]:font-bold break-keep italic opacity-90 mb-3">
           {inlineRender(data.summary || '')}
         </div>
 
@@ -213,23 +213,23 @@ const ResumePage: React.FC<{ data: ResumeData }> = ({ data }) => (
     {/* 2. MAIN CONTENT GRID */}
     <div className="grid grid-cols-12 gap-0 flex-1">
       {/* LEFT COLUMN */}
-      <aside className="col-span-4 p-8 border-r border-zinc-100 bg-[#FCFCFC] flex flex-col gap-8">
+      <aside className="col-span-4 p-6 border-r border-zinc-100 bg-[#FCFCFC] flex flex-col gap-6">
         {/* Education */}
         <section>
-          <h3 className="text-[13px] font-bold mb-4 flex items-center gap-2 text-[#1A1A1A]">
-            <GraduationCap className="text-[#0047BB] w-4 h-4" /> 학력 및 교육
+          <h3 className="text-[12px] font-bold mb-3 flex items-center gap-2 text-[#1A1A1A]">
+            <GraduationCap className="text-[#0047BB] w-3.5 h-3.5" /> 학력 및 교육
           </h3>
-          <div className="space-y-5">
+          <div className="space-y-4">
             {data.education.map((edu, idx) => (
-              <div key={idx} className="relative pl-4 border-l-2 border-[#0047BB]/20">
+              <div key={idx} className="relative pl-3 border-l-2 border-[#0047BB]/20">
                 <div className="absolute -left-[5px] top-1 w-2 h-2 rounded-none bg-[#0047BB]/40"></div>
-                <div className="flex flex-col gap-1 mb-1.5">
-                  <h4 className="font-bold text-[12px] text-[#1A1A1A] leading-snug">{edu.title}</h4>
-                  <span className="text-[9px] font-mono font-bold text-zinc-400">{edu.period}</span>
+                <div className="flex flex-col gap-0.5 mb-1">
+                  <h4 className="font-bold text-[11px] text-[#1A1A1A] leading-snug">{edu.title}</h4>
+                  <span className="text-[8.5px] font-mono font-bold text-zinc-400">{edu.period}</span>
                 </div>
-                <div className="text-[10px] text-zinc-600 leading-relaxed mb-1.5 font-medium">{edu.description}</div>
-                <ul className="text-[9px] text-zinc-500 space-y-1 list-none">
-                  {edu.details.map((detail, dIdx) => <li key={dIdx} className="relative pl-2.5"><span className="absolute left-0 top-1 w-1 h-1 bg-zinc-300 rounded-full"></span>{detail}</li>)}
+                <div className="text-[9.5px] text-zinc-600 leading-relaxed mb-1 font-medium">{edu.description}</div>
+                <ul className="text-[8.5px] text-zinc-500 space-y-1 list-none">
+                  {edu.details.map((detail, dIdx) => <li key={dIdx} className="relative pl-2"><span className="absolute left-0 top-1 w-1 h-1 bg-zinc-300 rounded-full"></span>{detail}</li>)}
                 </ul>
               </div>
             ))}
@@ -238,18 +238,18 @@ const ResumePage: React.FC<{ data: ResumeData }> = ({ data }) => (
 
         {/* Certificates */}
         <section>
-          <h3 className="text-[13px] font-bold mb-3 flex items-center gap-2 text-[#1A1A1A]">
-            <Award className="text-[#0047BB] w-4 h-4" /> 자격증
+          <h3 className="text-[12px] font-bold mb-2 flex items-center gap-2 text-[#1A1A1A]">
+            <Award className="text-[#0047BB] w-3.5 h-3.5" /> 자격증
           </h3>
           <div className="flex flex-col">
             {data.certificates && data.certificates.map((cert, idx) => (
-              <div key={idx} className="flex items-center justify-between py-2 border-b border-zinc-100 last:border-0">
+              <div key={idx} className="flex items-center justify-between py-1.5 border-b border-zinc-100 last:border-0">
                 <div className="flex flex-col gap-0.5">
                   <div className="flex items-center gap-1.5">
-                    <span className="font-bold text-[11px] text-[#1A1A1A] tracking-tight">{cert.name}</span>
-                    {cert.score && <span className="text-[9px] font-black text-[#0047BB] bg-[#0047BB]/5 px-1.5 py-0.5 rounded-sm leading-none tabular-nums mt-0.5">{cert.score}</span>}
+                    <span className="font-bold text-[10px] text-[#1A1A1A] tracking-tight">{cert.name}</span>
+                    {cert.score && <span className="text-[8px] font-black text-[#0047BB] bg-[#0047BB]/5 px-1 py-0.5 rounded-sm leading-none tabular-nums mt-0.5">{cert.score}</span>}
                   </div>
-                  <span className="text-[9px] font-mono text-zinc-400 font-bold">{cert.date}</span>
+                  <span className="text-[8px] font-mono text-zinc-400 font-bold">{cert.date}</span>
                 </div>
               </div>
             ))}
@@ -258,35 +258,35 @@ const ResumePage: React.FC<{ data: ResumeData }> = ({ data }) => (
       </aside>
 
       {/* RIGHT COLUMN */}
-      <main className="col-span-8 p-8 bg-white flex flex-col gap-8">
+      <main className="col-span-8 p-6 bg-white flex flex-col gap-6">
         {/* Project Experience */}
         <section>
-          <h3 className="text-[14px] font-bold mb-6 flex items-center gap-2.5 text-[#1A1A1A]">
-            <Briefcase className="text-[#0047BB] w-4.5 h-4.5" /> 프로젝트 경험
+          <h3 className="text-[13px] font-bold mb-4 flex items-center gap-2 text-[#1A1A1A]">
+            <Briefcase className="text-[#0047BB] w-4 h-4" /> 프로젝트 경험
           </h3>
-          <div className="space-y-8">
+          <div className="space-y-6">
             {data.experience.map((exp, idx) => (
-              <div key={idx} className="relative pl-6 border-l-[3px] border-[#0047BB]/10">
-                <div className="absolute -left-[7.5px] top-1.5 w-3 h-3 rounded-full bg-white border-[2px] border-[#0047BB] shadow-sm"></div>
+              <div key={idx} className="relative pl-5 border-l-[2px] border-[#0047BB]/10">
+                <div className="absolute -left-[6px] top-1.5 w-2.5 h-2.5 rounded-full bg-white border-[2px] border-[#0047BB] shadow-sm"></div>
                 
-                <div className="flex items-center justify-between gap-3 mb-2">
-                  <h4 className="font-bold text-[14px] text-[#1A1A1A] tracking-tight">{exp.title}</h4>
-                  <span className="text-[9px] font-mono font-black text-zinc-400 bg-zinc-50 px-2 py-1 rounded-sm border border-zinc-100">{exp.period}</span>
+                <div className="flex items-center justify-between gap-2 mb-1.5">
+                  <h4 className="font-bold text-[13px] text-[#1A1A1A] tracking-tight">{exp.title}</h4>
+                  <span className="text-[8px] font-mono font-black text-zinc-400 bg-zinc-50 px-1.5 py-0.5 rounded-sm border border-zinc-100">{exp.period}</span>
                 </div>
 
-                <div className="text-[11px] text-[#0047BB] font-bold mb-2 bg-[#0047BB]/5 inline-block px-2.5 py-1.5 rounded-sm border-l-[3px] border-[#0047BB]">
+                <div className="text-[10px] text-[#0047BB] font-bold mb-1.5 bg-[#0047BB]/5 inline-block px-2 py-1 rounded-sm border-l-[2px] border-[#0047BB]">
                   {inlineRender(exp.description)}
                 </div>
                 {exp.teamSize && (
-                  <div className="flex items-center gap-1.5 mb-2.5">
-                    <span className="text-[9px] font-mono font-black text-zinc-400 uppercase tracking-widest">팀 구성</span>
-                    <span className="text-[10px] font-bold text-zinc-500 bg-zinc-50 border border-zinc-200 px-1.5 py-0.5 rounded-sm">{exp.teamSize}</span>
+                  <div className="flex items-center gap-1.5 mb-2">
+                    <span className="text-[8px] font-mono font-black text-zinc-400 uppercase tracking-widest">팀 구성</span>
+                    <span className="text-[9px] font-bold text-zinc-500 bg-zinc-50 border border-zinc-200 px-1.5 py-0.5 rounded-sm">{exp.teamSize}</span>
                   </div>
                 )}
 
-                <ul className="text-[10.5px] text-[#4A4A4A] space-y-2 list-none leading-relaxed font-medium">
+                <ul className="text-[9.5px] text-[#4A4A4A] space-y-1.5 list-none leading-relaxed font-medium">
                   {exp.details.map((detail, dIdx) => (
-                    <li key={dIdx} className="relative pl-4">
+                    <li key={dIdx} className="relative pl-3">
                       <span className="absolute left-0 top-1.5 w-1 h-1 border border-[#0047BB] rounded-full"></span>
                       {detail}
                     </li>
@@ -299,46 +299,46 @@ const ResumePage: React.FC<{ data: ResumeData }> = ({ data }) => (
 
         {/* Technical Proficiency */}
         {data.tools && data.tools.length > 0 && (
-          <section className="pt-6 border-t border-zinc-100 mt-auto">
-            <h3 className="text-[14px] font-bold mb-5 flex items-center gap-2 text-[#1A1A1A]">
-              <Wrench className="text-[#0047BB] w-4.5 h-4.5" /> 기술 역량 및 도구
+          <section className="pt-4 border-t border-zinc-100 mt-auto">
+            <h3 className="text-[13px] font-bold mb-3 flex items-center gap-2 text-[#1A1A1A]">
+              <Wrench className="text-[#0047BB] w-4 h-4" /> 기술 역량 및 도구
             </h3>
-            <div className="grid grid-cols-2 gap-x-8 gap-y-5">
+            <div className="grid grid-cols-2 gap-x-6 gap-y-4">
               {/* Group 1 */}
-              <div className="space-y-3">
-                <h4 className="text-[8px] font-black text-[#0047BB] tracking-[0.4em] uppercase border-b border-[#0047BB]/10 pb-1.5 mb-2">DOCUMENTATION & OFFICE</h4>
-                <div className="space-y-2">
+              <div className="space-y-2">
+                <h4 className="text-[7.5px] font-black text-[#0047BB] tracking-[0.4em] uppercase border-b border-[#0047BB]/10 pb-1 mb-1.5">DOCUMENTATION & OFFICE</h4>
+                <div className="space-y-1.5">
                   {data.tools.filter(t => ["Excel", "PowerPoint", "Word", "Notion"].includes(t.name)).map((tool, idx) => (
                     <div key={idx} className="flex flex-col gap-0.5">
                       <div className="flex items-center gap-1.5">
                         <div className="text-[#1A1A1A]">{renderToolIcon(tool.name)}</div>
-                        <span className="text-[11px] font-bold text-[#1A1A1A]">{tool.name}</span>
+                        <span className="text-[10px] font-bold text-[#1A1A1A]">{tool.name}</span>
                       </div>
-                      <p className="text-[9.5px] text-zinc-500 font-medium pl-4 leading-snug">{tool.description}</p>
+                      <p className="text-[8.5px] text-zinc-500 font-medium pl-4 leading-snug">{tool.description}</p>
                     </div>
                   ))}
                 </div>
               </div>
 
               {/* Group 2 */}
-              <div className="space-y-3">
-                <h4 className="text-[8px] font-black text-[#0047BB] tracking-[0.4em] uppercase border-b border-[#0047BB]/10 pb-1.5 mb-2">CREATIVE & ENGINE</h4>
-                <div className="space-y-2">
+              <div className="space-y-2">
+                <h4 className="text-[7.5px] font-black text-[#0047BB] tracking-[0.4em] uppercase border-b border-[#0047BB]/10 pb-1 mb-1.5">CREATIVE & ENGINE</h4>
+                <div className="space-y-1.5">
                   {data.tools.filter(t => ["Figma", "Unity"].includes(t.name)).map((tool, idx) => (
                     <div key={idx} className="flex flex-col gap-0.5">
                       <div className="flex items-center gap-1.5">
                         <div className="text-[#1A1A1A]">{renderToolIcon(tool.name)}</div>
-                        <span className="text-[11px] font-bold text-[#1A1A1A]">{tool.name}</span>
+                        <span className="text-[10px] font-bold text-[#1A1A1A]">{tool.name}</span>
                       </div>
-                      <p className="text-[9.5px] text-zinc-500 font-medium pl-4 leading-snug">{tool.description}</p>
+                      <p className="text-[8.5px] text-zinc-500 font-medium pl-4 leading-snug">{tool.description}</p>
                     </div>
                   ))}
-                  <h4 className="text-[8px] font-black text-[#0047BB] tracking-[0.4em] uppercase border-b border-[#0047BB]/10 pb-1.5 mb-2 mt-4">AI ASSISTANTS</h4>
-                  <div className="grid grid-cols-2 gap-2">
+                  <h4 className="text-[7.5px] font-black text-[#0047BB] tracking-[0.4em] uppercase border-b border-[#0047BB]/10 pb-1 mb-1.5 mt-3">AI ASSISTANTS</h4>
+                  <div className="grid grid-cols-2 gap-1.5">
                     {data.tools.filter(t => ["ChatGPT", "Claude", "Gemini", "Antigravity"].includes(t.name)).map((tool, idx) => (
-                      <div key={idx} className="flex items-center gap-1.5">
+                      <div key={idx} className="flex items-center gap-1">
                         <div className="w-1 h-1 rounded-full bg-[#0047BB]/30" />
-                        <span className="text-[10px] font-bold text-[#1A1A1A]">{tool.name}</span>
+                        <span className="text-[9px] font-bold text-[#1A1A1A]">{tool.name}</span>
                       </div>
                     ))}
                   </div>

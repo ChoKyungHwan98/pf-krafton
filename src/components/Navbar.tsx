@@ -113,8 +113,8 @@ export const Navbar = ({ setView, currentView, onNavClick, isEditing, setIsEditi
             ) : (
               /* Home: 로고 */
               <div className="flex items-center gap-3 cursor-pointer group" onClick={(e) => handleLinkClick(e, 'hero-top')}>
-                <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-linear-to-br from-[#0047BB] to-[#500014] text-white flex items-center justify-center font-display font-black tracking-tighter text-base md:text-lg shadow-lg shadow-[#0047BB]/30 transition-transform group-hover:scale-105">
-                  조
+                <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-linear-to-br from-[#0047BB] to-[#500014] text-white flex items-center justify-center shadow-lg shadow-[#0047BB]/30 transition-transform group-hover:scale-105">
+                  <Gamepad2 className="w-5 h-5 md:w-6 md:h-6" strokeWidth={2} />
                 </div>
                 <div className="flex flex-col justify-center">
                   <span className="font-display font-bold tracking-tight text-[16px] md:text-[18px] text-[#2C2C2C] group-hover:text-[#0047BB] transition-colors leading-none">조경환</span>

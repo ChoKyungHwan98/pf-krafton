@@ -135,10 +135,10 @@ export const Resume = ({ setView, onBack, isEditing, setIsEditing, data, setData
               className="w-full max-w-[1080px] mx-auto bg-white shadow-[0_40px_120px_rgba(0,0,0,0.1)] border border-black/5 rounded-sm overflow-hidden flex flex-col"
             >
               {/* 1. EDITORIAL HEADER SECTION */}
-              <header className="flex flex-col md:flex-row items-center md:items-start gap-12 p-10 lg:p-16 bg-[#FAFAFA] border-b border-zinc-100">
+              <header className="flex flex-col md:flex-row items-center md:items-start gap-8 p-8 lg:p-12 bg-[#FAFAFA] border-b border-zinc-100">
                 {/* Vertical Portrait Frame */}
                 <div className="relative shrink-0">
-                  <div className="w-52 lg:w-60 rounded-sm overflow-hidden border border-black/10 shadow-xl bg-white">
+                  <div className="w-48 lg:w-52 rounded-sm overflow-hidden border border-black/10 shadow-xl bg-white">
                     <img 
                       src={data.image || "https://picsum.photos/seed/profile/600/800"} 
                       alt="Profile" 
@@ -150,19 +150,19 @@ export const Resume = ({ setView, onBack, isEditing, setIsEditing, data, setData
 
                 {/* Identity & Summary */}
                 <div className="flex-1 flex flex-col items-center md:items-start text-center md:text-left pt-2">
-                  <h1 className="text-5xl lg:text-[68px] font-display font-bold text-[#1A1A1A] tracking-tighter leading-tight mb-4">
+                  <h1 className="text-4xl lg:text-[56px] font-display font-bold text-[#1A1A1A] tracking-tighter leading-tight mb-2">
                     <EditableText value={data.name} onSave={(v) => setData({...data, name: v})} isEditing={isEditing} />
                   </h1>
-                  <p className="text-[#0047BB] font-black font-mono tracking-[0.4em] text-xs md:text-sm uppercase mb-8 pb-1 border-b-2 border-[#0047BB]">
+                  <p className="text-[#0047BB] font-black font-mono tracking-[0.4em] text-[11px] lg:text-xs uppercase mb-6 pb-1 border-b-2 border-[#0047BB]">
                     <EditableText value={data.role} onSave={(v) => setData({...data, role: v})} isEditing={isEditing} />
                   </p>
                   
-                  <div className="max-w-2xl text-[16px] lg:text-[18px] text-[#2C2C2C] leading-[1.8] font-medium [&_strong]:text-[#0047BB] [&_strong]:font-bold break-keep italic opacity-90">
+                  <div className="max-w-2xl text-[15px] lg:text-[16px] text-[#2C2C2C] leading-[1.7] font-medium [&_strong]:text-[#0047BB] [&_strong]:font-bold break-keep italic opacity-90">
                     <EditableText value={data.summary} onSave={(v) => setData({...data, summary: v})} isEditing={isEditing} markdown={true} />
                   </div>
 
                   {/* Contact Quick List */}
-                  <div className="mt-8 flex flex-wrap justify-center md:justify-start gap-x-6 gap-y-3 text-[13px] text-zinc-500 font-bold uppercase tracking-wider">
+                  <div className="mt-6 flex flex-wrap justify-center md:justify-start gap-x-5 gap-y-3 text-[12px] text-zinc-500 font-bold uppercase tracking-wider">
                     <div className="flex items-center gap-2 bg-zinc-50 px-3 py-1.5 rounded-sm border border-zinc-100/50">
                       <Mail className="w-4 h-4 text-[#0047BB]" strokeWidth={2.5} />
                       <span className="lowercase">
@@ -205,14 +205,14 @@ export const Resume = ({ setView, onBack, isEditing, setIsEditing, data, setData
               <div className="grid lg:grid-cols-12 gap-0">
                 
                 {/* LEFT COLUMN (Sidebar info) */}
-                <aside className="lg:col-span-4 p-10 lg:p-14 border-r border-zinc-100 bg-[#FCFCFC]">
-                  <div className="flex flex-col gap-16">
+                <aside className="lg:col-span-4 p-8 lg:p-10 border-r border-zinc-100 bg-[#FCFCFC]">
+                  <div className="flex flex-col gap-12">
                     {/* Education */}
                     <section>
-                      <h3 className="text-lg font-bold mb-8 flex items-center gap-3 text-[#1A1A1A]">
+                      <h3 className="text-[17px] font-bold mb-6 flex items-center gap-3 text-[#1A1A1A]">
                         <GraduationCap className="text-[#0047BB] w-5 h-5" /> 학력 및 교육
                       </h3>
-                      <div className="space-y-10">
+                      <div className="space-y-8">
                         {data.education.map((edu, idx) => (
                           <div key={idx} className="relative pl-6 border-l-2 border-[#0047BB]/20">
                             <div className="absolute -left-[5px] top-1.5 w-2.5 h-2.5 rounded-none bg-[#0047BB]/40"></div>
@@ -237,19 +237,19 @@ export const Resume = ({ setView, onBack, isEditing, setIsEditing, data, setData
 
                     {/* Certificates */}
                     <section>
-                      <h3 className="text-lg font-bold mb-6 flex items-center gap-3 text-[#1A1A1A]">
+                      <h3 className="text-[17px] font-bold mb-5 flex items-center gap-3 text-[#1A1A1A]">
                         <Award className="text-[#0047BB] w-5 h-5" /> 자격증
                       </h3>
                       <div className="flex flex-col">
                         {data.certificates && data.certificates.map((cert, idx) => (
                           <div key={idx} className="flex items-center justify-between py-3.5 border-b border-zinc-100 last:border-0 group">
                             <div className="flex flex-col gap-1.5">
-                              <div className="flex items-center gap-2.5">
-                                <span className="font-bold text-[14px] text-[#1A1A1A] tracking-tight">
+                              <div className="flex items-center gap-2">
+                                <span className="font-bold text-[13px] text-[#1A1A1A] tracking-tight">
                                   <EditableText value={cert.name} onSave={(v) => { const c = [...(data.certificates||[])]; c[idx].name = v; setData({...data, certificates: c}); }} isEditing={isEditing} />
                                 </span>
                                 {cert.score && (
-                                  <span className="text-[11px] font-black text-[#0047BB] bg-[#0047BB]/5 px-2 py-0.5 rounded-sm leading-none tabular-nums mt-0.5">
+                                  <span className="text-[10px] font-black text-[#0047BB] bg-[#0047BB]/5 px-2 py-0.5 rounded-sm leading-none tabular-nums mt-0.5">
                                     {cert.score}
                                   </span>
                                 )}
@@ -264,40 +264,40 @@ export const Resume = ({ setView, onBack, isEditing, setIsEditing, data, setData
                 </aside>
 
                 {/* RIGHT COLUMN (Main details) */}
-                <main className="lg:col-span-8 p-10 lg:p-14 bg-white">
+                <main className="lg:col-span-8 p-8 lg:p-10 bg-white">
                   {/* Project Experience */}
                   <section>
-                    <h3 className="text-xl font-bold mb-10 flex items-center gap-3 text-[#1A1A1A]">
+                    <h3 className="text-[19px] font-bold mb-8 flex items-center gap-3 text-[#1A1A1A]">
                       <Briefcase className="text-[#0047BB] w-6 h-6" /> 프로젝트 경험
                     </h3>
-                    <div className="space-y-16">
+                    <div className="space-y-12">
                       {data.experience.map((exp, idx) => (
                         <div key={idx} className="relative pl-10 border-l-[3px] border-[#0047BB]/10">
                           <div className="absolute -left-[10px] top-1.5 w-5 h-5 rounded-full bg-white border-4 border-[#0047BB] shadow-sm"></div>
                           
-                          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
-                            <h4 className="font-bold text-2xl text-[#1A1A1A] tracking-tight">
+                          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-3">
+                            <h4 className="font-bold text-[22px] text-[#1A1A1A] tracking-tight">
                               <EditableText value={exp.title} onSave={(v) => { const e = [...data.experience]; e[idx].title = v; setData({...data, experience: e}); }} isEditing={isEditing} />
                             </h4>
-                            <span className="text-[11px] font-mono font-black text-zinc-400 bg-zinc-50 px-3 py-1 rounded-sm border border-zinc-100">
+                            <span className="text-[10px] font-mono font-black text-zinc-400 bg-zinc-50 px-3 py-1 rounded-sm border border-zinc-100">
                               <EditableText value={exp.period} onSave={(v) => { const e = [...data.experience]; e[idx].period = v; setData({...data, experience: e}); }} isEditing={isEditing} />
                             </span>
                           </div>
 
-                          <div className="text-[15px] text-[#0047BB] font-bold mb-3 bg-[#0047BB]/5 inline-block px-4 py-2 rounded-sm border-l-4 border-[#0047BB]">
+                          <div className="text-[14px] text-[#0047BB] font-bold mb-3 bg-[#0047BB]/5 inline-block px-4 py-2 rounded-sm border-l-4 border-[#0047BB]">
                             <EditableText value={exp.description} onSave={(v) => { const e = [...data.experience]; e[idx].description = v; setData({...data, experience: e}); }} isEditing={isEditing} markdown={true} />
                           </div>
                           {exp.teamSize && (
-                            <div className="flex items-center gap-2 mb-6">
-                              <span className="text-[11px] font-mono font-black text-zinc-400 uppercase tracking-widest">팀 구성</span>
-                              <span className="text-[12px] font-bold text-zinc-500 bg-zinc-50 border border-zinc-200 px-3 py-1 rounded-sm">{exp.teamSize}</span>
+                            <div className="flex items-center gap-2 mb-4">
+                              <span className="text-[10px] font-mono font-black text-zinc-400 uppercase tracking-widest">팀 구성</span>
+                              <span className="text-[11px] font-bold text-zinc-500 bg-zinc-50 border border-zinc-200 px-3 py-1 rounded-sm">{exp.teamSize}</span>
                             </div>
                           )}
 
-                          <ul className="text-[15px] text-[#4A4A4A] space-y-4 list-none leading-relaxed font-medium">
+                          <ul className="text-[14px] text-[#4A4A4A] space-y-3 list-none leading-relaxed font-medium">
                             {exp.details.map((detail, dIdx) => (
                               <li key={dIdx} className="relative pl-6">
-                                <span className="absolute left-0 top-2.5 w-1.5 h-1.5 border border-[#0047BB] rounded-full"></span>
+                                <span className="absolute left-0 top-2 w-1.5 h-1.5 border border-[#0047BB] rounded-full"></span>
                                 {detail}
                               </li>
                             ))}
@@ -309,15 +309,15 @@ export const Resume = ({ setView, onBack, isEditing, setIsEditing, data, setData
 
                   {/* Technical Proficiency - Categorized for Clarity */}
                   {data.tools && data.tools.length > 0 && (
-                    <section className="mt-12 pt-12 border-t border-zinc-100">
-                      <h3 className="text-xl font-bold mb-10 flex items-center gap-3 text-[#1A1A1A]">
+                    <section className="mt-10 pt-10 border-t border-zinc-100">
+                      <h3 className="text-[19px] font-bold mb-8 flex items-center gap-3 text-[#1A1A1A]">
                         <Wrench className="text-[#0047BB] w-6 h-6" /> 기술 역량 및 도구
                       </h3>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-10">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
                         {/* Group 1: Documentation & Office */}
-                        <div className="space-y-6">
-                          <h4 className="text-[10px] font-black text-[#0047BB] tracking-[0.4em] uppercase border-b border-[#0047BB]/10 pb-2 mb-4">DOCUMENTATION & OFFICE</h4>
-                          <div className="space-y-4">
+                        <div className="space-y-5">
+                          <h4 className="text-[10px] font-black text-[#0047BB] tracking-[0.4em] uppercase border-b border-[#0047BB]/10 pb-2 mb-3">DOCUMENTATION & OFFICE</h4>
+                          <div className="space-y-3">
                             {data.tools.filter(t => ["Excel", "PowerPoint", "Word", "Notion"].includes(t.name)).map((tool, idx) => (
                               <div key={idx} className="flex flex-col gap-1">
                                 <div className="flex items-center gap-2.5">
