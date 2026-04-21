@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { ScrollText, Mail, Phone, GraduationCap, Award, Briefcase, Wrench, Figma, User, Calendar, MapPin } from 'lucide-react';
+import { ScrollText, Mail, Phone, GraduationCap, Award, Briefcase, Wrench, Figma, User, Calendar, MapPin, Shield } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { EditableText } from './EditableText';
@@ -191,6 +191,12 @@ export const Resume = ({ setView, onBack, isEditing, setIsEditing, data, setData
                         </span>
                       </div>
                     )}
+                    {data.military && (
+                      <div className="flex items-center gap-2 bg-zinc-50 px-3 py-1.5 rounded-sm border border-zinc-100/50 w-full sm:w-auto">
+                        <Shield className="w-4 h-4 text-[#0047BB]" strokeWidth={2.5} />
+                        <span>{data.military.branch} {data.military.rank} {data.military.status}</span>
+                      </div>
+                    )}
                   </div>
                 </div>
               </header>
@@ -234,48 +240,26 @@ export const Resume = ({ setView, onBack, isEditing, setIsEditing, data, setData
                       <h3 className="text-lg font-bold mb-6 flex items-center gap-3 text-[#1A1A1A]">
                         <Award className="text-[#0047BB] w-5 h-5" /> 자격증
                       </h3>
-                      <div className="flex flex-col gap-2.5">
+                      <div className="flex flex-col">
                         {data.certificates && data.certificates.map((cert, idx) => (
-                          <div key={idx} className="flex items-center justify-between p-3.5 bg-white border border-zinc-100 rounded-lg shadow-sm group hover:border-[#0047BB]/20 hover:shadow-md transition-all duration-200">
-                            <div className="flex flex-col gap-1">
-                              <span className="font-bold text-[13px] text-[#1A1A1A] tracking-tight">
-                                <EditableText value={cert.name} onSave={(v) => { const c = [...(data.certificates||[])]; c[idx].name = v; setData({...data, certificates: c}); }} isEditing={isEditing} />
-                              </span>
-                              <span className="text-[10px] font-mono text-zinc-400 font-bold">{cert.date}</span>
-                            </div>
-                            {cert.score && (
-                              <div className="flex items-center">
-                                <span className="text-[13px] font-black text-[#0047BB] bg-[#0047BB]/8 border border-[#0047BB]/20 px-2.5 py-1 rounded-md leading-none tabular-nums">
-                                  {cert.score}
+                          <div key={idx} className="flex items-center justify-between py-3.5 border-b border-zinc-100 last:border-0 group">
+                            <div className="flex flex-col gap-1.5">
+                              <div className="flex items-center gap-2.5">
+                                <span className="font-bold text-[14px] text-[#1A1A1A] tracking-tight">
+                                  <EditableText value={cert.name} onSave={(v) => { const c = [...(data.certificates||[])]; c[idx].name = v; setData({...data, certificates: c}); }} isEditing={isEditing} />
                                 </span>
+                                {cert.score && (
+                                  <span className="text-[11px] font-black text-[#0047BB] bg-[#0047BB]/5 px-2 py-0.5 rounded-sm leading-none tabular-nums mt-0.5">
+                                    {cert.score}
+                                  </span>
+                                )}
                               </div>
-                            )}
+                              <span className="text-[11px] font-mono text-zinc-400 font-bold">{cert.date}</span>
+                            </div>
                           </div>
                         ))}
                       </div>
                     </section>
-
-                    {/* Military Service */}
-                    {data.military && (
-                      <section>
-                        <h3 className="text-lg font-bold mb-6 flex items-center gap-3 text-[#1A1A1A]">
-                          <User className="text-[#0047BB] w-5 h-5" /> 병역
-                        </h3>
-                        <div className="p-4 bg-white border border-zinc-100 rounded-lg shadow-sm">
-                          <div className="flex items-start justify-between gap-3">
-                            <div className="flex flex-col gap-1.5">
-                              <span className="font-bold text-[14px] text-[#1A1A1A] leading-snug">{data.military.branch}</span>
-                              <span className="text-[12px] text-zinc-500 font-medium">{data.military.role}</span>
-                            </div>
-                            <div className="flex flex-col items-end gap-1.5 shrink-0">
-                              <span className="text-[12px] font-black text-[#0047BB] bg-[#0047BB]/8 border border-[#0047BB]/20 px-2.5 py-1 rounded-md leading-none">
-                                {data.military.rank} {data.military.status}
-                              </span>
-                            </div>
-                          </div>
-                        </div>
-                      </section>
-                    )}
                   </div>
                 </aside>
 
