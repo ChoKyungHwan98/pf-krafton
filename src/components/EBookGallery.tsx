@@ -175,7 +175,7 @@ export const EBookGallery = ({ images, currentIndex, onPageChange }: EBookGaller
         {/* Navigation Arrows */}
         <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex justify-between px-8 z-30 pointer-events-none">
           <button onClick={() => paginate(-1)} disabled={!hasPrev}
-            className={`w-14 h-14 rounded-2xl flex items-center justify-center shadow-2xl border transition-all duration-500 pointer-events-auto ${hasPrev ? 'bg-white/95 backdrop-blur-xl text-[#1A1A1A] border-black/5 hover:scale-110 active:scale-95 cursor-pointer opacity-0 group-hover:opacity-100' : 'opacity-0 pointer-events-none'}`}
+            className={`w-14 h-14 rounded-2xl flex items-center justify-center shadow-2xl border transition-all duration-500 pointer-events-auto ${hasPrev ? 'bg-white/95 backdrop-blur-xl text-[#1A1A1A] border-black/5 hover:scale-110 active:scale-95 cursor-pointer' : 'opacity-0 pointer-events-none'}`}
           >
             <ChevronLeft className="w-7 h-7" />
           </button>
