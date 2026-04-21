@@ -38,7 +38,7 @@ const slideVariants = {
 
 export const EBookGallery = ({ images, currentIndex, onPageChange }: EBookGalleryProps) => {
   const [[page, direction], setPage] = useState([currentIndex, 0]);
-  const [zoom, setZoom] = useState(1.3);
+  const [zoom, setZoom] = useState(1);
   const [showHint, setShowHint] = useState(true);
   const [showSwipeTutorial, setShowSwipeTutorial] = useState(true);
   const tutorialControls = useAnimation();

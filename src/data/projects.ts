@@ -55,7 +55,7 @@ export const PROJECTS: Project[] = [
   {
     id: 3,
     title: "침묵의 저택",
-    category: "레벨 디자인 & AI",
+    category: "시스템 기획",
     description: "메이플월드 플랫폼을 기반으로 한 술래잡기형 생존 공포 게임입니다. 추격자 AI 행동 패턴과 시야 축소 메카닉을 기획했습니다.",
     tags: ["공포 생존", "메이플월드", "시스템 설계"],
     image: "./images/silence.png",
