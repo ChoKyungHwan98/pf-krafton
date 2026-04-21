@@ -98,8 +98,8 @@ export const EBookGallery = ({ images }: EBookGalleryProps) => {
           </button>
         )}
 
-        {/* Image */}
-        <div className="overflow-hidden rounded-2xl border border-black/8 shadow-[0_20px_60px_rgba(0,0,0,0.12)] bg-zinc-50">
+        {/* Image - constrained to viewport so full page is always visible */}
+        <div className="overflow-hidden rounded-2xl border border-black/8 shadow-[0_20px_60px_rgba(0,0,0,0.12)] bg-zinc-50 flex items-center justify-center">
           <AnimatePresence mode="wait" custom={direction}>
             <motion.div
               key={currentIndex}
@@ -109,11 +109,13 @@ export const EBookGallery = ({ images }: EBookGalleryProps) => {
               animate="center"
               exit="exit"
               transition={{ duration: 0.35, ease: [0.32, 0, 0.67, 0] }}
+              className="w-full"
             >
               <img
                 src={images[currentIndex]}
                 alt={`기획서 ${currentIndex + 1}페이지`}
-                className="w-full h-auto block"
+                className="w-full object-contain block"
+                style={{ maxHeight: 'calc(100vh - 280px)' }}
                 referrerPolicy="no-referrer"
                 draggable={false}
               />
