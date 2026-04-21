@@ -173,7 +173,7 @@ export const ProjectDetail = ({ project, onClose }: ProjectDetailProps) => {
                             </div>
                             <div className="min-w-0 flex-1">
                               <p className="text-[11px] font-bold text-zinc-400 uppercase tracking-widest mb-1">Category</p>
-                              <p className="text-base font-black text-[#1A1A1A] break-keep">{project.category}</p>
+                              <p className="text-lg font-black text-[#1A1A1A]">{project.category}</p>
                             </div>
                           </div>
                           <div className="flex items-start gap-5">
@@ -182,7 +182,7 @@ export const ProjectDetail = ({ project, onClose }: ProjectDetailProps) => {
                             </div>
                             <div className="min-w-0 flex-1">
                               <p className="text-[11px] font-bold text-zinc-400 uppercase tracking-widest mb-1">Status</p>
-                              <p className="text-base font-black text-[#1A1A1A] break-keep">{project.status}</p>
+                              <p className="text-lg font-black text-[#1A1A1A]">{project.status}</p>
                             </div>
                           </div>
                         </div>
