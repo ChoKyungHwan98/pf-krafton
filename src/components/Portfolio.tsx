@@ -161,13 +161,13 @@ export const Portfolio = ({ isEditing, projects, setProjects, onBack, initialPro
             />
 
             {/* Panel */}
-              <div className="absolute inset-0 flex items-center justify-center p-0 md:p-6 pointer-events-none">
+              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                 <motion.div
-                  initial={{ opacity: 0, y: 40, scale: 0.97 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  exit={{ opacity: 0, y: 40, scale: 0.97 }}
-                  transition={{ type: 'spring', damping: 28, stiffness: 220 }}
-                  className="w-[98vw] md:w-[95vw] h-[98vh] md:h-[95vh] max-w-[1600px] bg-bg-main md:rounded-3xl shadow-[0_40px_80px_-20px_rgba(0,0,0,0.35)] overflow-hidden relative pointer-events-auto flex flex-col"
+                  initial={{ opacity: 0, scale: 0.98 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.98 }}
+                  transition={{ duration: 0.2 }}
+                  className="w-full h-full bg-bg-main shadow-2xl overflow-hidden relative pointer-events-auto flex flex-col"
                 >
                 {/* Close button */}
                 <button

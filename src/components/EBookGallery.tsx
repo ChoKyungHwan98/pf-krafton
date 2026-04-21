@@ -37,10 +37,10 @@ export const EBookGallery = ({ images }: EBookGalleryProps) => {
 
   return (
     <div className="w-full h-full relative select-none bg-zinc-50/50">
-      {/* Floating Counter + dots */}
+      {/* Floating Counter + dots - moved even higher */}
       {images.length > 1 && (
-        <div className="absolute top-4 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center gap-2 pointer-events-none">
-          <div className="px-4 py-1.5 bg-black/80 backdrop-blur-md rounded-full text-white text-[11px] font-black tracking-[0.25em] flex items-center gap-2 shadow-xl border border-white/10">
+        <div className="absolute top-2 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center gap-1.5 pointer-events-none">
+          <div className="px-3 py-1 bg-black/85 backdrop-blur-md rounded-full text-white text-[10px] font-black tracking-[0.2em] flex items-center gap-2 shadow-xl border border-white/10">
             <span>{String(currentIndex + 1).padStart(2, '0')}</span>
             <span className="text-white/30">/</span>
             <span className="text-white/60">{String(images.length).padStart(2, '0')}</span>
@@ -94,8 +94,8 @@ export const EBookGallery = ({ images }: EBookGalleryProps) => {
           </button>
         )}
 
-        {/* Image */}
-        <div className="h-full w-full flex items-center justify-center overflow-hidden bg-white/40">
+        {/* Image - zero padding to maximize size */}
+        <div className="h-full w-full flex items-center justify-center overflow-hidden bg-white">
           <AnimatePresence mode="wait" custom={direction}>
             <motion.img
               key={currentIndex}
