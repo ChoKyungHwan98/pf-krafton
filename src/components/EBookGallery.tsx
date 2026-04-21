@@ -115,7 +115,7 @@ export const EBookGallery = ({ images }: EBookGalleryProps) => {
                 src={images[currentIndex]}
                 alt={`기획서 ${currentIndex + 1}페이지`}
                 className="w-full object-contain block"
-                style={{ maxHeight: 'calc(100vh - 280px)' }}
+                style={{ maxHeight: 'calc(100vh - 160px)' }}
                 referrerPolicy="no-referrer"
                 draggable={false}
               />
