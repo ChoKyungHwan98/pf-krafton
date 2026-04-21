@@ -184,25 +184,31 @@ const ResumePage: React.FC<{ data: ResumeData }> = ({ data }) => (
 
         {/* Contact Quick List */}
         <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-[10px] text-zinc-500 font-bold uppercase tracking-wider">
-          <div className="flex items-center gap-1.5 bg-zinc-50 px-2 py-1 rounded-sm border border-zinc-100/50">
-            <Mail className="w-3.5 h-3.5 text-[#0047BB]" strokeWidth={2.5} />
+          <div className="flex items-center gap-1.5">
+            <Mail className="w-3 h-3 text-[#0047BB]/70" strokeWidth={2} />
             <span className="lowercase">{data.email}</span>
           </div>
           {data.phone && (
-            <div className="flex items-center gap-1.5 bg-zinc-50 px-2 py-1 rounded-sm border border-zinc-100/50">
-              <Phone className="w-3.5 h-3.5 text-[#0047BB]" strokeWidth={2.5} />
+            <div className="flex items-center gap-1.5">
+              <Phone className="w-3 h-3 text-[#0047BB]/70" strokeWidth={2} />
               <span>{data.phone}</span>
             </div>
           )}
           {data.birthDate && (
-            <div className="flex items-center gap-1.5 bg-zinc-50 px-2 py-1 rounded-sm border border-zinc-100/50">
-              <Calendar className="w-3.5 h-3.5 text-[#0047BB]" strokeWidth={2.5} />
+            <div className="flex items-center gap-1.5">
+              <Calendar className="w-3 h-3 text-[#0047BB]/70" strokeWidth={2} />
               <span>{data.birthDate}</span>
             </div>
           )}
+          {data.address && (
+            <div className="flex items-center gap-1.5">
+              <MapPin className="w-3 h-3 text-[#0047BB]/70" strokeWidth={2} />
+              <span>{data.address}</span>
+            </div>
+          )}
           {data.military && (
-            <div className="flex items-center gap-1.5 bg-zinc-50 px-2 py-1 rounded-sm border border-zinc-100/50">
-              <Shield className="w-3.5 h-3.5 text-[#0047BB]" strokeWidth={2.5} />
+            <div className="flex items-center gap-1.5">
+              <Shield className="w-3 h-3 text-[#0047BB]/70" strokeWidth={2} />
               <span>{data.military.branch} {data.military.rank} {data.military.status}</span>
             </div>
           )}

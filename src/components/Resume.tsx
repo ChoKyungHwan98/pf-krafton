@@ -162,39 +162,40 @@ export const Resume = ({ setView, onBack, isEditing, setIsEditing, data, setData
                   </div>
 
                   {/* Contact Quick List */}
-                  <div className="mt-6 flex flex-wrap justify-center md:justify-start gap-x-5 gap-y-3 text-[12px] text-zinc-500 font-bold uppercase tracking-wider">
-                    <div className="flex items-center gap-2 bg-zinc-50 px-3 py-1.5 rounded-sm border border-zinc-100/50">
-                      <Mail className="w-4 h-4 text-[#0047BB]" strokeWidth={2.5} />
-                      <span className="lowercase">
+                  <div className="mt-8 flex flex-wrap items-center justify-center md:justify-start gap-x-6 gap-y-3 text-[14px] text-zinc-600 font-medium tracking-wide">
+                    <div className="flex items-center gap-2 group">
+                      <Mail className="w-4 h-4 text-[#0047BB]/70 group-hover:text-[#0047BB] transition-colors" strokeWidth={2} />
+                      <span className="group-hover:text-[#0047BB] transition-colors">
                         <EditableText value={data.email} onSave={(v) => setData({...data, email: v})} isEditing={isEditing} />
                       </span>
                     </div>
-                    {data.phone && (
-                      <div className="flex items-center gap-2 bg-zinc-50 px-3 py-1.5 rounded-sm border border-zinc-100/50">
-                        <Phone className="w-4 h-4 text-[#0047BB]" strokeWidth={2.5} />
-                        <span>
+                    {(isEditing || isGeneratingPdf) && data.phone && (
+                      <div className="flex items-center gap-2 group relative">
+                        {!isEditing && <span className="absolute -top-6 left-0 text-[10px] text-[#0047BB] font-bold bg-[#0047BB]/10 px-2 py-0.5 rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">PDF 인쇄 전용</span>}
+                        <Phone className="w-4 h-4 text-[#0047BB]/70 group-hover:text-[#0047BB] transition-colors" strokeWidth={2} />
+                        <span className="group-hover:text-[#0047BB] transition-colors">
                           <EditableText value={data.phone} onSave={(v) => setData({...data, phone: v})} isEditing={isEditing} />
                         </span>
                       </div>
                     )}
                     {data.birthDate && (
-                      <div className="flex items-center gap-2 bg-zinc-50 px-3 py-1.5 rounded-sm border border-zinc-100/50">
-                        <Calendar className="w-4 h-4 text-[#0047BB]" strokeWidth={2.5} />
-                        <span>{data.birthDate}</span>
+                      <div className="flex items-center gap-2 group">
+                        <Calendar className="w-4 h-4 text-[#0047BB]/70 group-hover:text-[#0047BB] transition-colors" strokeWidth={2} />
+                        <span className="group-hover:text-[#0047BB] transition-colors">{data.birthDate}</span>
                       </div>
                     )}
                     {data.address && (
-                      <div className="flex items-center gap-2 bg-zinc-50 px-3 py-1.5 rounded-sm border border-zinc-100/50 w-full sm:w-auto">
-                        <MapPin className="w-4 h-4 text-[#0047BB]" strokeWidth={2.5} />
-                        <span>
+                      <div className="flex items-center gap-2 group">
+                        <MapPin className="w-4 h-4 text-[#0047BB]/70 group-hover:text-[#0047BB] transition-colors" strokeWidth={2} />
+                        <span className="group-hover:text-[#0047BB] transition-colors">
                           <EditableText value={data.address} onSave={(v) => setData({...data, address: v})} isEditing={isEditing} />
                         </span>
                       </div>
                     )}
                     {data.military && (
-                      <div className="flex items-center gap-2 bg-zinc-50 px-3 py-1.5 rounded-sm border border-zinc-100/50 w-full sm:w-auto">
-                        <Shield className="w-4 h-4 text-[#0047BB]" strokeWidth={2.5} />
-                        <span>{data.military.branch} {data.military.rank} {data.military.status}</span>
+                      <div className="flex items-center gap-2 group">
+                        <Shield className="w-4 h-4 text-[#0047BB]/70 group-hover:text-[#0047BB] transition-colors" strokeWidth={2} />
+                        <span className="group-hover:text-[#0047BB] transition-colors">{data.military.branch} {data.military.rank} {data.military.status}</span>
                       </div>
                     )}
                   </div>
