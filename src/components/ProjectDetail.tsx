@@ -226,14 +226,14 @@ export const ProjectDetail = ({ project, onClose, isEditing, onSaveContent }: Pr
                     <div className="p-2 bg-[#EC4899]/20 rounded-lg border border-[#EC4899]/30">
                       <Sparkles className="w-5 h-5 text-[#EC4899]" />
                     </div>
-                    <span className="text-[10px] font-black text-[#EC4899] uppercase tracking-[0.3em]">AI 협업 개발</span>
+                    <span className="text-[10px] font-black text-[#EC4899] uppercase tracking-[0.3em]">AI 활용 능력</span>
                   </div>
                   <h3 className="text-4xl font-black text-white mb-6 leading-tight tracking-tighter">
-                    신속한 <br />
+                    빠른 <br />
                     <span className="text-linear-to-r from-[#EC4899] to-[#8B5CF6] text-transparent bg-clip-text">프로토타이핑</span>
                   </h3>
                   <p className="text-zinc-400 text-sm leading-relaxed font-medium">
-                    Google Gemini와의 협업을 통해 단 수 시간 만에 기획서의 핵심 메카니즘을 플레이어블 버전으로 구현했습니다.
+                    Google Gemini를 활용하여 단 수 시간 만에 기획서의 핵심 메카니즘을 플레이어블 버전으로 구현했습니다.
                   </p>
                 </div>
 
@@ -269,12 +269,12 @@ export const ProjectDetail = ({ project, onClose, isEditing, onSaveContent }: Pr
               </div>
 
               {/* Right Side: Prototype Viewer */}
-              <div className="flex-1 flex items-center justify-center p-8 relative">
+              <div className="flex-1 flex items-center justify-center p-4 lg:p-8 relative">
                 <div className="relative group">
                   {/* Phone Frame Decoration */}
                   <div className="absolute inset-0 bg-[#EC4899]/10 rounded-[3.5rem] blur-3xl group-hover:bg-[#EC4899]/20 transition-all duration-700" />
                   
-                  <div className="relative w-[450px] h-[750px] bg-[#0a0a0a] rounded-[3.5rem] p-4 shadow-2xl border-[12px] border-zinc-800 ring-1 ring-white/10 overflow-hidden scale-90 lg:scale-100 origin-center transition-transform duration-700">
+                  <div className="relative w-[450px] h-[750px] bg-[#0a0a0a] rounded-[3.5rem] shadow-2xl border-[8px] border-zinc-800 ring-1 ring-white/10 overflow-hidden scale-[0.8] sm:scale-90 md:scale-100 origin-center transition-transform duration-700">
                     {/* Dynamic Island Look-alike */}
                     <div className="absolute top-4 left-1/2 -translate-x-1/2 w-32 h-6 bg-black rounded-full z-20 flex items-center justify-center gap-2">
                       <div className="w-1.5 h-1.5 rounded-full bg-blue-500/50" />
@@ -283,7 +283,7 @@ export const ProjectDetail = ({ project, onClose, isEditing, onSaveContent }: Pr
 
                     <iframe 
                       src={project.prototypeUrl}
-                      className="w-full h-full border-0 rounded-[2.5rem]"
+                      className="w-full h-full border-0"
                       title="Prototype Viewer"
                     />
                   </div>
