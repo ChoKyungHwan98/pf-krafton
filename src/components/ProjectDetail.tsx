@@ -53,27 +53,34 @@ export const ProjectDetail = ({ project, onClose, isEditing, onSaveContent }: Pr
           <div className="w-3 h-3 rounded-full bg-[#28C840] border border-black/5" />
         </div>
 
-        {/* Centered Segmented Control Tabs */}
+        {/* Centered Segmented Control Tabs - Refined sliding version */}
         <div className="flex-1 flex justify-center">
-          <div className="inline-flex p-1 bg-zinc-200/50 rounded-xl border border-black/5">
+          <div className="inline-flex p-1.5 bg-zinc-200/40 rounded-2xl border border-black/5 relative shadow-inner">
             {tabs.map((tab) => {
               const isActive = activeTab === tab.id;
-              const tabColors = {
-                overview: isActive ? 'bg-white text-zinc-900 shadow-sm' : 'text-zinc-500 hover:text-zinc-800',
-                document: isActive ? 'bg-[#0047BB] text-white shadow-md shadow-[#0047BB]/20' : 'text-zinc-500 hover:text-zinc-800',
-                video: isActive ? 'bg-[#1A1A1A] text-white shadow-md shadow-black/20' : 'text-zinc-500 hover:text-zinc-800',
-              };
-
+              
               return (
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`h-9 px-6 rounded-lg flex items-center gap-2.5 transition-all duration-500 font-sans font-black text-[10px] uppercase tracking-[0.2em] relative group ${tabColors[tab.id]}`}
+                  className={`relative h-9 px-8 rounded-xl flex items-center gap-3 transition-all duration-500 font-sans font-black text-[10px] uppercase tracking-[0.2em] group z-10 ${
+                    isActive ? (tab.id === 'overview' ? 'text-zinc-900' : 'text-white') : 'text-zinc-500 hover:text-zinc-800'
+                  }`}
                 >
-                  <span className={`transition-transform duration-300 ${isActive ? 'scale-110' : 'group-hover:scale-110'}`}>
+                  {isActive && (
+                    <motion.div
+                      layoutId="activeTabPill"
+                      className={`absolute inset-0 rounded-xl shadow-md ${
+                        tab.id === 'overview' ? 'bg-white' : 
+                        tab.id === 'document' ? 'bg-[#0047BB]' : 'bg-[#1A1A1A]'
+                      }`}
+                      transition={{ type: 'spring', bounce: 0.15, duration: 0.6 }}
+                    />
+                  )}
+                  <span className={`relative z-10 transition-transform duration-300 ${isActive ? 'scale-110' : 'group-hover:scale-110'}`}>
                     {tab.icon}
                   </span>
-                  {tab.label}
+                  <span className="relative z-10">{tab.label}</span>
                 </button>
               );
             })}
@@ -81,7 +88,7 @@ export const ProjectDetail = ({ project, onClose, isEditing, onSaveContent }: Pr
         </div>
 
         {/* Dynamic Page Status & Control (Right side) */}
-        <div className="w-[100px] flex justify-end">
+        <div className="w-[120px] flex justify-end">
           <AnimatePresence mode="wait">
             {activeTab === 'document' && (
               <motion.div 
@@ -201,14 +208,14 @@ export const ProjectDetail = ({ project, onClose, isEditing, onSaveContent }: Pr
                 <span className="text-[#0047BB] text-[12px] font-black tracking-[0.5em] uppercase mb-3">Navigation</span>
                 <h3 className="text-white text-5xl font-black tracking-tighter">전체 페이지 개요</h3>
               </div>
-              <button 
+              <button
                 onClick={() => setShowThumbnailGrid(false)}
                 className="w-16 h-16 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-all hover:rotate-90 border border-white/10"
               >
                 <X className="w-8 h-8" />
               </button>
             </div>
-            
+
             <div className="flex-1 overflow-y-auto pr-6 custom-scrollbar">
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-7 gap-10">
                 {galleryImages.map((img, i) => (
@@ -221,7 +228,7 @@ export const ProjectDetail = ({ project, onClose, isEditing, onSaveContent }: Pr
                     }}
                     className={`group relative aspect-3/4 rounded-2xl overflow-hidden border-2 transition-all duration-500 hover:scale-110 hover:shadow-[0_40px_80px_rgba(0,0,0,0.6)] ${i === currentPage ? 'border-[#0047BB] shadow-[0_0_40px_rgba(0,71,187,0.5)]' : 'border-white/5 hover:border-white/20'}`}
                   >
-                    <img src={img} alt={`Page ${i+1}`} className="w-full h-full object-cover" />
+                    <img src={img} alt={`Page ${i + 1}`} className="w-full h-full object-cover" />
                     <div className={`absolute inset-0 transition-opacity duration-500 ${i === currentPage ? 'bg-[#0047BB]/20' : 'bg-black/60 opacity-0 group-hover:opacity-100'}`} />
                     <div className="absolute top-4 left-4 flex items-center justify-center w-10 h-10 rounded-xl bg-black/80 backdrop-blur-md text-white text-[12px] font-black border border-white/10">
                       {String(i + 1).padStart(2, '0')}
@@ -230,7 +237,7 @@ export const ProjectDetail = ({ project, onClose, isEditing, onSaveContent }: Pr
                 ))}
               </div>
             </div>
-            
+
             <div className="shrink-0 mt-12 text-center text-white/20 text-[11px] font-black tracking-[0.5em] uppercase">
               {galleryImages.length} Pages Overview • Selection: Page {currentPage + 1}
             </div>
