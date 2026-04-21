@@ -9,7 +9,7 @@ export const PROJECTS: Project[] = [
     tags: ["밸런싱", "전투 밸런스", "수치 설계", "경제 시스템"],
     image: "./images/dorothia_main.jpg",
     gallery: Array.from({ length: 33 }, (_, i) => `./images/dorothia_ebook/page_${(i + 1).toString().padStart(3, '0')}.png`),
-    videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    simulatorUrl: "https://docs.google.com/spreadsheets/d/1XyXfXfXfXfXfXfXfXfXfXfXfXfXfXfX/edit?usp=sharing",
     color: "from-zinc-500/20 to-zinc-400/20",
     status: "구글플레이스토어 출시",
     content: `# 도로시아 (Dorothia) 밸런스 기획서
@@ -86,6 +86,7 @@ export const PROJECTS: Project[] = [
     description: "바이브코딩 기반으로 직접 제작한 아케이드 스타일의 게임 프로토타입입니다.",
     tags: ["프로토타입", "바이브코딩", "아케이드", "1인 개발"],
     image: "./images/picobang.png",
+    videoUrl: "./videos/picobang_play.mp4",
     color: "from-violet-500/20 to-pink-500/20",
     status: "프로토타입",
     content: `# Pico-Bang! 프로토타입 기획서

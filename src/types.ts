@@ -11,6 +11,7 @@ export interface Project {
   videoUrl?: string;
   pdfUrl?: string;
   externalUrl?: string;
+  simulatorUrl?: string;
   bookmarks?: { id: string; title: string; type: 'section' | 'link' | 'ebook'; target: string }[];
   color: string;
   content: string;

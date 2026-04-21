@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Play, FileText, Layout, Tag, Calendar, ScrollText, Grid, X, LayoutGrid, HelpCircle, ExternalLink, Sparkles } from 'lucide-react';
+import { Play, FileText, Layout, Tag, Calendar, ScrollText, Grid, X, LayoutGrid, HelpCircle, ExternalLink, Sparkles, Calculator } from 'lucide-react';
 import type { Project } from '../types';
 import { EBookGallery } from './EBookGallery';
 
@@ -11,7 +11,7 @@ interface ProjectDetailProps {
   onSaveContent?: (content: string) => void;
 }
 
-type TabType = 'overview' | 'document' | 'video' | 'link';
+type TabType = 'overview' | 'document' | 'video' | 'link' | 'simulator';
 
 export const ProjectDetail = ({ project, onClose, isEditing, onSaveContent }: ProjectDetailProps) => {
   const [activeTab, setActiveTab] = useState<TabType>('overview');
@@ -21,8 +21,9 @@ export const ProjectDetail = ({ project, onClose, isEditing, onSaveContent }: Pr
   const tabs: { id: TabType; label: string; icon: React.ReactNode; show: boolean }[] = [
     { id: 'overview', label: '개요', icon: <LayoutGrid className="w-3.5 h-3.5" />, show: true },
     { id: 'document', label: '기획서', icon: <FileText className="w-3.5 h-3.5" />, show: !!(project.gallery || project.pdfUrl) },
-    { id: 'video', label: '영상', icon: <Play className="w-3.5 h-3.5" />, show: !!project.videoUrl },
+    { id: 'video', label: '플레이 영상', icon: <Play className="w-3.5 h-3.5" />, show: !!project.videoUrl },
     { id: 'link', label: '링크', icon: <ExternalLink className="w-3.5 h-3.5" />, show: !!project.externalUrl },
+    { id: 'simulator', label: '시뮬레이터', icon: <Calculator className="w-3.5 h-3.5" />, show: !!project.simulatorUrl },
   ];
 
   const visibleTabs = tabs.filter(t => t.show);
@@ -35,6 +36,7 @@ export const ProjectDetail = ({ project, onClose, isEditing, onSaveContent }: Pr
       case 'document': return { bg: 'bg-[#0047BB]', text: 'text-white', border: 'border-white/30', tabActive: 'bg-[#0047BB] text-white', accent: '#ffffff' };
       case 'video': return { bg: 'bg-[#1A1A1A]', text: 'text-white', border: 'border-white/20', tabActive: 'bg-[#1A1A1A] text-white', accent: '#0047BB' };
       case 'link': return { bg: 'bg-[#6D28D9]', text: 'text-white', border: 'border-white/20', tabActive: 'bg-[#6D28D9] text-white', accent: '#ffffff' };
+      case 'simulator': return { bg: 'bg-[#059669]', text: 'text-white', border: 'border-white/20', tabActive: 'bg-[#059669] text-white', accent: '#ffffff' };
       default: return { bg: 'bg-white', text: 'text-zinc-900', border: 'border-zinc-200', tabActive: 'bg-white', accent: '#0047BB' };
     }
   };
@@ -75,6 +77,9 @@ export const ProjectDetail = ({ project, onClose, isEditing, onSaveContent }: Pr
               link: isActive 
                 ? 'bg-[#6D28D9] text-white shadow-md shadow-[#6D28D9]/20 border-transparent' 
                 : 'bg-[#6D28D9]/10 text-[#6D28D9] hover:bg-[#6D28D9]/20 border-transparent',
+              simulator: isActive 
+                ? 'bg-[#059669] text-white shadow-md shadow-[#059669]/20 border-transparent' 
+                : 'bg-[#059669]/10 text-[#059669] hover:bg-[#059669]/20 border-transparent',
             };
 
             return (
@@ -194,6 +199,37 @@ export const ProjectDetail = ({ project, onClose, isEditing, onSaveContent }: Pr
                     </a>
                     <p className="mt-8 text-zinc-400 text-sm font-black uppercase tracking-[0.2em]">
                       Link via Gemini Pro
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          ) : activeTab === 'simulator' ? (
+            <motion.div key="tab-simulator" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+              className="flex-1 flex items-center justify-center p-12 bg-[#FCFCFA]"
+            >
+              <div className="max-w-2xl w-full">
+                <div className="relative group p-1 bg-linear-to-br from-[#059669] via-[#34D399] to-[#059669] rounded-[3rem] shadow-2xl overflow-hidden">
+                  <div className="absolute inset-0 bg-white/40 backdrop-blur-3xl" />
+                  <div className="relative bg-white/80 rounded-[2.8rem] p-12 flex flex-col items-center text-center">
+                    <div className="w-24 h-24 bg-[#059669]/10 rounded-3xl flex items-center justify-center mb-10 group-hover:scale-110 transition-transform duration-500">
+                      <Calculator className="w-12 h-12 text-[#059669]" />
+                    </div>
+                    <h3 className="text-4xl font-black text-zinc-900 mb-6 tracking-tight">수치 밸런스 시뮬레이터</h3>
+                    <p className="text-zinc-600 text-lg leading-relaxed mb-12 max-w-md font-medium">
+                      전투 공식과 성장 곡선이 적용된 실제 밸런싱 도구를 통해 정밀한 수치 설계 프로세스를 확인하실 수 있습니다.
+                    </p>
+                    <a 
+                      href={project.simulatorUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full h-20 bg-[#059669] text-white rounded-[2rem] flex items-center justify-center gap-4 hover:bg-[#047857] hover:scale-[1.02] active:scale-95 transition-all duration-300 shadow-xl shadow-[#059669]/30 group/btn"
+                    >
+                      <span className="text-xl font-black tracking-tight">시뮬레이터 도구 열기</span>
+                      <ExternalLink className="w-6 h-6 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />
+                    </a>
+                    <p className="mt-8 text-zinc-400 text-sm font-black uppercase tracking-[0.2em]">
+                      Interactive Balancing Tool
                     </p>
                   </div>
                 </div>
