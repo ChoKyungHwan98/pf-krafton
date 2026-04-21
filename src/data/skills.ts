@@ -15,9 +15,9 @@ export const SKILLS: Skill[] = [
       { name: "재화·경제 시스템 설계 경험" },
     ],
     evidences: [
-      { value: "3건+", label: "팀장 완성 프로젝트" },
-      { value: "1.022배", label: "장비 성장 지수" },
-      { value: "4종", label: "재화 순환 설계" },
+      { value: "3건+", label: "리드 기획 프로젝트" },
+      { value: "100%", label: "데이터 기반 밸런싱" },
+      { value: "2종", label: "플랫폼 출시 경험" },
     ],
   },
   {
