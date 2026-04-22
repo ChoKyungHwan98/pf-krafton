@@ -59,89 +59,88 @@ export const Portfolio = ({ isEditing, projects, setProjects, onBack, initialPro
       >
         <div className="bg-white/80 backdrop-blur-sm rounded-[2.5rem] shadow-[0_40px_100px_-20px_rgba(0,0,0,0.1)] border border-black/5 p-8 md:p-12 lg:p-16 min-h-[80vh] flex flex-col lg:flex-row gap-12 lg:gap-16">
           
-          {/* Main Project Grid (Left Area) */}
+          {/* Main Project List (Left Area) */}
           <div className="flex-1 order-2 lg:order-1 min-w-0">
-            <motion.div layout className="grid md:grid-cols-2 xl:grid-cols-2 gap-8">
-          <AnimatePresence mode="popLayout">
-            {filteredProjects.map((project) => (
-              <motion.div
-                layout
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                key={project.id}
-                onClick={() => setSelectedProject(project)}
-                whileHover={{ y: -6 }}
-                className="group relative flex flex-col bg-white rounded-[1.75rem] overflow-hidden border border-black/5 cursor-pointer hover:shadow-[0_24px_48px_-12px_rgba(0,0,0,0.1)] transition-shadow duration-500"
-              >
-                {/* Card Image */}
-                <div className="aspect-16/11 overflow-hidden relative bg-zinc-100">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                    referrerPolicy="no-referrer"
-                  />
-                  <div className="absolute inset-0 bg-linear-to-t from-black/40 via-transparent to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <motion.div layout className="flex flex-col gap-6">
+              <AnimatePresence mode="popLayout">
+                {filteredProjects.map((project) => (
+                  <motion.div
+                    layout
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -20 }}
+                    transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                    key={project.id}
+                    onClick={() => setSelectedProject(project)}
+                    className="group relative flex flex-col lg:flex-row bg-white hover:bg-[#F8FAFF] rounded-[2rem] overflow-hidden border border-black/5 cursor-pointer transition-all duration-500 hover:shadow-[0_20px_40px_-12px_rgba(0,0,0,0.08)] hover:translate-x-2"
+                  >
+                    {/* Horizontal Thumbnail (Left) */}
+                    <div className="w-full lg:w-[340px] aspect-video lg:aspect-auto lg:h-full overflow-hidden relative bg-zinc-100 shrink-0">
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        referrerPolicy="no-referrer"
+                      />
+                      <div className="absolute inset-0 bg-linear-to-r from-black/20 via-transparent to-transparent opacity-60 group-hover:opacity-100 transition-opacity"></div>
+                      
+                      {project.status && (
+                        <div className="absolute top-5 left-5 z-10">
+                          <div className={`px-3 py-1.5 rounded-xl text-[9px] font-black tracking-widest border backdrop-blur-md shadow-sm ${
+                            project.status === '미출시'
+                              ? 'bg-black/20 text-white border-white/20'
+                              : 'bg-[#0047BB] text-white border-[#0047BB]'
+                          }`}>
+                            {project.status}
+                          </div>
+                        </div>
+                      )}
 
-                  {project.status && (
-                    <div className="absolute top-5 left-5 z-10">
-                      <div className={`px-3.5 py-1.5 rounded-full text-[10px] font-black tracking-widest border backdrop-blur-md shadow-sm ${
-                        project.status === '미출시'
-                          ? 'bg-black/20 text-white border-white/20'
-                          : 'bg-[#0047BB] text-white border-[#0047BB]'
-                      }`}>
-                        {project.status}
+                      {/* Mini Preview Hover Indicator */}
+                      <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 bg-black/5">
+                        <div className="w-12 h-12 rounded-2xl bg-white shadow-2xl flex items-center justify-center text-[#0047BB] scale-50 group-hover:scale-100 transition-transform duration-500">
+                          <MousePointer2 className="w-5 h-5" />
+                        </div>
                       </div>
                     </div>
-                  )}
 
-                  {/* Hover icon */}
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500">
-                    <div className="w-14 h-14 rounded-full bg-white/90 backdrop-blur-md flex items-center justify-center text-[#0047BB] shadow-2xl scale-50 group-hover:scale-100 transition-transform duration-500">
-                      <MousePointer2 className="w-5 h-5" />
+                    {/* Horizontal Content (Center/Right) */}
+                    <div className="p-8 lg:p-10 flex-1 flex flex-col min-w-0">
+                      <div className="flex items-start justify-between gap-6 mb-4">
+                        <div className="flex flex-col gap-2">
+                          <div className="flex flex-wrap gap-2">
+                            {project.roles.map((role) => (
+                              <span key={role} className="text-[10px] font-black text-[#0047BB] uppercase tracking-[0.1em] px-2.5 py-1 bg-[#0047BB]/5 rounded-lg border border-[#0047BB]/10">
+                                {role}
+                              </span>
+                            ))}
+                          </div>
+                          <h4 className="text-2xl lg:text-3xl font-display font-black tracking-tight text-[#1A1A1A] group-hover:text-[#0047BB] transition-colors leading-tight">
+                            {project.title}
+                          </h4>
+                        </div>
+                        <div className="shrink-0 w-12 h-12 rounded-2xl border border-black/5 flex items-center justify-center group-hover:bg-[#0047BB] group-hover:border-[#0047BB] group-hover:text-white transition-all duration-300 text-zinc-400 bg-white shadow-sm">
+                          <ArrowUpRight className="w-6 h-6" />
+                        </div>
+                      </div>
+
+                      <p className="text-zinc-500 text-[14px] lg:text-[15px] leading-relaxed mb-8 line-clamp-2 font-medium max-w-2xl">
+                        {project.description}
+                      </p>
+
+                      <div className="flex flex-wrap gap-2 mt-auto">
+                        {project.tags.map((tag, tIdx) => (
+                          <span key={tIdx} className="text-[10px] font-bold text-zinc-400 uppercase tracking-wider bg-zinc-50 border border-black/5 px-3 py-1.5 rounded-lg">
+                            #{tag}
+                          </span>
+                        ))}
+                      </div>
                     </div>
-                  </div>
-                </div>
-
-                {/* Card Content */}
-                <div className="p-8 flex-1 flex flex-col">
-                  <div className="flex items-start justify-between gap-4 mb-3">
-                    <h4 className="text-xl font-display font-black tracking-tight text-[#1A1A1A] group-hover:text-[#0047BB] transition-colors leading-tight">
-                      <EditableText
-                        value={project.title}
-                        onSave={(v) => { const p = [...projects]; const i = p.findIndex(pp => pp.id === project.id); p[i].title = v; setProjects(p); }}
-                        isEditing={isEditing}
-                      />
-                    </h4>
-                    <div className="shrink-0 w-9 h-9 rounded-full border border-black/5 flex items-center justify-center group-hover:bg-[#0047BB] group-hover:border-[#0047BB] group-hover:text-white transition-all duration-300 text-zinc-400">
-                      <ArrowUpRight className="w-4 h-4" />
-                    </div>
-                  </div>
-
-                  <p className="text-zinc-500 text-sm leading-relaxed mb-6 flex-1 line-clamp-2 font-medium">
-                    <EditableText
-                      value={project.description}
-                      onSave={(v) => { const p = [...projects]; const i = p.findIndex(pp => pp.id === project.id); p[i].description = v; setProjects(p); }}
-                      isEditing={isEditing}
-                      multiline
-                    />
-                  </p>
-
-                  <div className="flex flex-wrap gap-2">
-                    {project.tags.slice(0, 3).map((tag, tIdx) => (
-                      <span key={tIdx} className="text-[10px] font-bold text-zinc-400 uppercase tracking-wider bg-zinc-50 px-2.5 py-1 rounded-md border border-black/5">
-                        #{tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </AnimatePresence>
-        </motion.div>
-        </div>
+                  </motion.div>
+                ))}
+              </AnimatePresence>
+            </motion.div>
+          </div>
 
         {/* Right Sidebar Filters */}
         <div className="w-full lg:w-[260px] shrink-0 order-1 lg:order-2">
