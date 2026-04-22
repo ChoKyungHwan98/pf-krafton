@@ -425,126 +425,104 @@ def calculate_balance(params):
             </motion.div>
           ) : (
             <motion.div key="tab-overview" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-              className="flex-1 flex flex-col min-h-0 overflow-y-auto bg-[#1B2838] custom-scrollbar text-white font-sans"
+              className="flex-1 flex flex-col min-h-0 overflow-y-auto bg-[#FAFAF9] custom-scrollbar"
             >
-              <div className="w-full bg-[url('https://store.cloudflare.steamstatic.com/public/images/v6/home/bg_stars.png')] bg-repeat-x bg-top">
-                {/* Top Title Area */}
-                <div className="max-w-[940px] mx-auto w-full px-6 pt-10 pb-6">
-                  <div className="text-[10px] text-[#8f98a0] mb-1 flex items-center gap-2">
-                    <span>모든 프로젝트</span>
-                    <span>&gt;</span>
-                    <span>{project.roles[0]}</span>
-                    <span>&gt;</span>
-                    <span className="text-white">{project.title}</span>
-                  </div>
-                  <h1 className="text-3xl tracking-tight text-white drop-shadow-sm font-bold">{project.title}</h1>
+              {/* Full-bleed Hero */}
+              <div className="relative h-[340px] shrink-0 overflow-hidden">
+                <img src={project.image} alt={project.title} className="w-full h-full object-cover transition-transform duration-700 hover:scale-[1.03]" />
+                <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent" />
+                <div className="absolute top-6 left-8 flex flex-wrap gap-2">
+                  {project.roles.map(role => (
+                    <span key={role} className="px-3 py-1.5 bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-white text-[10px] font-black uppercase tracking-widest">{role}</span>
+                  ))}
                 </div>
-
-                {/* Steam 2-Column Hero Area */}
-                <div className="max-w-[940px] mx-auto w-full px-6 pb-12 flex flex-col lg:flex-row gap-4 bg-[#1B2838]/80 backdrop-blur-sm">
-                  {/* Left Media Player (approx 65%) */}
-                  <div className="lg:w-[616px] shrink-0 flex flex-col gap-2">
-                    {/* Main Media */}
-                    <div className="w-full aspect-[16/9] bg-black relative group shadow-[0_0_10px_rgba(0,0,0,0.5)]">
-                      <img src={project.image} alt={project.title} className="w-full h-full object-contain bg-black" />
-                      {/* Fake Video Player Controls for aesthetic */}
-                      <div className="absolute bottom-0 left-0 right-0 h-10 bg-linear-to-t from-black/80 to-transparent flex items-center px-4 gap-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                        <div className="w-3 h-4 bg-white clip-polygon-play cursor-pointer hover:text-[#66C0F4]" style={{ clipPath: 'polygon(0 0, 0 100%, 100% 50%)' }}></div>
-                        <div className="flex-1 h-1 bg-white/30 rounded-full overflow-hidden cursor-pointer">
-                          <div className="w-1/3 h-full bg-[#66C0F4]"></div>
-                        </div>
-                      </div>
-                    </div>
-                    {/* Fake Carousel row underneath */}
-                    <div className="flex gap-2 overflow-x-auto hide-scrollbar pb-1">
-                      {[project.image, ...(project.gallery || []).slice(0, 4)].map((img, i) => (
-                        <div key={i} className={`w-[116px] aspect-[16/9] shrink-0 border-2 ${i === 0 ? 'border-white' : 'border-transparent'} opacity-60 hover:opacity-100 cursor-pointer transition-all bg-black`}>
-                          <img src={img} className="w-full h-full object-cover" />
-                        </div>
-                      ))}
-                    </div>
+                <div className="absolute bottom-0 left-0 right-0 p-8">
+                  <div className="flex flex-wrap gap-2 mb-3">
+                    {project.tags.map(tag => (
+                      <span key={tag} className="px-2.5 py-1 bg-white/15 backdrop-blur-sm border border-white/20 rounded-full text-white text-[10px] font-semibold">#{tag}</span>
+                    ))}
                   </div>
-
-                  {/* Right Meta Area (approx 35%) */}
-                  <div className="flex-1 flex flex-col min-w-0">
-                    {/* Header Image */}
-                    <div className="w-full aspect-[460/215] bg-black hidden lg:block shadow-[0_0_10px_rgba(0,0,0,0.5)]">
-                       <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
-                    </div>
-                    
-                    {/* Description */}
-                    <div className="text-[#c6d4df] text-[13px] leading-[1.6] line-clamp-5 mt-3 mb-4">
-                      {project.description}
-                    </div>
-
-                    {/* Metadata block */}
-                    <div className="flex flex-col gap-1.5 text-[12px] mt-auto">
-                      <div className="flex gap-4">
-                        <div className="w-[85px] text-[#556772] uppercase text-[10px] pt-0.5">상태:</div>
-                        <div className={`flex-1 ${project.status === '미출시' ? 'text-[#8f98a0]' : 'text-[#66C0F4]'}`}>{project.status}</div>
-                      </div>
-                      <div className="flex gap-4">
-                        <div className="w-[85px] text-[#556772] uppercase text-[10px] pt-0.5">담당 역할:</div>
-                        <div className="flex-1 text-[#66C0F4]">{project.roles.join(', ')}</div>
-                      </div>
-                      {project.externalUrl && (
-                        <div className="flex gap-4">
-                          <div className="w-[85px] text-[#556772] uppercase text-[10px] pt-0.5">관련 링크:</div>
-                          <div className="flex-1"><a href={project.externalUrl} target="_blank" rel="noopener noreferrer" className="text-[#66C0F4] hover:text-white transition-colors">프로젝트 열기</a></div>
-                        </div>
-                      )}
-                    </div>
-
-                    {/* Tags */}
-                    <div className="mt-6">
-                      <div className="text-[#556772] text-[11px] mb-1.5">이 프로젝트의 관련 태그:</div>
-                      <div className="flex flex-wrap gap-1">
-                        {project.tags.map((tag) => (
-                          <span key={tag} className="px-2 py-0.5 bg-[#22394c] hover:bg-[#67c1f5] hover:text-white text-[#6cbcf5] rounded-sm text-[11px] cursor-pointer transition-colors shadow-sm">
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
+                  <h1 className="text-4xl font-black text-white tracking-tight leading-tight drop-shadow-lg">{project.title}</h1>
                 </div>
               </div>
 
-              {/* About This Game Area */}
-              <div className="max-w-[940px] mx-auto w-full px-6 pb-20 mt-4">
-                <div className="relative bg-[#1A2634] p-6 lg:p-8 rounded-sm">
-                  <div className="text-[14px] tracking-wider text-white mb-6 flex items-center gap-4 font-bold">
-                    프로젝트에 대해
-                    <div className="flex-1 h-[2px] bg-linear-to-r from-[#2A475E] to-transparent"></div>
+              {/* Content Grid */}
+              <div className="max-w-5xl mx-auto w-full px-8 py-10">
+                <div className="grid grid-cols-3 gap-10">
+                  {/* Main Content 2/3 */}
+                  <div className="col-span-2">
+                    <div className="flex items-center gap-3 mb-6 pb-4 border-b border-zinc-100">
+                      <div className="w-1 h-5 bg-[#0047BB] rounded-full" />
+                      <span className="text-xs font-black text-zinc-400 uppercase tracking-widest">기획 의도 및 핵심 내용</span>
+                    </div>
+                    <div className="text-zinc-600 leading-[1.9] text-[15px] whitespace-pre-wrap font-medium">{project.content}</div>
                   </div>
-                  <div className="text-[#acb2b8] text-[15px] leading-[1.8] whitespace-pre-wrap font-sans">
-                    {project.content}
+
+                  {/* Sidebar 1/3 */}
+                  <div className="space-y-4">
+                    <div className="bg-white rounded-2xl border border-zinc-100 shadow-sm overflow-hidden">
+                      <div className="px-5 py-3.5 border-b border-zinc-100">
+                        <span className="text-[10px] font-black text-zinc-400 uppercase tracking-widest">Project Info</span>
+                      </div>
+                      <div className="p-5 space-y-4">
+                        <div className="flex items-center gap-3">
+                          <div className="w-9 h-9 rounded-xl bg-blue-50 flex items-center justify-center shrink-0">
+                            <Tag className="w-4 h-4 text-[#0047BB]" />
+                          </div>
+                          <div>
+                            <p className="text-[10px] text-zinc-400 font-semibold uppercase tracking-wider mb-1.5">Roles</p>
+                            <div className="flex flex-wrap gap-1.5">
+                              {project.roles.map(role => (
+                                <span key={role} className="px-2 py-1 bg-zinc-100 text-zinc-700 text-[11px] font-bold rounded-lg border border-zinc-200">{role}</span>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                        <div className="h-px bg-zinc-100" />
+                        <div className="flex items-center gap-3">
+                          <div className="w-9 h-9 rounded-xl bg-emerald-50 flex items-center justify-center shrink-0">
+                            <Calendar className="w-4 h-4 text-emerald-600" />
+                          </div>
+                          <div>
+                            <p className="text-[10px] text-zinc-400 font-semibold uppercase tracking-wider">Status</p>
+                            <p className="text-sm font-bold text-zinc-800 mt-0.5">{project.status}</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {project.externalUrl && (
+                      <a href={project.externalUrl} target="_blank" rel="noopener noreferrer"
+                        className="flex items-center gap-3 p-4 bg-[#0047BB] rounded-2xl text-white hover:bg-[#003799] transition-colors group"
+                      >
+                        <ExternalLink className="w-4 h-4 shrink-0" />
+                        <span className="text-sm font-bold flex-1">Live Demo</span>
+                        <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                      </a>
+                    )}
+
+                    {visibleTabs.filter(t => t.id !== 'overview').length > 0 && (
+                      <div className="bg-white rounded-2xl border border-zinc-100 shadow-sm overflow-hidden">
+                        <div className="px-5 py-3.5 border-b border-zinc-100">
+                          <span className="text-[10px] font-black text-zinc-400 uppercase tracking-widest">빠른 탐색</span>
+                        </div>
+                        <div className="p-2">
+                          {visibleTabs.filter(t => t.id !== 'overview').map(tab => (
+                            <button key={tab.id} onClick={() => setActiveTab(tab.id)}
+                              className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-zinc-50 transition-colors text-left group"
+                            >
+                              <div className="w-7 h-7 rounded-lg flex items-center justify-center shrink-0" style={{ backgroundColor: `${tab.color}14` }}>
+                                <span style={{ color: tab.color }} className="flex">{tab.icon}</span>
+                              </div>
+                              <span className="text-sm font-semibold text-zinc-700 flex-1">{tab.label}</span>
+                              <ChevronRight className="w-3.5 h-3.5 text-zinc-300 group-hover:text-zinc-500 group-hover:translate-x-0.5 transition-all" />
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    )}
                   </div>
                 </div>
-
-                {/* Quick Actions / Other Tabs */}
-                {visibleTabs.filter(t => t.id !== 'overview').length > 0 && (
-                  <div className="mt-8 bg-[#0B141C] border border-[#2A475E]/50 p-6 rounded-sm shadow-xl">
-                     <div className="text-[14px] text-white tracking-wider mb-4 font-bold">
-                       빠른 탐색
-                     </div>
-                     <div className="flex flex-col gap-2">
-                       {visibleTabs.filter(t => t.id !== 'overview').map(tab => (
-                         <button key={tab.id} onClick={() => setActiveTab(tab.id)}
-                           className="flex items-center gap-4 px-5 py-3.5 bg-linear-to-r from-[#2A475E]/30 to-[#1b2838] hover:from-[#66C0F4]/20 border border-[#2A475E]/30 hover:border-[#66C0F4]/50 rounded-sm transition-all group"
-                         >
-                           <div className="w-8 h-8 rounded-sm bg-black/40 flex items-center justify-center text-[#66C0F4] group-hover:scale-110 transition-transform">
-                             {tab.icon}
-                           </div>
-                           <div className="flex flex-col items-start">
-                             <span className="text-[13px] text-white font-bold">{tab.label}</span>
-                             <span className="text-[11px] text-[#556772] group-hover:text-[#6cbcf5] transition-colors">문서 열람하기</span>
-                           </div>
-                         </button>
-                       ))}
-                     </div>
-                  </div>
-                )}
               </div>
             </motion.div>
           )}
