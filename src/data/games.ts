@@ -203,7 +203,7 @@ export const ALL_GAMES: GameHistoryItem[] = [
   {"id": "199", "category": "Console", "genre": "소울라이크", "title": "다크 소울 3", "company": "프롬 소프트웨어"},
   {"id": "200", "category": "Console", "genre": "액션 어드벤처", "title": "세키로: 섀도우 다이 트와이스", "company": "프롬 소프트웨어"},
   {"id": "201", "category": "Console", "genre": "오픈월드 ARPG", "title": "엘든 링", "company": "프롬 소프트웨어", "image": "/assets/games/elden_ring.jpg"},
-  {"id": "202", "category": "Console", "genre": "협력 액션", "title": "엘든 링: 밤의 통치자 (모드)", "company": "프롬 소프트웨어", "image": "/assets/games/elden_ring.jpg"},
+  {"id": "202", "category": "Console", "genre": "협력 액션", "title": "엘든 링: 밤의 통치자", "company": "프롬 소프트웨어", "image": "/assets/games/elden_ring.jpg"},
   {"id": "203", "category": "Console", "genre": "리듬", "title": "DJMAX RESPECT V", "company": "로키 스튜디오"},
   {"id": "204", "category": "Console", "genre": "오픈월드 ARPG", "title": "엘더스크롤 5: 스카이림", "company": "베데스다"},
   {"id": "205", "category": "Console", "genre": "생존 호러", "title": "The Forest", "company": "Endnight Games"},
