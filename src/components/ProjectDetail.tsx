@@ -110,10 +110,15 @@ export const ProjectDetail = ({ project, onBack, isEditing, onSaveContent }: Pro
 
           {/* URL Input */}
           <div className="flex-1 h-7 bg-[#F1F3F4] rounded-full flex items-center px-3 gap-2 border border-transparent hover:border-zinc-300 transition-colors group cursor-text">
-            <Lock className="w-3 h-3 text-zinc-500" />
-            <span className="text-[12px] text-zinc-800 font-medium font-sans">
+            <Lock className="w-3 h-3 text-zinc-500 shrink-0" />
+            <span className="text-[12px] text-zinc-800 font-medium font-sans flex-1 truncate">
               portfolio.local <span className="text-zinc-400">/</span> {project.category.toLowerCase().replace(/ /g, '-')} <span className="text-zinc-400">/</span> {project.title.toLowerCase().replace(/ /g, '-')}
             </span>
+            {activeTab === 'document' && galleryImages.length > 0 && (
+              <div className="px-2 py-0.5 bg-white rounded-md border border-zinc-200 text-[10px] font-mono text-zinc-500 shrink-0 shadow-sm flex items-center h-5">
+                {String(currentPage + 1).padStart(2, '0')} / {String(galleryImages.length).padStart(2, '0')}
+              </div>
+            )}
           </div>
 
           {/* Extensions/Profile */}
