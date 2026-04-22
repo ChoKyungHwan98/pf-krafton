@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Play, FileText, Layout, Tag, Calendar, ScrollText, Grid, X, LayoutGrid, HelpCircle, ExternalLink, Sparkles, Calculator, MousePointer2 } from 'lucide-react';
+import { Play, FileText, Tag, Calendar, X, LayoutGrid, HelpCircle, ExternalLink, Sparkles, Calculator, MousePointer2, ChevronRight } from 'lucide-react';
 import type { Project } from '../types';
 import { EBookGallery } from './EBookGallery';
 
@@ -40,84 +40,57 @@ export const ProjectDetail = ({ project, onBack, isEditing, onSaveContent }: Pro
 
   return (
     <motion.div
-      initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-      className="flex-1 flex flex-col min-h-0 bg-zinc-950 overflow-hidden rounded-4xl"
+      initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 8 }}
+      className="flex-1 flex flex-col min-h-0 bg-white overflow-hidden rounded-xl shadow-2xl border border-zinc-200"
     >
-      {/* Premium Editorial Header */}
-      <div className="shrink-0 h-16 bg-zinc-900/80 backdrop-blur-xl border-b border-white/5 flex items-center px-8 gap-8 relative z-50">
-        {/* Left: Project Identity */}
-        <div className="flex items-center gap-4 min-w-[160px]">
-          <div className="w-8 h-8 rounded-xl bg-zinc-900 flex items-center justify-center">
-            <LayoutGrid className="w-4 h-4 text-white" />
+      {/* Browser Window Chrome */}
+      <div className="shrink-0 bg-[#F2F3F5] border-b border-zinc-200">
+        {/* Title / Address Bar */}
+        <div className="h-11 flex items-center px-4 gap-3">
+          <div className="flex gap-1.5 shrink-0">
+            <button onClick={onBack} className="w-3.5 h-3.5 rounded-full bg-[#FF5F57] hover:opacity-80 transition-opacity flex items-center justify-center group">
+              <X className="w-2 h-2 text-red-900 opacity-0 group-hover:opacity-100" />
+            </button>
+            <div className="w-3.5 h-3.5 rounded-full bg-[#FFBD2E]" />
+            <div className="w-3.5 h-3.5 rounded-full bg-[#28C840]" />
           </div>
-          <div className="flex flex-col">
-            <span className="text-[9px] font-black text-zinc-500 uppercase tracking-[0.2em] leading-none mb-1">Project</span>
-            <span className="text-xs font-bold text-zinc-100 truncate max-w-[120px]">
-              {project.title}
+          <div className="flex-1 max-w-sm mx-auto h-6 bg-white rounded-md border border-zinc-200 flex items-center px-3 gap-1.5">
+            <LayoutGrid className="w-3 h-3 text-zinc-400 shrink-0" />
+            <span className="text-[11px] text-zinc-500 truncate">
+              portfolio / <span className="text-zinc-400">{project.category}</span> / <span className="text-zinc-700 font-semibold">{project.title}</span>
             </span>
           </div>
+          {activeTab === 'document' && (
+            <div className="px-2.5 py-1 bg-white rounded-md border border-zinc-200 text-[10px] font-mono text-zinc-500 shrink-0">
+              {String(currentPage + 1).padStart(2, '0')} / {String(galleryImages.length).padStart(2, '0')}
+            </div>
+          )}
         </div>
-
-        {/* Center: Unified Professional Tabs */}
-        <div className="flex-1 flex justify-start gap-2">
+        {/* Tab Strip */}
+        <div className="flex items-end px-3 gap-0.5">
           {visibleTabs.map((tab) => {
             const isActive = activeTab === tab.id;
             return (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                style={{ color: isActive ? tab.color : undefined }}
-                className={`relative h-11 px-6 rounded-full flex items-center gap-3 transition-all duration-300 font-sans font-black text-[11px] uppercase tracking-widest group ${
-                  isActive 
-                    ? '' 
-                    : 'text-zinc-500 hover:text-white hover:bg-white/5'
+                className={`relative h-8 px-4 text-[11px] font-bold flex items-center gap-1.5 rounded-t-lg border-x border-t transition-all duration-200 ${
+                  isActive
+                    ? 'bg-white border-zinc-200 text-zinc-800 shadow-[0_2px_0_#fff]'
+                    : 'bg-transparent border-transparent text-zinc-500 hover:text-zinc-700 hover:bg-white/60'
                 }`}
               >
-                {isActive && (
-                  <motion.div 
-                    layoutId="activeTabPill" 
-                    className="absolute inset-0 rounded-full"
-                    style={{ backgroundColor: `${tab.color}15` }} // Slightly more visible 15%
-                    transition={{ type: 'spring', bounce: 0.2, duration: 0.6 }}
-                  />
-                )}
-                <span className={`transition-transform duration-300 ${isActive ? 'scale-110 opacity-100' : 'group-hover:scale-110 opacity-70'}`}>
-                  {tab.icon}
-                </span>
-                <span className="relative z-10">{tab.label}</span>
-                {isActive && (
-                  <motion.div 
-                    layoutId="activeTabDot" 
-                    className="w-1.5 h-1.5 rounded-full absolute -bottom-1.5 left-1/2 -translate-x-1/2" 
-                    style={{ backgroundColor: tab.color }}
-                  />
-                )}
+                <span className="w-2 h-2 rounded-full shrink-0" style={{ backgroundColor: isActive ? tab.color : '#d1d5db' }} />
+                {tab.label}
               </button>
             );
           })}
-        </div>
-
-        {/* Right: Window Controls */}
-        <div className="flex items-center gap-4">
-          {activeTab === 'document' && (
-            <div className="flex items-center gap-3 px-3 py-1.5 bg-zinc-50 rounded-lg border border-zinc-200">
-              <span className="text-[10px] font-bold text-zinc-500 tracking-widest">
-                {String(currentPage + 1).padStart(2, '0')} / {String(galleryImages.length).padStart(2, '0')}
-              </span>
-            </div>
-          )}
-          <div className="w-px h-6 bg-white/10 mx-2" />
-          <button 
-            onClick={onBack}
-            className="w-10 h-10 rounded-xl hover:bg-white/5 text-zinc-500 hover:text-white flex items-center justify-center transition-all duration-200 group"
-          >
-            <X className="w-5 h-5 group-hover:rotate-90 transition-transform duration-300" />
-          </button>
+          <div className="flex-1 self-end border-b border-zinc-200" />
         </div>
       </div>
 
       {/* Main Content Area - Maximized Space */}
-      <div className="flex-1 flex flex-col min-h-0 bg-zinc-950 relative">
+      <div className="flex-1 flex flex-col min-h-0 bg-white relative">
         <AnimatePresence mode="wait">
           {activeTab === 'document' ? (
             <motion.div key="tab-document" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
@@ -405,65 +378,96 @@ def calculate_balance(params):
             </motion.div>
           ) : (
             <motion.div key="tab-overview" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-              className="flex-1 overflow-y-auto bg-[#FCFCFA] custom-scrollbar"
+              className="flex-1 flex flex-col min-h-0 overflow-y-auto bg-[#FAFAF9] custom-scrollbar"
             >
-              <div className="max-w-5xl mx-auto p-12 md:p-20">
-                <div className="relative h-[450px] rounded-[3rem] overflow-hidden mb-20 shadow-2xl group border border-white/5">
-                  <img src={project.image} alt={project.title} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" />
-                  <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/30 to-transparent" />
-                  <div className="absolute bottom-12 left-12 right-12">
-                    <div className="flex flex-wrap gap-3 mb-6">
-                      {project.tags.map(tag => (
-                        <span key={tag} className="px-5 py-2 bg-white/10 backdrop-blur-xl border border-white/20 rounded-full text-white text-[11px] font-black uppercase tracking-widest shadow-sm">#{tag}</span>
-                      ))}
-                    </div>
-                    <h2 className="text-6xl md:text-7xl font-black text-white mb-4 leading-[0.9] tracking-tighter drop-shadow-2xl">{project.title}</h2>
-                  </div>
+              {/* Full-bleed Hero */}
+              <div className="relative h-[340px] shrink-0 overflow-hidden">
+                <img src={project.image} alt={project.title} className="w-full h-full object-cover transition-transform duration-700 hover:scale-[1.03]" />
+                <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent" />
+                <div className="absolute top-6 left-8">
+                  <span className="px-3 py-1.5 bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-white text-[10px] font-black uppercase tracking-widest">{project.category}</span>
                 </div>
+                <div className="absolute bottom-0 left-0 right-0 p-8">
+                  <div className="flex flex-wrap gap-2 mb-3">
+                    {project.tags.map(tag => (
+                      <span key={tag} className="px-2.5 py-1 bg-white/15 backdrop-blur-sm border border-white/20 rounded-full text-white text-[10px] font-semibold">#{tag}</span>
+                    ))}
+                  </div>
+                  <h1 className="text-4xl font-black text-white tracking-tight leading-tight drop-shadow-lg">{project.title}</h1>
+                </div>
+              </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-20">
-                  <div className="md:col-span-2 space-y-16">
-                    <section className="relative">
-                      <div className="absolute -left-10 top-0 w-1.5 h-full bg-[#0047BB] opacity-20 rounded-full" />
-                      <h3 className="text-3xl font-black text-[#1A1A1A] mb-10 flex items-center gap-4 tracking-tight">
-                        <FileText className="w-8 h-8 text-[#0047BB]" /> 기획 의도 및 핵심 내용
-                      </h3>
-                      <div className="prose prose-zinc prose-xl max-w-none text-zinc-800 leading-[1.8] whitespace-pre-wrap font-medium">
-                        {project.content}
-                      </div>
-                    </section>
+              {/* Content Grid */}
+              <div className="max-w-5xl mx-auto w-full px-8 py-10">
+                <div className="grid grid-cols-3 gap-10">
+                  {/* Main Content 2/3 */}
+                  <div className="col-span-2">
+                    <div className="flex items-center gap-3 mb-6 pb-4 border-b border-zinc-100">
+                      <div className="w-1 h-5 bg-[#0047BB] rounded-full" />
+                      <span className="text-xs font-black text-zinc-400 uppercase tracking-widest">기획 의도 및 핵심 내용</span>
+                    </div>
+                    <div className="text-zinc-600 leading-[1.9] text-[15px] whitespace-pre-wrap font-medium">{project.content}</div>
                   </div>
 
-                  <div className="space-y-12">
-                    <div className="bg-white rounded-[3rem] p-12 border border-black/5 shadow-[0_30px_60px_-20px_rgba(0,0,0,0.1)] sticky top-10 overflow-hidden group/meta">
-                      <div className="absolute top-0 left-0 w-2 h-full bg-[#0047BB]" />
-                      <div className="relative z-10">
-                        <h4 className="text-[14px] font-black text-[#0047BB] uppercase tracking-[0.4em] mb-14 flex items-center gap-3">
-                          <span className="w-10 h-px bg-[#0047BB]/20" />
-                          Metadata
-                        </h4>
-                        <div className="space-y-12">
-                          <div className="flex items-start gap-7 group">
-                            <div className="w-14 h-14 rounded-2xl bg-[#0047BB]/5 border border-[#0047BB]/10 flex items-center justify-center shrink-0 transition-all duration-500 group-hover:bg-[#0047BB] group-hover:text-white group-hover:scale-110">
-                              <Tag className="w-6 h-6 text-[#0047BB] transition-colors group-hover:text-white" />
-                            </div>
-                            <div className="min-w-0 flex-1 pt-2">
-                              <p className="text-[11px] font-black text-zinc-400 uppercase tracking-[0.3em] mb-2 leading-none">Category</p>
-                              <p className="text-2xl font-black text-[#1A1A1A] tracking-tight group-hover:text-[#0047BB] transition-colors">{project.category}</p>
-                            </div>
+                  {/* Sidebar 1/3 */}
+                  <div className="space-y-4">
+                    <div className="bg-white rounded-2xl border border-zinc-100 shadow-sm overflow-hidden">
+                      <div className="px-5 py-3.5 border-b border-zinc-100">
+                        <span className="text-[10px] font-black text-zinc-400 uppercase tracking-widest">Project Info</span>
+                      </div>
+                      <div className="p-5 space-y-4">
+                        <div className="flex items-center gap-3">
+                          <div className="w-9 h-9 rounded-xl bg-blue-50 flex items-center justify-center shrink-0">
+                            <Tag className="w-4 h-4 text-[#0047BB]" />
                           </div>
-                          <div className="flex items-start gap-7 group">
-                            <div className="w-14 h-14 rounded-2xl bg-[#0047BB]/5 border border-[#0047BB]/10 flex items-center justify-center shrink-0 transition-all duration-500 group-hover:bg-[#0047BB] group-hover:text-white group-hover:scale-110">
-                              <Calendar className="w-6 h-6 text-[#0047BB] transition-colors group-hover:text-white" />
-                            </div>
-                            <div className="min-w-0 flex-1 pt-2">
-                              <p className="text-[11px] font-black text-zinc-400 uppercase tracking-[0.3em] mb-2 leading-none">Status</p>
-                              <p className="text-2xl font-black text-[#1A1A1A] tracking-tight group-hover:text-[#0047BB] transition-colors">{project.status}</p>
-                            </div>
+                          <div>
+                            <p className="text-[10px] text-zinc-400 font-semibold uppercase tracking-wider">Category</p>
+                            <p className="text-sm font-bold text-zinc-800 mt-0.5">{project.category}</p>
+                          </div>
+                        </div>
+                        <div className="h-px bg-zinc-100" />
+                        <div className="flex items-center gap-3">
+                          <div className="w-9 h-9 rounded-xl bg-emerald-50 flex items-center justify-center shrink-0">
+                            <Calendar className="w-4 h-4 text-emerald-600" />
+                          </div>
+                          <div>
+                            <p className="text-[10px] text-zinc-400 font-semibold uppercase tracking-wider">Status</p>
+                            <p className="text-sm font-bold text-zinc-800 mt-0.5">{project.status}</p>
                           </div>
                         </div>
                       </div>
                     </div>
+
+                    {project.externalUrl && (
+                      <a href={project.externalUrl} target="_blank" rel="noopener noreferrer"
+                        className="flex items-center gap-3 p-4 bg-[#0047BB] rounded-2xl text-white hover:bg-[#003799] transition-colors group"
+                      >
+                        <ExternalLink className="w-4 h-4 shrink-0" />
+                        <span className="text-sm font-bold flex-1">Live Demo</span>
+                        <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                      </a>
+                    )}
+
+                    {visibleTabs.filter(t => t.id !== 'overview').length > 0 && (
+                      <div className="bg-white rounded-2xl border border-zinc-100 shadow-sm overflow-hidden">
+                        <div className="px-5 py-3.5 border-b border-zinc-100">
+                          <span className="text-[10px] font-black text-zinc-400 uppercase tracking-widest">빠른 탐색</span>
+                        </div>
+                        <div className="p-2">
+                          {visibleTabs.filter(t => t.id !== 'overview').map(tab => (
+                            <button key={tab.id} onClick={() => setActiveTab(tab.id)}
+                              className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-zinc-50 transition-colors text-left group"
+                            >
+                              <div className="w-7 h-7 rounded-lg flex items-center justify-center shrink-0" style={{ backgroundColor: `${tab.color}14` }}>
+                                <span style={{ color: tab.color }} className="flex">{tab.icon}</span>
+                              </div>
+                              <span className="text-sm font-semibold text-zinc-700 flex-1">{tab.label}</span>
+                              <ChevronRight className="w-3.5 h-3.5 text-zinc-300 group-hover:text-zinc-500 group-hover:translate-x-0.5 transition-all" />
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
