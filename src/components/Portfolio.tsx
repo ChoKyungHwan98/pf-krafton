@@ -59,34 +59,34 @@ export const Portfolio = ({ isEditing, projects, setProjects, onBack, initialPro
       >
         <div className="bg-white/80 backdrop-blur-sm rounded-[2.5rem] shadow-[0_40px_100px_-20px_rgba(0,0,0,0.1)] border border-black/5 p-8 md:p-12 lg:p-16 min-h-[80vh] flex flex-col lg:flex-row gap-12 lg:gap-16">
           
-          {/* Main Project List (Left Area) */}
+          {/* Main Project Grid (Left Area) - High Density 2 Columns */}
           <div className="flex-1 order-2 lg:order-1 min-w-0">
-            <motion.div layout className="flex flex-col gap-6">
+            <motion.div layout className="grid grid-cols-1 xl:grid-cols-2 gap-5 lg:gap-6">
               <AnimatePresence mode="popLayout">
                 {filteredProjects.map((project) => (
                   <motion.div
                     layout
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -20 }}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, scale: 0.95 }}
                     transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                     key={project.id}
                     onClick={() => setSelectedProject(project)}
-                    className="group relative flex flex-col lg:flex-row bg-white hover:bg-[#F8FAFF] rounded-[2rem] overflow-hidden border border-black/5 cursor-pointer transition-all duration-500 hover:shadow-[0_20px_40px_-12px_rgba(0,0,0,0.08)] hover:translate-x-2"
+                    className="group relative flex flex-row bg-white hover:bg-[#F8FAFF] rounded-2xl overflow-hidden border border-black/5 cursor-pointer transition-all duration-300 hover:shadow-lg"
                   >
-                    {/* Horizontal Thumbnail (Left) */}
-                    <div className="w-full lg:w-[340px] aspect-video lg:aspect-auto lg:h-full overflow-hidden relative bg-zinc-100 shrink-0">
+                    {/* Compact Thumbnail (Left) */}
+                    <div className="w-[160px] lg:w-[200px] overflow-hidden relative bg-zinc-100 shrink-0 aspect-[4/3] lg:aspect-auto">
                       <img
                         src={project.image}
                         alt={project.title}
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                         referrerPolicy="no-referrer"
                       />
-                      <div className="absolute inset-0 bg-linear-to-r from-black/20 via-transparent to-transparent opacity-60 group-hover:opacity-100 transition-opacity"></div>
+                      <div className="absolute inset-0 bg-linear-to-r from-black/10 via-transparent to-transparent opacity-60"></div>
                       
                       {project.status && (
-                        <div className="absolute top-5 left-5 z-10">
-                          <div className={`px-3 py-1.5 rounded-xl text-[9px] font-black tracking-widest border backdrop-blur-md shadow-sm ${
+                        <div className="absolute top-3 left-3 z-10">
+                          <div className={`px-2 py-0.5 rounded-md text-[8px] font-black tracking-widest border backdrop-blur-md shadow-sm ${
                             project.status === '미출시'
                               ? 'bg-black/20 text-white border-white/20'
                               : 'bg-[#0047BB] text-white border-[#0047BB]'
@@ -95,42 +95,31 @@ export const Portfolio = ({ isEditing, projects, setProjects, onBack, initialPro
                           </div>
                         </div>
                       )}
-
-                      {/* Mini Preview Hover Indicator */}
-                      <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 bg-black/5">
-                        <div className="w-12 h-12 rounded-2xl bg-white shadow-2xl flex items-center justify-center text-[#0047BB] scale-50 group-hover:scale-100 transition-transform duration-500">
-                          <MousePointer2 className="w-5 h-5" />
-                        </div>
-                      </div>
                     </div>
 
-                    {/* Horizontal Content (Center/Right) */}
-                    <div className="p-8 lg:p-10 flex-1 flex flex-col min-w-0">
-                      <div className="flex items-start justify-between gap-6 mb-4">
-                        <div className="flex flex-col gap-2">
-                          <div className="flex flex-wrap gap-2">
-                            {project.roles.map((role) => (
-                              <span key={role} className="text-[10px] font-black text-[#0047BB] uppercase tracking-[0.1em] px-2.5 py-1 bg-[#0047BB]/5 rounded-lg border border-[#0047BB]/10">
-                                {role}
-                              </span>
-                            ))}
-                          </div>
-                          <h4 className="text-2xl lg:text-3xl font-display font-black tracking-tight text-[#1A1A1A] group-hover:text-[#0047BB] transition-colors leading-tight">
-                            {project.title}
-                          </h4>
-                        </div>
-                        <div className="shrink-0 w-12 h-12 rounded-2xl border border-black/5 flex items-center justify-center group-hover:bg-[#0047BB] group-hover:border-[#0047BB] group-hover:text-white transition-all duration-300 text-zinc-400 bg-white shadow-sm">
-                          <ArrowUpRight className="w-6 h-6" />
-                        </div>
+                    {/* Compact Content (Right) */}
+                    <div className="p-4 lg:p-6 flex-1 flex flex-col min-w-0">
+                      <div className="flex flex-wrap gap-1.5 mb-2">
+                        {project.roles.map((role) => (
+                          <span key={role} className="text-[8px] font-black text-[#0047BB] uppercase tracking-[0.1em] px-2 py-0.5 bg-[#0047BB]/5 rounded-md border border-[#0047BB]/10">
+                            {role}
+                          </span>
+                        ))}
+                      </div>
+                      <div className="flex items-start justify-between gap-2 mb-2">
+                        <h4 className="text-base lg:text-lg font-display font-black tracking-tight text-[#1A1A1A] group-hover:text-[#0047BB] transition-colors leading-tight truncate">
+                          {project.title}
+                        </h4>
+                        <ArrowUpRight className="w-4 h-4 text-zinc-300 group-hover:text-[#0047BB] transition-colors shrink-0" />
                       </div>
 
-                      <p className="text-zinc-500 text-[14px] lg:text-[15px] leading-relaxed mb-8 line-clamp-2 font-medium max-w-2xl">
+                      <p className="text-zinc-500 text-[12px] leading-snug mb-4 line-clamp-1 font-medium">
                         {project.description}
                       </p>
 
-                      <div className="flex flex-wrap gap-2 mt-auto">
-                        {project.tags.map((tag, tIdx) => (
-                          <span key={tIdx} className="text-[10px] font-bold text-zinc-400 uppercase tracking-wider bg-zinc-50 border border-black/5 px-3 py-1.5 rounded-lg">
+                      <div className="flex flex-wrap gap-1.5 mt-auto">
+                        {project.tags.slice(0, 3).map((tag, tIdx) => (
+                          <span key={tIdx} className="text-[9px] font-bold text-zinc-400 uppercase tracking-wider bg-zinc-50 border border-black/5 px-2 py-1 rounded-md">
                             #{tag}
                           </span>
                         ))}
