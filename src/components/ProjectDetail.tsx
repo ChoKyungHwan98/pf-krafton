@@ -18,13 +18,13 @@ export const ProjectDetail = ({ project, onBack, isEditing, onSaveContent }: Pro
   const [currentPage, setCurrentPage] = useState(0);
   const [showThumbnailGrid, setShowThumbnailGrid] = useState(false);
 
-  const tabs: { id: TabType; label: string; icon: React.ReactNode; show: boolean }[] = [
-    { id: 'overview', label: '개요', icon: <LayoutGrid className="w-3.5 h-3.5" />, show: true },
-    { id: 'document', label: '기획서', icon: <FileText className="w-3.5 h-3.5" />, show: !!(project.gallery || project.pdfUrl) },
-    { id: 'prototype', label: '프로토타입', icon: <Sparkles className="w-3.5 h-3.5" />, show: !!project.prototypeUrl },
-    { id: 'video', label: '플레이 영상', icon: <Play className="w-3.5 h-3.5" />, show: !!project.videoUrl },
-    { id: 'link', label: '링크', icon: <ExternalLink className="w-3.5 h-3.5" />, show: !!project.externalUrl },
-    { id: 'simulator', label: '시뮬레이터', icon: <Calculator className="w-3.5 h-3.5" />, show: !!(project.simulatorUrl || project.hasSimulator || project.simulatorVideoUrl) },
+  const tabs: { id: TabType; label: string; icon: React.ReactNode; show: boolean; color: string }[] = [
+    { id: 'overview', label: '개요', icon: <LayoutGrid className="w-3.5 h-3.5" />, show: true, color: '#0047BB' },
+    { id: 'document', label: '기획서', icon: <FileText className="w-3.5 h-3.5" />, show: !!(project.gallery || project.pdfUrl), color: '#059669' },
+    { id: 'prototype', label: '프로토타입', icon: <Sparkles className="w-3.5 h-3.5" />, show: !!project.prototypeUrl, color: '#7C3AED' },
+    { id: 'video', label: '플레이 영상', icon: <Play className="w-3.5 h-3.5" />, show: !!project.videoUrl, color: '#EA580C' },
+    { id: 'link', label: '링크', icon: <ExternalLink className="w-3.5 h-3.5" />, show: !!project.externalUrl, color: '#2563EB' },
+    { id: 'simulator', label: '시뮬레이터', icon: <Calculator className="w-3.5 h-3.5" />, show: !!(project.simulatorUrl || project.hasSimulator || project.simulatorVideoUrl), color: '#DC2626' },
   ];
 
   const visibleTabs = tabs.filter(t => t.show);
@@ -66,16 +66,18 @@ export const ProjectDetail = ({ project, onBack, isEditing, onSaveContent }: Pro
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
+                style={{ color: isActive ? tab.color : undefined }}
                 className={`relative h-10 px-5 rounded-full flex items-center gap-2.5 transition-all duration-300 font-sans font-bold text-[11px] uppercase tracking-wider group ${
                   isActive 
-                    ? 'text-[#0047BB]' 
+                    ? '' 
                     : 'text-zinc-400 hover:text-zinc-900 hover:bg-zinc-50'
                 }`}
               >
                 {isActive && (
                   <motion.div 
                     layoutId="activeTabPill" 
-                    className="absolute inset-0 bg-[#0047BB]/5 rounded-full"
+                    className="absolute inset-0 rounded-full"
+                    style={{ backgroundColor: `${tab.color}10` }} // 10% opacity
                     transition={{ type: 'spring', bounce: 0.2, duration: 0.6 }}
                   />
                 )}
@@ -86,7 +88,8 @@ export const ProjectDetail = ({ project, onBack, isEditing, onSaveContent }: Pro
                 {isActive && (
                   <motion.div 
                     layoutId="activeTabDot" 
-                    className="w-1 h-1 rounded-full bg-[#0047BB] absolute -bottom-1 left-1/2 -translate-x-1/2" 
+                    className="w-1 h-1 rounded-full absolute -bottom-1 left-1/2 -translate-x-1/2" 
+                    style={{ backgroundColor: tab.color }}
                   />
                 )}
               </button>
