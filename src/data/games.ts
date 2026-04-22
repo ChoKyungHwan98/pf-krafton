@@ -185,7 +185,7 @@ export const ALL_GAMES: GameHistoryItem[] = [
   {"id": "181", "category": "Console", "genre": "법정 배틀", "title": "역전재판 2", "company": "캡콤", "image": "/assets/games/ace_attorney_trilogy.jpg"},
   {"id": "182", "category": "Console", "genre": "법정 배틀", "title": "역전재판 3", "company": "캡콤", "image": "/assets/games/ace_attorney_trilogy.jpg"},
   {"id": "183", "category": "Console", "genre": "법정 배틀", "title": "역전재판 4", "company": "캡콤", "image": "/assets/games/apollo_justice_trilogy.jpg"},
-  {"id": "184", "category": "Console", "genre": "법정 배틀", "title": "역전검사 1", "company": "캡콤"},
+  {"id": "184", "category": "Console", "genre": "법정 배틀", "title": "역전검사 1", "company": "캡콤", "image": "/assets/games/investigations.jpg"},
   {"id": "185", "category": "Console", "genre": "추리 액션", "title": "단간론파", "company": "스파이크 춘소프트", "image": "/assets/games/danganronpa.jpg"},
   {"id": "186", "category": "Console", "genre": "추리 액션", "title": "슈퍼 단간론파 2", "company": "스파이크 춘소프트", "image": "/assets/games/danganronpa2.jpg"},
   {"id": "187", "category": "Console", "genre": "추리 액션", "title": "뉴 단간론파 V3", "company": "스파이크 춘소프트", "image": "/assets/games/danganronpa_v3.jpg"},
