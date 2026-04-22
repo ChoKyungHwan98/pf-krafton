@@ -124,10 +124,10 @@ export const Portfolio = ({ isEditing, projects, setProjects, onBack, initialPro
                       {project.title}
                     </h4>
                     {project.status && (
-                       <span className={`text-[10px] font-black px-3 py-1 rounded-lg border-2 shadow-sm ${
+                       <span className={`text-[11px] font-black px-4 py-2 rounded-xl border-2 shadow-lg leading-tight text-center min-w-[80px] ${
                          project.status === '미출시' 
-                           ? 'bg-zinc-100 text-zinc-500 border-zinc-200' 
-                           : 'bg-blue-600 text-white border-blue-700'
+                           ? 'bg-zinc-100 text-zinc-500 border-zinc-200 shadow-none' 
+                           : 'bg-[#0047BB] text-white border-white/20 shadow-[#0047BB]/20'
                        }`}>
                          {project.status}
                        </span>

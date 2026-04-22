@@ -3,7 +3,7 @@ import type { Project } from '../types';
 export const PROJECTS: Project[] = [
   {
     id: 1,
-    title: "도로시아 (Dorothia)",
+    title: "도로시아",
     roles: ["밸런스 기획"],
     description: "핵앤슬래시 방치형 RPG의 전체 게임 밸런스(전투/경제 수치)를 총괄했습니다. 디테일한 PDPS 기반 파워 구조를 정립하고 게임의 성장 곡선을 면밀히 설계했습니다.",
     tags: ["밸런싱", "전투 밸런스", "수치 설계", "경제 시스템"],
@@ -14,7 +14,7 @@ export const PROJECTS: Project[] = [
     simulatorVideoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
     color: "from-zinc-500/20 to-zinc-400/20",
     status: "구글플레이스토어 출시",
-    content: `# 도로시아 (Dorothia) 밸런스 기획서
+    content: `# 도로시아 밸런스 기획서
 
 ## 1. 기획 개요
 핵앤슬래시 방치형 RPG의 성패를 좌우하는 전투 수치와 경제 수치의 전체 밸런스 구조를 설계했습니다.
