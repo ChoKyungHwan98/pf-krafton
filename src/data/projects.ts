@@ -4,7 +4,7 @@ export const PROJECTS: Project[] = [
   {
     id: 1,
     title: "도로시아 (Dorothia)",
-    category: "밸런스 기획",
+    roles: ["밸런스 기획"],
     description: "핵앤슬래시 방치형 RPG의 전체 게임 밸런스(전투/경제 수치)를 총괄했습니다. 디테일한 PDPS 기반 파워 구조를 정립하고 게임의 성장 곡선을 면밀히 설계했습니다.",
     tags: ["밸런싱", "전투 밸런스", "수치 설계", "경제 시스템"],
     image: "./images/dorothia_main.jpg",
@@ -36,7 +36,7 @@ export const PROJECTS: Project[] = [
   {
     id: 2,
     title: "Digreed",
-    category: "코어 룰 기획",
+    roles: ["코어 룰 기획", "시나리오 기획"],
     description: "잠입 액션 로그라이트 게임의 전체 룰 및 시스템을 설계했습니다. 무기 교체 시스템과 맵 프리팹 구조를 기획했습니다.",
     tags: ["로그라이트", "잠입 액션", "시스템 기획"],
     image: "./images/digreed.png",
@@ -59,7 +59,7 @@ export const PROJECTS: Project[] = [
   {
     id: 3,
     title: "침묵의 저택",
-    category: "시스템 기획",
+    roles: ["시스템 기획", "코어 룰 기획"],
     description: "메이플월드 플랫폼을 기반으로 한 술래잡기형 생존 공포 게임입니다. 추격자 AI 행동 패턴과 시야 축소 메카닉을 기획했습니다.",
     tags: ["공포 생존", "메이플월드", "시스템 설계"],
     image: "./images/silence.png",
@@ -84,7 +84,7 @@ export const PROJECTS: Project[] = [
   {
     id: 4,
     title: "Pico-Bang!",
-    category: "AI 활용",
+    roles: ["AI 활용", "프로토타이핑"],
     description: "바이브코딩 기반으로 직접 제작한 아케이드 스타일의 게임 프로토타입입니다.",
     tags: ["프로토타입", "바이브코딩", "아케이드", "1인 개발"],
     image: "./images/picobang.png",
@@ -111,7 +111,7 @@ export const PROJECTS: Project[] = [
   {
     id: 5,
     title: "게임 스토어의 불청객",
-    category: "AI 활용",
+    roles: ["AI 활용", "시나리오 기획"],
     description: "LLM 기반의 시나리오 챗봇 시스템입니다. NPC와의 자연스러운 대화를 통해 단서를 찾고 스토리를 진행하는 실험적인 프로젝트입니다.",
     tags: ["LLM", "시나리오", "챗봇"],
     image: "./images/uninvited_guest.png",

@@ -112,7 +112,7 @@ export const ProjectDetail = ({ project, onBack, isEditing, onSaveContent }: Pro
           <div className="flex-1 h-7 bg-[#F1F3F4] rounded-full flex items-center px-3 gap-2 border border-transparent hover:border-zinc-300 transition-colors group cursor-text">
             <Lock className="w-3 h-3 text-zinc-500 shrink-0" />
             <span className="text-[12px] text-zinc-800 font-medium font-sans flex-1 truncate">
-              portfolio.local <span className="text-zinc-400">/</span> {project.category.toLowerCase().replace(/ /g, '-')} <span className="text-zinc-400">/</span> {project.title.toLowerCase().replace(/ /g, '-')}
+              portfolio.local <span className="text-zinc-400">/</span> {project.roles[0].toLowerCase().replace(/ /g, '-')} <span className="text-zinc-400">/</span> {project.title.toLowerCase().replace(/ /g, '-')}
             </span>
           </div>
 
@@ -431,8 +431,10 @@ def calculate_balance(params):
               <div className="relative h-[340px] shrink-0 overflow-hidden">
                 <img src={project.image} alt={project.title} className="w-full h-full object-cover transition-transform duration-700 hover:scale-[1.03]" />
                 <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent" />
-                <div className="absolute top-6 left-8">
-                  <span className="px-3 py-1.5 bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-white text-[10px] font-black uppercase tracking-widest">{project.category}</span>
+                <div className="absolute top-6 left-8 flex flex-wrap gap-2">
+                  {project.roles.map(role => (
+                    <span key={role} className="px-3 py-1.5 bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-white text-[10px] font-black uppercase tracking-widest">{role}</span>
+                  ))}
                 </div>
                 <div className="absolute bottom-0 left-0 right-0 p-8">
                   <div className="flex flex-wrap gap-2 mb-3">
@@ -468,8 +470,12 @@ def calculate_balance(params):
                             <Tag className="w-4 h-4 text-[#0047BB]" />
                           </div>
                           <div>
-                            <p className="text-[10px] text-zinc-400 font-semibold uppercase tracking-wider">Category</p>
-                            <p className="text-sm font-bold text-zinc-800 mt-0.5">{project.category}</p>
+                            <p className="text-[10px] text-zinc-400 font-semibold uppercase tracking-wider mb-1.5">Roles</p>
+                            <div className="flex flex-wrap gap-1.5">
+                              {project.roles.map(role => (
+                                <span key={role} className="px-2 py-1 bg-zinc-100 text-zinc-700 text-[11px] font-bold rounded-lg border border-zinc-200">{role}</span>
+                              ))}
+                            </div>
                           </div>
                         </div>
                         <div className="h-px bg-zinc-100" />

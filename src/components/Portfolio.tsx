@@ -26,12 +26,12 @@ export const Portfolio = ({ isEditing, projects, setProjects, onBack, initialPro
     window.scrollTo(0, 0);
   }, [initialProjectId, projects]);
 
-  const categories = ['전체', ...Array.from(new Set(projects.map(p => p.category)))];
+  const categories = ['전체', ...Array.from(new Set(projects.flatMap(p => p.roles)))];
   const [activeCategory, setActiveCategory] = useState('전체');
 
   const filteredProjects = activeCategory === '전체'
     ? projects
-    : projects.filter(p => p.category === activeCategory);
+    : projects.filter(p => p.roles && p.roles.includes(activeCategory));
 
   useEffect(() => {
     if (selectedProject) {

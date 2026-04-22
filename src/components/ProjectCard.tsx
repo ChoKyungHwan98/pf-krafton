@@ -36,7 +36,7 @@ export const ProjectCard = ({ project, idx, isEditing, projects, setProjects, on
         <div className={`relative z-10 transition-all duration-500 ${isActive ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0 lg:opacity-100 lg:translate-y-0'}`}>
           <div className={`flex gap-2 mb-4 ${isActive ? 'flex-wrap items-center' : 'flex-col items-start'}`}>
             <div className="bg-white/90 backdrop-blur-sm px-3 py-1.5 text-[11px] font-sans font-bold text-[#2C2C2C] tracking-tight rounded-md w-fit">
-              <EditableText value={project.category} onSave={(v) => { const p = [...projects]; p[idx].category = v; setProjects(p); }} isEditing={isEditing} />
+              <EditableText value={project.roles ? project.roles.join(', ') : ''} onSave={(v) => { const p = [...projects]; p[idx].roles = v.split(',').map(s=>s.trim()); setProjects(p); }} isEditing={isEditing} />
             </div>
             {project.status && (
               <div className={`px-3 py-1.5 text-[11px] font-sans font-bold tracking-tight rounded-md w-fit border backdrop-blur-sm ${project.status === '미출시' ? 'bg-zinc-800/80 text-zinc-300 border-zinc-600' : 'bg-[#0047BB] text-white border-[#0047BB] shadow-lg shadow-[#0047BB]/30'}`}>
@@ -76,7 +76,7 @@ export const ProjectCard = ({ project, idx, isEditing, projects, setProjects, on
         <img src={project.image} alt={project.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 absolute inset-0" referrerPolicy="no-referrer" />
         <div className="absolute top-4 left-4 flex flex-wrap items-center gap-2">
           <div className="bg-white/90 backdrop-blur-sm border border-black/10 rounded-md px-3 py-1.5 text-[11px] font-sans font-bold text-[#2C2C2C] tracking-tight shadow-sm w-fit">
-            <EditableText value={project.category} onSave={(v) => { const p = [...projects]; p[idx].category = v; setProjects(p); }} isEditing={isEditing} />
+            <EditableText value={project.roles ? project.roles.join(', ') : ''} onSave={(v) => { const p = [...projects]; p[idx].roles = v.split(',').map(s=>s.trim()); setProjects(p); }} isEditing={isEditing} />
           </div>
           {project.status && (
             <div className={`border rounded-md px-3 py-1.5 text-[11px] font-sans font-bold tracking-tight shadow-sm w-fit backdrop-blur-sm ${project.status === '미출시' ? 'bg-zinc-100/90 text-zinc-500 border-zinc-200' : 'bg-[#0047BB] text-white border-[#0047BB] shadow-md shadow-[#0047BB]/20'}`}>

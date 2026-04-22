@@ -96,7 +96,9 @@ export const Projects = ({ onProjectClick, isEditing, projects, setProjects, lim
                     />
                     
                     <motion.div layout="position" className="absolute top-6 left-6 lg:top-8 lg:left-8 flex gap-2 pointer-events-none z-10">
-                      <span className={`px-2.5 py-1 rounded-md text-[10px] font-bold uppercase tracking-widest shadow-sm leading-none transition-colors duration-500 ${isMaster ? 'bg-white/90 text-[#2C2C2C]' : 'bg-white/20 backdrop-blur-md text-white'}`}>{project.category}</span>
+                      {project.roles && project.roles.map(role => (
+                        <span key={role} className={`px-2.5 py-1 rounded-md text-[10px] font-bold uppercase tracking-widest shadow-sm leading-none transition-colors duration-500 ${isMaster ? 'bg-white/90 text-[#2C2C2C]' : 'bg-white/20 backdrop-blur-md text-white'}`}>{role}</span>
+                      ))}
                       {project.status && <span className={`px-2.5 py-1 rounded-md text-[10px] font-bold tracking-tight shadow-sm leading-none transition-colors duration-500 ${isMaster ? 'bg-[#0047BB] text-white' : 'border border-white/20 text-white'}`}>{project.status}</span>}
                     </motion.div>
 
