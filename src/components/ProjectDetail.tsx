@@ -67,7 +67,7 @@ export const ProjectDetail = ({ project, onBack, isEditing, onSaveContent }: Pro
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
                 style={{ color: isActive ? tab.color : undefined }}
-                className={`relative h-11 px-6 rounded-full flex items-center gap-3 transition-all duration-300 font-sans font-black text-[11px] uppercase tracking-[0.1em] group ${
+                className={`relative h-11 px-6 rounded-full flex items-center gap-3 transition-all duration-300 font-sans font-black text-[11px] uppercase tracking-widest group ${
                   isActive 
                     ? '' 
                     : 'text-zinc-500 hover:text-white hover:bg-white/5'
@@ -236,7 +236,7 @@ export const ProjectDetail = ({ project, onBack, isEditing, onSaveContent }: Pro
                       initial={{ x: -20, opacity: 0 }}
                       animate={{ x: 0, opacity: 1 }}
                       transition={{ delay: 0.1 * i }}
-                      className="p-4 rounded-2xl bg-white/5 border border-white/[0.08] hover:border-white/[0.15] transition-colors"
+                      className="p-4 rounded-2xl bg-white/5 border border-white/8 hover:border-white/15 transition-colors"
                     >
                       <div className="flex items-center gap-3">
                         <div className={`w-1 h-7 ${item.color} rounded-full`} />
@@ -249,7 +249,7 @@ export const ProjectDetail = ({ project, onBack, isEditing, onSaveContent }: Pro
                   ))}
                 </div>
 
-                <div className="p-5 rounded-2xl bg-white/5 border border-white/[0.08] text-center">
+                <div className="p-5 rounded-2xl bg-white/5 border border-white/8 text-center">
                   <div className="text-[10px] text-zinc-500 font-black uppercase tracking-[0.2em] mb-1">제작 소요 시간</div>
                   <div className="text-xl font-black text-white tracking-tighter">아이디어에서 실행까지</div>
                   <div className="text-sm font-black text-[#EC4899] mt-0.5">24시간 이내</div>
