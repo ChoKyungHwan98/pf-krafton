@@ -59,7 +59,7 @@ export const ProjectDetail = ({ project, onBack, isEditing, onSaveContent }: Pro
         </div>
 
         {/* Center: Unified Professional Tabs */}
-        <div className="flex-1 flex justify-start gap-1">
+        <div className="flex-1 flex justify-start gap-2">
           {visibleTabs.map((tab) => {
             const isActive = activeTab === tab.id;
             return (
@@ -67,28 +67,28 @@ export const ProjectDetail = ({ project, onBack, isEditing, onSaveContent }: Pro
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
                 style={{ color: isActive ? tab.color : undefined }}
-                className={`relative h-10 px-5 rounded-full flex items-center gap-2.5 transition-all duration-300 font-sans font-bold text-[11px] uppercase tracking-wider group ${
+                className={`relative h-11 px-6 rounded-full flex items-center gap-3 transition-all duration-300 font-sans font-black text-[11px] uppercase tracking-[0.1em] group ${
                   isActive 
                     ? '' 
-                    : 'text-zinc-400 hover:text-zinc-900 hover:bg-zinc-50'
+                    : 'text-zinc-400 hover:text-zinc-600 hover:bg-zinc-50'
                 }`}
               >
                 {isActive && (
                   <motion.div 
                     layoutId="activeTabPill" 
                     className="absolute inset-0 rounded-full"
-                    style={{ backgroundColor: `${tab.color}10` }} // 10% opacity
+                    style={{ backgroundColor: `${tab.color}15` }} // Slightly more visible 15%
                     transition={{ type: 'spring', bounce: 0.2, duration: 0.6 }}
                   />
                 )}
-                <span className={`transition-transform duration-300 ${isActive ? 'scale-110' : 'group-hover:scale-110'}`}>
+                <span className={`transition-transform duration-300 ${isActive ? 'scale-110 opacity-100' : 'group-hover:scale-110 opacity-70'}`}>
                   {tab.icon}
                 </span>
                 <span className="relative z-10">{tab.label}</span>
                 {isActive && (
                   <motion.div 
                     layoutId="activeTabDot" 
-                    className="w-1 h-1 rounded-full absolute -bottom-1 left-1/2 -translate-x-1/2" 
+                    className="w-1.5 h-1.5 rounded-full absolute -bottom-1.5 left-1/2 -translate-x-1/2" 
                     style={{ backgroundColor: tab.color }}
                   />
                 )}
@@ -117,11 +117,11 @@ export const ProjectDetail = ({ project, onBack, isEditing, onSaveContent }: Pro
       </div>
 
       {/* Main Content Area - Maximized Space */}
-      <div className="flex-1 flex flex-col min-h-0 bg-white relative">
+      <div className="flex-1 flex flex-col min-h-0 bg-[#F8F8F6] relative">
         <AnimatePresence mode="wait">
           {activeTab === 'document' ? (
             <motion.div key="tab-document" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-              className="flex-1 flex flex-col min-h-0 overflow-hidden bg-zinc-50 relative"
+              className="flex-1 flex flex-col min-h-0 overflow-hidden bg-[#F8F8F6] relative"
             >
               {project.gallery ? (
                 <EBookGallery images={galleryImages} currentIndex={currentPage} onPageChange={setCurrentPage} />
@@ -173,7 +173,7 @@ export const ProjectDetail = ({ project, onBack, isEditing, onSaveContent }: Pro
             </motion.div>
           ) : activeTab === 'link' ? (
             <motion.div key="tab-link" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-              className="flex-1 flex items-center justify-center p-12 bg-[#FCFCFA]"
+              className="flex-1 flex items-center justify-center p-12 bg-[#F8F8F6]"
             >
               <div className="max-w-2xl w-full">
                 <div className="relative group p-1 bg-linear-to-br from-[#6D28D9] via-[#C084FC] to-[#6D28D9] rounded-[3rem] shadow-2xl overflow-hidden">
@@ -209,7 +209,7 @@ export const ProjectDetail = ({ project, onBack, isEditing, onSaveContent }: Pro
               />
 
               {/* Left Side: Editorial Info */}
-              <div className="w-full lg:w-[420px] p-12 lg:p-16 relative z-10 flex flex-col justify-center gap-10 border-r border-zinc-100 bg-white/80 backdrop-blur-md">
+              <div className="w-full lg:w-[460px] p-12 lg:p-16 relative z-10 flex flex-col justify-center gap-10 border-r border-zinc-200/60 bg-white">
                 <div>
                   <div className="flex items-center gap-3 mb-6">
                     <div className="w-2 h-2 rounded-full bg-[#0047BB]" />
@@ -403,7 +403,7 @@ def calculate_balance(params):
             </motion.div>
           ) : (
             <motion.div key="tab-overview" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-              className="flex-1 overflow-y-auto bg-[#FCFCFA] custom-scrollbar"
+              className="flex-1 overflow-y-auto bg-[#F8F8F6] custom-scrollbar"
             >
               <div className="max-w-5xl mx-auto p-12 md:p-20">
                 <div className="relative h-[450px] rounded-[3rem] overflow-hidden mb-20 shadow-2xl group border border-black/5">
