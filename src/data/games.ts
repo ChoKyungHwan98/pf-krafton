@@ -11,7 +11,7 @@ export const ALL_GAMES: GameHistoryItem[] = [
   {"id": "7", "category": "PC", "genre": "캐주얼", "title": "크레이지아케이드", "company": "넥슨"},
   {"id": "8", "category": "PC", "genre": "캐주얼", "title": "버블파이터", "company": "넥슨"},
   {"id": "9", "category": "PC", "genre": "캐주얼", "title": "메이플스토리월드", "company": "넥슨"},
-  {"id": "10", "category": "PC", "genre": "스포츠", "title": "FC온라인", "company": "EA 코리아"},
+  {"id": "10", "category": "PC", "genre": "스포츠", "title": "FC온라인", "company": "넥슨"},
   {"id": "11", "category": "PC", "genre": "대전 격투", "title": "DNF 듀얼", "company": "아크 시스템 웍스"},
   {"id": "12", "category": "PC", "genre": "퀴즈", "title": "큐플레이", "company": "넥슨"},
   {"id": "13", "category": "PC", "genre": "레이싱", "title": "뿌까 퍼니레이스", "company": "넥슨"},
@@ -193,7 +193,7 @@ export const ALL_GAMES: GameHistoryItem[] = [
   {"id": "189", "category": "Console", "genre": "메트로배니아", "title": "할로우 나이트", "company": "Team Cherry"},
   {"id": "190", "category": "Console", "genre": "로그라이크 덱빌딩", "title": "Inscryption", "company": "Daniel Mullins Games"},
   {"id": "191", "category": "Console", "genre": "액션 플랫포머", "title": "카타나 제로", "company": "Askiisoft"},
-  {"id": "192", "category": "Console", "genre": "대전 격투", "title": "더 킹 오브 파이터즈 XV", "company": "SNK"},
+  {"id": "192", "category": "Console", "genre": "대전 격투", "title": "더 KING OF FIGHTERS XV", "company": "SNK"},
   {"id": "193", "category": "Console", "genre": "추리 시뮬레이션", "title": "Legal Dungeon", "company": "SOMI"},
   {"id": "194", "category": "Console", "genre": "샌드박스 서바이벌", "title": "Life is Feudal: MMO", "company": "Bitbox"},
   {"id": "195", "category": "Console", "genre": "헌팅 액션", "title": "몬스터 헌터: 월드", "company": "캡콤"},
@@ -265,8 +265,8 @@ export const ALL_GAMES: GameHistoryItem[] = [
   {"id": "261", "category": "Console", "genre": "협동 호러", "title": "Lethal Company", "company": "Zeekerss"},
   {"id": "262", "category": "Console", "genre": "슈팅", "title": "라이덴 2", "company": "Seibu Kaihatsu"},
   {"id": "263", "category": "Console", "genre": "포격", "title": "포트리스 2", "company": "CCR"},
-  {"id": "264", "category": "Console", "genre": "역사 전략 시뮬레이션", "title": "삼국지 8 리메이크", "company": "Koei Tecmo"},
-  {"id": "265", "category": "Console", "genre": "슈팅", "title": "섹시 파로디우스", "company": "Konami"},
+  {"id": "264", "category": "Console", "genre": "역사 전략 시뮬레이션", "title": "삼국지 8 리메이크", "company": "코에이 테크모"},
+  {"id": "265", "category": "Console", "genre": "슈팅", "title": "섹시 파로디우스", "company": "코나미"},
   {"id": "266", "category": "Console", "genre": "로봇 대전 격투", "title": "초강전기 키카이오", "company": "캡콤"},
   {"id": "267", "category": "Console", "genre": "호러 어드벤처", "title": "Ib", "company": "kouri"},
   {"id": "268", "category": "Console", "genre": "런앤건", "title": "메탈슬러그", "company": "SNK"},
@@ -291,5 +291,5 @@ export const ALL_GAMES: GameHistoryItem[] = [
   {"id": "287", "category": "PC", "genre": "퍼즐", "title": "Ovis Loop", "company": "Isto Inc."},
   {"id": "288", "category": "Mobile", "genre": "비주얼 노벨", "title": "허언증 소개팅", "company": "반지하게임즈"},
   {"id": "289", "category": "Mobile", "genre": "시뮬레이션", "title": "중고로운 평화나라", "company": "반지하게임즈"},
-  {"id": "290", "category": "PC", "genre": "역사 전략 시뮬레이션", "title": "삼국지 11", "company": "Koei Tecmo"}
+  {"id": "290", "category": "PC", "genre": "역사 전략 시뮬레이션", "title": "삼국지 11", "company": "코에이 테크모"}
 ];
