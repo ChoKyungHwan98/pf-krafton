@@ -93,8 +93,8 @@ export const PlayHistory = ({ onViewAll }: PlayHistoryProps) => {
               className="text-[#0047BB] font-sans text-[11px] font-bold tracking-widest uppercase mb-3 block">04. 플레이 이력</motion.span>
             <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
               className="flex flex-col gap-1 items-start mt-2">
-              <span className="text-xl md:text-2xl text-zinc-500 font-display font-medium tracking-tight">{allGamesCount}종 이상의 장르를 플레이한</span>
-              <span className="text-4xl md:text-5xl lg:text-6xl font-display font-black tracking-tighter text-[#0047BB] leading-none mt-1">게이밍 인사이트</span>
+              <span className="text-xl md:text-2xl text-zinc-500 font-display font-medium tracking-tight">{allGamesCount}종 이상의</span>
+              <span className="text-4xl md:text-5xl lg:text-6xl font-display font-black tracking-tighter text-[#0047BB] leading-none mt-1">인사이트</span>
             </motion.h2>
           </div>
           <p className="text-zinc-500 text-sm leading-[1.6] lg:text-right font-medium max-w-md break-keep">
