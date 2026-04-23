@@ -1,7 +1,10 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { motion } from 'motion/react';
 import html2canvas from 'html2canvas';
 import { ALL_GAMES } from '../data/games';
+
+const COLS = 4;
+const PLACEHOLDER_SPEEDS = [3.6, 4.4, 3.0, 4.0];
 
 interface CinematicIntroProps {
   onComplete: () => void;
@@ -53,6 +56,14 @@ export const CinematicIntro = ({ onComplete }: CinematicIntroProps) => {
   const [animDuration, setAnimDuration] = useState(6);
   const viewportHeight = typeof window !== 'undefined' ? window.innerHeight : 900;
 
+  // Placeholder columns shown while capture is in progress
+  const placeholderColumns = useMemo(() => {
+    const shuffled = [...ALL_GAMES].sort(() => Math.random() - 0.5);
+    return Array.from({ length: COLS }, (_, i) =>
+      shuffled.filter((_, idx) => idx % COLS === i).slice(0, 25)
+    );
+  }, []);
+
   const pcCount = ALL_GAMES.filter(g => g.category === 'Pc' || g.category === 'PC' || g.category === 'Console').length;
   const mobileCount = ALL_GAMES.filter(g => g.category === 'Mobile').length;
 
@@ -91,6 +102,36 @@ export const CinematicIntro = ({ onComplete }: CinematicIntroProps) => {
       className="fixed inset-0 z-[2000] overflow-hidden pointer-events-none"
       style={{ backgroundColor: '#FDFCF8' }}
     >
+      {/* ── 캡처 중 placeholder: 카드 컬럼 스크롤 ── */}
+      {!screenshot && (
+        <div className="absolute inset-0 flex gap-3 px-3">
+          {placeholderColumns.map((games, ci) => (
+            <div key={ci} className="flex-1 overflow-hidden">
+              <div style={{
+                display: 'flex', flexDirection: 'column', gap: '8px',
+                animation: `scrollUp ${PLACEHOLDER_SPEEDS[ci]}s linear forwards`,
+                willChange: 'transform',
+                opacity: ci === 0 || ci === COLS - 1 ? 0.5 : 0.85,
+              }}>
+                {games.map((game, idx) => (
+                  <div key={idx} style={{ height: 120, flexShrink: 0, position: 'relative', borderRadius: 16, overflow: 'hidden', backgroundColor: game.image ? '#18181b' : getFallbackBg(game.genre) }}>
+                    {game.image && <img src={game.image} alt="" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: 0.6 }} loading="lazy" />}
+                    <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 50%, transparent 100%)' }} />
+                    <div style={{ position: 'relative', height: '100%', zIndex: 1, padding: '10px 12px 12px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                      <span style={{ fontSize: 8, fontWeight: 900, color: 'white', background: 'rgba(255,255,255,0.2)', padding: '2px 6px', borderRadius: 4, letterSpacing: '0.1em', textTransform: 'uppercase', width: 'fit-content' }}>{game.genre}</span>
+                      <div>
+                        <div style={{ fontWeight: 700, color: 'white', fontSize: 13, lineHeight: 1.3, overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis' }}>{game.title}</div>
+                        <div style={{ fontSize: 9, color: 'rgba(255,255,255,0.5)', marginTop: 2, overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis' }}>{game.company}</div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+
       {/* ── 캡처용 숨긴 레이아웃 (GameHistoryView 동일 구조) ── */}
       {!screenshot && (
         <div
@@ -213,9 +254,9 @@ export const CinematicIntro = ({ onComplete }: CinematicIntroProps) => {
       <div className="absolute inset-x-0 top-0 h-28 z-10 pointer-events-none" style={{ background: 'linear-gradient(to bottom, #FDFCF8 30%, transparent)' }} />
       <div className="absolute inset-x-0 bottom-0 h-28 z-10 pointer-events-none" style={{ background: 'linear-gradient(to top, #FDFCF8 30%, transparent)' }} />
 
-      {/* Gaming DNA 오버레이 */}
+      {/* Gaming DNA 오버레이 — 텍스트 주변만 어둡게 */}
       <div className="absolute inset-0 z-20 pointer-events-none"
-        style={{ background: 'radial-gradient(ellipse 540px 280px at center, rgba(6,6,6,0.88) 0%, rgba(6,6,6,0.5) 55%, transparent 80%)' }} />
+        style={{ background: 'radial-gradient(ellipse 380px 180px at center, rgba(4,4,4,0.82) 0%, rgba(4,4,4,0.35) 60%, transparent 85%)' }} />
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
