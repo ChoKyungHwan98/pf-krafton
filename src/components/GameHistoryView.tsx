@@ -12,18 +12,18 @@ interface GameHistoryViewProps {
 }
 
 const GENRE_MAP: Record<string, string[]> = {
-  '역할수행(RPG)': ['RPG'],
-  '어드벤처': ['어드벤처', '노벨'],
+  'RPG': ['RPG'],
+  '어드벤처': ['어드벤처', '노벨', '공포', '로그라이크', '메트로배니아', '비주얼 노벨'],
   '퍼즐': ['퍼즐', '퀴즈', '캐주얼'],
-  '액션': ['액션', '난투', '대전', '배틀로얄'],
+  '액션': ['액션', '난투', '대전', '배틀로얄', '격투', '런앤건', '플랫폼', '런게임', '생존'],
   '전략': ['전략', 'AOS', 'RTS', 'CCG', 'TCG', '디펜스'],
-  '시뮬레이션': ['시뮬레이션', '스포츠', '레이싱'],
+  '시뮬레이션': ['시뮬레이션', '스포츠', '레이싱', '경영', 'AR', '수면', '보드게임', '소셜'],
   '슈팅': ['슈팅', 'FPS', 'TPS', '히어로슈터'],
   '리듬': ['리듬']
 };
 
 const CHART_DATA = [
-  { label: '역할수행(RPG)', score: 99, angle: 0 },
+  { label: 'RPG', score: 99, angle: 0 },
   { label: '어드벤처', score: 92, angle: 45 },
   { label: '퍼즐', score: 88, angle: 90 },
   { label: '액션', score: 85, angle: 135 },
@@ -45,7 +45,7 @@ export const GameHistoryView = ({ onBack }: GameHistoryViewProps) => {
   };
 
   // Fix: Match local data categories (Pc, Console, Mobile)
-  const pcConsoleGames = ALL_GAMES.filter(g => g.category === 'Pc' || g.category === 'Console');
+  const pcConsoleGames = ALL_GAMES.filter(g => g.category === 'Pc' || g.category === 'PC' || g.category === 'Console');
   const mobileGames = ALL_GAMES.filter(g => g.category === 'Mobile');
 
   const filteredGames = ALL_GAMES.filter(g => {
@@ -190,7 +190,7 @@ export const GameHistoryView = ({ onBack }: GameHistoryViewProps) => {
             <div className="flex flex-wrap justify-center gap-2 mt-6 w-full">
               <button onClick={() => setActiveGenre(null)} className={`px-4 py-2 rounded-full text-[12px] font-bold transition-all ${!activeGenre ? 'bg-[#0047BB] text-white' : 'bg-zinc-100 text-zinc-500'}`}>전체</button>
               {Object.keys(GENRE_MAP).map(genre => (
-                <button key={genre} onClick={() => setActiveGenre(genre)} className={`px-4 py-2 rounded-full text-[12px] font-bold transition-all ${activeGenre === genre ? 'bg-[#0047BB] text-white' : 'bg-zinc-100 text-zinc-500'}`}>{genre.replace('역할수행(RPG)', 'RPG')}</button>
+                <button key={genre} onClick={() => setActiveGenre(genre)} className={`px-4 py-2 rounded-full text-[12px] font-bold transition-all ${activeGenre === genre ? 'bg-[#0047BB] text-white' : 'bg-zinc-100 text-zinc-500'}`}>{genre}</button>
               ))}
             </div>
           </div>
@@ -250,7 +250,7 @@ export const GameHistoryView = ({ onBack }: GameHistoryViewProps) => {
                     <div className="flex justify-between items-start mb-2">
                       <span className="text-[9px] font-black text-white bg-white/20 backdrop-blur-md px-2 py-0.5 rounded tracking-widest uppercase">{game.genre}</span>
                       <span className="text-[9px] font-bold text-white/50 border border-white/20 px-1.5 py-0.5 rounded uppercase">
-                        {game.category === 'Pc' || game.category === 'Console' ? 'PC/CONSOLE' : 'MOBILE'}
+                        {game.category === 'Pc' || game.category === 'PC' || game.category === 'Console' ? 'PC/CONSOLE' : 'MOBILE'}
                       </span>
                     </div>
                     <h4 className="font-bold text-white text-base md:text-lg leading-tight mb-1 group-hover:text-blue-400 transition-colors drop-shadow-sm line-clamp-2">{game.title}</h4>
