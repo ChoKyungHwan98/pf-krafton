@@ -200,7 +200,7 @@ export const GameHistoryView = ({ onBack }: GameHistoryViewProps) => {
             <div className="bg-white border border-black/5 rounded-4xl p-8 shadow-sm flex-1 flex flex-col justify-center">
               <h3 className="font-bold text-lg text-zinc-500 tracking-tight mb-8">플레이 요약 통계</h3>
               <ul className="space-y-6">
-                <li className="flex items-center justify-between border-b border-black/5 pb-4"><span className="font-bold text-[#2C2C2C]">총 플레이</span><span className="font-black text-[#0047BB] text-xl">{ALL_GAMES.length}종 이상</span></li>
+                <li className="flex items-center justify-between border-b border-black/5 pb-4"><span className="font-bold text-[#2C2C2C]">총 플레이</span><span className="font-black text-[#0047BB] text-xl">{ALL_GAMES.length}종</span></li>
                 <li className="flex items-center justify-between border-b border-black/5 pb-4"><span className="font-bold text-[#2C2C2C]">주력 플랫폼</span><span className="font-bold text-zinc-600 text-lg">PC / 콘솔</span></li>
                 <li className="flex items-center justify-between border-b border-black/5 pb-4"><span className="font-bold text-[#2C2C2C]">최장 플레이</span><span className="font-bold text-zinc-600 text-lg">메이플스토리 (15년)</span></li>
                 <li className="flex items-center justify-between"><span className="font-bold text-[#2C2C2C]">전문 분야</span><span className="font-bold text-[#0047BB] text-lg bg-[#0047BB]/10 px-3 py-1 rounded-md">RPG / 리듬</span></li>
