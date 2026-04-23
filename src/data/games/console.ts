@@ -85,7 +85,7 @@ export const CONSOLE_GAMES: GameHistoryItem[] = [
   {"id": "console-85", "category": "Console", "genre": "격투", "title": "동방췌몽상 ~ Immaterial and Missing Power.", "company": "Twilight Frontier", "image": "./images/games/complete/동방췌몽상.jpg"},
   {"id": "console-86", "category": "Console", "genre": "슈팅", "title": "동방홍룡동 ~ Unconnected Marketeers.", "company": "Team Shanghai Alice", "image": "./images/games/complete/동방홍룡동_unconnected_marketeers.jpg"},
   {"id": "console-87", "category": "Console", "genre": "슈팅", "title": "동방홍마향 ~ the Embodiment of Scarlet Devil.", "company": "Team Shanghai Alice", "image": ""},
-  {"id": "console-88", "category": "Console", "genre": "RPG", "title": "드래곤 퀘스트 V 천공의 신부", "company": "스퀘어 에닉스", "image": ""},
+  {"id": "console-88", "category": "Console", "genre": "RPG", "title": "드래곤 퀘스트 V 천공의 신부", "company": "스퀘어 에닉스", "image": "./images/games/complete/드래곤_퀘스트_v_천공의_신부.jpg"},
   {"id": "console-89", "category": "Console", "genre": "시뮬레이션", "title": "디지몬 챔피언십", "company": "반다이 남코", "image": ""},
   {"id": "console-90", "category": "Console", "genre": "RPG", "title": "라그나로크 DS", "company": "GungHo", "image": "./images/games/complete/라그나로크_ds.jpg"},
   {"id": "console-91", "category": "Console", "genre": "슈팅", "title": "라이덴 2", "company": "Seibu Kaihatsu", "image": "./images/games/complete/라이덴_2.jpg"},
@@ -141,7 +141,7 @@ export const CONSOLE_GAMES: GameHistoryItem[] = [
   {"id": "console-147", "category": "Console", "genre": "격투", "title": "초강전기 키카이오", "company": "캡콤", "image": "./images/games/complete/초강전기_키카이오.webp"},
   {"id": "console-149", "category": "Console", "genre": "RPG", "title": "클레르 옵스퀴르: 33 원정대", "company": "Sandfall Interactive", "image": "./images/games/complete/클레르_옵스퀴르_33_원정대.jpg"},
   {"id": "console-150", "category": "Console", "genre": "격투", "title": "킹 오브 파이터즈 98", "company": "SNK", "image": "./images/games/complete/킹_오브_파이터즈_98.jpg"},
-  {"id": "console-152", "category": "Console", "genre": "액션", "title": "터치! 봄버맨 랜드", "company": "Hudson Soft", "image": ""},
+  {"id": "console-152", "category": "Console", "genre": "액션", "title": "터치! 봄버맨 랜드", "company": "Hudson Soft", "image": "./images/games/complete/터치_봄버맨_랜드.jpg"},
   {"id": "console-153", "category": "Console", "genre": "시뮬레이션", "title": "팀파이트 매니저", "company": "Team Samoyed", "image": "./images/games/complete/팀파이트_매니저.jpg"},
   {"id": "console-154", "category": "Console", "genre": "어드벤처", "title": "Pentiment", "company": "Obsidian Entertainment", "image": "./images/games/complete/pentiment.jpg"},
   {"id": "console-155", "category": "Console", "genre": "캐주얼", "title": "Pokémon The Slowpoke Shack", "company": "The Pokémon Company", "image": "./images/games/complete/pokemon_the_slowpoke_shack.jpg"},
@@ -171,4 +171,5 @@ export const CONSOLE_GAMES: GameHistoryItem[] = [
   {"id": "console-179", "category": "Console", "genre": "스텔스 액션", "title": "Yandere Simulator", "company": "YandereDev", "image": "./images/games/complete/얀데레_시뮬레이터.jpg"},
   {"id": "console-180", "category": "Console", "genre": "퍼즐", "title": "Helltaker", "company": "vanripper", "image": "./images/games/complete/helltaker.jpg"},
   {"id": "console-181", "category": "Console", "genre": "공포", "title": "8번출구", "company": "KOTAKE CREATE", "image": "./images/games/complete/8번출구.jpg"},
+  {"id": "console-177", "category": "Console", "genre": "액션 RPG", "title": "엘든 링: 나이트레인", "company": "프롬 소프트웨어", "image": "./images/games/complete/엘든_링_나이트레인.jpg"},
 ];

@@ -114,4 +114,7 @@ export const MOBILE_GAMES: GameHistoryItem[] = [
   {"id": "mobile-122", "category": "Mobile", "genre": "리듬", "title": "러브라이브! 스쿨 아이돌 페스티벌", "company": "KLab", "image": "./images/games/complete/러브라이브_스쿨_아이돌_페스티벌.webp"},
   {"id": "mobile-123", "category": "Mobile", "genre": "레이싱", "title": "Jet Car Stunts", "company": "GRIP Digital s.r.o.", "image": "./images/games/complete/jet_car_stunts.jpg"},
   {"id": "mobile-124", "category": "Mobile", "genre": "레이싱", "title": "Speed Demons 2", "company": "Radiangames", "image": "./images/games/complete/speed_demons_2.jpg"},
+  {"id": "mobile-126", "category": "Mobile", "genre": "리듬", "title": "DEEMO II", "company": "Rayark", "image": "./images/games/complete/deemo_ii.webp"},
+  {"id": "mobile-127", "category": "Mobile", "genre": "리듬", "title": "Cytus II", "company": "Rayark", "image": "./images/games/complete/cytus_ii.png"},
+  {"id": "mobile-128", "category": "Mobile", "genre": "MMORPG", "title": "역수한", "company": "넷이즈 게임즈", "image": "./images/games/complete/역수한.jpg"},
 ];
