@@ -1,177 +1,56 @@
 ﻿id,category,title,company,target_filename
-pc-3,PC,FC온라인,EA Sports/Nexon,fc온라인.jpg
-pc-6,PC,osu!,ppy,osu.jpg
-pc-7,PC,검은사막,펄어비스,검은사막.jpg
-pc-8,PC,귀혼,엠게임,귀혼.jpg
-pc-9,PC,그랜드체이스,KOG,그랜드체이스.jpg
-pc-10,PC,던전앤파이터,넥슨,던전앤파이터.jpg
-pc-12,PC,로스트아크,스마일게이트 RPG,로스트아크.jpg
-pc-13,PC,리그 오브 레전드,라이엇 게임즈,리그_오브_레전드.jpg
-pc-14,PC,마블 라이벌즈,넷이즈 게임즈,마블_라이벌즈.jpg
-pc-15,PC,메이플스토리,넥슨,메이플스토리.jpg
-pc-16,PC,메이플스토리 월드,넥슨,메이플스토리_월드.jpg
-pc-17,PC,발로란트,라이엇 게임즈,발로란트.jpg
-pc-18,PC,에버플래닛,넥슨,에버플래닛.jpg
-pc-19,PC,이터널 리턴,님블뉴런,이터널_리턴.jpg
-pc-20,PC,스타크래프트 II,블리자드 엔터테인먼트,스타크래프트_ii.jpg
-pc-21,PC,오버워치,블리자드 엔터테인먼트,오버워치.jpg
-pc-22,PC,포트리스 2,CCR,포트리스_2.jpg
-pc-23,PC,바람의나라,넥슨,바람의나라.jpg
-pc-24,PC,서든어택,넥슨지티,서든어택.jpg
-pc-25,PC,카트라이더: 드리프트,넥슨,카트라이더_드리프트.jpg
-pc-26,PC,크레이지아케이드,넥슨,크레이지아케이드.jpg
-pc-27,PC,테일즈위버,넥슨,테일즈위버.jpg
-pc-28,PC,클로저스,Nadic Games,클로저스.jpg
-pc-29,PC,워크래프트 III: 리포지드,블리자드 엔터테인먼트,워크래프트_iii_리포지드.jpg
-pc-30,PC,배틀라이트,Stunlock Studios,배틀라이트.jpg
-pc-31,PC,버블슈터,다수,버블슈터.jpg
-pc-32,PC,버블파이터,넥슨,버블파이터.jpg
-pc-33,PC,봄버맨 온라인,Hudson Soft,봄버맨_온라인.jpg
-pc-34,PC,뿌까 퍼니레이스,다수,뿌까_퍼니레이스.jpg
+pc-34,PC,뿌까 퍼니레이스,그라비티,뿌까_퍼니레이스.jpg
 pc-35,PC,서머너즈 워: 크로니클,컴투스,서머너즈_워_크로니클.jpg
 pc-36,PC,서유기전 온라인,엠게임,서유기전_온라인.jpg
 pc-37,PC,SUPERVIVE,Theorycraft Games,supervive.jpg
 pc-38,PC,스타크래프트,블리자드 엔터테인먼트,스타크래프트.jpg
-pc-39,PC,얍카,다수,얍카.jpg
-pc-40,PC,에어라이더,넥슨,에어라이더.jpg
-pc-41,PC,엑스틸,엔씨소프트,엑스틸.jpg
+pc-39,PC,얍카,열림커뮤니케이션,얍카.jpg
 pc-42,PC,엘소드,KOG,엘소드.jpg
-pc-43,PC,열혈강호,엠게임,열혈강호.jpg
-pc-44,PC,우뿌,다수,우뿌.jpg
-pc-45,PC,워헤이븐,넥슨,워헤이븐.jpg
-pc-46,PC,웜즈 온라인,Team17,웜즈_온라인.jpg
-pc-47,PC,윈드슬레이어,다수,윈드슬레이어.jpg
+pc-44,PC,우뿌,NHN,우뿌.jpg
+pc-47,PC,윈드슬레이어,해밀린,윈드슬레이어.jpg
 pc-48,PC,전략적 팀 전투,라이엇 게임즈,전략적_팀_전투.jpg
-pc-49,PC,커츠펠,KOG,커츠펠.jpg
-pc-50,PC,케로로파이터,다수,케로로파이터.jpg
+pc-50,PC,케로로파이터,온미디어,케로로파이터.jpg
 pc-51,PC,쿵야 어드벤처,넷마블,쿵야_어드벤처.jpg
 pc-52,PC,큐플레이,넥슨,큐플레이.jpg
-pc-53,PC,크레이지레이싱 카트라이더,넥슨,크레이지레이싱_카트라이더.jpg
 pc-54,PC,톰 클랜시의 레인보우식스 시즈,유비소프트,톰_클랜시의_레인보우식스_시즈.jpg
 pc-55,PC,Path of Exile 2,Grinding Gear Games,path_of_exile_2.jpg
 pc-56,PC,프리프,Gala Lab,프리프.jpg
-pc-57,PC,피구왕 마시마로,다수,피구왕_마시마로.jpg
 pc-58,PC,하스스톤,블리자드 엔터테인먼트,하스스톤.jpg
-pc-59,PC,하이퍼유니버스,Cwiggl,하이퍼유니버스.jpg
+pc-59,PC,하이퍼유니버스,CWAVESOFT,하이퍼유니버스.jpg
 pc-60,PC,히어로즈 오브 더 스톰,블리자드 엔터테인먼트,히어로즈_오브_더_스톰.jpg
-pc-61,PC,마법학교 아르피아,엔씨소프트,마법학교_아르피아.jpg
 pc-62,PC,마법학교 아스티넬,엔씨소프트,마법학교_아스티넬.jpg
-pc-63,PC,믹스마스터,다수,믹스마스터.jpg
-pc-64,PC,바우트,다수,바우트.jpg
-pc-65,PC,라테일,HappyTuk,라테일.jpg
-pc-66,PC,디지몬 RPG,MoveGames,디지몬_rpg.jpg
+pc-63,PC,믹스마스터,싸이미디어,믹스마스터.jpg
+pc-64,PC,바우트,엔로그소프트,바우트.jpg
+pc-65,PC,라테일,Actoz Soft,라테일.jpg
+pc-66,PC,디지몬 RPG,Move Games,디지몬_rpg.jpg
 pc-67,PC,디지몬 온라인,Bandai,디지몬_온라인.jpg
 pc-68,PC,로스트사가,Valofe,로스트사가.jpg
-mobile-6,Mobile,Pokémon Duel,The Pokémon Company,pokemon_duel.jpg
-mobile-8,Mobile,블루 아카이브,넥슨게임즈,블루_아카이브.jpg
-mobile-12,Mobile,Plague Inc. (전염병 주식회사),Ndemic Creations,plague_inc_전염병_주식회사.jpg
-mobile-17,Mobile,2010 프로야구,게임빌,2010_프로야구.jpg
-mobile-18,Mobile,2011 프로야구,게임빌,2011_프로야구.jpg
-mobile-20,Mobile,2013 프로야구,게임빌,2013_프로야구.jpg
-mobile-23,Mobile,Subway Surfers,Kiloo,subway_surfers.jpg
-mobile-24,Mobile,Temple Run,Imangi Studios,temple_run.jpg
-mobile-26,Mobile,Blockudoku - 블록 퍼즐 게임,Easybrain,blockudoku_블록_퍼즐_게임.jpg
-mobile-32,Mobile,궁수의 전설,Habby,궁수의_전설.jpg
-mobile-34,Mobile,Groove Coaster 2,Taito,groove_coaster_2.jpg
-mobile-35,Mobile,길건너 친구들,Hipster Whale,길건너_친구들.jpg
-mobile-36,Mobile,깨어난 마녀,Yostar,깨어난_마녀.jpg
+mobile-29,Mobile,가디언 테일즈,Kong Studios,가디언_테일즈.jpg
 mobile-40,Mobile,드래곤플라이트,NextFloor,드래곤플라이트.jpg
 mobile-41,Mobile,디지몬 링크즈,반다이 남코,디지몬_링크즈.jpg
 mobile-47,Mobile,매직서바이벌,lemo,매직서바이벌.jpg
-mobile-48,Mobile,메이플스토리 LIVE,넥슨,메이플스토리_live.jpg
 mobile-49,Mobile,메이플스토리 M,넥슨,메이플스토리_m.jpg
 mobile-50,Mobile,메이플스토리 도적편,넥슨,메이플스토리_도적편.jpg
-mobile-51,Mobile,메이플스토리 시그너스기사단,넥슨,메이플스토리_시그너스기사단.jpg
 mobile-52,Mobile,메이플스토리 핸디월드,넥슨,메이플스토리_핸디월드.jpg
 mobile-53,Mobile,명일방주: 엔드필드,하이퍼그리프,명일방주_엔드필드.jpg
 mobile-54,Mobile,명조:워더링 웨이브,쿠로 게임즈,명조_워더링_웨이브.jpg
-mobile-55,Mobile,모두의 마블,넷마블,모두의_마블.jpg
-mobile-56,Mobile,바람의나라: 연,넥슨,바람의나라_연.jpg
-mobile-57,Mobile,바운스볼,다수,바운스볼.jpg
-mobile-58,Mobile,뱅드림! 걸즈 밴드 파티!,Craft Egg,뱅드림_걸즈_밴드_파티.jpg
-mobile-59,Mobile,별이 되어라2,FLINT,별이_되어라2.jpg
-mobile-60,Mobile,브라운더스트,네오위즈,브라운더스트.jpg
-mobile-61,Mobile,브라운더스트 2,네오위즈,브라운더스트_2.jpg
-mobile-62,Mobile,블랙서바이벌,님블뉴런,블랙서바이벌.jpg
-mobile-63,Mobile,삼국지 책략전,다수,삼국지_책략전.jpg
-mobile-64,Mobile,삼국지 천하포무,다수,삼국지_천하포무.jpg
-mobile-65,Mobile,서울 2033,Banjiha Games,서울_2033.jpg
-mobile-66,Mobile,세븐 데이즈,Buff Studio,세븐_데이즈.jpg
 mobile-67,Mobile,소녀전선,Mica Team,소녀전선.jpg
 mobile-68,Mobile,소녀전선2: 망명,Mica Team,소녀전선2_망명.jpg
-mobile-69,Mobile,소드마스터 스토리,SuperPlanet,소드마스터_스토리.jpg
-mobile-70,Mobile,슈퍼액션히어로3,컴투스,슈퍼액션히어로3.jpg
-mobile-71,Mobile,스노우레인1,다수,스노우레인1.jpg
-mobile-72,Mobile,스노우레인2,다수,스노우레인2.jpg
-mobile-73,Mobile,스매시 레전드,5minlab,스매시_레전드.jpg
-mobile-74,Mobile,신선놀음 이모탈,다수,신선놀음_이모탈.jpg
-mobile-75,Mobile,아스팔트 6: 아드레날린,Gameloft,아스팔트_6_아드레날린.jpg
-mobile-76,Mobile,아이돌마스터 신데렐라 걸즈 스타라이트 스테이지,사이게임즈,아이돌마스터_신데렐라_걸즈_스타라이트_스테이지.jpg
-mobile-77,Mobile,언더월드 오피스,Buff Studio,언더월드_오피스.jpg
-mobile-78,Mobile,얼터 에고,Caramel Column,얼터_에고.jpg
-mobile-79,Mobile,얼티밋 스쿨,NetEase,얼티밋_스쿨.jpg
-mobile-80,Mobile,우마무스메 프리티 더비,사이게임즈,우마무스메_프리티_더비.jpg
-mobile-81,Mobile,원펀맨: 최강의 남자,다수,원펀맨_최강의_남자.jpg
 mobile-82,Mobile,Yu-Gi-Oh! Duel Links,코나미,yu_gi_oh_duel_links.jpg
 mobile-83,Mobile,Yu-Gi-Oh! Master Duel,코나미,yu_gi_oh_master_duel.jpg
-mobile-84,Mobile,이노티아 4,컴투스,이노티아_4.jpg
-mobile-85,Mobile,제노니아 3,게임빌,제노니아_3.jpg
-mobile-86,Mobile,제노니아 4,게임빌,제노니아_4.jpg
 mobile-87,Mobile,제노니아 5,게임빌,제노니아_5.jpg
-mobile-88,Mobile,젠레스 존 제로,호요버스,젠레스_존_제로.jpg
-mobile-89,Mobile,중고로운 평화나라,다수,중고로운_평화나라.jpg
-mobile-90,Mobile,카미츠바키시 협주중.,다수,카미츠바키시_협주중.jpg
-mobile-91,Mobile,카오스앤디펜스,다수,카오스앤디펜스.jpg
-mobile-92,Mobile,카운터사이드,Studiobside,카운터사이드.jpg
-mobile-93,Mobile,카툰워즈2,게임빌,카툰워즈2.jpg
-mobile-94,Mobile,카트라이더 러쉬플러스,넥슨,카트라이더_러쉬플러스.jpg
-mobile-95,Mobile,캔디크러쉬사가,King,캔디크러쉬사가.jpg
-mobile-96,Mobile,쿠키런: 오븐브레이크,데브시스터즈,쿠키런_오븐브레이크.jpg
-mobile-97,Mobile,쿵야 캐치마인드,넷마블,쿵야_캐치마인드.jpg
-mobile-98,Mobile,크루세이더 퀘스트,LoadComplete,크루세이더_퀘스트.jpg
-mobile-99,Mobile,팔라독,Fazecat,팔라독.jpg
-mobile-100,Mobile,포켓몬 카드 게임 Pocket,Creatures,포켓몬_카드_게임_pocket.jpg
 mobile-101,Mobile,프로젝트 세카이 컬러풀 스테이지! feat.하츠네 미쿠,세가,프로젝트_세카이_컬러풀_스테이지_feat하츠네_미쿠.jpg
-mobile-102,Mobile,프린세스 커넥트! Re:Dive,사이게임즈,프린세스_커넥트_re_dive.jpg
-mobile-103,Mobile,할아버지와 요람,다수,할아버지와_요람.jpg
-mobile-104,Mobile,허언증 소개팅,다수,허언증_소개팅.jpg
-mobile-105,Mobile,호연,엔씨소프트,호연.jpg
-mobile-106,Mobile,히트2,넥슨,히트2.jpg
 mobile-107,Mobile,Cytus,Rayark,cytus.jpg
 mobile-108,Mobile,DEEMO,Rayark,deemo.jpg
-mobile-121,Mobile,무한의 계단,엔플라이스튜디오,무한의_계단.jpg
-console-1,Console,엘든 링,프롬 소프트웨어,엘든_링.jpg
-console-2,Console,Look Outside,개발사 미상,look_outside.jpg
-console-4,Console,활협전,Obis Loop,활협전.jpg
-console-5,Console,Plants vs. Zombies,PopCap Games,plants_vs_zombies.jpg
-console-9,Console,Portal 2,밸브 코퍼레이션,portal_2.jpg
-console-11,Console,산나비,Wonder Potion,산나비.jpg
-console-21,Console,Blasphemous,The Game Kitchen,blasphemous.jpg
-console-25,Console,DNF Duel,Arc System Works/Nexon,dnf_duel.jpg
-console-27,Console,스노우 브라더스 2,Toaplan,스노우_브라더스_2.jpg
-console-28,Console,스노우 브라더스,Toaplan,스노우_브라더스.jpg
-console-41,Console,Grand Theft Auto: Chinatown Wars,락스타 게임즈,grand_theft_auto_chinatown_wars.jpg
-console-42,Console,Grand Theft Auto: San Andreas,락스타 게임즈,grand_theft_auto_san_andreas.jpg
-console-45,Console,Ib,kouri,ib.jpg
-console-50,Console,Nidhogg,Messhof,nidhogg.jpg
-console-53,Console,Palworld,Pocketpair,palworld.jpg
-console-54,Console,P의 거짓,NEOWIZ,p의_거짓.jpg
-console-70,Console,가정교사 히트맨 REBORN! DS 플레임 럼블 XX 초결전! 리얼 6조화,Takara Tomy,가정교사_히트맨_reborn_ds_플레임_럼블_xx_초결전_리얼_6조화.jpg
-console-71,Console,귀곡팔황,다수,귀곡팔황.jpg
-console-72,Console,기적의 분식집,TalesShop,기적의_분식집.jpg
-console-73,Console,나루토 최강닌자 대결집 DS,Tomy,나루토_최강닌자_대결집_ds.jpg
+mobile-123,Mobile,Jet Car Stunts,GRIP Digital s.r.o.,jet_car_stunts.jpg
+mobile-124,Mobile,Speed Demons 2,Radiangames,speed_demons_2.jpg
 console-74,Console,놀러오세요 동물의 숲,닌텐도,놀러오세요_동물의_숲.jpg
-console-75,Console,뉴 슈퍼 마리오브라더스,닌텐도,뉴_슈퍼_마리오브라더스.jpg
 console-76,Console,닌자베이스볼배트맨,Irem,닌자베이스볼배트맨.jpg
-console-77,Console,대역전재판 -나루호도 류노스케의 모험-,캡콤,대역전재판_나루호도_류노스케의_모험.jpg
-console-78,Console,대역전재판2 -나루호도 류노스케의 각오-,캡콤,대역전재판2_나루호도_류노스케의_각오.jpg
 console-79,Console,더 킹 오브 파이터즈 XV,SNK,더_킹_오브_파이터즈_xv.jpg
 console-80,Console,도와줘! 리듬 히어로,닌텐도,도와줘_리듬_히어로.jpg
-console-81,Console,동방비상천 ~ Scarlet Weather Rhapsody.,Twilight Frontier,동방비상천_scarlet_weather_rhapsody.jpg
 console-82,Console,동방비상천칙 ~ 초대형 기뇰의 수수께끼를 쫓아서,Twilight Frontier,동방비상천칙_초대형_기뇰의_수수께끼를_쫓아서.jpg
 console-83,Console,동방영야초 ~ Imperishable Night.,Team Shanghai Alice,동방영야초_imperishable_night.jpg
 console-84,Console,동방요요몽 ~ Perfect Cherry Blossom.,Team Shanghai Alice,동방요요몽_perfect_cherry_blossom.jpg
-console-85,Console,동방췌몽상 ~ Immaterial and Missing Power.,Twilight Frontier,동방췌몽상_immaterial_and_missing_power.jpg
 console-87,Console,동방홍마향 ~ the Embodiment of Scarlet Devil.,Team Shanghai Alice,동방홍마향_the_embodiment_of_scarlet_devil.jpg
 console-88,Console,드래곤 퀘스트 V 천공의 신부,스퀘어 에닉스,드래곤_퀘스트_v_천공의_신부.jpg
 console-89,Console,디지몬 챔피언십,반다이 남코,디지몬_챔피언십.jpg
@@ -181,77 +60,41 @@ console-92,Console,Life is Feudal: MMO,Bitbox Ltd.,life_is_feudal_mmo.jpg
 console-93,Console,레이튼 교수와 이상한 마을,Level-5,레이튼_교수와_이상한_마을.jpg
 console-95,Console,록맨 X,캡콤,록맨_x.jpg
 console-96,Console,리듬 세상,닌텐도,리듬_세상.jpg
-console-97,Console,말랑말랑 두뇌교실,닌텐도,말랑말랑_두뇌교실.jpg
 console-98,Console,메이드 인 와리오,닌텐도,메이드_인_와리오.jpg
-console-99,Console,메타포: 리판타지오,Atlus,메타포_리판타지오.jpg
 console-100,Console,메탈슬러그,SNK,메탈슬러그.jpg
 console-101,Console,메탈슬러그 2,SNK,메탈슬러그_2.jpg
 console-102,Console,메탈슬러그 3,SNK,메탈슬러그_3.jpg
 console-103,Console,메탈슬러그 4,SNK,메탈슬러그_4.jpg
 console-104,Console,메탈슬러그 7,SNK,메탈슬러그_7.jpg
-console-105,Console,Monster Hunter: World,캡콤,monster_hunter_world.jpg
-console-106,Console,미라클 어드벤처,Data East,미라클_어드벤처.jpg
 console-107,Console,별의 커비 도팡 일당의 습격,닌텐도,별의_커비_도팡_일당의_습격.jpg
 console-108,Console,별의 커비 울트라 슈퍼 디럭스,닌텐도,별의_커비_울트라_슈퍼_디럭스.jpg
-console-109,Console,Romance of the Three Kingdoms XI,Koei Tecmo,romance_of_the_three_kingdoms_xi.jpg
-console-110,Console,Romance of the Three Kingdoms XII,Koei Tecmo,romance_of_the_three_kingdoms_xii.jpg
-console-111,Console,삼국지13,Koei Tecmo,삼국지13.jpg
-console-112,Console,삼국지14,Koei Tecmo,삼국지14.jpg
-console-113,Console,Romance of the Three Kingdoms VII,Koei Tecmo,romance_of_the_three_kingdoms_vii.jpg
-console-114,Console,삼국지8,Koei Tecmo,삼국지8.jpg
-console-115,Console,삼국지8 REMAKE,Koei Tecmo,삼국지8_remake.jpg
-console-116,Console,세피리아,다수,세피리아.jpg
+console-113,Console,삼국지7,Koei Tecmo,삼국지7.jpg
 console-117,Console,섹시 파로디우스,코나미,섹시_파로디우스.jpg
 console-118,Console,슈퍼 마리오 64 DS,닌텐도,슈퍼_마리오_64_ds.jpg
 console-119,Console,슈퍼 마리오 랜드 2 6개의 금화,닌텐도,슈퍼_마리오_랜드_2_6개의_금화.jpg
 console-120,Console,슈퍼 마리오 오디세이,닌텐도,슈퍼_마리오_오디세이.jpg
-console-121,Console,슈퍼 피카 랜드,다수,슈퍼_피카_랜드.jpg
 console-122,Console,스크리블너츠 언마스크드,5TH Cell,스크리블너츠_언마스크드.jpg
 console-123,Console,스포어,Maxis,스포어.jpg
-console-124,Console,스폰지밥의 아틀란티스,다수,스폰지밥의_아틀란티스.jpg
-console-126,Console,썸썸편의점,TalesShop,썸썸편의점.jpg
-console-127,Console,The Elder Scrolls V: Skyrim Special Edition,Bethesda,the_elder_scrolls_v_skyrim_special_edition.jpg
+console-124,Console,스폰지밥의 아틀란티스,THQ,스폰지밥의_아틀란티스.jpg
 console-128,Console,역전검사 1,캡콤,역전검사_1.jpg
-console-129,Console,역전재판 1,캡콤,역전재판_1.jpg
-console-130,Console,역전재판 2,캡콤,역전재판_2.jpg
-console-131,Console,역전재판 3,캡콤,역전재판_3.jpg
-console-132,Console,역전재판 4,캡콤,역전재판_4.jpg
-console-133,Console,Ori and the Blind Forest: Definitive Edition,Moon Studios,ori_and_the_blind_forest_definitive_edition.jpg
-console-135,Console,오비스 루프,다수,오비스_루프.jpg
 console-136,Console,유희왕 월드 챔피언십 2008,코나미,유희왕_월드_챔피언십_2008.jpg
 console-137,Console,점프 얼티밋 스타즈,닌텐도,점프_얼티밋_스타즈.jpg
-console-138,Console,젤다의 전설 1,닌텐도,젤다의_전설_1.jpg
 console-139,Console,젤다의 전설 몽환의 모래시계,닌텐도,젤다의_전설_몽환의_모래시계.jpg
-console-140,Console,젤다의 전설 브레스 오브 더 와일드,닌텐도,젤다의_전설_브레스_오브_더_와일드.jpg
-console-141,Console,젤다의 전설 스카이워드 소드 HD,닌텐도,젤다의_전설_스카이워드_소드_hd.jpg
 console-142,Console,젤다의 전설 시간의 오카리나 3D,닌텐도,젤다의_전설_시간의_오카리나_3d.jpg
 console-143,Console,젤다의 전설 이상한 모자,닌텐도,젤다의_전설_이상한_모자.jpg
-console-144,Console,짱구는 못말려 DS 알쏭달쏭 크레용 대작전!,다수,짱구는_못말려_ds_알쏭달쏭_크레용_대작전.jpg
-console-145,Console,철권 6,반다이 남코,철권_6.jpg
-console-146,Console,철권 7,반다이 남코,철권_7.jpg
+console-144,Console,짱구는 못말려 DS 알쏭달쏭 크레용 대작전!,Banpresto,짱구는_못말려_ds_알쏭달쏭_크레용_대작전.jpg
 console-147,Console,초강전기 키카이오,캡콤,초강전기_키카이오.jpg
 console-148,Console,치타맨 1,Active Enterprises,치타맨_1.jpg
-console-149,Console,클레르 옵스퀴르: 33 원정대,Sandfall Interactive,클레르_옵스퀴르_33_원정대.jpg
-console-150,Console,킹 오브 파이터즈 98,SNK,킹_오브_파이터즈_98.jpg
 console-152,Console,터치! 봄버맨 랜드,Hudson Soft,터치_봄버맨_랜드.jpg
-console-153,Console,팀파이트 매니저,Team Samoyed,팀파이트_매니저.jpg
-console-154,Console,Pentiment,Obsidian Entertainment,pentiment.jpg
-console-155,Console,포켓몬: 야돈의 집,The Pokémon Company,포켓몬_야돈의_집.jpg
 console-156,Console,포켓몬스터 Y,닌텐도,포켓몬스터_y.jpg
 console-157,Console,포켓몬스터 금,닌텐도,포켓몬스터_금.jpg
-console-158,Console,포켓몬스터 기라티나,닌텐도,포켓몬스터_기라티나.jpg
-console-159,Console,포켓몬스터 디아루가,닌텐도,포켓몬스터_디아루가.jpg
+console-158,Console,포켓몬스터 플래티넘,닌텐도,포켓몬스터_플래티넘.jpg
+console-159,Console,포켓몬스터 다이아몬드,닌텐도,포켓몬스터_다이아몬드.jpg
 console-160,Console,포켓몬스터 레드,닌텐도,포켓몬스터_레드.jpg
-console-161,Console,포켓몬스터 문,닌텐도,포켓몬스터_문.jpg
-console-162,Console,포켓몬스터 소드,닌텐도,포켓몬스터_소드.jpg
 console-163,Console,포켓몬스터 스칼렛,닌텐도,포켓몬스터_스칼렛.jpg
 console-164,Console,포켓몬스터 알파 사파이어,닌텐도,포켓몬스터_알파_사파이어.jpg
 console-165,Console,포켓몬스터 에메랄드,닌텐도,포켓몬스터_에메랄드.jpg
-console-166,Console,포켓몬스터 울트라문,닌텐도,포켓몬스터_울트라문.jpg
-console-167,Console,포켓몬스터 파랑구조대,닌텐도,포켓몬스터_파랑구조대.jpg
 console-168,Console,포켓몬스터 파이어레드,닌텐도,포켓몬스터_파이어레드.jpg
 console-169,Console,포켓몬스터 피카츄,닌텐도,포켓몬스터_피카츄.jpg
 console-170,Console,포켓몬스터 하트골드,닌텐도,포켓몬스터_하트골드.jpg
-console-171,Console,포켓몬스터 화이트,닌텐도,포켓몬스터_화이트.jpg
-console-172,Console,포켓몬스터 화이트 2,닌텐도,포켓몬스터_화이트_2.jpg
-console-173,Console,푸른뇌정 건볼트,Inti Creates,푸른뇌정_건볼트.jpg
+console-176,Console,MiSide,AIHASTO,miside.jpg
