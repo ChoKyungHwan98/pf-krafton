@@ -37,20 +37,20 @@ function App() {
   };
 
   // Supabase Data
-  const [resumeData, setResumeData, resumeLoaded] = useEditableContent(RESUME_DATA, 'resume_data');
-  const [projectsData, setProjectsData, projectsLoaded] = useEditableContent(PROJECTS, 'projects_data_v2');
-  const [portfolioProjects, setPortfolioProjects, portfolioLoaded] = useEditableContent(PROJECTS, 'portfolio_projects_v2');
-  const [gameHistory, setGameHistory, gameHistoryLoaded] = useEditableContent(GAME_HISTORY, 'game_history');
+  const [resumeData, setResumeData, resumeLoaded] = useEditableContent(RESUME_DATA, 'webzen_resume_data');
+  const [projectsData, setProjectsData, projectsLoaded] = useEditableContent(PROJECTS, 'webzen_projects_data_v2');
+  const [portfolioProjects, setPortfolioProjects, portfolioLoaded] = useEditableContent(PROJECTS, 'webzen_portfolio_projects_v2');
+  const [gameHistory, setGameHistory, gameHistoryLoaded] = useEditableContent(GAME_HISTORY, 'webzen_game_history');
   const [skillsData, setSkillsData] = useState(SKILLS);
   const [heroContent, setHeroContent, heroLoaded] = useEditableContent({
     titleLine1: "기획의도를 알고",
     titleLine2: "목차를 쓸줄 아는 기획자",
     description: "법학의 치밀한 논리 구조를 게임 기획에 적용합니다.\n기획 의도가 흔들리지 않는 튼튼한 뼈대를 설계하여,\n다양한 변수 속에서도 본연의 재미가 유지되는 환경을 만듭니다."
-  }, 'hero_content');
+  }, 'webzen_hero_content');
   const [aboutContent, setAboutContent, aboutLoaded] = useEditableContent({
     p1: "법학이 '-에서 0으로 되돌리는 일'이었다면,<br/>게임은 누군가의 하루를 <strong>'0에서 +가 되는 경험'</strong>으로 만드는 일입니다.<br/>탄탄한 시스템의 논리적 뼈대 위에서,<br/>유저의 마음에 즐거움이라는 <strong>감성을 채워넣는 것</strong> —<br/>그것이 제가 생각하는 게임 기획의 본질입니다.",
     p2: "저는 누군가의 하루를 움직이는,<br/><strong>+를 설계하는 기획자</strong>가 되겠습니다."
-  }, 'about_content');
+  }, 'webzen_about_content');
 
   const isDataLoaded = resumeLoaded && projectsLoaded && portfolioLoaded && gameHistoryLoaded && heroLoaded && aboutLoaded;
 

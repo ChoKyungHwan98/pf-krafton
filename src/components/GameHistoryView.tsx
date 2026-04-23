@@ -84,20 +84,10 @@ export const GameHistoryView = ({ onBack }: GameHistoryViewProps) => {
       animationFrameId = requestAnimationFrame(animateScroll);
     }, 1200);
 
-    // 유저 개입 시 즉시 스크롤 중단 및 화면 정상화
-    const handleWheel = () => { 
-      isCancelled = true; 
-      setIntroPhase(prev => prev === 'splash' ? 'splash' : 'done');
-    };
-    window.addEventListener('wheel', handleWheel, { passive: true });
-    window.addEventListener('touchstart', handleWheel, { passive: true });
-
     return () => {
       isCancelled = true;
       clearTimeout(splashTimer);
       cancelAnimationFrame(animationFrameId);
-      window.removeEventListener('wheel', handleWheel);
-      window.removeEventListener('touchstart', handleWheel);
     };
   }, []);
 
