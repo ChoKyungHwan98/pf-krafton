@@ -1,0 +1,11 @@
+--- 1. 플랫폼 간 중복 (Cross-platform) ---
+없음
+
+--- 2. 리스트 내 중첩 (Bundle vs Individual) ---
+[PC]: ["'메이플스토리' is included in '메이플스토리2'", "'메이플스토리' is included in '메이플스토리월드'", "'스타크래프트' is included in '스타크래프트 2'"]
+[Mobile]: ["'소녀전선' is included in '소녀전선 2: 망명'", "'브라운더스트' is included in '브라운더스트 2'", "'Cytus' is included in 'Cytus II'"]
+[Console]: ["'메탈슬러그' is included in '메탈슬러그 3'", "'메탈슬러그' is included in '메탈슬러그 2'", "'메탈슬러그' is included in '메탈슬러그 4'", "'단간론파' is included in '단간론파 3'", "'단간론파' is included in '슈퍼 단간론파2'", "'DARK SOULS™ II' is included in 'DARK SOULS™ III'", "'삼국지 8' is included in '삼국지 8 리메이크'"]
+
+--- 3. 시리즈물 분류 (Series Check) ---
+[삼국지]: 삼국지 7, 삼국지 8, 삼국지 11, 삼국지 12, 삼국지 14
+[메탈슬러그]: 메탈슬러그, 메탈슬러그 2, 메탈슬러그 3, 메탈슬러그 4

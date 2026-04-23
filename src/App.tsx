@@ -80,11 +80,21 @@ function App() {
   const [returnScrollY, setReturnScrollY] = useState<number>(0);
 
   const changeView = (newView: typeof view) => {
+    const isResumeTransition = 
+      (view === 'resume' || view === 'cover-letter') && 
+      (newView === 'resume' || newView === 'cover-letter');
+
     if (view === 'home' && newView !== 'home') {
       setReturnScrollY(window.scrollY);
     }
+    
     setView(newView);
-    if (newView !== 'home') {
+
+    // 사용자 요청: 이력서 <-> 자기소개서 전환 시에만 위로 스크롤
+    if (isResumeTransition) {
+      window.scrollTo(0, 0);
+    } else if (newView !== 'home' && newView !== 'resume' && newView !== 'cover-letter') {
+      // 그 외 포트폴리오, 게임 이력 등으로 갈 때는 기본적으로 최상단으로 이동 (필요 시 유지)
       window.scrollTo(0, 0);
     }
   };

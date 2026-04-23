@@ -1,0 +1,311 @@
+
+=== Sheet: PC ===
+    번호         게임 장르                게임 이름        게임 회사 플레이 시간  기타 어필 사항  클리어 했거나 짧은 기간 플레이 한 게임들은 제외
+0    1           RPG               메이플스토리           넥슨    15년       NaN                          NaN
+1    2          배틀로얄                슈퍼바이브           넥슨    NaN       NaN                          NaN
+2    3           RPG                바람의나라           넥슨    NaN       NaN                          NaN
+3    4           RPG                테일즈위버           넥슨    NaN       NaN                          NaN
+4    5        플랫폼 액션                  엘소드           넥슨    NaN       NaN                          NaN
+5    6        액션 RPG               던전앤파이터           넥슨    NaN       NaN                          NaN
+6    7           FPS                 서든어택           넥슨    NaN       NaN                          NaN
+7    8           캐주얼             크레이지아케이드           넥슨    NaN       NaN                          NaN
+8    9           캐주얼                버블파이터           넥슨    NaN       NaN                          NaN
+9   10           캐주얼             메이플스토리월드           넥슨    NaN       NaN                          NaN
+10  11           스포츠                FC온라인           넥슨    NaN       NaN                          NaN
+11  12            대전               DNF 듀얼           넥슨    NaN       NaN                          NaN
+12  13            퀴즈                 큐플레이           넥슨    NaN       NaN                          NaN
+13  14           레이싱             뿌까 퍼니레이스           넥슨    NaN       NaN                          NaN
+14  15           레이싱        크레이지레이싱 카트라이더           넥슨    NaN       NaN                          NaN
+15  16           레이싱                에어라이더           넥슨    NaN       NaN                          NaN
+16  17        난투형 액션                로스트사가         위메이드    NaN       NaN                          NaN
+17  18           RPG                에버플래닛           넥슨    NaN       NaN                          NaN
+18  19           RPG              메이플스토리2           넥슨    NaN       NaN                          NaN
+19  20           RPG                 클로저스           넥슨    NaN       NaN                          NaN
+20  21           AOS              하이퍼유니버스           넥슨    NaN       NaN                          NaN
+21  22      탑뷰 대전 액션                배틀라이트           넥슨    NaN       NaN                          NaN
+22  23  3인칭 듀얼 액션 배틀                  커츠펠           넥슨    NaN       NaN                          NaN
+23  24        플랫폼 액션               그랜드체이스          넷마블    NaN       NaN                          NaN
+24  25        액션 TPS                 워헤이븐           넥슨    NaN       NaN                          NaN
+25  26           AOS            리그 오브 레전드      라이엇 게임즈    NaN       NaN                          NaN
+26  27           FPS                 발로란트      라이엇 게임즈    NaN       NaN                          NaN
+27  28         오토배틀러             전략적 팀 전투      라이엇 게임즈    NaN       NaN                          NaN
+28  29           RTS               스타크래프트         블리자드    NaN       NaN                          NaN
+29  30           RTS             스타크래프트 2         블리자드    NaN       NaN                          NaN
+30  31           RTS              워크래프트 3         블리자드    NaN       NaN                          NaN
+31  32           CCG                 하스스톤         블리자드    NaN       NaN                          NaN
+32  33         히어로슈터                 오버워치         블리자드    NaN       NaN                          NaN
+33  34          MOBA         히어로즈 오브 더 스톰         블리자드    NaN       NaN                          NaN
+34  35           TPS                  데드락     밸브 코퍼레이션    NaN       NaN                          NaN
+35  36         히어로슈터              팀포트리스 2     밸브 코퍼레이션    NaN       NaN                          NaN
+36  37           FPS  카운터 스트라이크: 글로벌 오펜시브     밸브 코퍼레이션    NaN       NaN                          NaN
+37  38           FPS            레프트 4 데드2     밸브 코퍼레이션    NaN       NaN                          NaN
+38  39     TPS 히어로슈터               마블라이벌즈          넷이즈    NaN       NaN                          NaN
+39  40           RPG                로스트아크       스마일게이트    NaN       NaN                          NaN
+40  41        턴제 RPG            마법학교 아스티넬       야후 코리아    NaN       NaN                          NaN
+41  42        턴제 RPG            마법학교 아르피아       엔씨 소프트    NaN       NaN                          NaN
+42  43           TPS                  엑스틸       엔씨 소프트    NaN       NaN                          NaN
+43  44     쿼터뷰, 배틀로얄               이터널 리턴         님블뉴런    NaN       NaN                          NaN
+44  45          ARPG          패스 오브 엑자일 2  그라인딩 기어 게임즈    NaN       NaN                          NaN
+45  46           RPG                  라테일       액토즈소프트    NaN       NaN                          NaN
+46  47           RPG                   귀혼          엠게임    NaN       NaN                          NaN
+47  48     온라인 포격 게임              디지몬 온라인          CCR    NaN       NaN                          NaN
+48  49           RPG              디지몬 RPG       무브인터렉트    NaN       NaN                          NaN
+49  50           RPG                 열혈강호          엠게임    NaN       NaN                          NaN
+50  51           캐주얼              봄버맨 온라인          엠게임    NaN       NaN                          NaN
+51  52         턴제 포격               웜즈 온라인          엠게임    NaN       NaN                          NaN
+52  53           RPG                   얍카          엠게임    NaN       NaN                          NaN
+53  54           캐주얼                 버블슈터          엠게임    NaN       NaN                          NaN
+54  55           RPG               윈드슬레이어        야후코리아    NaN       NaN                          NaN
+55  56           RPG             서유기전 온라인          넷마블    NaN       NaN                          NaN
+56  57           RPG              쿵야 어드벤처          넷마블    NaN       NaN                          NaN
+57  58        난투형 액션               케로로파이터     구름 인터렉티브    NaN       NaN                          NaN
+58  59           RPG                 검은사막         펄어비스    NaN       NaN                          NaN
+59  60     배틀로얄, FPS         PUBG: 배틀그라운드      펍지 스튜디오    NaN       NaN                          NaN
+60  61           RPG         서머너즈 워: 크로니클          컴투스    NaN       NaN                          NaN
+61  62          SRPG                믹스마스터        싸이미디어    NaN       NaN                          NaN
+62  63            리듬                 osu!        딘 허버트    NaN       NaN                          NaN
+63  64      캐주얼, 스포츠             피구왕 마시마로       야후 코리아    NaN       NaN                          NaN
+64  65       캐주얼, 퍼즐                미스터해머          네오플    NaN       NaN                          NaN
+65  66     캐주얼, 아케이드                   우뿌          한게임    NaN       NaN                          NaN
+66  67       액션, 메카닉                  바우트          한게임    NaN       NaN                          NaN
+67  68           NaN                  NaN          NaN    NaN       NaN                          NaN
+68  69           NaN                  NaN          NaN    NaN       NaN                          NaN
+69  70           NaN                  NaN          NaN    NaN       NaN                          NaN
+70  71           NaN                  NaN          NaN    NaN       NaN                          NaN
+71  72           NaN                  NaN          NaN    NaN       NaN                          NaN
+72  73           NaN                  NaN          NaN    NaN       NaN                          NaN
+73  74           NaN                  NaN          NaN    NaN       NaN                          NaN
+=== Sheet: 모바일 ===
+    번호           게임 장르                                      게임 이름                       게임 회사         플레이 시간  기타 어필 사항  클리어 했거나 짧은 기간 플레이 한 게임들은 제외
+0    1             RPG                                   메이플스토리 M                          넥슨            NaN       NaN                          NaN
+1    2             RPG                                         V4                          넥슨            NaN       NaN                          NaN
+2    3             RPG                                    바람의나라 연                          넥슨            NaN       NaN                          NaN
+3    4         수집형 RPG                                     블루아카이브                          넥슨            NaN       NaN                          NaN
+4    5             RPG                                        히트2                          넥슨            NaN       NaN                          NaN
+5    6             레이싱                                카트라이더: 드리프트                          넥슨            NaN       NaN                          NaN
+6    7             RPG                                메이플스토리 LIVE                          넥슨            NaN       NaN                          NaN
+7    8   수집형 전략 액션 RPG                                     카운터사이드               넥슨 > 스튜디오비사이드            NaN       NaN                          NaN
+8    9             RPG                                 메이플스토리 도적편                          넥슨            NaN       NaN                          NaN
+9   10             RPG                                메이플스토리 핸디월드                          넥슨            NaN       NaN                          NaN
+10  11             RPG                               메이플스토리 시그너스편                          넥슨            NaN       NaN                          NaN
+11  12             AOS                                      브롤스타즈                         슈퍼셀            NaN       NaN                          NaN
+12  13        CCG, RTS                                     클래시 로얄                         슈퍼셀            NaN       NaN                          NaN
+13  14             RTS                                  클래시 오브 클랜                         슈퍼셀            NaN       NaN                          NaN
+14  15             RTS                                        붐비치                         슈퍼셀            NaN       NaN                          NaN
+15  16          난투형 액션                                   스쿼드 버스터즈                         슈퍼셀            NaN       NaN                          NaN
+16  17             TCG                            포켓몬 카드게임 Pocket                     포켓몬 컴퍼니            NaN       NaN                          NaN
+17  18             TCG                                  유희왕 마스터듀얼                         코나미            NaN       NaN                          NaN
+18  19             TCG                                  유희왕 듀얼링크스                         코나미            NaN       NaN                          NaN
+19  20       추리 비주얼 노벨                                   할아버지와 요람                        테일즈샵            NaN       NaN                          NaN
+20  21          비주얼 노벨                                    기적의 분식집                        테일즈샵            NaN       NaN                          NaN
+21  22          비주얼 노벨                                      썸썸편의점                        테일즈샵            NaN       NaN                          NaN
+22  23        연애 시뮬레이션                                     스노우레인1                        게임데이            NaN       NaN                          NaN
+23  24        연애 시뮬레이션                                     스노우레인2                        게임데이            NaN       NaN                          NaN
+24  25       타워디펜스 RPG                                       무기미도                 AISNO Games  2022-10-27 시작       NaN                          NaN
+25  26       타워디펜스 RPG                                       명일방주                  Hypergryph            NaN       NaN                          NaN
+26  27             레이싱                                      아스팔트6                       게임로프트            NaN       NaN                          NaN
+27  28         턴제 배틀로얄                                     블랙서바이벌                        님블뉴런            NaN       NaN                          NaN
+28  29        오픈월드 RPG                                   젠레스 존 제로                   HoYoverse            NaN       NaN                          NaN
+29  30        오픈월드 RPG                                         원신                   HoYoverse            NaN       NaN                          NaN
+30  31              퀴즈                                   쿵야 캐치마인드                         넷마블            NaN       NaN                          NaN
+31  32          육성 RPG                                    디지몬 링크즈                  반다이 남코 게임즈            NaN       NaN                          NaN
+32  33        오픈월드 RPG                                명조: 웨더링 웨이브                  KURO GAMES            NaN       NaN                          NaN
+33  34              리듬                  아이돌마스터 신데렐라 걸즈 스타라이트 스테이지                     Cygames            NaN       NaN                          NaN
+34  35       애니메이션 RPG                          프린세스 커넥트! Re:Dive                     Cygames            NaN       NaN                          NaN
+35  36        육성 시뮬레이션                               우마무스메 프리티 더비                     Cygames            NaN       NaN                          NaN
+36  37              리듬                                      Cytus                      Rayark            NaN       NaN                          NaN
+37  38              리듬                                   Cytus II                      Rayark            NaN       NaN                          NaN
+38  39              리듬                                      DEEMO                      Rayark            NaN       NaN                          NaN
+39  40         수집형 RPG                                   데스티니 차일드                        시프트업            NaN       NaN                          NaN
+40  41             방치형                                  ALTER EGO         Caramel Column Inc.            NaN       NaN                          NaN
+41  42    캐주얼, 핵 앤 슬래시                                     매직서바이벌                        LEME            NaN       NaN                          NaN
+42  43     역사 전략 시뮬레이션                                   삼국지 천하포무                      SLGame            NaN       NaN                          NaN
+43  44     역사 전략 시뮬레이션                                    삼국지 책략전                        하이브로            NaN       NaN                          NaN
+44  45              리듬                                카미츠바키시 협주중.           Kamitubaki Studio            NaN       NaN                          NaN
+45  46             스포츠                                  2010 프로야구                    게임빌(컴투스)            NaN       NaN                          NaN
+46  47             스포츠                                  2011 프로야구                    게임빌(컴투스)            NaN       NaN                          NaN
+47  48             스포츠                                  2012 프로야구                    게임빌(컴투스)            NaN       NaN                          NaN
+48  49             스포츠                                  2013 프로야구                    게임빌(컴투스)            NaN       NaN                          NaN
+49  50             RPG                                     제노니아 3                    게임빌(컴투스)            NaN       NaN                          NaN
+50  51             RPG                                     제노니아 4                    게임빌(컴투스)            NaN       NaN                          NaN
+51  52             RPG                                     제노니아 5                    게임빌(컴투스)            NaN       NaN                          NaN
+52  53             RPG                                     이노티아 4                         컴투스            NaN       NaN                          NaN
+53  54     전략, 디펜스, 대전                                    카오스앤디펜스                        위메이드            NaN       NaN                          NaN
+54  55             방치형                                    AFK 아레나                     릴리스 게임즈            NaN       NaN                          NaN
+55  56          턴제 RPG                                    림버스 컴퍼니                Project Moon            NaN       NaN                          NaN
+56  57        전략 시뮬레이션                                Plague Inc.            Ndemic Creations            NaN       NaN                          NaN
+57  58            롤플레잉                                포켓몬 마스터즈 EX               DeNA, 포켓몬 컴퍼니            NaN       NaN                          NaN
+58  59           로그라이크                    Shattered Pixel Dungeon                        Evan            NaN       NaN                          NaN
+59  60          액션 RPG                                    가디언 테일즈                       콩스튜디오            NaN       NaN                          NaN
+60  61             방치형                                    갓깨비 키우기              Joy Nice Games            NaN       NaN                          NaN
+61  62             RPG                                     깨어난 마녀                   PixelNeko            NaN       NaN                          NaN
+62  63         전략, 디펜스                                랜덤 다이스: 디펜스                      111퍼센트            NaN       NaN                          NaN
+63  64              리듬                             뱅드림! 걸즈 밴드 파티!                    부시로드 게임즈            NaN       NaN                          NaN
+64  65             RPG                           별이 되어라2: 베다의 기사들                         플린트            NaN       NaN                          NaN
+65  66        전략, SRPG                                     브라운더스트                       GAMFS            NaN       NaN                          NaN
+66  67        전략, SRPG                                   브라운더스트 2                     GAMFS N            NaN       NaN                          NaN
+67  68        텍스트 어드벤처                                    서울 2033                      반지하게임즈            NaN       NaN                          NaN
+68  69          비주얼 노벨                                     7 DAYS                 Buff Studio            NaN       NaN                          NaN
+69  70          비주얼 노벨                                   언더월드 오피스                 Buff Studio            NaN       NaN                          NaN
+70  71     턴제 전략 시뮬레이션                                       소녀전선  SUNBORN Network Technology            NaN       NaN                          NaN
+71  72            SRPG                                 소녀전선 2: 망명  SUNBORN Network Technology            NaN       NaN                          NaN
+72  73             RPG                          Last Day on Earth                       Kefir            NaN       NaN                          NaN
+73  74       퍼즐 액션 RPG                                  크루세이더 퀘스트                       로드컴플릿            NaN       NaN                          NaN
+74  75         방치형 RPG                        레전드 오브 슬라임: 방치형 RPG                       로드컴플릿            NaN       NaN                          NaN
+75  76  FPS, TPS, 액션슈터  Pixel Gun 3D: FPS Shooter & Battle Royale                 Cubic Games            NaN       NaN                          NaN
+76  77         액션, 캐주얼                                Doodle Jump                    Lima Sky            NaN       NaN                          NaN
+77  78             캐주얼                                  앵그리버드 시리즈                  로비오 엔터테인먼트            NaN       NaN                          NaN
+78  79             AOS                                 王者荣耀(왕자영요)                     티미 스튜디오            NaN       NaN                          NaN
+79  80              보드                                     모두의 마블                         넷마블            NaN       NaN                          NaN
+80  81              액션                                   슈퍼액션히어로3                         컴투스            NaN       NaN                          NaN
+81  82          2D 디펜스                                     카툰워즈 2               Blue G&C, 게임빌            NaN       NaN                          NaN
+82  83           러닝 액션                                        템플런               IMANGI Studio            NaN       NaN                          NaN
+83  84   종스크롤 러닝 액션 슈팅                                    드래곤플라이트                       라인게임즈            NaN       NaN                          NaN
+84  85          소셜 RPG                                    쿠키런: 킹덤                      데브시스터즈            NaN       NaN                          NaN
+85  86           러닝 액션                                쿠키런: 오븐브레이크                      데브시스터즈            NaN       NaN                          NaN
+86  87             NaN                                    스타 세이비어                         NaN            NaN       NaN                          NaN
+87  88             NaN                                        NaN                         NaN            NaN       NaN                          NaN
+88  89             NaN                                        NaN                         NaN            NaN       NaN                          NaN
+=== Sheet: 콘솔 및 기타 ===
+      번호                 게임 장르                                     게임 이름                      게임 회사  플레이 시간                기타 어필 사항  클리어 했거나 짧은 기간 플레이 한 게임들은 제외
+0      1              오픈월드 RPG                                      鬼谷八荒                      鬼谷工作室     NaN                     NaN                          NaN
+1      2              1인칭 슈팅액션                                     보더랜드2                 기어박스 소프트웨어     NaN                     NaN                          NaN
+2      3              1인칭 슈팅액션                                     보더랜드3                 기어박스 소프트웨어     NaN                     NaN                          NaN
+3      4              전략 시뮬레이션                               시드마이어의 문명 V                  파이락시스 게임즈     NaN                     NaN                          NaN
+4      5         1인칭 오픈월드 ARPG                                     킹덤컴 2                   워호스 스튜디오     NaN                     NaN                          NaN
+5      6               액션 어드벤처                                       산나비                       원더포션     NaN                     NaN                          NaN
+6      7                  법정배틀                            역전재판1, 2, 3, 4                         캡콤     NaN                     NaN                          NaN
+7      8                  법정배틀                                    역전검사 1                         캡콤     NaN                     NaN                          NaN
+8      9           하이스피드 추리 액션                                      단간론파                  스파이크 춘소프트     NaN                     NaN                          NaN
+9     10           하이스피드 추리 액션                                  슈퍼 단간론파2                  스파이크 춘소프트     NaN                     NaN                          NaN
+10    11           하이스피드 추리 액션                                    단간론파 3                  스파이크 춘소프트     NaN                     NaN                          NaN
+11    12             오픈월드 ARPG                                    인슈라오디드                      킨 게임즈     NaN                     NaN                          NaN
+12    13                 시뮬레이션                                  팀파이트 매니저                     팀 사모예드     NaN                     NaN                          NaN
+13    14                    액션                                      포 아너                      유비소프트     NaN                     NaN                          NaN
+14    15         무협, 전기 비주얼 노벨                                       활협전                 Obb Studio     NaN                     NaN                          NaN
+15    16           캐주얼, 추리, 공포                                  Among Us                 Innersloth     NaN                     NaN                          NaN
+16    17          라이트 노벨 2D 액션                                  푸른뇌정 건볼트                   인티 크리에이츠     NaN                     NaN                          NaN
+17    18                턴제 RPG                                 발더스 게이트 3                   라리안 스튜디오     NaN                     NaN                          NaN
+18    19         대전 격투, 슈팅, 중세                Chivarly: Medieval Warfare                  톤 배너 스튜디오     NaN                     NaN                          NaN
+19    20           오픈월드 액션 RPG                                사이버펑크 2077             CD PROJEKT RED     NaN                     NaN                          NaN
+20    21        3인칭 소울류 액션 RPG                              다크소울 1: 리마스터                   프롬 소프트웨어     NaN                     NaN                          NaN
+21    22        3인칭 소울류 액션 RPG                                    다크소울 2                   프롬 소프트웨어     NaN                     NaN                          NaN
+22    23        3인칭 소울류 액션 RPG                                    다크소울 3                   프롬 소프트웨어     NaN                     NaN                          NaN
+23    24           3인칭 액션 어드벤처                          세키로: 섀도우 다이 트와이스                   프롬 소프트웨어     NaN                     NaN                          NaN
+24    25         3인칭 오픈월드 ARPG                          엘든 링: 황금 나무의 그림자                   프롬 소프트웨어     NaN                     NaN                          NaN
+25    26           협력형 서바이벌 액션                               엘든 링 밤의 통치자                   프롬 소프트웨어     NaN                     NaN                          NaN
+26    27                    리듬                           DJMAX RESPECT V                    로키 스튜디오     NaN                     NaN                          NaN
+27    28             오픈월드 ARPG                             엘더스크롤 5: 스카이림               베데스다 게임 스튜디오     NaN                     NaN                          NaN
+28    29               서바이벌 호러                                The Forest                   Endnight     NaN                     NaN                          NaN
+29    30                추리, 퍼즐                               Ghost Trick                         캡콤     NaN                     NaN                          NaN
+30    31         오픈 월드 액션 어드벤처             Grand Theft Auto: San Andreas                     락스타 노스     NaN                     NaN                          NaN
+31    32         오픈 월드 액션 어드벤처                        Grand Theft Auto V                     락스타 노스     NaN                     NaN                          NaN
+32    33         오픈 월드 액션 어드벤처          Grand Theft Auto: Chinatown Wars                     락스타 노스     NaN                     NaN                          NaN
+33    34                 대법정배틀                     대역전재판 -나루호도 류노스케의 모험-                         캡콤     NaN                     NaN                          NaN
+34    35                 대법정배틀                    대역전재판2 -나루호도 류노스케의 각오-                         캡콤     NaN                     NaN                          NaN
+35    36              어드벤처, 퍼즐                                      헬테이커                  vanripper     NaN                     NaN                          NaN
+36    37          플랫포머, 메트로배니아                                   할로우 나이트                Team Cherry     NaN                     NaN                          NaN
+37    38    퍼즐, CCG, 로그라이크, 호러                               Inscryption       Daniel Mullins Games     NaN                     NaN                          NaN
+38    39               핵 앤 슬래시                                    카타나 제로                  Askiisoft     NaN                     NaN                          NaN
+39    40                 대전 격투                            더 킹 오브 파이터즈 XV                        SNK     NaN                     NaN                          NaN
+40    41          어드벤처, 퍼즐, 추리                             Legal Dungeon                       SOMI     NaN                     NaN                          NaN
+41    42               오픈월드 생존                       Life is Feudal: MMO                        LTG     NaN                     NaN                          NaN
+42    43                 헌팅 액션                                몬스터 헌터: 월드                         캡콤     NaN                     NaN                          NaN
+43    44               횡스크롤 리듬                                     뮤즈 대시              PeroPeroGames     NaN                     NaN                          NaN
+44    45            심리 호러, RPG                                     OMORI                     OMOCAT     NaN                     NaN                          NaN
+45    46            3인칭 액션 RPG                                     P의 거짓                  라운드8 스튜디오     NaN                     NaN                          NaN
+46    47       오픈월드, TPS, 서바이벌                                       팰월드                 PocketPair     NaN                     NaN                          NaN
+47    48               액션, FPS                                  PAYDAY 2                 스타브리즈 스튜디오     NaN                     NaN                          NaN
+48    49         내러티브 RPG 어드벤처                                 Pentiment                옵시디언 엔터테인먼트     NaN                     NaN                          NaN
+49    50               액션, 캐주얼                              Pummel Party              Rebuilt Games     NaN                     NaN                          NaN
+50    51        RPG, 탑뷰 탄막 런앤건                      Realm of the Mad God        Wild Shadow Studios     NaN                     NaN                          NaN
+51    52         오픈 월드 액션 어드벤처                     Red Dead Redemption 2                   락스타 스튜디오     NaN                     NaN                          NaN
+52    53         샌드박스, 생존, FPS                                      Rust          Facepunch Studios     NaN                     NaN                          NaN
+53    54       덱 빌딩, 전략, 로그라이크                            Slay the Spire            Mega Crit Games     NaN                     NaN                          NaN
+54    55                   RPG                            Spiral Knights           Grey Havens, LLC     NaN                     NaN                          NaN
+55    56                 대전 격투                                      철권 7              반다이 남코 엔터테인먼트     NaN                     NaN                          NaN
+56    57                 대전 격투                                      철권 6              반다이 남코 엔터테인먼트     NaN                     NaN                          NaN
+57    58   인디, 샌드박스, 횡스크롤, RPG                                      테라리아                   Re-Logic     NaN                     NaN                          NaN
+58    59           퍼즐, 잠입, 코미디                       Untitled Goose Game                House House     NaN                     NaN                          NaN
+59    60       오픈 월드 생존 액션 RPG                                  V Rising           Stunlock Studios     NaN                     NaN                          NaN
+60    61        탄막 슈팅, 핵 앤 슬래시                         Vampire Survivors                     poncle     NaN                     NaN                          NaN
+61    62       건설 경영 시뮬레이션, 생존                                 Frostpunk                 11 비트 스튜디오     NaN                     NaN                          NaN
+62    63              생존, 어드벤처                          This War of Mine                 11 비트 스튜디오     NaN                     NaN                          NaN
+63    64               액션 플랫포머                               Get To Work                   Isto Inc     NaN                     NaN                          NaN
+64    65  액션 플랫포머, 메트로배니아 어드벤처                                  오리와 눈먼 숲                     문 스튜디오     NaN                     NaN                          NaN
+65    66  액션 플랫포머, 메트로배니아 어드벤처                                  오리와 도깨비불                     문 스튜디오     NaN                     NaN                          NaN
+66    67        인디, 슈팅, 퍼즐, 공포                                 Undertale                   Toby Fox     NaN                     NaN                          NaN
+67    68            비주얼 노벨, 퍼즐                    7 Days to End with You                   Lizardry     NaN                     NaN                          NaN
+68    69             캐주얼, 어드벤처                     Refind Self: 성격 진단 게임                   Lizardry     NaN                     NaN                          NaN
+69    70          TPS, 액션 어드벤처                                 A Way Out                헤이즈라이트 스튜디오     NaN                     NaN                          NaN
+70    71                턴제 RPG               Clair Obscur: Expedition 33                  샌드폴 인터랙티브     NaN                     NaN                          NaN
+71    72               액션 플랫포머                                 슈퍼 마리오 64                        닌텐도     NaN                     NaN                          NaN
+72    73               액션 플랫포머                         슈퍼 마리오 랜드2 6개의 금화                        닌텐도     NaN                     NaN                          NaN
+73    74               액션 어드벤처                               슈퍼 마리오 오디세이                        닌텐도     NaN                     NaN                          NaN
+74    75                   레이싱                                 마리오 카트 DS                        닌텐도     NaN                     NaN                          NaN
+75    76                   레이싱                              마리오 카트 8 디럭스                        닌텐도     NaN                     NaN                          NaN
+76    77               액션 어드벤처                                   젤다의 전설1                        닌텐도     NaN                     NaN                          NaN
+77    78               액션 어드벤처                             젤다의 전설 이상한 모자                       플래그십     NaN                     NaN                          NaN
+78    79               액션 어드벤처                           젤다의 전설 몽환의 모래시계                        닌텐도     NaN                     NaN                          NaN
+79    80               액션 어드벤처                           젤다의 전설 시간의 오카리나                        닌텐도     NaN                     NaN                          NaN
+80    81               액션 어드벤처                           젤다의 전설 스카이워드 소드                        닌텐도     NaN                     NaN                          NaN
+81    82      3인칭 오픈월드 액션 어드벤처                       젤다의 전설 브레스 오브 더 와일드                        닌텐도     NaN                     NaN                          NaN
+82    83                난투형 액션                            슈퍼 스매시브라더스 얼티밋                        닌텐도     NaN                     NaN                          NaN
+83    84                   RPG                                  포켓몬스터 레드                      게임프리크     NaN                     NaN                          NaN
+84    85                   RPG                                 포켓몬스터 피카츄                      게임프리크     NaN                     NaN                          NaN
+85    86                   RPG                                  포켓몬스터 골드                      게임프리크     NaN                     NaN                          NaN
+86    87                   RPG                                포켓몬스터 에메랄드                      게임프리크     NaN                     NaN                          NaN
+87    88                   RPG                               포켓몬스터 파이어레드                      게임프리크     NaN                     NaN                          NaN
+88    89                   RPG                              포켓몬스터DP 디아루가                      게임프리크     NaN                     NaN                          NaN
+89    90                   RPG                             포켓몬스터 Pt 기라티나                      게임프리크     NaN                     NaN                          NaN
+90    91                   RPG                                포켓몬스터 하트골드                      게임프리크     NaN                     NaN                          NaN
+91    92                   RPG                                 포켓몬스터 화이트                      게임프리크     NaN  화이트부터 울트라 썬 까지 레이팅 플레이                          NaN
+92    93                   RPG                                 포켓몬스터 블랙2                      게임프리크     NaN                     NaN                          NaN
+93    94                   RPG                                   포켓몬스터 X                      게임프리크     NaN                     NaN                          NaN
+94    95                   RPG                              포켓몬스터 알파사파이어                      게임프리크     NaN                     NaN                          NaN
+95    96                   RPG                                   포켓몬스터 썬                      게임프리크     NaN                     NaN                          NaN
+96    97                   RPG                                포켓몬스터 울트라썬                      게임프리크     NaN                     NaN                          NaN
+97    98                   RPG                                  포켓몬스터 소드                      게임프리크     NaN                     NaN                          NaN
+98    99                   RPG                     Pokémon LEGENDS 아르세우스                      게임프리크     NaN                     NaN                          NaN
+99   100                   RPG                                 포켓몬스터 스칼렛                      게임프리크     NaN                     NaN                          NaN
+100  101             플랫폼 액션 게임                          별의 커비 울트라 슈퍼 디럭스                    HAL 연구소     NaN                     NaN                          NaN
+101  102             플랫폼 액션 게임                           별의 커비 도팡 일당의 습격                    HAL 연구소     NaN                     NaN                          NaN
+102  103      오픈월드, 샌드박스, 서바이벌                                    마인크래프트             Mojang Studios     NaN                     NaN                          NaN
+103  104                   TPS                              Helldivers 2     Arrowhead Game Studios     NaN                     NaN                          NaN
+104  105                 탄막 슈팅  동방홍마향 ~ the Embodiment of Scarlet Devil.                상하이 앨리스 환악단     NaN                     NaN                          NaN
+105  106                 탄막 슈팅           동방요요몽 ~ Perfect Cherry Blossom.                상하이 앨리스 환악단     NaN                     NaN                          NaN
+106  107                 탄막 슈팅               동방영야초 ~ Imperishable Night.                상하이 앨리스 환악단     NaN                     NaN                          NaN
+107  108                 탄막 슈팅           동방홍룡동 ~ Unconnected Marketeers.                상하이 앨리스 환악단     NaN                     NaN                          NaN
+108  109                 탄막 슈팅     동방췌몽상 ~ Immaterial and Missing Power.                상하이 앨리스 환악단     NaN                     NaN                          NaN
+109  110                 대전 격투         동방비상천 ~ Scarlet Weather Rhapsody.                상하이 앨리스 환악단     NaN                     NaN                          NaN
+110  111                 대전 격투                동방비상천칙 ~ 초대형 기뇰의 수수께끼를 쫓아서                상하이 앨리스 환악단     NaN                     NaN                          NaN
+111  112          호러, 4인 협동 SF                            Lethal Company                   Zeekerss     NaN                     NaN                          NaN
+112  113                    슈팅                                     라이덴 2                     세이부 개발     NaN                     NaN                          NaN
+113  114                    포격                                    포트리스 2                        CCR     NaN                     NaN                          NaN
+114  115           역사 전략 시뮬레이션                                     삼국지 7                 KOEI TECMO     NaN                     NaN                          NaN
+115  116           역사 전략 시뮬레이션                                     삼국지 8                 KOEI TECMO     NaN                     NaN                          NaN
+116  117           역사 전략 시뮬레이션                                삼국지 8 리메이크                 KOEI TECMO     NaN                     NaN                          NaN
+117  118           역사 전략 시뮬레이션                                    삼국지 13                 KOEI TECMO     NaN                     NaN                          NaN
+118  119           역사 전략 시뮬레이션                                    삼국지 14                 KOEI TECMO     NaN                     NaN                          NaN
+119  120                    슈팅                                  섹시 파로디우스                        코나미     NaN                     NaN                          NaN
+120  121              로봇 대전 격투                                 초강전기 키카이오                         캡콤     NaN                     NaN                          NaN
+121  122              호러, 어드벤처                                        Ib                      kouri     NaN                     NaN                          NaN
+122  123                   런앤건                                     메탈슬러그                        SNK     NaN                     NaN                          NaN
+123  124                   런앤건                                   메탈슬러그 2                        SNK     NaN                     NaN                          NaN
+124  125                   런앤건                                   메탈슬러그 3                        SNK     NaN                     NaN                          NaN
+125  126                   런앤건                                   메탈슬러그 4                        SNK     NaN                     NaN                          NaN
+126  127                  JRPG                          드래곤 퀘스트 V 천공의 신부                       춘소프트     NaN                     NaN                          NaN
+127  128                   RPG  Pokémon: The Slowpoke Shack (포켓몬: 야돈의 집)  TEAM @KennyCatches, @ENLS     NaN                     NaN                          NaN
+128  129         디스토피아, 서류 스릴러                            Papers, Please                 Lucas Pope     NaN                     NaN                          NaN
+129  130        인디, 뉴클리어 아포칼립스                               60 Seconds!            Robot Gentleman     NaN                     NaN                          NaN
+130  131               서바이벌 호러                              Look Outside           Francis Coulombe     NaN                     NaN                          NaN
+131  132                   RPG                       Pokemon Legends Z-A                      게임프리크     NaN                     NaN                          NaN
+132  133               추리 어드벤처                                  FakeBook                     반지하게임즈     NaN                     NaN                          NaN
+133  134                   NaN                                메타포: 리판타지오                        NaN     NaN                     NaN                          NaN
+134  135                   NaN                                  Unsouled                        NaN     NaN                     NaN                          NaN
+135  136                   NaN                                       NaN                        NaN     NaN                     NaN                          NaN
+136  137                   NaN                                       NaN                        NaN     NaN                     NaN                          NaN
+137  138                   NaN                                       NaN                        NaN     NaN                     NaN                          NaN
+138  139                   NaN                                       NaN                        NaN     NaN                     NaN                          NaN
+139  140                   NaN                                       NaN                        NaN     NaN                     NaN                          NaN
+140  141                   NaN                                       NaN                        NaN     NaN                     NaN                          NaN

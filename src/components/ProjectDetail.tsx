@@ -70,7 +70,7 @@ export const ProjectDetail = ({ project, onBack, isEditing, onSaveContent }: Pro
                   <span className="text-[11px] font-semibold truncate">{tab.label}</span>
                   {/* Right side shadow/border blend for active tab */}
                   {isActive && (
-                    <div className="absolute -bottom-[1px] left-0 right-0 h-[2px] bg-white" />
+                    <div className="absolute -bottom-px left-0 right-0 h-[2px] bg-white" />
                   )}
                 </button>
               );

@@ -104,7 +104,7 @@ export const PlayHistory = ({ onViewAll }: PlayHistoryProps) => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
           {renderSection("PC / Mainline", DASHBOARD_HIGHLIGHTS.pc, <Monitor className="w-6 h-6" />)}
-          {renderSection("Console", DASHBOARD_HIGHLIGHTS.console, <Gamepad2 className="w-6 h-6" />)}
+          {renderSection("Console/Steam", DASHBOARD_HIGHLIGHTS.console, <Gamepad2 className="w-6 h-6" />)}
           {renderSection("Mobile", DASHBOARD_HIGHLIGHTS.mobile, <Smartphone className="w-6 h-6" />)}
         </div>
 

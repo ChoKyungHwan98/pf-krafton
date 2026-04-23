@@ -1,0 +1,31 @@
+--- 무결성 검사 결과 (정밀 분석) ---
+
+[PC]
+- 엑셀 대비 누락된 항목 (2개):
+  * DNF 듀얼
+  * 바우트
+
+[PC]
+- 엑셀 대비 누락 또는 이름 불일치 항목 (2개):
+  * DNF 듀얼
+  * 바우트
+
+[Mobile]
+- 엑셀 대비 누락된 항목 (1개):
+  * 카미즈바키시 협주중.
+
+[Mobile]
+- 엑셀 대비 누락 또는 이름 불일치 항목 (1개):
+  * 카미즈바키시 협주중.
+
+[Console]
+- 엑셀 대비 누락된 항목 (3개):
+  * Chivalry: Medieval Warfare
+  * 삼국지 12
+  * Pokemon: The Slowpoke Shack (포켓몬: 야돈의 집)
+
+[Console]
+- 엑셀 대비 누락 또는 이름 불일치 항목 (3개):
+  * Chivalry: Medieval Warfare
+  * 삼국지 12
+  * Pokemon: The Slowpoke Shack (포켓몬: 야돈의 집)

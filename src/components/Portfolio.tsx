@@ -61,7 +61,7 @@ export const Portfolio = ({ isEditing, projects, setProjects, onBack, initialPro
 
         {/* High-Visibility Bold Filter Bar */}
         <div className="flex flex-col items-center mb-16 relative">
-          <div className="flex flex-wrap items-center justify-center gap-3 p-3 bg-zinc-100/80 rounded-[2rem] border border-black/5">
+          <div className="flex flex-wrap items-center justify-center gap-3 p-3 bg-zinc-100/80 rounded-4xl border border-black/5">
             {categories.map((category) => {
               const count = category === '전체' 
                 ? projects.length 
@@ -93,7 +93,7 @@ export const Portfolio = ({ isEditing, projects, setProjects, onBack, initialPro
         </div>
 
         {/* High-Contrast Project Grid */}
-        <motion.div layout className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+        <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
           <AnimatePresence mode="popLayout">
             {filteredProjects.map((project) => (
               <motion.div
@@ -106,8 +106,8 @@ export const Portfolio = ({ isEditing, projects, setProjects, onBack, initialPro
                 onClick={() => setSelectedProject(project)}
                 className="group relative flex flex-col bg-white rounded-[2.5rem] overflow-hidden border-2 border-zinc-100 cursor-pointer shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:border-[#0047BB]/30 hover:shadow-[0_32px_64px_-16px_rgba(0,71,187,0.15)] transition-all duration-500"
               >
-                {/* Card Image */}
-                <div className="aspect-16/10 overflow-hidden relative bg-zinc-50 border-b border-zinc-100">
+                {/* Card Image Container - Ensure it doesn't collapse */}
+                <div className="relative aspect-16/10 w-full overflow-hidden bg-zinc-50 border-b border-zinc-100 shrink-0">
                   <img
                     src={project.image}
                     alt={project.title}
@@ -117,14 +117,14 @@ export const Portfolio = ({ isEditing, projects, setProjects, onBack, initialPro
                   <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent opacity-60"></div>
                 </div>
 
-                {/* Card Content */}
-                <div className="p-8 flex-1 flex flex-col">
+                {/* Card Content Container - Strictly below the image */}
+                <div className="p-8 flex-1 flex flex-col bg-white relative z-10">
                   <div className="flex items-start justify-between gap-4 mb-4">
                     <h4 className="text-2xl font-display font-black tracking-tight text-zinc-900 group-hover:text-[#0047BB] transition-colors leading-tight">
                       {project.title}
                     </h4>
                     {project.status && (
-                       <span className={`text-[11px] font-black px-4 py-2 rounded-xl border-2 shadow-lg leading-tight text-center min-w-[80px] ${
+                       <span className={`text-[11px] font-black px-4 py-2 rounded-xl border-2 shadow-lg leading-tight text-center min-w-[80px] shrink-0 ${
                          project.status === '미출시' 
                            ? 'bg-zinc-100 text-zinc-500 border-zinc-200 shadow-none' 
                            : 'bg-[#0047BB] text-white border-white/20 shadow-[#0047BB]/20'
