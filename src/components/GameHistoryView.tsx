@@ -232,13 +232,13 @@ export const GameHistoryView = ({ onBack }: GameHistoryViewProps) => {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-          <AnimatePresence mode="popLayout">
+          <AnimatePresence mode="sync">
             {displayedGames.map((game) => (
               <motion.div
-                layout
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ duration: 0.2 }}
                 key={game.id}
                 className="relative group h-[140px] rounded-2xl overflow-hidden border border-black/5 shadow-sm hover:shadow-xl transition-all"
               >
