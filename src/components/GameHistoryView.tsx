@@ -231,15 +231,21 @@ export const GameHistoryView = ({ onBack }: GameHistoryViewProps) => {
           ))}
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-          <AnimatePresence mode="sync">
-            {displayedGames.map((game) => (
+        <AnimatePresence mode="wait">
+        <motion.div
+          key={`grid-${activeGenre ?? 'all'}-${searchQuery}`}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.15 }}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"
+        >
+            {displayedGames.map((game, index) => (
               <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.2 }}
                 key={game.id}
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.25, delay: Math.min(index * 0.02, 0.35) }}
                 className="relative group h-[140px] rounded-2xl overflow-hidden border border-black/5 shadow-sm hover:shadow-xl transition-all"
               >
                 <div className={`absolute inset-0 transition-transform duration-500 group-hover:scale-110 ${game.image ? 'bg-zinc-900' : `bg-linear-to-br ${getFallbackGradient(game.genre)}`}`}>
@@ -267,8 +273,8 @@ export const GameHistoryView = ({ onBack }: GameHistoryViewProps) => {
                 </div>
               </motion.div>
             ))}
-          </AnimatePresence>
-        </div>
+        </motion.div>
+        </AnimatePresence>
 
         {displayLimit < filteredGames.length && (
           <div className="mt-12 text-center">
