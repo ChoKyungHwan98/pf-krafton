@@ -10,7 +10,7 @@ async function sync() {
   console.log("Upserting RESUME_DATA to Supabase...");
   const { data, error } = await supabase
     .from('portfolio_content')
-    .upsert({ key: 'resume_data', content: RESUME_DATA }, { onConflict: 'key' });
+    .upsert({ key: 'webzen_resume_data', content: RESUME_DATA }, { onConflict: 'key' });
     
   if (error) {
     console.error("Error:", error);
