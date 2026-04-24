@@ -158,7 +158,7 @@ export const Portfolio = ({ isEditing, projects, setProjects, onBack, initialPro
 
                   <div className="flex flex-wrap gap-1.5 mt-auto">
                     {project.tags.map((tag, tIdx) => (
-                      <span key={tagIdx} className="text-[10px] font-bold text-zinc-400 uppercase tracking-widest bg-zinc-50 px-2.5 py-1.2 rounded-lg border border-zinc-100 group-hover:border-zinc-200 group-hover:text-zinc-500 transition-all">
+                      <span key={tIdx} className="text-[10px] font-bold text-zinc-400 uppercase tracking-widest bg-zinc-50 px-2.5 py-1.2 rounded-lg border border-zinc-100 group-hover:border-zinc-200 group-hover:text-zinc-500 transition-all">
                         #{tag}
                       </span>
                     ))}
