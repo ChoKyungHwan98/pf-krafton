@@ -115,12 +115,12 @@ export const CoverLetter = ({ setView, isEditing, data, setData }: CoverLetterPr
 
                     {/* Steps Flow */}
                     {intro.steps && intro.steps.length > 0 && (
-                      <div className="my-8 md:my-10 flex items-center gap-2 md:gap-3 overflow-x-auto pb-1">
+                      <div className="my-8 md:my-10 flex items-center gap-2 md:gap-3">
                         {intro.steps.map((step, i) => {
                           const hasDesc = !!step.desc;
                           return (
                             <React.Fragment key={i}>
-                              <div className={`flex flex-col shrink-0 px-4 md:px-5 py-5 md:py-6 bg-[#0047BB]/5 border border-[#0047BB]/15 rounded-2xl ${hasDesc ? 'w-[calc(25%-1.5rem)] min-w-[110px]' : 'items-center min-w-[80px]'}`}>
+                              <div className={`flex-1 min-w-0 flex flex-col px-4 md:px-5 py-5 md:py-6 bg-[#0047BB]/5 border border-[#0047BB]/15 rounded-2xl ${!hasDesc && 'items-center'}`}>
                                 <span className="text-[#0047BB] font-black text-[15px] md:text-[18px] block mb-2 tracking-tight break-keep">{step.title}</span>
                                 {step.desc && <span className="text-zinc-500 text-[13px] md:text-[14px] leading-normal mt-1 break-keep">{step.desc}</span>}
                               </div>
