@@ -43,12 +43,16 @@ const fallbackBg = (genre: string) => {
 export const CinematicIntro = ({ onComplete }: CinematicIntroProps) => {
   const contentRef = useRef<HTMLDivElement>(null);
   const [contentHeight, setContentHeight] = useState(0);
+  const [scrollbarWidth, setScrollbarWidth] = useState(0);
   const vh = typeof window !== 'undefined' ? window.innerHeight : 900;
 
   const pcCount = ALL_GAMES.filter(g => ['Pc', 'PC', 'Console'].includes(g.category)).length;
   const mobileCount = ALL_GAMES.filter(g => g.category === 'Mobile').length;
 
   useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setScrollbarWidth(window.innerWidth - document.documentElement.clientWidth);
+    }
     if (contentRef.current) {
       setContentHeight(contentRef.current.scrollHeight);
     }
@@ -148,6 +152,7 @@ export const CinematicIntro = ({ onComplete }: CinematicIntroProps) => {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.6, ease: "easeInOut" }}
       className="fixed inset-0 z-[2000] overflow-hidden bg-bg-main bg-[url('https://www.transparenttextures.com/patterns/cream-paper.png')] bg-blend-multiply"
+      style={{ paddingRight: scrollbarWidth }}
     >
       {contentHeight === 0 && (
         <div ref={contentRef} style={{ position: 'absolute', top: 0, left: 0, visibility: 'hidden', width: '100%' }}>
