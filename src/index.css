@@ -17,6 +17,9 @@
 html {
   scroll-behavior: smooth;
 }
+:root {
+  --scrollbar-width: calc(100vw - 100%);
+}
 body {
   @apply bg-bg-main text-[#111111] font-sans antialiased selection:bg-[#800020] selection:text-bg-main;
   background-color: #FDFCF8;
