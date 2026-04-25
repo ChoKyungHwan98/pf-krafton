@@ -111,7 +111,7 @@ export const RESUME_DATA: ResumeData = {
   ],
   certificates: [
     { name: "TOEIC", score: "800", date: "2023" },
-    { name: "TOEFL", score: "100", date: "2017" },
+    { name: "TOEFL", score: "100", date: "2016" },
     { name: "新HSK 5급", score: "183", date: "2015" }
   ],
   military: {
