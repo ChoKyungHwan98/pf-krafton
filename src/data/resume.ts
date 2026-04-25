@@ -82,7 +82,7 @@ export const RESUME_DATA: ResumeData = {
       title: "도로시아 (방치형 핵앤슬래시 RPG)",
       period: "2026.02 - 2026.04",
       description: "팀장 | 전투 및 경제 밸런스 기획, 방치 시스템 설계",
-      teamSize: "기획 6명 / 프로그래밍 4명",
+      teamSize: "기획 7명 / 프로그래밍 4명",
       details: [
         "게임 전체 파워 밸런스 설계",
         "기준 TTK(Time to Kill) 및 PDPS 기반의 스테이지, 몬스터, 장비 성장 지수 설계",
@@ -93,7 +93,7 @@ export const RESUME_DATA: ResumeData = {
       title: "Digreed (로그라이트 RPG)",
       period: "2025.12 - 2026.01",
       description: "팀장 | 게임 전체 룰 및 시스템 기획",
-      teamSize: "기획 5명 / 프로그래밍 4명",
+      teamSize: "기획 6명 / 프로그래밍 4명",
       details: [
         "무기 교체 시스템, 맵 프리팹 구조, 코어 룰 기획"
       ]
