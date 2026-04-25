@@ -54,7 +54,7 @@ export const CinematicIntro = ({ onComplete }: CinematicIntroProps) => {
     }
   }, []);
 
-  const dur = Math.max(2.5, (contentHeight - vh) / 3000);
+  const dur = Math.max(1.2, (contentHeight - vh) / 5000);
 
   const renderContent = () => (
     <motion.section className="min-h-screen bg-transparent pt-28 pb-32 overflow-x-hidden">
