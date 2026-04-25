@@ -430,7 +430,7 @@ def calculate_balance(params):
             >
               {/* Contained Hero */}
               <div className="max-w-5xl mx-auto w-full px-6 md:px-8 pt-8 md:pt-10">
-                <div className="relative h-[300px] md:h-[400px] w-full rounded-[2rem] shrink-0 overflow-hidden shadow-2xl border border-zinc-200/50">
+                <div className="relative h-[300px] md:h-[400px] w-full rounded-4xl shrink-0 overflow-hidden shadow-2xl border border-zinc-200/50">
                   <img src={project.image} alt={project.title} className="w-full h-full object-cover transition-transform duration-700 hover:scale-[1.03]" />
                   <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/20 to-transparent" />
                   <div className="absolute top-6 left-8 flex flex-wrap gap-2">
