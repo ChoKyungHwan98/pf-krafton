@@ -56,7 +56,7 @@ export const Portfolio = ({ isEditing, projects, setProjects, onBack, initialPro
       <motion.section
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="relative z-10 pt-32 pb-16 px-4 md:px-6 max-w-[1400px] mx-auto"
+        className="relative z-10 pt-28 pb-16 px-4 md:px-6 max-w-[1400px] mx-auto"
       >
         <div className="bg-white rounded-4xl shadow-[0_40px_100px_-20px_rgba(0,0,0,0.1)] border border-black/5 p-6 md:p-8 lg:p-12 min-h-[80vh]">
 
