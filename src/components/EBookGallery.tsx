@@ -220,7 +220,7 @@ export const EBookGallery = ({ images, currentIndex, onPageChange }: EBookGaller
                 }}
                 src={images[currentIndex]}
                 alt={`기획서 ${currentIndex + 1}페이지`}
-                className={`max-h-full max-w-full h-auto w-auto object-contain block shadow-2xl rounded-sm ${zoom > 1 ? 'cursor-move' : 'cursor-grab active:cursor-grabbing'}`}
+                className={`max-h-[88%] max-w-[88%] h-auto w-auto object-contain block shadow-2xl rounded-sm ${zoom > 1 ? 'cursor-move' : 'cursor-grab active:cursor-grabbing'}`}
                 referrerPolicy="no-referrer"
                 draggable={false}
               />

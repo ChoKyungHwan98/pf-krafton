@@ -20,6 +20,12 @@ export interface Project {
   color: string;
   content: string;
   status?: string;
+  stats?: {
+    released: string;
+    teamSize: string;
+    myRole: string;
+    achievement: string;
+  };
 }
 
 export interface SkillEvidence {

@@ -99,9 +99,9 @@ export const RESUME_DATA: ResumeData = {
       ]
     },
     {
-      title: "침묵의 저택 (횡스크롤 호러)",
+      title: "침묵의 저택 (횡스크롤 공포)",
       period: "2025.11",
-      description: "팀장 | 게임 전체 룰 및 시스템 기획",
+      description: "횡스크롤 공포 게임의 코어 루프와 필요 시스템을 정의하고 각 파트를 팀원에게 분배·총괄했습니다.",
       teamSize: "기획 4명",
       details: [
         "추격자 AI 행동 패턴, 시야 축소 메카닉, 아이템 획득 및 탈출 구조 기획",
