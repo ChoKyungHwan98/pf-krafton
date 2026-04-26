@@ -60,6 +60,16 @@ export const Portfolio = ({ isEditing, projects, setProjects, onBack, initialPro
       >
         <div className="bg-white rounded-4xl shadow-[0_40px_100px_-20px_rgba(0,0,0,0.1)] border border-black/5 p-6 md:p-8 lg:p-12 min-h-[80vh]">
 
+        {/* Page Header */}
+        <div className="mb-10 pb-10 border-b border-zinc-100">
+          <p className="text-[11px] font-black tracking-[0.3em] uppercase text-[#0047BB] mb-3">GAME PLANNING PORTFOLIO</p>
+          <div className="flex flex-wrap items-end gap-x-4 gap-y-2">
+            <h1 className="text-3xl lg:text-4xl font-display font-black tracking-tighter text-zinc-900 leading-none">기획 포트폴리오</h1>
+            <span className="text-zinc-400 font-medium text-base mb-0.5">총 {projects.length}개 프로젝트</span>
+          </div>
+          <p className="text-zinc-500 text-[14px] mt-3 font-medium">시스템 기획 · 밸런스 설계 · 프로토타이핑 · AI 활용</p>
+        </div>
+
         {/* Polished Filter Bar with Sliding Indicator */}
         <div className="flex flex-col items-center mb-10 relative">
           <div className="flex flex-wrap items-center justify-center gap-1.5 p-1.5 bg-zinc-100/50 backdrop-blur-xl rounded-4xl border border-black/5">
