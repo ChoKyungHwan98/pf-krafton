@@ -56,12 +56,12 @@ export const Portfolio = ({ isEditing, projects, setProjects, onBack, initialPro
       <motion.section
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="relative z-10 pt-32 pb-24 px-4 md:px-8 max-w-7xl mx-auto"
+        className="relative z-10 pt-24 pb-16 px-4 md:px-6 max-w-[1400px] mx-auto"
       >
-        <div className="bg-white rounded-4xl shadow-[0_40px_100px_-20px_rgba(0,0,0,0.1)] border border-black/5 p-8 md:p-12 lg:p-16 min-h-[80vh]">
+        <div className="bg-white rounded-4xl shadow-[0_40px_100px_-20px_rgba(0,0,0,0.1)] border border-black/5 p-6 md:p-8 lg:p-12 min-h-[80vh]">
 
         {/* Polished Filter Bar with Sliding Indicator */}
-        <div className="flex flex-col items-center mb-16 relative">
+        <div className="flex flex-col items-center mb-10 relative">
           <div className="flex flex-wrap items-center justify-center gap-1.5 p-1.5 bg-zinc-100/50 backdrop-blur-xl rounded-4xl border border-black/5">
             {categories.map((category) => {
               const count = category === '전체' 
@@ -73,8 +73,8 @@ export const Portfolio = ({ isEditing, projects, setProjects, onBack, initialPro
                 <button
                   key={category}
                   onClick={() => setActiveCategory(category)}
-                  className={`relative px-6 py-3 rounded-3xl transition-all duration-500 group flex items-center gap-2.5 overflow-hidden min-w-fit ${
-                    isActive ? 'text-white' : 'text-zinc-500 hover:text-zinc-900'
+                  className={`relative px-6 py-3.5 rounded-3xl transition-all duration-500 group flex items-center gap-2.5 overflow-hidden min-w-fit ${
+                    isActive ? 'text-white' : 'text-zinc-700 hover:text-zinc-900'
                   }`}
                 >
                   {isActive && (
@@ -84,11 +84,11 @@ export const Portfolio = ({ isEditing, projects, setProjects, onBack, initialPro
                       transition={{ type: 'spring', bounce: 0.2, duration: 0.6 }}
                     />
                   )}
-                  <span className="relative z-10 text-[14px] font-bold tracking-tight leading-none transition-colors">
+                  <span className="relative z-10 text-[15px] font-bold tracking-tight leading-none transition-colors">
                     {category}
                   </span>
-                  <span className={`relative z-10 text-[9px] font-black px-1.5 py-0.5 rounded-md transition-colors duration-300 ${
-                    isActive ? 'bg-white/20 text-white' : 'bg-zinc-200/50 text-zinc-400 group-hover:bg-zinc-200 group-hover:text-zinc-500'
+                  <span className={`relative z-10 text-[11px] font-black px-2 py-0.5 rounded-md transition-colors duration-300 ${
+                    isActive ? 'bg-white/20 text-white' : 'bg-zinc-200 text-zinc-600 group-hover:bg-zinc-300 group-hover:text-zinc-800'
                   }`}>
                     {String(count).padStart(2, '0')}
                   </span>

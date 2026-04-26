@@ -5,6 +5,7 @@ export interface Project {
   title: string;
   roles: string[];
   description: string;
+  keyTasks?: string[];
   tags: string[];
   image: string;
   gallery?: string[];

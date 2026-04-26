@@ -176,18 +176,6 @@ export const Navbar = ({ setView, currentView, onNavClick, isEditing, setIsEditi
                 </button>
               ))}
             </div>
-            <div className="hidden xl:block w-px h-8 bg-black/10 mx-1.5" />
-            
-            <div className="flex items-center">
-              <button
-                onClick={handleAdminClick}
-                className="w-11 h-11 rounded-full transition-all flex items-center justify-center hover:bg-zinc-100 text-zinc-500 hover:text-[#2C2C2C]"
-                title="Admin Mode"
-              >
-                <Lock className={`w-[18px] h-[18px] ${isEditing ? 'text-[#0047BB]' : 'opacity-80'}`} />
-              </button>
-            </div>
-
             <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="lg:hidden w-11 h-11 ml-1 flex items-center justify-center rounded-full bg-zinc-100 text-[#2C2C2C]">
               {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
