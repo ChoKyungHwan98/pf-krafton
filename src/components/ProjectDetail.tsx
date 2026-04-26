@@ -13,7 +13,7 @@ interface ProjectDetailProps {
   onSaveContent?: (content: string) => void;
 }
 
-type TabType = 'overview' | 'document' | 'video' | 'link' | 'simulator' | 'prototype';
+type TabType = 'overview' | 'document' | 'scenario' | 'video' | 'link' | 'simulator' | 'prototype' | 'gantt';
 
 export const ProjectDetail = ({ project, onBack, isEditing, onSaveContent }: ProjectDetailProps) => {
   const [activeTab, setActiveTab] = useState<TabType>('overview');
@@ -22,16 +22,18 @@ export const ProjectDetail = ({ project, onBack, isEditing, onSaveContent }: Pro
 
   const tabs: { id: TabType; label: string; icon: React.ReactNode; show: boolean; color: string }[] = [
     { id: 'overview', label: '개요', icon: <LayoutGrid className="w-3.5 h-3.5" />, show: true, color: '#0047BB' },
-    { id: 'document', label: '기획서', icon: <FileText className="w-3.5 h-3.5" />, show: !!(project.gallery || project.pdfUrl), color: '#059669' },
+    { id: 'document', label: project.documentLabel || '기획서', icon: <FileText className="w-3.5 h-3.5" />, show: !!(project.gallery || project.pdfUrl), color: '#059669' },
+    { id: 'scenario', label: '시나리오 기획서', icon: <FileText className="w-3.5 h-3.5" />, show: !!project.scenarioGallery, color: '#D97706' },
     { id: 'prototype', label: '프로토타입', icon: <Sparkles className="w-3.5 h-3.5" />, show: !!project.prototypeUrl, color: '#7C3AED' },
     { id: 'video', label: '플레이 영상', icon: <Play className="w-3.5 h-3.5" />, show: !!project.videoUrl, color: '#EA580C' },
     { id: 'link', label: '링크', icon: <ExternalLink className="w-3.5 h-3.5" />, show: !!project.externalUrl, color: '#2563EB' },
     { id: 'simulator', label: '시뮬레이터', icon: <Calculator className="w-3.5 h-3.5" />, show: !!(project.simulatorUrl || project.hasSimulator || project.simulatorVideoUrl), color: '#DC2626' },
+    { id: 'gantt', label: '간트차트', icon: <Calendar className="w-3.5 h-3.5" />, show: !!project.ganttUrl, color: '#10B981' },
   ];
 
   const visibleTabs = tabs.filter(t => t.show);
 
-  const galleryImages = project.gallery || [project.image];
+  const galleryImages = activeTab === 'scenario' && project.scenarioGallery ? project.scenarioGallery : (project.gallery || [project.image]);
 
   const theme = {
     bg: 'bg-white',
@@ -56,7 +58,7 @@ export const ProjectDetail = ({ project, onBack, isEditing, onSaveContent }: Pro
               return (
                 <button
                   key={tab.id}
-                  onClick={() => setActiveTab(tab.id)}
+                  onClick={() => { setActiveTab(tab.id); setCurrentPage(0); }}
                   style={{
                     boxShadow: isActive ? `inset 0 2px 0 0 ${tab.color}` : undefined
                   }}
@@ -132,11 +134,11 @@ export const ProjectDetail = ({ project, onBack, isEditing, onSaveContent }: Pro
       {/* Main Content Area - Maximized Space */}
       <div className="flex-1 flex flex-col min-h-0 bg-white relative">
         <AnimatePresence mode="wait">
-          {activeTab === 'document' ? (
-            <motion.div key="tab-document" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+          {activeTab === 'document' || activeTab === 'scenario' ? (
+            <motion.div key={`tab-${activeTab}`} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
               className="flex-1 flex flex-col min-h-0 overflow-hidden bg-zinc-950 relative"
             >
-              {project.gallery ? (
+              {(activeTab === 'scenario' ? project.scenarioGallery : project.gallery) ? (
                 <EBookGallery images={galleryImages} currentIndex={currentPage} onPageChange={setCurrentPage} maxScale={project.id === 1 ? 100 : 88} />
               ) : project.pdfUrl ? (
                 <iframe 
@@ -150,7 +152,7 @@ export const ProjectDetail = ({ project, onBack, isEditing, onSaveContent }: Pro
                 </div>
               )}
               
-              {project.gallery && (
+              {(activeTab === 'scenario' ? project.scenarioGallery : project.gallery) && (
                 <div className="absolute bottom-10 left-10 right-10 flex justify-between items-end pointer-events-none z-50">
                   <div className="pointer-events-auto flex flex-col items-start gap-3">
                     {/* Page Counter Pill (Top) */}
@@ -210,6 +212,35 @@ export const ProjectDetail = ({ project, onBack, isEditing, onSaveContent }: Pro
                 >
                   <span className="text-2xl font-black tracking-tight">시작하기</span>
                   <ExternalLink className="w-7 h-7 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />
+                </a>
+              </div>
+            </motion.div>
+          ) : activeTab === 'gantt' ? (
+            <motion.div key="tab-gantt" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+              className="flex-1 flex flex-col items-center justify-center p-8 lg:p-12 bg-zinc-950"
+            >
+              <div className="max-w-xl w-full flex flex-col items-center gap-8 text-center bg-zinc-900/50 p-12 rounded-3xl border border-white/10 shadow-2xl">
+                <div className="w-24 h-24 bg-[#10B981]/10 rounded-3xl flex items-center justify-center shadow-inner border border-[#10B981]/20">
+                  <Calendar className="w-12 h-12 text-[#10B981]" />
+                </div>
+                <div>
+                  <h3 className="text-3xl font-black text-white tracking-tight mb-4">프로젝트 간트차트</h3>
+                  <p className="text-zinc-400 font-medium leading-relaxed">
+                    노션(Notion)의 강력한 보안 정책으로 인해<br />
+                    사이트 내부 직접 표시가 제한되어 있습니다.
+                  </p>
+                  <p className="text-zinc-500 text-sm mt-4">
+                    아래 버튼을 클릭하시면 새 창에서 전체 화면으로 쾌적하게 확인하실 수 있습니다.
+                  </p>
+                </div>
+                <a 
+                  href={project.ganttUrl} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="mt-4 px-10 py-5 bg-[#10B981] hover:bg-[#059669] text-white rounded-2xl font-bold tracking-tight shadow-xl shadow-[#10B981]/20 flex items-center gap-3 transition-all duration-300 hover:scale-105 active:scale-95 group"
+                >
+                  <ExternalLink className="w-6 h-6 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                  <span className="text-xl">새 탭에서 노션 간트차트 보기</span>
                 </a>
               </div>
             </motion.div>

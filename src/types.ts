@@ -11,11 +11,14 @@ export interface Project {
   gallery?: string[];
   videoUrl?: string;
   pdfUrl?: string;
+  documentLabel?: string;
+  scenarioGallery?: string[];
   externalUrl?: string;
   simulatorUrl?: string;
   simulatorVideoUrl?: string;
   hasSimulator?: boolean;
   prototypeUrl?: string;
+  ganttUrl?: string;
   bookmarks?: { id: string; title: string; type: 'section' | 'link' | 'ebook'; target: string }[];
   color: string;
   content: string;
@@ -59,7 +62,7 @@ export interface GamePlay {
 
 export interface GameHistoryItem {
   id: string | number;
-  category: 'PC' | 'Mobile' | 'Console';
+  category: 'PC' | 'Pc' | 'Mobile' | 'Console';
   genre: string;
   title: string;
   company: string;
@@ -67,6 +70,11 @@ export interface GameHistoryItem {
   image?: string;
   position?: string;
   size?: string;
+  flag?: string;
+  isCleared?: boolean;
+  isPerfectCleared?: boolean;
+  isFavorite?: boolean;
+  yearsPlayed?: number;
 }
 
 export interface GameHistory {
