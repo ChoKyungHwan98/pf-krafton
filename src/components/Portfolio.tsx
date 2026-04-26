@@ -27,12 +27,15 @@ export const Portfolio = ({ isEditing, projects, setProjects, onBack, initialPro
     window.scrollTo(0, 0);
   }, [initialProjectId, projects]);
 
-  const categories = ['전체', ...Array.from(new Set(projects.flatMap(p => p.roles || []).filter(Boolean)))];
+  const categories = ['전체', '밸런스 기획', '시스템 기획', '코어 룰 기획', '프로토타이핑', 'AI 활용'];
   const [activeCategory, setActiveCategory] = useState('전체');
 
-  const filteredProjects = activeCategory === '전체'
-    ? projects
-    : projects.filter(p => p.roles && p.roles.includes(activeCategory));
+  const isProjectInCategory = (p: Project, category: string) => {
+    if (category === '전체') return true;
+    return (p.keyTasks && p.keyTasks.includes(category)) || (p.roles && p.roles.includes(category));
+  };
+
+  const filteredProjects = projects.filter(p => isProjectInCategory(p, activeCategory));
 
   useEffect(() => {
     if (selectedProject) {
@@ -74,9 +77,7 @@ export const Portfolio = ({ isEditing, projects, setProjects, onBack, initialPro
         <div className="flex flex-col items-center mb-10 relative">
           <div className="flex flex-wrap items-center justify-center gap-1.5 p-1.5 bg-zinc-100/50 backdrop-blur-xl rounded-4xl border border-black/5">
             {categories.map((category) => {
-              const count = category === '전체' 
-                ? projects.length 
-                : projects.filter(p => p.roles && p.roles.includes(category)).length;
+              const count = projects.filter(p => isProjectInCategory(p, category)).length;
               const isActive = activeCategory === category;
 
               return (

@@ -79,12 +79,7 @@ export const ProjectCard = ({ project, idx, isEditing, projects, setProjects, on
       <div className="overflow-hidden relative bg-zinc-900 shrink-0 aspect-[16/9]">
         <img src={project.image} alt={project.title} className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105 absolute inset-0 grayscale-[30%] opacity-85 group-hover:grayscale-0 group-hover:opacity-100" referrerPolicy="no-referrer" />
         <div className="absolute inset-0 bg-linear-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-20" />
-        {/* Role badge on image */}
-        <div className="absolute top-4 left-4 z-10">
-          <div className="bg-black/60 backdrop-blur-md border border-white/15 rounded-lg px-3 py-1.5 text-[9px] font-black text-white/90 tracking-widest uppercase w-fit">
-            <EditableText value={project.roles ? project.roles.join(' · ') : ''} onSave={(v) => { const p = [...projects]; p[idx].roles = v.split(/[·,]/).map(s=>s.trim()); setProjects(p); }} isEditing={isEditing} />
-          </div>
-        </div>
+
       </div>
 
       <div className="flex-1 flex flex-col p-6 lg:p-8">
@@ -106,12 +101,7 @@ export const ProjectCard = ({ project, idx, isEditing, projects, setProjects, on
           </div>
         )}
 
-        {/* Role + Title */}
-        <div className="flex flex-wrap gap-x-2 gap-y-0.5 mb-1">
-          {project.roles && project.roles.map(role => (
-            <span key={role} className="text-[11px] font-black text-[#0047BB] uppercase tracking-wide">{role}</span>
-          ))}
-        </div>
+
         <h3 className="text-[22px] font-display font-black tracking-tight text-zinc-900 group-hover:text-[#0047BB] transition-colors leading-[1.2] mb-4">
           <EditableText value={project.title} onSave={(v) => { const p = [...projects]; p[idx].title = v; setProjects(p); }} isEditing={isEditing} />
         </h3>
@@ -145,7 +135,7 @@ export const ProjectCard = ({ project, idx, isEditing, projects, setProjects, on
         </div>
 
         <div className="mt-auto pt-4 border-t border-zinc-100 flex items-center justify-between text-[#0047BB] font-bold text-[13px] opacity-70 group-hover:opacity-100 transition-opacity">
-          <span>기획서 상세 보기</span>
+          <span>상세 보기</span>
           <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
         </div>
       </div>
