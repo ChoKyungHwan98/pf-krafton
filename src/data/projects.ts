@@ -12,14 +12,14 @@ export const PROJECTS: Project[] = [
     gallery: Array.from({ length: 33 }, (_, i) => `./images/dorothia_ebook/page_${(i + 1).toString().padStart(3, '0')}.png`),
     hasSimulator: true,
     prototypeUrl: "./prototypes/dorothia_prototype.html",
-    simulatorVideoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    simulatorVideoUrl: "https://www.youtube.com/watch?v=RJ2M_BEANXo",
     color: "from-zinc-500/20 to-zinc-400/20",
     status: "구글플레이스토어 출시",
     stats: {
       released: "구글플레이스토어 출시",
-      teamSize: "기획 7인",
-      myRole: "밸런스 기획 총괄",
-      achievement: "AI 시뮬레이터 전항목 통과",
+      teamSize: "기획 7인 프로그래밍 4인",
+      myRole: "팀장 | 밸런스 기획/시스템 기획",
+      achievement: "구글 플레이스토어 출시",
     },
     content: `# 도로시아 밸런스 기획서
 
@@ -70,8 +70,8 @@ export const PROJECTS: Project[] = [
     status: "로컬 제작 완료",
     stats: {
       released: "미출시 (로컬 완성)",
-      teamSize: "기획 6인",
-      myRole: "기획 PM",
+      teamSize: "기획 6인 프로그래밍 4인",
+      myRole: "팀장 | 코어 룰 기획/PM",
       achievement: "게임의 코어 루프 완성",
     },
     content: `# Digreed 시스템 기획서
@@ -111,8 +111,8 @@ export const PROJECTS: Project[] = [
     status: "메이플월드 출시",
     stats: {
       released: "메이플월드 정식 출시",
-      teamSize: "팀 프로젝트",
-      myRole: "시스템 기획 총괄",
+      teamSize: "기획 4인",
+      myRole: "팀장 | 시스템 기획",
       achievement: "메이플월드 출시",
     },
     content: `# 침묵의 저택 기획서
@@ -148,7 +148,7 @@ export const PROJECTS: Project[] = [
     keyTasks: ["프로토타이핑", "AI 활용"],
     tags: ["#바이브코딩", "#핵심루프", "#빠른검증"],
     image: "./images/picobang.png",
-    videoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    videoUrl: "https://www.youtube.com/watch?v=G6x1KBO-_uU",
     color: "from-violet-500/20 to-pink-500/20",
     status: "프로토타입",
     stats: {
@@ -172,10 +172,15 @@ export const PROJECTS: Project[] = [
 - PlayerShooter: 발사 로직 직접 구현, FireTime으로 연사 속도 수치 조정
 - PlayerController: 이동 + 에임 조작 구현
 
-### 적 AI & 스폰 시스템
-- MonsterAI: NavMesh 기반 추격(chaseSpeed 수치 조정), 스턴 반응 구현
-- AlertNearbyMonsters + OnHearShooting: 발사음으로 주변 적 활성화 메카닉 구현
-- SpawnAreaGenerator: 라운드별 적 스폰 영역 동적 생성
+### 적 AI 상태머신 및 역할 설계
+- **상태머신 (5단계):** Patrol → Chase → Investigate → Return → Stun 기반의 유기적 AI 행동 구현
+- **역할군 분리:** 구역을 방어하는 \`Zone_Defender\`와 맵 전체를 배회하며 소리를 듣는 \`Global_Stalker\` 2종 설계
+- **팩맨(Pac-Man)식 추격 패턴:** 단순 추적(Blinky), 예측 이동(Pinky), 측면 포위(Inky), 근접 폭주(Rusher) 4가지 고유 추격 스타일 구현
+
+### 청각 및 협동 시스템
+- **청각 감지(OnHearShooting):** 플레이어의 총소리를 반경(hearingRange) 내에서 감지하여 Investigate(수색) 상태로 전환
+- **전술적 포위(AlertNearbyMonsters):** Stalker가 주변 몬스터들에게 신호를 보내 플레이어의 전후좌우로 분산 배치되도록 좌표 연산 구현
+- **피격 스턴:** 레이저 피격 시 애니메이션과 함께 내비게이션(NavMeshAgent)을 일시 정지시키는 제어 로직 구현
 
 ### 검증 결과
 - 24시간 이내 플레이어블 프로토타입 완성
@@ -195,23 +200,23 @@ export const PROJECTS: Project[] = [
     status: "제작 완료",
     stats: {
       released: "Gemini 플랫폼 공개",
-      teamSize: "1인",
-      myRole: "AI 기획 · 설계",
+      teamSize: "1인 개발",
+      myRole: "시스템 기획/AI 설계",
       achievement: "LLM 챗봇 완성",
     },
     content: `# 게임 스토어의 불청객
 LLM(대규모 언어 모델)을 활용한 시나리오 챗봇 프로젝트입니다.
 
 ## 1. 기획 의도
-기존의 정형화된 대화 트리 방식에서 벗어나, 대규모 언어 모델을 활용해 플레이어와 NPC 간의 비정형적이고 자유로운 상호작용을 구현하고자 했습니다. 이를 통해 매번 새로운 스토리 경험을 제공하는 시스템을 설계했습니다.
+정해진 대화 선택지를 고르는 방식에서 벗어나, '언어 장벽'이라는 제약 속에서 플레이어가 직접 LLM NPC와 상호작용하며 숨겨진 의도를 추리해내는 게임적 경험을 구현했습니다.
 
 ## 2. 핵심 시스템 설계
-### 2.1 LLM 프롬프트 설계
-- NPC의 성격, 배경지식, 목표를 정교하게 설정하여 대화의 일관성 유지
-- 시나리오 핵심 키워드를 플레이어가 유도해낼 수 있도록 유도하는 AI 로직 기획
+### 2.1 페르소나 및 시스템 프롬프트 설계
+- 한국어를 전혀 모르는 외국인 손님이라는 페르소나와 숨겨진 최종 목표(화장실)를 정교하게 설정
+- 상황 보기, 생각하기, 직접 말하기 등 선택지 시스템과 자유 채팅을 결합하여 플레이어의 자유도와 게임적 진행을 동시 제어
 
-### 2.2 가변 시나리오 구조
-- 고정된 엔딩이 아닌, 플레이어의 대화 내용에 따라 사건의 흐름이 실시간으로 변화하는 시나리오 구조 설계
-- 플레이어의 발화 데이터에서 사건 해결을 위한 '단서'를 추출하는 분석 로직 정의`
+### 2.2 텐션 설계 및 예외 처리
+- 턴(Turn) 경과에 따라 NPC의 감정이 4단계(답답함→초조함→분노→극대노)로 악화되는 타임어택 텐션 설계
+- 상황에 맞지 않는 대화(OOC), 플레이어의 중국어 사용 등 규칙 외의 행동을 엄격히 차단하는 예외 처리 로직 구현`
   }
 ];

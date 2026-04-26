@@ -137,7 +137,7 @@ export const ProjectDetail = ({ project, onBack, isEditing, onSaveContent }: Pro
               className="flex-1 flex flex-col min-h-0 overflow-hidden bg-zinc-950 relative"
             >
               {project.gallery ? (
-                <EBookGallery images={galleryImages} currentIndex={currentPage} onPageChange={setCurrentPage} />
+                <EBookGallery images={galleryImages} currentIndex={currentPage} onPageChange={setCurrentPage} maxScale={project.id === 1 ? 100 : 88} />
               ) : project.pdfUrl ? (
                 <iframe 
                   src={`${project.pdfUrl}#toolbar=0`} 
@@ -194,30 +194,23 @@ export const ProjectDetail = ({ project, onBack, isEditing, onSaveContent }: Pro
             </motion.div>
           ) : activeTab === 'link' ? (
             <motion.div key="tab-link" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-              className="flex-1 flex items-center justify-center p-12 bg-zinc-950"
+              className="flex-1 flex flex-col items-center justify-center p-8 lg:p-12 bg-zinc-950"
             >
-              <div className="max-w-2xl w-full">
-                <div className="relative group p-1 bg-linear-to-br from-[#6D28D9] via-[#C084FC] to-[#6D28D9] rounded-[3rem] shadow-2xl overflow-hidden">
-                  <div className="absolute inset-0 bg-zinc-900/40 backdrop-blur-3xl" />
-                  <div className="relative bg-zinc-900/80 rounded-[2.8rem] p-12 flex flex-col items-center text-center border border-white/5">
-                    <div className="w-24 h-24 bg-[#6D28D9]/20 rounded-3xl flex items-center justify-center mb-10 group-hover:scale-110 transition-transform duration-500">
-                      <Sparkles className="w-12 h-12 text-[#6D28D9]" />
-                    </div>
-                    <h3 className="text-4xl font-black text-white mb-6 tracking-tight">LLM 시나리오 챗봇 체험</h3>
-                    <p className="text-zinc-400 text-lg leading-relaxed mb-12 max-w-md font-medium">
-                      NPC와의 자연스러운 대화를 통해 사건의 실마리를 풀어가는 지능형 시나리오 시스템을 직접 경험해 보세요.
-                    </p>
-                    <a 
-                      href={project.externalUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-full h-20 bg-[#6D28D9] text-white rounded-4xl flex items-center justify-center gap-4 hover:bg-[#5B21B6] hover:scale-[1.02] active:scale-95 transition-all duration-300 shadow-xl shadow-[#6D28D9]/30 group/btn"
-                    >
-                      <span className="text-xl font-black tracking-tight">시나리오 체험하러 가기</span>
-                      <ExternalLink className="w-6 h-6 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />
-                    </a>
-                  </div>
+              <div className="max-w-4xl w-full flex flex-col items-center gap-8">
+                <div className="relative w-full aspect-video rounded-3xl overflow-hidden shadow-2xl border border-white/10 group">
+                  <img src={project.image} alt={project.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                  <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 </div>
+                
+                <a 
+                  href={project.externalUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full max-w-md h-20 bg-[#0047BB] text-white rounded-2xl flex items-center justify-center gap-4 hover:bg-[#003799] hover:scale-[1.02] active:scale-95 transition-all duration-300 shadow-xl shadow-[#0047BB]/30 group/btn"
+                >
+                  <span className="text-2xl font-black tracking-tight">시작하기</span>
+                  <ExternalLink className="w-7 h-7 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />
+                </a>
               </div>
             </motion.div>
           ) : activeTab === 'prototype' ? (
@@ -230,37 +223,37 @@ export const ProjectDetail = ({ project, onBack, isEditing, onSaveContent }: Pro
               />
 
               {/* Left Side: Info */}
-              <div className="w-full lg:w-[380px] p-10 lg:p-14 relative z-10 flex flex-col justify-center gap-8 border-r border-white/5">
+              <div className="w-full lg:w-[380px] p-10 lg:p-14 relative z-10 flex flex-col justify-center gap-8 border-r border-white/5 bg-zinc-900/30 backdrop-blur-md">
                 <div>
                   <div className="flex items-center gap-2 mb-5">
-                    <div className="w-1.5 h-1.5 rounded-full bg-[#EC4899]" />
-                    <span className="text-[10px] font-black text-zinc-500 uppercase tracking-[0.3em]">Rapid Dev</span>
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#0047BB]" />
+                    <span className="text-[10px] font-black text-[#0047BB] uppercase tracking-[0.3em]">Rapid Prototyping</span>
                   </div>
                   <h3 className="text-4xl font-black text-white mb-5 leading-[1.1] tracking-tighter">
                     바이브코딩<br />
-                    <span className="text-[#EC4899]">프로토타입</span>
+                    <span className="text-zinc-400">프로토타입</span>
                   </h3>
-                  <p className="text-zinc-500 text-sm leading-relaxed font-medium">
+                  <p className="text-zinc-400 text-sm leading-relaxed font-medium">
                     기획의 핵심 메카니즘을 플레이어블 버전으로 신속하게 구현하여,{' '}
-                    <strong className="text-zinc-300">수치 밸런스와 조작감</strong>을 즉각적으로 검증합니다.
+                    <strong className="text-white">수치 밸런스와 조작감</strong>을 즉각적으로 검증합니다.
                   </p>
                 </div>
 
                 <div className="grid gap-3">
                   {[
-                    { title: "바이브코딩", desc: "자연어 기반 신속 구현", color: "bg-blue-500" },
-                    { title: "유저 경험", desc: "실제 유저와 동일한 플레이 경험", color: "bg-emerald-500" },
-                    { title: "로직 검증", desc: "복잡한 수치 공식 즉시 확인", color: "bg-[#EC4899]" }
+                    { title: "바이브코딩", desc: "자연어 기반 신속 구현" },
+                    { title: "유저 경험", desc: "실제 유저와 동일한 플레이 경험" },
+                    { title: "로직 검증", desc: "복잡한 수치 공식 즉시 확인" }
                   ].map((item, i) => (
                     <motion.div 
                       key={i}
                       initial={{ x: -20, opacity: 0 }}
                       animate={{ x: 0, opacity: 1 }}
                       transition={{ delay: 0.1 * i }}
-                      className="p-4 rounded-2xl bg-white/5 border border-white/8 hover:border-white/15 transition-colors"
+                      className="p-4 rounded-xl bg-white/5 border border-white/5 hover:bg-white/10 transition-colors group"
                     >
-                      <div className="flex items-center gap-3">
-                        <div className={`w-1 h-7 ${item.color} rounded-full`} />
+                      <div className="flex items-center gap-4">
+                        <div className="w-1 h-8 bg-zinc-700 group-hover:bg-[#0047BB] transition-colors rounded-full" />
                         <div>
                           <div className="text-xs font-black text-white mb-0.5 uppercase tracking-wider">{item.title}</div>
                           <div className="text-[11px] text-zinc-500 font-medium">{item.desc}</div>
@@ -270,10 +263,11 @@ export const ProjectDetail = ({ project, onBack, isEditing, onSaveContent }: Pro
                   ))}
                 </div>
 
-                <div className="p-5 rounded-2xl bg-white/5 border border-white/8 text-center">
-                  <div className="text-[10px] text-zinc-500 font-black uppercase tracking-[0.2em] mb-1">제작 소요 시간</div>
-                  <div className="text-xl font-black text-white tracking-tighter">아이디어에서 실행까지</div>
-                  <div className="text-sm font-black text-[#EC4899] mt-0.5">24시간 이내</div>
+                <div className="p-6 rounded-xl bg-[#0047BB]/10 border border-[#0047BB]/20 flex flex-col items-start relative overflow-hidden">
+                  <div className="absolute top-0 right-0 p-4 opacity-10"><Rocket className="w-16 h-16" /></div>
+                  <div className="text-[10px] text-[#0047BB] font-black uppercase tracking-[0.2em] mb-2 relative z-10">제작 소요 시간</div>
+                  <div className="text-lg font-black text-white tracking-tight relative z-10">아이디어에서 실행까지</div>
+                  <div className="text-xl font-black text-[#0047BB] mt-1 relative z-10">24시간 이내</div>
                 </div>
               </div>
 
@@ -281,7 +275,7 @@ export const ProjectDetail = ({ project, onBack, isEditing, onSaveContent }: Pro
               <div className="flex-1 flex items-center justify-center p-6 lg:p-10 relative">
                 <div className="relative group">
                   {/* Phone glow */}
-                  <div className="absolute inset-0 bg-[#EC4899]/10 rounded-[3rem] blur-[60px] group-hover:bg-[#EC4899]/20 transition-all duration-700" />
+                  <div className="absolute inset-0 bg-[#0047BB]/10 rounded-[3rem] blur-[60px] group-hover:bg-[#0047BB]/20 transition-all duration-700" />
                   
                   <div className="relative w-[360px] h-[620px] bg-[#0a0a0a] rounded-[3.5rem] shadow-2xl border-8 border-zinc-800 ring-1 ring-white/10 overflow-hidden">
                     {/* Dynamic Island */}
@@ -311,109 +305,14 @@ export const ProjectDetail = ({ project, onBack, isEditing, onSaveContent }: Pro
             </motion.div>
           ) : activeTab === 'simulator' ? (
             <motion.div key="tab-simulator" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-              className="flex-1 flex flex-col min-h-0 bg-[#0B0C10] overflow-hidden"
+              className="flex-1 flex flex-col p-8 bg-zinc-900"
             >
-              <div className="flex-1 flex flex-col lg:flex-row min-h-0">
-                {/* Left: Code Explorer */}
-                <div className="flex-1 border-r border-white/5 flex flex-col min-h-0 bg-black/20">
-                  <div className="px-6 py-4 border-b border-white/5 flex items-center justify-between bg-white/5">
-                    <div className="flex items-center gap-3">
-                      <div className="flex gap-1.5">
-                        <div className="w-3 h-3 rounded-full bg-[#FF5F56]" />
-                        <div className="w-3 h-3 rounded-full bg-[#FFBD2E]" />
-                        <div className="w-3 h-3 rounded-full bg-[#27C93F]" />
-                      </div>
-                      <span className="text-[11px] font-black text-zinc-500 uppercase tracking-widest ml-2">simulator.py — Python</span>
-                    </div>
-                    <div className="text-[10px] text-zinc-600 font-mono">v5.2.0</div>
-                  </div>
-                  <div className="flex-1 overflow-auto p-12 font-mono text-[13px] leading-loose text-zinc-400">
-                    <pre className="whitespace-pre">
-{`# ── 밸런스 검증 로직 (Monte Carlo) ────────────────
-def calculate_balance(params):
-    # DPS 체인 계산
-    atk_spd = (agi0 + upg_agi) * (1 + eq_agi_bonus)
-    crit_m = 1 + (crit_tot / 100) * (cd0 + cdmg_upg - 1)
-    
-    # 몬스터 HP 역산 (TTK 목표 1.35s)
-    nhp = tdps * 1.35 * dmg_rate(mnd)
-    bhp = tdps * 35.0 * dmg_rate(bsd)
-    
-    # 지수 성장 곡선 시뮬레이션
-    for stage in range(1, 2000):
-        hp = nhp * (hpg ** (stage - 1))
-        dps = dps_at(stage)
-        ttk = hp / dps
-        
-        # 병목 구간(Bottleneck) 감지
-        if ttk > 3.0: 
-            return FAIL, "Stage " + stage`}
-                    </pre>
-                  </div>
-                </div>
-
-                {/* Right: Dashboard Preview */}
-                <div className="flex-1 flex flex-col p-8 lg:p-12 items-center justify-center relative overflow-hidden bg-linear-to-br from-[#0B0C10] to-[#16213E]">
-                  <div className="absolute inset-0 opacity-20 pointer-events-none">
-                    <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,#059669_0%,transparent_70%)]" />
-                  </div>
-                  
-                  <div className="relative z-10 w-full max-w-lg">
-                    <div className="mb-8 flex flex-col items-center text-center">
-                      <div className="w-16 h-16 bg-[#059669]/20 rounded-2xl flex items-center justify-center mb-6 border border-[#059669]/30">
-                        <Calculator className="w-8 h-8 text-[#059669]" />
-                      </div>
-                      <h3 className="text-3xl font-black text-white mb-4">Balancing Tool Preview</h3>
-                      <p className="text-zinc-400 font-medium">37개 파라미터 기반 실시간 수치 검증 시스템</p>
-                    </div>
-
-                    <div className="group relative rounded-3xl overflow-hidden shadow-2xl border border-white/10 bg-black/40">
-                      {project.simulatorVideoUrl ? (
-                        <div className="aspect-video w-full">
-                          <iframe
-                            src={project.simulatorVideoUrl.replace('watch?v=', 'embed/')}
-                            title="Simulator Video"
-                            className="w-full h-full border-0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowFullScreen
-                          />
-                        </div>
-                      ) : (
-                        <div className="relative">
-                          <img 
-                            src="./images/dorothia_simulator_desktop.png" 
-                            alt="Simulator Mockup"
-                            className="w-full aspect-video object-cover opacity-90"
-                          />
-                          <div className="absolute inset-0 bg-linear-to-t from-zinc-900/40 to-transparent flex flex-col justify-end p-10">
-                            {project.simulatorUrl && (
-                              <a 
-                                href={project.simulatorUrl}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="w-full h-16 bg-[#0047BB] text-white rounded-2xl flex items-center justify-center gap-3 hover:bg-[#003799] hover:scale-[1.02] active:scale-95 transition-all shadow-xl shadow-[#0047BB]/20"
-                              >
-                                <span className="font-black text-sm uppercase tracking-widest">Launch Simulator</span>
-                                <ExternalLink className="w-4 h-4" />
-                              </a>
-                            )}
-                          </div>
-                        </div>
-                      )}
-                    </div>
-                    
-                    <div className="mt-8 grid grid-cols-2 gap-4">
-                      <div className="p-5 bg-white/5 rounded-2xl border border-white/8">
-                        <div className="text-[10px] text-zinc-500 font-black uppercase tracking-widest mb-2">Sim Accuracy</div>
-                        <div className="text-2xl font-black text-[#059669]">99.8%</div>
-                      </div>
-                      <div className="p-5 bg-white/5 rounded-2xl border border-white/8">
-                        <div className="text-[10px] text-zinc-500 font-black uppercase tracking-widest mb-2">Total Iterations</div>
-                        <div className="text-2xl font-black text-white">2,000+</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+              <div className="flex-1 rounded-2xl overflow-hidden bg-black shadow-2xl relative group border border-white/5">
+                <iframe 
+                  src={project.simulatorVideoUrl?.includes('youtu.be/') ? project.simulatorVideoUrl.replace('youtu.be/', 'youtube.com/embed/') : project.simulatorVideoUrl?.replace('watch?v=', 'embed/')} 
+                  className="w-full h-full border-0" 
+                  allowFullScreen 
+                />
               </div>
             </motion.div>
           ) : activeTab === 'video' ? (
@@ -421,7 +320,7 @@ def calculate_balance(params):
               className="flex-1 flex flex-col p-8 bg-zinc-900"
             >
               <div className="flex-1 rounded-2xl overflow-hidden bg-black shadow-2xl relative group border border-white/5">
-                <iframe src={project.videoUrl?.replace('watch?v=', 'embed/')} className="w-full h-full border-0" allowFullScreen />
+                <iframe src={project.videoUrl?.includes('youtu.be/') ? project.videoUrl.replace('youtu.be/', 'youtube.com/embed/') : project.videoUrl?.replace('watch?v=', 'embed/')} className="w-full h-full border-0" allowFullScreen />
               </div>
             </motion.div>
           ) : (
@@ -440,19 +339,8 @@ def calculate_balance(params):
                   ))}
                 </div>
 
-                {/* Top-right: release status badge (prominent) */}
-                {project.status && (
-                  <div className="absolute top-5 right-6">
-                    <span className={`flex items-center gap-1.5 px-4 py-2 rounded-full text-[12px] font-black backdrop-blur-md border ${
-                      (project.status !== '미출시' && project.status !== '프로토타입')
-                        ? 'bg-[#0047BB] border-[#0047BB]/60 text-white shadow-lg shadow-[#0047BB]/40'
-                        : 'bg-white/10 border-white/20 text-white/80'
-                    }`}>
-                      <Rocket className="w-3.5 h-3.5" />
-                      {project.status}
-                    </span>
-                  </div>
-                )}
+
+
 
                 {/* Bottom: tags + title */}
                 <div className="absolute bottom-0 left-0 right-0 px-8 pb-7">
@@ -465,7 +353,24 @@ def calculate_balance(params):
                 </div>
               </div>
 
-
+              {/* Stats Strip */}
+              <div className="bg-zinc-900 shrink-0 px-4 py-0">
+                <div className="flex items-stretch divide-x divide-white/10">
+                  {[
+                    { icon: <Users className="w-4 h-4" />, label: "팀 규모", value: project.stats?.teamSize ?? "—", accent: false },
+                    { icon: <UserCheck className="w-4 h-4" />, label: "주요 역할", value: project.stats?.myRole ?? "—", accent: false },
+                    { icon: <Trophy className="w-4 h-4" />, label: "주요 성과", value: project.stats?.achievement ?? "—", accent: true },
+                  ].map((stat, i) => (
+                    <div key={i} className={`flex items-center gap-3 px-5 py-5 flex-1 ${stat.accent ? 'bg-emerald-950/25' : ''}`}>
+                      <span className={`shrink-0 ${stat.accent ? 'text-emerald-500' : 'text-zinc-500'}`}>{stat.icon}</span>
+                      <div>
+                        <div className="text-[11px] font-bold text-zinc-500 uppercase tracking-[0.15em] mb-1">{stat.label}</div>
+                        <div className={`text-[16px] font-black leading-tight ${stat.accent ? 'text-emerald-400' : 'text-white'}`}>{stat.value}</div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
 
               {/* Body */}
               <div className="max-w-3xl mx-auto w-full px-6 md:px-8 py-8 pb-16 space-y-5">
@@ -495,12 +400,16 @@ def calculate_balance(params):
                   if (withItems.length === 0) return null;
 
                   const highlight = (text: string) => {
-                    const parts = text.split(/(\d+(?:\.\d+)?(?:%|초|인|배|종|s|개)?)/g);
-                    return parts.map((p, i) =>
-                      /^\d/.test(p)
-                        ? <strong key={i} className="font-bold text-zinc-900">{p}</strong>
-                        : <span key={i}>{p}</span>
-                    );
+                    const parts = text.split(/(\*\*.*?\*\*|\d+(?:\.\d+)?(?:%|초|인|배|종|s|개)?)/g);
+                    return parts.map((p, i) => {
+                      if (p.startsWith('**') && p.endsWith('**')) {
+                        return <strong key={i} className="font-bold text-zinc-900">{p.slice(2, -2)}</strong>;
+                      } else if (/^\d/.test(p)) {
+                        return <strong key={i} className="font-bold text-zinc-900">{p}</strong>;
+                      } else {
+                        return <span key={i}>{p}</span>;
+                      }
+                    });
                   };
 
                   return (
@@ -526,15 +435,13 @@ def calculate_balance(params):
                   );
                 })()}
 
-                {/* KeyTasks */}
+                {/* Key tasks chips */}
                 {project.keyTasks && project.keyTasks.length > 0 && (
-                  <div>
+                  <div className="pt-4 border-t border-zinc-100">
                     <p className="text-[10px] font-black text-zinc-400 uppercase tracking-[0.25em] mb-3">담당 역할</p>
                     <div className="flex flex-wrap gap-2">
-                      {project.keyTasks.map((task, i) => (
-                        <span key={i} className={`px-4 py-2 rounded-full text-[13px] font-black ${task === 'PM' ? 'bg-zinc-900 text-white' : 'bg-[#0047BB] text-white'}`}>
-                          {task}
-                        </span>
+                      {project.keyTasks.map(task => (
+                        <span key={task} className="px-3 py-1.5 bg-zinc-900 text-white rounded-xl text-[11px] font-black tracking-wide">{task}</span>
                       ))}
                     </div>
                   </div>

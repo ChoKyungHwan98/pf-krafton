@@ -6,6 +6,7 @@ interface EBookGalleryProps {
   images: string[];
   currentIndex: number;
   onPageChange: (index: number) => void;
+  maxScale?: number;
 }
 
 const slideVariants: Variants = {
@@ -36,7 +37,7 @@ const slideVariants: Variants = {
   }),
 };
 
-export const EBookGallery = ({ images, currentIndex, onPageChange }: EBookGalleryProps) => {
+export const EBookGallery = ({ images, currentIndex, onPageChange, maxScale = 100 }: EBookGalleryProps) => {
   const [[page, direction], setPage] = useState([currentIndex, 0]);
   const [zoom, setZoom] = useState(1);
   const [showHint, setShowHint] = useState(true);
@@ -220,7 +221,8 @@ export const EBookGallery = ({ images, currentIndex, onPageChange }: EBookGaller
                 }}
                 src={images[currentIndex]}
                 alt={`기획서 ${currentIndex + 1}페이지`}
-                className={`max-h-[88%] max-w-[88%] h-auto w-auto object-contain block shadow-2xl rounded-sm ${zoom > 1 ? 'cursor-move' : 'cursor-grab active:cursor-grabbing'}`}
+                className={`h-auto w-auto object-contain block shadow-2xl rounded-sm ${zoom > 1 ? 'cursor-move' : 'cursor-grab active:cursor-grabbing'}`}
+                style={{ maxHeight: `${maxScale}%`, maxWidth: `${maxScale}%` }}
                 referrerPolicy="no-referrer"
                 draggable={false}
               />
