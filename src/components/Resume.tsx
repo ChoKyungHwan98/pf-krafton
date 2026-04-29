@@ -46,8 +46,8 @@ export const Resume = ({ setView, onBack, isEditing, data, setData, activeTab, i
           ${styles}
           <style>
             @page { size: A4 portrait; margin: 0; }
-            body { margin: 0; background: #f8f9fa; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
-            .pdf-page { page-break-after: always; break-after: page; }
+            body { margin: 0; background: white; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+            .pdf-page { page-break-after: always; break-after: page; height: 296.5mm; overflow: hidden; }
             .pdf-page:last-child { page-break-after: auto; break-after: auto; }
           </style>
         </head>

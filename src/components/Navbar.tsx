@@ -78,7 +78,7 @@ export const Navbar = ({ setView, currentView, onNavClick, isEditing, setIsEditi
       <div className={`fixed top-0 left-0 right-0 z-50 flex justify-center px-4 sm:px-6 transition-all duration-500 pointer-events-none print:hidden ${navContainerClass}`}>
         <nav className={`relative pointer-events-auto w-[98%] max-w-[1440px] rounded-full transition-all duration-500 flex items-center justify-between px-6 lg:px-8 py-3 ${navBgClass}`}>
           
-          {/* Floating PDF (Admin Only, Resume Only) */}
+          {/* Floating PDF (Admin Only — 관리자 모드일 때만 표시) */}
           {currentView === 'resume' && isEditing && (
             <div className="absolute top-1/2 -right-2 lg:-right-4 transform translate-x-full -translate-y-1/2 pointer-events-auto">
               <button
@@ -178,6 +178,18 @@ export const Navbar = ({ setView, currentView, onNavClick, isEditing, setIsEditi
             </div>
             <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="lg:hidden w-11 h-11 ml-1 flex items-center justify-center rounded-full bg-zinc-100 text-[#2C2C2C]">
               {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+            {/* 관리자 Lock 버튼 — 우측 상단, 레이아웃 비간섭 */}
+            <button
+              onClick={handleAdminClick}
+              title={isEditing ? '관리자 모드 끄기' : '관리자 모드'}
+              className={`w-8 h-8 flex items-center justify-center rounded-full transition-all ${
+                isEditing
+                  ? 'bg-[#0047BB]/10 border border-[#0047BB]/30 text-[#0047BB]'
+                  : 'text-zinc-300 hover:text-zinc-500 hover:bg-zinc-100'
+              }`}
+            >
+              <Lock className="w-3.5 h-3.5" />
             </button>
           </div>
         </nav>

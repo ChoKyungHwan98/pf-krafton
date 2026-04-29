@@ -263,6 +263,34 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+/* ── Tab Ambient Effects ── */
+@keyframes tabShimmer {
+  0%   { transform: translateX(-120%); }
+  100% { transform: translateX(320%);  }
+}
+
+@layer utilities {
+  /* 비활성 탭 shimmer 오버레이 */
+  .tab-shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+  .tab-shimmer::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      105deg,
+      transparent 20%,
+      rgba(255, 255, 255, 0.6) 50%,
+      transparent 80%
+    );
+    width: 80%;
+    animation: tabShimmer 6s ease-in-out infinite;
+    pointer-events: none;
+  }
+}
+
 /* ══════════════════════════════════════════════════════════
    PRINT / PDF STYLES  —  window.print() 전용
    브라우저 네이티브 인쇄 엔진 → oklch / 웹폰트 완벽 지원

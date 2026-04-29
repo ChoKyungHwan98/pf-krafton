@@ -48,34 +48,44 @@ export const ProjectDetail = ({ project, onBack, isEditing, onSaveContent }: Pro
       className="flex-1 flex flex-col min-h-0 bg-white overflow-hidden rounded-xl shadow-2xl border border-zinc-200"
     >
       {/* Windows 11 Edge/Chrome Style Browser Window Chrome */}
-      <div className="shrink-0 flex flex-col bg-[#DFE1E5] border-b border-zinc-300 relative z-50">
+      <div className="shrink-0 flex flex-col bg-[#90959E] relative z-50">
         {/* Tab Bar & Window Controls Layer */}
-        <div className="h-10 flex items-end px-2 pt-2 relative">
+        <div className="h-12 flex items-end px-2 pt-2 relative">
           {/* Tabs */}
           <div className="flex items-end gap-1 z-10 overflow-x-auto no-scrollbar">
-            {visibleTabs.map((tab) => {
+            {visibleTabs.map((tab, idx) => {
               const isActive = activeTab === tab.id;
+              const shimmerDelay = `${idx * 0.9}s`;
               return (
                 <button
                   key={tab.id}
                   onClick={() => { setActiveTab(tab.id); setCurrentPage(0); }}
+                  className={`
+                    relative h-10 px-5 flex items-center gap-2.5 rounded-t-[9px]
+                    transition-all duration-150 min-w-[160px] max-w-[220px]
+                    border-x border-t border-b-0
+                    ${isActive
+                      ? 'bg-white z-20 border-zinc-300'
+                      : 'tab-shimmer bg-[#C4C7CC] border-[#A8ABB2] hover:bg-[#D0D3D8]'
+                    }
+                  `}
                   style={{
-                    boxShadow: isActive ? `inset 0 2px 0 0 ${tab.color}` : undefined
+                    boxShadow: isActive ? `inset 0 3px 0 0 ${tab.color}` : undefined,
+                    animationDelay: !isActive ? shimmerDelay : undefined,
                   }}
-                  className={`relative h-8 px-4 flex items-center gap-2 rounded-t-[8px] transition-colors min-w-[140px] max-w-[200px] border-x border-t ${
-                    isActive
-                      ? 'bg-white text-zinc-800 z-20 border-zinc-200'
-                      : 'bg-transparent text-zinc-600 border-transparent hover:bg-black/5'
-                  }`}
                 >
-                  <span style={{ color: isActive ? tab.color : 'inherit' }} className="flex shrink-0">
+                  <span
+                    style={{ color: isActive ? tab.color : undefined }}
+                    className={`flex shrink-0 ${isActive ? '' : 'text-zinc-700'}`}
+                  >
                     {tab.icon}
                   </span>
-                  <span className="text-[11px] font-semibold truncate">{tab.label}</span>
-                  {/* Right side shadow/border blend for active tab */}
-                  {isActive && (
-                    <div className="absolute -bottom-px left-0 right-0 h-[2px] bg-white" />
-                  )}
+                  <span
+                    style={{ color: isActive ? tab.color : undefined }}
+                    className={`text-[13px] tracking-tight truncate ${isActive ? 'font-black' : 'font-semibold text-zinc-700'}`}
+                  >
+                    {tab.label}
+                  </span>
                 </button>
               );
             })}
@@ -392,7 +402,7 @@ export const ProjectDetail = ({ project, onBack, isEditing, onSaveContent }: Pro
                     { icon: <UserCheck className="w-4 h-4" />, label: "주요 역할", value: project.stats?.myRole ?? "—", accent: false },
                     { icon: <Trophy className="w-4 h-4" />, label: "주요 성과", value: project.stats?.achievement ?? "—", accent: true },
                   ].map((stat, i) => (
-                    <div key={i} className={`flex items-center gap-3 px-5 py-5 flex-1 ${stat.accent ? 'bg-emerald-950/25' : ''}`}>
+                    <div key={i} className={`flex items-center gap-5 px-6 py-6 flex-1 ${stat.accent ? 'bg-emerald-950/25' : ''}`}>
                       <span className={`shrink-0 ${stat.accent ? 'text-emerald-500' : 'text-zinc-500'}`}>{stat.icon}</span>
                       <div>
                         <div className="text-[11px] font-bold text-zinc-500 uppercase tracking-[0.15em] mb-1">{stat.label}</div>

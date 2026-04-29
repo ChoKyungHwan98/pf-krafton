@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import ReactDOM from 'react-dom';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { About } from './components/About';
@@ -8,7 +7,6 @@ import { Portfolio } from './components/Portfolio';
 import { Skills } from './components/Skills';
 import { PlayHistory } from './components/PlayHistory';
 import { Resume } from './components/Resume';
-import { PrintTemplate } from './components/PrintTemplate';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 import { RightRail } from './components/RightRail';
@@ -16,11 +14,12 @@ import { ProjectDetail } from './components/ProjectDetail';
 import { GameHistoryView } from './components/GameHistoryView';
 import { BackgroundEffects } from './components/BackgroundEffects';
 import { motion } from 'motion/react';
-import { FileText, FolderOpen, Gamepad2 } from 'lucide-react';
 
 import { useEditableContent } from './hooks/useEditableContent';
+import { useIsMobile } from './hooks/useIsMobile';
+import { MobileApp } from './components/mobile/MobileApp';
 import { RESUME_DATA, PROJECTS, GAME_HISTORY, SKILLS } from './data';
-import type { Project, ResumeData, GameHistory, Skill } from './types';
+import type { Project } from './types';
 
 type ViewType = 'home' | 'resume' | 'project-detail' | 'portfolio' | 'all-projects' | 'game-history' | 'cover-letter';
 
@@ -50,8 +49,7 @@ function App() {
 
   // Supabase Data
   const [resumeData, setResumeData, resumeLoaded] = useEditableContent(RESUME_DATA, 'webzen_resume_data');
-  const [projectsData, setProjectsData, projectsLoaded] = useEditableContent(PROJECTS, 'webzen_projects_data_v2');
-  const [portfolioProjects, setPortfolioProjects, portfolioLoaded] = useEditableContent(PROJECTS, 'webzen_portfolio_projects_v2');
+  const [projectsData, setProjectsData, projectsLoaded] = useEditableContent(PROJECTS, 'webzen_portfolio_projects_v2');
   const [gameHistory, setGameHistory, gameHistoryLoaded] = useEditableContent(GAME_HISTORY, 'webzen_game_history');
   const [skillsData, setSkillsData] = useState(SKILLS);
   const [heroContent, setHeroContent, heroLoaded] = useEditableContent({
@@ -64,7 +62,8 @@ function App() {
     p2: "저는 누군가의 하루를 움직이는,<br/><strong>+를 설계하는 기획자</strong>가 되겠습니다."
   }, 'webzen_about_content');
 
-  const isDataLoaded = resumeLoaded && projectsLoaded && portfolioLoaded && gameHistoryLoaded && heroLoaded && aboutLoaded;
+  const isDataLoaded = resumeLoaded && projectsLoaded && gameHistoryLoaded && heroLoaded && aboutLoaded;
+  const isMobile = useIsMobile();
 
   // Section Observer
   useEffect(() => {
@@ -87,6 +86,40 @@ function App() {
       history.scrollRestoration = 'manual';
     }
     window.scrollTo(0, 0);
+  }, []);
+
+  // 보안: F12, 우클릭, 각종 개발자 도구 단축키 차단
+  useEffect(() => {
+    const handleContextMenu = (e: MouseEvent) => {
+      e.preventDefault();
+    };
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // F12
+      if (e.keyCode === 123) {
+        e.preventDefault();
+      }
+      // Ctrl+Shift+I or Cmd+Option+I (개발자 도구)
+      if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.keyCode === 73) {
+        e.preventDefault();
+      }
+      // Ctrl+Shift+J or Cmd+Option+J (콘솔)
+      if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.keyCode === 74) {
+        e.preventDefault();
+      }
+      // Ctrl+U or Cmd+U (소스 보기)
+      if ((e.ctrlKey || e.metaKey) && e.keyCode === 85) {
+        e.preventDefault();
+      }
+    };
+
+    document.addEventListener('contextmenu', handleContextMenu);
+    document.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.removeEventListener('contextmenu', handleContextMenu);
+      document.removeEventListener('keydown', handleKeyDown);
+    };
   }, []);
 
   const [returnScrollY, setReturnScrollY] = useState<number>(0);
@@ -156,23 +189,6 @@ function App() {
 
   // ── Navbar Slots ──────────────────────────────────────────────
 
-  // 컨텍스트 이동 버튼
-  const makeNavBtn = (label: string, icon: React.ReactNode, target: typeof view) => (
-    <button
-      key={label}
-      onClick={() => changeView(target)}
-      className="w-[125px] py-2.5 rounded-full text-[14px] font-bold tracking-wide transition-all duration-300 flex items-center justify-center gap-2 text-zinc-500 hover:text-[#2C2C2C] hover:bg-white hover:shadow-sm"
-    >
-      {icon}
-      <span>{label}</span>
-    </button>
-  );
-
-  const resumeIcon = <FileText className="w-3.5 h-3.5" />;
-  const portfolioIcon = <FolderOpen className="w-3.5 h-3.5" />;
-  const dnaIcon = <Gamepad2 className="w-3.5 h-3.5" />;
-
-  // pdfButton 삭제됨
   // centerSlot
   const centerSlot = (() => {
     if (view === 'resume' || view === 'cover-letter') {
@@ -205,6 +221,9 @@ function App() {
       </div>
     );
   }
+
+  // 모바일 기기 → MobileApp 렌더링 (PC 코드 완전 보존)
+  if (isMobile) return <MobileApp />;
 
   return (
     <>
@@ -253,15 +272,23 @@ function App() {
           project={selectedProject}
           isEditing={isEditing}
           onBack={handleBack}
-          onSaveContent={(c) => { const p = [...projectsData]; const index = p.findIndex(pp => pp.id === selectedProject.id); if (index !== -1) { p[index].content = c; setProjectsData(p); setSelectedProject(p[index]); } }}
+          onSaveContent={(c) => {
+            const updated = [...projectsData];
+            const index = updated.findIndex(p => p.id === selectedProject.id);
+            if (index !== -1) {
+              updated[index].content = c;
+              setProjectsData(updated);
+              setSelectedProject(updated[index]);
+            }
+          }}
         />
       )}
       {view === 'portfolio' && (
         <Portfolio
           onProjectClick={(p) => { setSelectedProject(p); changeView('project-detail'); }}
           isEditing={isEditing}
-          projects={portfolioProjects}
-          setProjects={setPortfolioProjects}
+          projects={projectsData}
+          setProjects={setProjectsData}
           setView={changeView}
           onBack={handleBack}
           initialProjectId={targetProjectId}

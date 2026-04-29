@@ -73,19 +73,41 @@ function inlineRender(text: string): React.ReactNode {
 /* ─── paragraphs renderer ────────────────────────────────────────── */
 function renderParagraphs(text: string): React.ReactNode {
   if (!text) return null;
-  return text.split('\n\n').map((p, i) => (
-    <p key={i} style={{ margin: '0 0 12px', lineHeight: 1.85, fontSize: '13px', color: BODY, wordBreak: 'keep-all' }}>
-      {inlineRender(p)}
-    </p>
-  ));
+  const clean = text
+    .replace(/<[^>]+>/g, '')
+    .replace(/\r/g, '')
+    .replace(/^>\s?/gm, '');
+  const paragraphs = clean.split(/\n{2,}/);
+  return paragraphs.map((para, i) => {
+    const lines = para.split(/\n/);
+    return (
+      <p key={i} style={{
+        margin: i < paragraphs.length - 1 ? '0 0 16px' : '0',
+        lineHeight: 1.95,
+        fontSize: '12.5px',
+        color: BODY,
+        wordBreak: 'keep-all',
+        overflowWrap: 'break-word',
+        letterSpacing: '-0.2px',
+        fontWeight: 400
+      }}>
+        {lines.map((line, j) => (
+          <React.Fragment key={j}>
+            {j > 0 && <br />}
+            {inlineRender(line)}
+          </React.Fragment>
+        ))}
+      </p>
+    );
+  });
 }
 
 /* ─── pullQuote renderer ─────────────────────────────────────────── */
 function renderPullQuote(text?: string): React.ReactNode {
   if (!text) return null;
   return (
-    <div style={{ borderLeft: `3px solid ${BLUE_BORDER}`, background: '#F8F9FF', padding: '16px 24px', margin: '24px 0', borderRadius: '0 12px 12px 0' }}>
-      <span style={{ fontWeight: 700, fontSize: '14px', color: BODY }}>{text}</span>
+    <div style={{ borderLeft: `4px solid ${BLUE}`, background: 'rgba(0,71,187,0.03)', padding: '20px 28px', margin: '32px 0', borderRadius: '0 8px 8px 0' }}>
+      <span style={{ fontWeight: 800, fontSize: '15px', color: '#1A1A1A', lineHeight: 1.6, letterSpacing: '-0.3px', display: 'block', wordBreak: 'keep-all' }}>"{text}"</span>
     </div>
   );
 }
@@ -94,29 +116,29 @@ function renderPullQuote(text?: string): React.ReactNode {
 function renderHighlightsHorizontal(items?: { bold: string; em: string }[]): React.ReactNode {
   if (!items || items.length === 0) return null;
   return (
-    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '10px', margin: '24px 0' }}>
+    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '14px', margin: '32px 0' }}>
       {items.map((item, j) => (
-        <div key={j} style={{ background: '#F8F9FF', border: `1px solid ${BLUE_BORDER}`, borderRadius: '12px', padding: '16px 14px' }}>
-          <div style={{ fontWeight: 800, fontSize: '12px', color: BLUE, marginBottom: '6px' }}>{item.bold}</div>
-          <div style={{ fontSize: '11px', color: MUTED, lineHeight: 1.5, wordBreak: 'keep-all' }}>{item.em}</div>
+        <div key={j} style={{ background: '#FFFFFF', borderTop: `3px solid ${BLUE}`, boxShadow: '0 4px 14px rgba(0,0,0,0.03)', borderRadius: '0 0 6px 6px', padding: '16px 14px' }}>
+          <div style={{ fontWeight: 900, fontSize: '13px', color: '#1A1A1A', marginBottom: '8px', letterSpacing: '-0.3px' }}>{item.bold}</div>
+          <div style={{ fontSize: '11.5px', color: '#555', lineHeight: 1.6, wordBreak: 'keep-all', letterSpacing: '-0.2px' }}>{item.em}</div>
         </div>
       ))}
     </div>
   );
 }
 
-/* ─── logline renderer (Refined) ─────────────────────────────────── */
+/* ─── logline renderer (A4 최적화) ───────────────────────────────── */
 function renderLogline(logline: string): React.ReactNode {
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-       {logline.trim().split(/\s*\n\s*/).map((line, i) => {
-          const isBold = line.startsWith('**') && line.endsWith('**');
-          return (
-            <div key={i} style={{ fontSize: '26px', fontWeight: 900, lineHeight: 1.25, color: isBold ? BLUE : DARK, letterSpacing: '-0.8px', wordBreak: 'keep-all' }}>
-              {isBold ? line.slice(2, -2) : line}
-            </div>
-          );
-       })}
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+      {logline.trim().split(/\n/).map((line, i) => {
+        const isBold = line.startsWith('**') && line.endsWith('**');
+        return (
+          <div key={i} style={{ fontSize: '26px', fontWeight: 900, lineHeight: 1.25, color: isBold ? BLUE : DARK, letterSpacing: '-0.8px', wordBreak: 'keep-all' }}>
+            {isBold ? line.slice(2, -2) : line}
+          </div>
+        );
+      })}
     </div>
   );
 }
@@ -247,70 +269,76 @@ const renderToolIcon = (name: string) => {
 
 /* ─── PAGE 1: RESUME ─────────────────────────────────────────────── */
 const ResumePage: React.FC<{ data: ResumeData }> = ({ data }) => (
-  <div className="pdf-page bg-white mx-auto flex flex-col font-sans" style={{ width: '210mm', minHeight: '297mm' }}>
-    
-    {/* 1. EDITORIAL HEADER SECTION */}
-    <header className="flex items-start gap-5 p-6 bg-[#FAFAFA] border-b border-zinc-100">
-      {/* Portrait */}
-      <div className="relative shrink-0">
-        <div className="w-[100px] rounded-sm overflow-hidden border border-black/10 shadow-xl bg-white">
-          <img 
-            src={data.image || "https://picsum.photos/seed/profile/600/800"} 
-            alt="Profile" 
-            className="w-full h-auto object-contain block" 
-          />
-        </div>
-      </div>
-
-      {/* Identity & Summary */}
-      <div className="flex-1 flex flex-col items-start pt-1">
-        <h1 className="text-[30px] font-bold text-[#1A1A1A] tracking-tighter leading-none mb-2">
-          {data.name}
-        </h1>
-        <p className="text-[#0047BB] font-black font-mono tracking-[0.4em] text-[9.5px] uppercase mb-3 pb-1 border-b-2 border-[#0047BB]">
-          {data.role}
-        </p>
-        
-        <div className="max-w-2xl text-[11px] text-[#2C2C2C] leading-relaxed font-medium [&_strong]:text-[#0047BB] [&_strong]:font-bold break-keep italic opacity-90 mb-3">
-          {inlineRender(data.summary || '')}
-        </div>
-
-        {/* Contact Quick List */}
-        <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-[10px] text-zinc-500 font-bold uppercase tracking-wider">
-          <div className="flex items-center gap-1.5">
-            <Mail className="w-3 h-3 text-[#0047BB]/70" strokeWidth={2} />
-            <span className="lowercase">{data.email}</span>
+  <div className="pdf-page bg-white mx-auto font-sans relative" style={{ width: '210mm', height: '297mm', overflow: 'hidden' }}>
+    <div className="flex flex-col" style={{ transform: 'scale(0.88)', transformOrigin: 'top left', width: '113.63%', height: '113.63%' }}>
+      <header className="flex flex-row items-start gap-8 p-8 bg-[#FAFAFA] border-b border-zinc-100 shrink-0">
+        {/* Portrait Frame */}
+        <div className="relative shrink-0">
+          <div className="w-[140px] rounded-sm overflow-hidden border border-black/10 shadow-xl bg-white">
+            <img src={data.image || "https://picsum.photos/seed/profile/600/800"} alt="Profile" className="w-full h-auto object-contain block" />
           </div>
-          {data.phone && (
-            <div className="flex items-center gap-1.5">
-              <Phone className="w-3 h-3 text-[#0047BB]/70" strokeWidth={2} />
-              <span>{data.phone}</span>
-            </div>
-          )}
-          {data.birthDate && (
-            <div className="flex items-center gap-1.5">
-              <Calendar className="w-3 h-3 text-[#0047BB]/70" strokeWidth={2} />
-              <span>{data.birthDate}</span>
-            </div>
-          )}
-          {data.address && (
-            <div className="flex items-center gap-1.5">
-              <MapPin className="w-3 h-3 text-[#0047BB]/70" strokeWidth={2} />
-              <span>{data.address}</span>
-            </div>
-          )}
-          {data.military && (
-            <div className="flex items-center gap-1.5">
-              <Shield className="w-3 h-3 text-[#0047BB]/70" strokeWidth={2} />
-              <span>{data.military.branch} {data.military.rank} {data.military.status}</span>
-            </div>
-          )}
         </div>
-      </div>
-    </header>
 
-    {/* 2. MAIN CONTENT GRID */}
-    <div className="grid grid-cols-12 gap-0 flex-1">
+        {/* Identity & Summary */}
+        <div className="flex-1 flex flex-col items-start pt-2">
+          <h1 className="text-[40px] font-bold text-[#1A1A1A] tracking-tighter leading-none mb-2">{data.name}</h1>
+          <p className="text-[#0047BB] font-black font-mono tracking-[0.4em] text-[10px] uppercase mb-5 pb-1 border-b-2 border-[#0047BB]">{data.role}</p>
+          
+          <div className="w-full text-left text-[14px] text-[#2C2C2C] leading-[1.7] font-medium [&_strong]:text-[#0047BB] [&_strong]:font-black [&_strong]:bg-[#0047BB]/5 [&_strong]:px-1 [&_strong]:py-0.5 [&_strong]:rounded-md break-keep [&>p]:m-0 [&>p]:mb-1.5 last:[&>p]:mb-0 mb-6">
+            {inlineRender(data.summary || '')}
+          </div>
+
+          {/* Contact Info Grid */}
+          <div className="grid grid-cols-2 gap-x-8 gap-y-3 w-full">
+            <div className="flex items-center gap-2.5">
+              <Mail className="w-3.5 h-3.5 text-[#0047BB] shrink-0" strokeWidth={2} />
+              <div className="flex flex-col">
+                <span className="text-[8.5px] font-mono text-zinc-400 uppercase tracking-widest">EMAIL</span>
+                <span className="text-[11px] text-[#1A1A1A] font-semibold lowercase">{data.email}</span>
+              </div>
+            </div>
+            {data.birthDate && (
+              <div className="flex items-center gap-2.5">
+                <Calendar className="w-3.5 h-3.5 text-[#0047BB] shrink-0" strokeWidth={2} />
+                <div className="flex flex-col">
+                  <span className="text-[8.5px] font-mono text-zinc-400 uppercase tracking-widest">생년월일</span>
+                  <span className="text-[11px] text-[#1A1A1A] font-semibold">{data.birthDate}</span>
+                </div>
+              </div>
+            )}
+            {data.phone && (
+              <div className="flex items-center gap-2.5">
+                <Phone className="w-3.5 h-3.5 text-[#0047BB] shrink-0" strokeWidth={2} />
+                <div className="flex flex-col">
+                  <span className="text-[8.5px] font-mono text-zinc-400 uppercase tracking-widest">연락처</span>
+                  <span className="text-[11px] text-[#1A1A1A] font-semibold">{data.phone}</span>
+                </div>
+              </div>
+            )}
+            {data.address && (
+              <div className="flex items-center gap-2.5">
+                <MapPin className="w-3.5 h-3.5 text-[#0047BB] shrink-0" strokeWidth={2} />
+                <div className="flex flex-col">
+                  <span className="text-[8.5px] font-mono text-zinc-400 uppercase tracking-widest">주소</span>
+                  <span className="text-[11px] text-[#1A1A1A] font-semibold">{data.address}</span>
+                </div>
+              </div>
+            )}
+            {data.military && (
+              <div className="flex items-center gap-2.5 col-span-2">
+                <Shield className="w-3.5 h-3.5 text-[#0047BB] shrink-0" strokeWidth={2} />
+                <div className="flex flex-col">
+                  <span className="text-[8.5px] font-mono text-zinc-400 uppercase tracking-widest">병역</span>
+                  <span className="text-[11px] text-[#1A1A1A] font-semibold">{data.military.branch} {data.military.rank} {data.military.status}</span>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </header>
+
+    {/* MAIN CONTENT GRID */}
+    <div className="grid grid-cols-12 gap-0 flex-1" style={{ overflow: 'hidden' }}>
       {/* LEFT COLUMN */}
       <aside className="col-span-4 p-6 border-r border-zinc-100 bg-[#FCFCFC] flex flex-col gap-6">
         {/* Education */}
@@ -360,10 +388,10 @@ const ResumePage: React.FC<{ data: ResumeData }> = ({ data }) => (
       <main className="col-span-8 p-6 bg-white flex flex-col gap-6">
         {/* Project Experience */}
         <section>
-          <h3 className="text-[13px] font-bold mb-4 flex items-center gap-2 text-[#1A1A1A]">
-            <Briefcase className="text-[#0047BB] w-4 h-4" /> 프로젝트 경험
+          <h3 className="text-[12px] font-bold mb-3 flex items-center gap-2 text-[#1A1A1A]">
+            <Briefcase className="text-[#0047BB] w-3.5 h-3.5" /> 프로젝트 경험
           </h3>
-          <div className="space-y-6">
+          <div className="space-y-3">
             {data.experience.map((exp, idx) => (
               <div key={idx} className="relative pl-5 border-l-2 border-[#0047BB]/10">
                 <div className="absolute -left-[6px] top-1.5 w-2.5 h-2.5 rounded-full bg-white border-2 border-[#0047BB] shadow-sm"></div>
@@ -396,60 +424,64 @@ const ResumePage: React.FC<{ data: ResumeData }> = ({ data }) => (
           </div>
         </section>
 
-        {/* Technical Proficiency */}
+        {/* Technical Proficiency — 원래 레이아웃 */}
         {data.tools && data.tools.length > 0 && (
-          <section className="pt-4 border-t border-zinc-100 mt-auto">
-            <h3 className="text-[13px] font-bold mb-3 flex items-center gap-2 text-[#1A1A1A]">
+          <section className="mt-auto pt-4 border-t border-zinc-100">
+            <h3 className="text-[13px] font-bold mb-4 flex items-center gap-2 text-[#1A1A1A]">
               <Wrench className="text-[#0047BB] w-4 h-4" /> 기술 역량 및 도구
             </h3>
-            <div className="grid grid-cols-2 gap-x-6 gap-y-4">
+            <div className="flex flex-col gap-4">
               {/* Group 1 */}
               <div className="space-y-2">
-                <h4 className="text-[7.5px] font-black text-[#0047BB] tracking-[0.4em] uppercase border-b border-[#0047BB]/10 pb-1 mb-1.5">DOCUMENTATION & OFFICE</h4>
-                <div className="space-y-3">
+                <h4 className="text-[7.5px] font-black text-[#0047BB] tracking-[0.4em] uppercase border-b border-[#0047BB]/10 pb-1.5">DOCUMENTATION & OFFICE</h4>
+                <div className="grid grid-cols-2 gap-x-6 gap-y-2.5">
                   {data.tools.filter(t => ["Excel", "PowerPoint", "Word", "Notion"].includes(t.name)).map((tool, idx) => (
-                    <div key={idx} className="flex items-start gap-2">
-                      <div className="text-[#1A1A1A] shrink-0 pt-0.5">{renderToolIcon(tool.name)}</div>
-                      <div className="flex flex-col gap-0.5">
+                    <div key={idx} className="flex items-start gap-2.5">
+                      <div className="text-[#1A1A1A] shrink-0 pt-0.5" style={{ transform: 'scale(0.8)', transformOrigin: 'top left', width: '20px', height: '20px' }}>{renderToolIcon(tool.name)}</div>
+                      <div className="flex flex-col">
                         <span className="text-[10px] font-bold text-[#1A1A1A]">{tool.name}</span>
-                        <p className="text-[8.5px] text-zinc-500 font-medium leading-snug">{tool.description}</p>
+                        <p className="text-[8.5px] text-zinc-500 font-medium leading-tight">{tool.description}</p>
                       </div>
                     </div>
                   ))}
                 </div>
               </div>
-
               {/* Group 2 */}
               <div className="space-y-2">
-                <h4 className="text-[7.5px] font-black text-[#0047BB] tracking-[0.4em] uppercase border-b border-[#0047BB]/10 pb-1 mb-1.5">CREATIVE & ENGINE</h4>
-                <div className="space-y-3">
-                  {data.tools.filter(t => ["Figma", "Unity"].includes(t.name)).map((tool, idx) => (
-                    <div key={idx} className="flex items-start gap-2">
-                      <div className="text-[#1A1A1A] shrink-0 pt-0.5">{renderToolIcon(tool.name)}</div>
-                      <div className="flex flex-col gap-0.5">
+                <h4 className="text-[7.5px] font-black text-[#0047BB] tracking-[0.4em] uppercase border-b border-[#0047BB]/10 pb-1.5">AI ASSISTANTS</h4>
+                <div className="grid grid-cols-2 gap-x-6 gap-y-2.5">
+                  {data.tools.filter(t => ["ChatGPT", "Claude", "Gemini", "Antigravity"].includes(t.name)).map((tool, idx) => (
+                    <div key={idx} className="flex items-start gap-2.5">
+                      <div className="text-[#1A1A1A] shrink-0 pt-0.5" style={{ transform: 'scale(0.8)', transformOrigin: 'top left', width: '20px', height: '20px' }}>{renderToolIcon(tool.name)}</div>
+                      <div className="flex flex-col">
                         <span className="text-[10px] font-bold text-[#1A1A1A]">{tool.name}</span>
-                        <p className="text-[8.5px] text-zinc-500 font-medium leading-snug">{tool.description}</p>
+                        <p className="text-[8.5px] text-zinc-500 font-medium leading-tight">{tool.description}</p>
                       </div>
                     </div>
                   ))}
-                  <h4 style={{ fontSize: '7.5px', fontWeight: 900, color: BLUE, letterSpacing: '0.4em', textTransform: 'uppercase', borderBottom: `1px solid ${BLUE_BORDER}`, paddingBottom: '4px', marginBottom: '6px', marginTop: '12px' }}>AI ASSISTANTS</h4>
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                    {data.tools.filter(t => ["ChatGPT", "Claude", "Gemini", "Antigravity"].includes(t.name)).map((tool, idx) => (
-                      <div key={idx} style={{ display: 'flex', alignItems: 'start', gap: '8px' }}>
-                        <div style={{ color: DARK, display: 'flex', alignItems: 'center', flexShrink: 0, paddingTop: '2px' }}>{renderToolIcon(tool.name)}</div>
-                        <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
-                          <span style={{ fontSize: '10px', fontWeight: 700, color: DARK }}>{tool.name}</span>
-                          <p style={{ fontSize: '8.5px', color: MUTED, fontWeight: 500, lineHeight: 1.4, margin: 0 }}>{tool.description}</p>
-                        </div>
+                </div>
+              </div>
+              {/* Group 3 */}
+              <div className="space-y-2">
+                <h4 className="text-[7.5px] font-black text-[#0047BB] tracking-[0.4em] uppercase border-b border-[#0047BB]/10 pb-1.5">CREATIVE & ENGINE</h4>
+                <div className="grid grid-cols-2 gap-x-6 gap-y-2.5">
+                  {data.tools.filter(t => ["Figma", "Unity"].includes(t.name)).map((tool, idx) => (
+                    <div key={idx} className="flex items-start gap-2.5">
+                      <div className="text-[#1A1A1A] shrink-0 pt-0.5" style={{ transform: 'scale(0.8)', transformOrigin: 'top left', width: '20px', height: '20px' }}>{renderToolIcon(tool.name)}</div>
+                      <div className="flex flex-col">
+                        <span className="text-[10px] font-bold text-[#1A1A1A]">{tool.name}</span>
+                        <p className="text-[8.5px] text-zinc-500 font-medium leading-tight">{tool.description}</p>
                       </div>
-                    ))}
-                  </div>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
           </section>
+
         )}
       </main>
+    </div>
     </div>
   </div>
 );
@@ -463,7 +495,7 @@ const CoverPage: React.FC<{ intro: IntroItem; idx: number; isLast: boolean; data
   return (
     <div style={{
       ...PAGE,
-      padding: '16mm 20mm',
+      padding: '20mm 20mm',
       display: 'flex',
       flexDirection: 'column',
       pageBreakAfter: isLast ? 'auto' : 'always',
@@ -471,17 +503,20 @@ const CoverPage: React.FC<{ intro: IntroItem; idx: number; isLast: boolean; data
       background: WHITE,
     }} className="pdf-page">
 
-      {/* Header: Number & Title */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '24px' }}>
-        <div style={{ width: '36px', height: '36px', borderRadius: '50%', border: `1px solid ${BLUE_BORDER}`, background: BLUE_FAINT, display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'monospace', fontWeight: 900, fontSize: '14px', color: BLUE }}>
+      {/* 헤더: 번호 + navTitle */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '24px' }}>
+        <div style={{ width: '32px', height: '32px', borderRadius: '50%', border: `1px solid ${BLUE_BORDER}`, background: BLUE_FAINT, display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'monospace', fontWeight: 900, fontSize: '12px', color: BLUE, flexShrink: 0 }}>
           {number}
         </div>
-        <div style={{ flex: 1, height: '1px', background: `linear-gradient(to right, ${BLUE_BORDER}, transparent)` }}></div>
+        {(intro as any).navTitle && (
+          <span style={{ fontSize: '9px', fontWeight: 900, color: BLUE, letterSpacing: '0.35em', textTransform: 'uppercase' }}>{(intro as any).navTitle}</span>
+        )}
+        <div style={{ flex: 1, height: '1px', background: `linear-gradient(to right, ${BLUE_BORDER}, transparent)` }} />
       </div>
 
-      {/* Logline */}
-      <div style={{ borderLeft: `4px solid ${BLUE}`, paddingLeft: '16px', marginBottom: '36px' }}>
-         {renderLogline(intro.logline)}
+      {/* 로그라인 */}
+      <div style={{ borderLeft: `4px solid ${BLUE}`, paddingLeft: '16px', marginBottom: '32px' }}>
+        {renderLogline(intro.logline)}
       </div>
 
       {/* Main Content Area */}
@@ -503,10 +538,33 @@ const CoverPage: React.FC<{ intro: IntroItem; idx: number; isLast: boolean; data
         )}
 
         {intro.closing && (
-          <div style={{ marginTop: '12px' }}>
+          <div style={{ marginTop: '10px', paddingTop: '10px', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
             {renderParagraphs(intro.closing)}
           </div>
         )}
+
+        {/* Q5 Part 2: AI 프로토타이핑 (하드코딩 추가 - 간격 크게 부여) */}
+        {idx === 4 && (
+          <div style={{ marginTop: '48px', paddingTop: '36px', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+            <div style={{ borderLeft: `4px solid ${BLUE}`, paddingLeft: '16px', marginBottom: '24px' }}>
+              <div style={{ fontSize: '24px', fontWeight: 900, lineHeight: 1.25, color: DARK, letterSpacing: '-0.6px', wordBreak: 'keep-all' }}>AI는 단순한 도구가 아닌,</div>
+              <div style={{ fontSize: '24px', fontWeight: 900, lineHeight: 1.25, color: BLUE, letterSpacing: '-0.6px', wordBreak: 'keep-all' }}>가장 빠른 검증 수단입니다.</div>
+            </div>
+            <p style={{ margin: '0 0 16px', fontSize: '12.5px', lineHeight: 1.95, color: BODY, wordBreak: 'keep-all', letterSpacing: '-0.2px' }}>
+              <strong style={{ color: BLUE, fontWeight: 800 }}>도로시아 프로젝트</strong>를 진행하며, 저는 기획서만으로는 재미를 검증할 수 없다고 생각했습니다. 기획자가 상상하는 재미와 실제로 플레이할 때의 재미는 다르기 때문입니다.
+            </p>
+            <p style={{ margin: '0 0 16px', fontSize: '12.5px', lineHeight: 1.95, color: BODY, wordBreak: 'keep-all', letterSpacing: '-0.2px' }}>
+              그래서 <strong style={{ color: BLUE, fontWeight: 800 }}>AI를 활용</strong>하여 직접 플레이 가능한 <strong style={{ color: BLUE, fontWeight: 800 }}>프로토타입</strong>을 만들었습니다. 기획 의도대로 시스템을 구현했고, 각 요소들을 조작할 수 있는 형태로 빠르게 제작했습니다.
+            </p>
+            <p style={{ margin: '0 0 16px', fontSize: '12.5px', lineHeight: 1.95, color: BODY, wordBreak: 'keep-all', letterSpacing: '-0.2px' }}>
+              이 프로토타입을 프로그래머에게 전달했을 때, 팀의 <strong style={{ color: BLUE, fontWeight: 800 }}>방향성이 흔들리지 않았습니다</strong>. 문서로는 각자 다르게 상상할 수 있는 재미를, 모두가 같은 화면에서 확인할 수 있었기 때문입니다.
+            </p>
+            <p style={{ margin: 0, fontSize: '12.5px', lineHeight: 1.95, color: BODY, wordBreak: 'keep-all', letterSpacing: '-0.2px' }}>
+              AI는 단순한 도구가 아니라, 기획자의 의도를 가장 빠르게 검증할 수 있는 수단이라고 생각합니다.
+            </p>
+          </div>
+        )}
+
       </div>
 
       {/* Footer */}

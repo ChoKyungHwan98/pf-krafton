@@ -49,17 +49,6 @@ export interface Skill {
   evidences: SkillEvidence[];
 }
 
-export interface GamePlay {
-  id: string | number;
-  genre?: string;
-  name?: string;
-  title?: string;
-  platform?: string;
-  playTime?: string;
-  hours?: number;
-  brand?: string;
-}
-
 export interface GameHistoryItem {
   id: string | number;
   category: 'PC' | 'Pc' | 'Mobile' | 'Console';
@@ -78,9 +67,9 @@ export interface GameHistoryItem {
 }
 
 export interface GameHistory {
-  pc: GamePlay[];
-  mobile: GamePlay[];
-  console: GamePlay[];
+  pc: GameHistoryItem[];
+  mobile: GameHistoryItem[];
+  console: GameHistoryItem[];
 }
 
 export interface ResumeData {
