@@ -8,7 +8,7 @@ export default defineConfig(({mode}) => {
   const env = loadEnv(mode, '.', '');
   const isProduction = mode === 'production';
   return {
-    base: '/game-designer-portfolio-webzen/',
+    base: '/pf-pearlabyss/',
     plugins: [
       react(), 
       tailwindcss(),

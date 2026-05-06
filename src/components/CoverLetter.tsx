@@ -239,34 +239,7 @@ export const CoverLetter = ({ setView, isEditing, data, setData }: CoverLetterPr
                       )
                     )}
 
-                    {/* Hardcoded Q5 Part 2 (AI Prototyping) */}
-                    {idx === 4 && !isEditing && (
-                      <div className="mt-4 pt-8 border-t-[1.5px] border-zinc-100/80">
-                        <motion.div 
-                          initial={{ opacity: 0, y: 30 }} 
-                          whileInView={{ opacity: 1, y: 0 }} 
-                          viewport={{ once: true }} 
-                          transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-                          className="mb-8 md:mb-12"
-                        >
-                          <h3 className="text-[30px] md:text-[40px] lg:text-[44px] xl:text-[46px] font-display font-black! text-[#1A1A1A] leading-[1.3] tracking-tighter break-keep text-opacity-90">
-                            AI는 단순한 도구가 아닌,<br/>
-                            <span className="text-[#0047BB] font-black!">가장 빠른 검증 수단입니다.</span>
-                          </h3>
-                          <div className="mt-6 md:mt-8 h-px bg-linear-to-r from-[#0047BB]/30 via-[#0047BB]/10 to-transparent" />
-                        </motion.div>
 
-                        <div className="mb-5 md:mb-7">
-                          <p className="mb-5 md:mb-7 break-keep"><strong className="text-[#0047BB] font-extrabold bg-[linear-gradient(to_top,rgba(0,71,187,0.22)_50%,transparent_50%)] px-[3px] rounded-sm">도로시아 프로젝트</strong>를 진행하며, 저는 기획서만으로는 재미를 검증할 수 없다고 생각했습니다. 기획자가 상상하는 재미와 실제로 플레이할 때의 재미는 다르기 때문입니다.</p>
-                          <p className="mb-5 md:mb-7 break-keep">그래서 <strong className="text-[#0047BB] font-extrabold bg-[linear-gradient(to_top,rgba(0,71,187,0.22)_50%,transparent_50%)] px-[3px] rounded-sm">AI를 활용</strong>하여 직접 플레이 가능한 <strong className="text-[#0047BB] font-extrabold bg-[linear-gradient(to_top,rgba(0,71,187,0.22)_50%,transparent_50%)] px-[3px] rounded-sm">프로토타입</strong>을 만들었습니다. 기획 의도대로 시스템을 구현했고, 각 요소들을 조작할 수 있는 형태로 빠르게 제작했습니다.</p>
-                        </div>
-
-                        <div className="mt-8">
-                          <p className="mb-5 md:mb-7 break-keep">이 프로토타입을 프로그래머에게 전달했을 때, 팀의 <strong className="text-[#0047BB] font-extrabold bg-[linear-gradient(to_top,rgba(0,71,187,0.22)_50%,transparent_50%)] px-[3px] rounded-sm">방향성이 흔들리지 않았습니다</strong>. 문서로는 각자 다르게 상상할 수 있는 '재미'를, 모두가 같은 화면에서 확인할 수 있었기 때문입니다.</p>
-                          <p className="mb-5 md:mb-7 break-keep">AI는 단순한 도구가 아니라, 기획자의 의도를 가장 빠르게 검증할 수 있는 수단이라고 생각합니다.</p>
-                        </div>
-                      </div>
-                    )}
                   </motion.div>
 
                 </motion.div>
