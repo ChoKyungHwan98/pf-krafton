@@ -269,8 +269,12 @@ export const CoverLetter = ({ setView, isEditing, data, setData }: CoverLetterPr
                     )}
 
 
+                  </motion.div>
+
+                </motion.div>
 
                 {/* 섹션 사이 희미한 구분선 (마지막 항목 제외) */}
+
                 {idx < (data.selfIntroductions || []).length - 1 && (
                   <div className="absolute bottom-10 left-8 md:left-16 right-0 h-px bg-linear-to-r from-[#0047BB]/10 via-[#0047BB]/5 to-transparent" />
                 )}

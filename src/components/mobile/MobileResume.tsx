@@ -653,9 +653,12 @@ export const MobileResume = ({ data }: Props) => {
                 )}
 
 
+              </div>
+            ))}
           </motion.div>
         )}
       </AnimatePresence>
     </motion.div>
   );
 };
+

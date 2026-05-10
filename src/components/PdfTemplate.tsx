@@ -571,7 +571,10 @@ const CoverPage: React.FC<{ intro: IntroItem; idx: number; isLast: boolean; data
 
 
 
+      </div>
+
       {/* Footer */}
+
       {isLast && (
         <div style={{ marginTop: '30px', paddingTop: '16px', borderTop: '1px solid rgba(0,0,0,0.1)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <span style={{ fontSize: '10px', fontWeight: 700, color: MUTED }}>{data.name} / {data.role}</span>
