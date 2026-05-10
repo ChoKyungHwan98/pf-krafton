@@ -129,18 +129,6 @@ function renderHighlightsHorizontal(items?: { bold: string; em: string }[]): Rea
 
 /* ─── logline renderer (A4 최적화) ───────────────────────────────── */
 function renderLogline(logline: string): React.ReactNode {
-  if (/<[a-zA-Z][^>]*>/.test(logline)) {
-    const html = logline
-      .replace(/\*\*(.*?)\*\*/g, '<strong style="font-weight:900;color:#0047BB">$1</strong>')
-      .replace(/\\n|\n/g, '<br/>');
-    return (
-      <div 
-        style={{ fontSize: '26px', lineHeight: 1.25, letterSpacing: '-0.8px', wordBreak: 'keep-all', color: DARK }}
-        dangerouslySetInnerHTML={{ __html: html }} 
-      />
-    );
-  }
-
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
       {logline.trim().split(/\n/).map((line, i) => {
