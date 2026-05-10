@@ -74,7 +74,7 @@ function inlineRender(text: string): React.ReactNode {
 function renderParagraphs(text: string): React.ReactNode {
   if (!text) return null;
   const clean = text
-    .replace(/<[^>]+>/g, '')
+    .replace(/<(?!\/?span)[^>]+>/gi, '')
     .replace(/\r/g, '')
     .replace(/^>\s?/gm, '');
   const paragraphs = clean.split(/\n{2,}/);
