@@ -629,8 +629,30 @@ export const MobileResume = ({ data }: Props) => {
                 )}
 
 
-              </div>
-            ))}
+                {/* Q5 하드코딩 Part 2 — PC CoverLetter.tsx와 동일 */}
+                {i === 4 && (
+                  <div style={{ borderTop: '1.5px solid rgba(0,0,0,0.06)' }}>
+                    <div style={{ padding: '20px 20px 16px', borderBottom: '1px solid rgba(0,0,0,0.06)' }}>
+                      <p style={{
+                        fontSize: 20, fontWeight: 900, color: '#1A2332',
+                        letterSpacing: '-0.04em', lineHeight: 1.35, margin: 0,
+                      }}>
+                        AI는 단순한 도구가 아닌,<br />
+                        <span style={{ color: '#0047BB' }}>가장 빠른 검증 수단입니다.</span>
+                      </p>
+                    </div>
+                    <div style={{ padding: '16px 20px 20px' }}>
+                      <BodyText text={[
+                        '**도로시아 프로젝트**를 진행하며, 저는 기획서만으로는 재미를 검증할 수 없다고 생각했습니다. 기획자가 상상하는 재미와 실제로 플레이할 때의 재미는 다르기 때문입니다.',
+                        '그래서 **AI를 활용**하여 직접 플레이 가능한 **프로토타입**을 만들었습니다. 기획 의도대로 시스템을 구현했고, 각 요소들을 조작할 수 있는 형태로 빠르게 제작했습니다.',
+                        '이 프로토타입을 프로그래머에게 전달했을 때, 팀의 **방향성이 흔들리지 않았습니다**. 문서로는 각자 다르게 상상할 수 있는 \'재미\'를, 모두가 같은 화면에서 확인할 수 있었기 때문입니다.',
+                        'AI는 단순한 도구가 아니라, 기획자의 의도를 가장 빠르게 검증할 수 있는 수단이라고 생각합니다.',
+                      ].join('\n\n')} />
+                    </div>
+                  </div>
+                )}
+
+
           </motion.div>
         )}
       </AnimatePresence>

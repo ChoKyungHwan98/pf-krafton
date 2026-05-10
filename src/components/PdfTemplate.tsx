@@ -547,9 +547,29 @@ const CoverPage: React.FC<{ intro: IntroItem; idx: number; isLast: boolean; data
         )}
 
 
+        {/* Q5 Part 2: AI 프로토타이핑 (하드코딩 추가 - 간격 크게 부여) */}
+        {idx === 4 && (
+          <div style={{ marginTop: '48px', paddingTop: '36px', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+            <div style={{ borderLeft: `4px solid ${BLUE}`, paddingLeft: '16px', marginBottom: '24px' }}>
+              <div style={{ fontSize: '24px', fontWeight: 900, lineHeight: 1.25, color: DARK, letterSpacing: '-0.6px', wordBreak: 'keep-all' }}>AI는 단순한 도구가 아닌,</div>
+              <div style={{ fontSize: '24px', fontWeight: 900, lineHeight: 1.25, color: BLUE, letterSpacing: '-0.6px', wordBreak: 'keep-all' }}>가장 빠른 검증 수단입니다.</div>
+            </div>
+            <p style={{ margin: '0 0 16px', fontSize: '12.5px', lineHeight: 1.95, color: BODY, wordBreak: 'keep-all', letterSpacing: '-0.2px' }}>
+              <strong style={{ color: BLUE, fontWeight: 800 }}>도로시아 프로젝트</strong>를 진행하며, 저는 기획서만으로는 재미를 검증할 수 없다고 생각했습니다. 기획자가 상상하는 재미와 실제로 플레이할 때의 재미는 다르기 때문입니다.
+            </p>
+            <p style={{ margin: '0 0 16px', fontSize: '12.5px', lineHeight: 1.95, color: BODY, wordBreak: 'keep-all', letterSpacing: '-0.2px' }}>
+              그래서 <strong style={{ color: BLUE, fontWeight: 800 }}>AI를 활용</strong>하여 직접 플레이 가능한 <strong style={{ color: BLUE, fontWeight: 800 }}>프로토타입</strong>을 만들었습니다. 기획 의도대로 시스템을 구현했고, 각 요소들을 조작할 수 있는 형태로 빠르게 제작했습니다.
+            </p>
+            <p style={{ margin: '0 0 16px', fontSize: '12.5px', lineHeight: 1.95, color: BODY, wordBreak: 'keep-all', letterSpacing: '-0.2px' }}>
+              이 프로토타입을 프로그래머에게 전달했을 때, 팀의 <strong style={{ color: BLUE, fontWeight: 800 }}>방향성이 흔들리지 않았습니다</strong>. 문서로는 각자 다르게 상상할 수 있는 재미를, 모두가 같은 화면에서 확인할 수 있었기 때문입니다.
+            </p>
+            <p style={{ margin: 0, fontSize: '12.5px', lineHeight: 1.95, color: BODY, wordBreak: 'keep-all', letterSpacing: '-0.2px' }}>
+              AI는 단순한 도구가 아니라, 기획자의 의도를 가장 빠르게 검증할 수 있는 수단이라고 생각합니다.
+            </p>
+          </div>
+        )}
 
 
-      </div>
 
       {/* Footer */}
       {isLast && (
