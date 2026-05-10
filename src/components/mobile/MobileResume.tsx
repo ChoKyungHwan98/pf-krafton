@@ -9,8 +9,18 @@ import type { ResumeData } from '../../types';
 interface Props { data: ResumeData; }
 type InnerTab = 'resume' | 'cover-letter';
 
-/* ── 로그라인 렌더러: **볼드** → 파란 Bold, \n 줄바꾸 유지 ── */
+/* ── HTML 태그 포함 여부 확인 ── */
+const hasHtmlTags = (text: string) => /<[a-zA-Z][^>]*>/.test(text);
+
+/* ── 로그라인 렌더러: HTML 태그 포함 시 dangerouslySetInnerHTML, 아닌 경우 **볼드** → 파란 Bold ── */
 const renderLogline = (text: string): React.ReactNode => {
+  if (hasHtmlTags(text)) {
+    // HTML span 태그가 포함된 경우: **...** 마크다운을 파란색 span으로 정제하고 HTML로 렌더링
+    const html = text
+      .replace(/\*\*(.*?)\*\*/g, '<span style="color:#0047BB;font-weight:900">$1</span>')
+      .replace(/\\n|\n/g, '<br/>');
+    return <span dangerouslySetInnerHTML={{ __html: html }} />;
+  }
   return text.trim().split(/\n/).map((line, i) => {
     const parts = line.split(/(\*\*.*?\*\*)/g);
     return (
@@ -44,33 +54,47 @@ const renderInline = (line: string): React.ReactNode => {
   });
 };
 
-/* ── 본문 렌더러: \n\n → 단락 분리, \n → <br/>, **볼드** 인라인 하이라이트 ── */
-const BodyText = ({ text, style }: { text: string; style?: React.CSSProperties }) => {
-  // HTML 태그 제거, \r 정제, 마크다운 > 블록쿼오트 표시자 제거
-  const clean = text
-    .replace(/<[^>]+>/g, '')
-    .replace(/\r/g, '')
-    .replace(/^>\s?/gm, '');  // 마크다운 > 블록쿼오트 표시자 제거
-  // 이중 줄바꾸으로 단락 분리
-  const paragraphs = clean.split(/\n{2,}/);
+/* ── HTML 엔티티(&lt; &gt; &amp;) 디코딩 ── */
+const decodeHtmlEntities = (text: string): string =>
+  text
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&amp;/g, '&')
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'");
 
+/* ── 본문 렌더러: \n\n → 단락 분리, HTML span 태그 포함 시 dangerouslySetInnerHTML, 아닌 경우 **볼드** 인라인 하이라이트 ── */
+const BodyText = ({ text, style }: { text: string; style?: React.CSSProperties }) => {
+  // HTML 엔티티 디코딩, \r 정제, 마크다운 > 블록쿠오트 표시자 제거
+  const decoded = decodeHtmlEntities(text).replace(/\r/g, '').replace(/^>\s?/gm, '');
+  const pStyle: React.CSSProperties = {
+    fontSize: 13.5, color: '#2d2d2d', lineHeight: 1.95,
+    letterSpacing: '-0.01em', wordBreak: 'keep-all',
+    overflowWrap: 'break-word', WebkitFontSmoothing: 'antialiased',
+    ...style,
+  };
+
+  if (hasHtmlTags(decoded)) {
+    // HTML span 태그를 포함한 본문: **...**  마크다운 변환 후 dangerouslySetInnerHTML
+    const html = decoded
+      .replace(/\*\*(.*?)\*\*/g, '<strong style="font-weight:800;color:#0047BB;background:rgba(0,71,187,0.09);padding:1px 3px;border-radius:3px">$1</strong>')
+      .replace(/\n{2,}/g, '</p><p style="font-size:13.5px;color:#2d2d2d;line-height:1.95;letter-spacing:-0.01em;word-break:keep-all;overflow-wrap:break-word;margin:0 0 14px">')
+      .replace(/\n/g, '<br/>');
+    return (
+      <p style={{ ...pStyle, margin: 0 }}
+        dangerouslySetInnerHTML={{ __html: html }}
+      />
+    );
+  }
+
+  // 일반 텍스트: 이중 \n\n 단락 분리
+  const paragraphs = decoded.split(/\n{2,}/);
   return (
     <>
       {paragraphs.map((para, pi) => {
-        // 단일 \n → <br/>
         const lines = para.split(/\n/);
         return (
-          <p key={pi} style={{
-            fontSize: 13.5,
-            color: '#2d2d2d',
-            lineHeight: 1.95,
-            margin: pi < paragraphs.length - 1 ? '0 0 14px' : 0,
-            letterSpacing: '-0.01em',
-            wordBreak: 'keep-all',
-            overflowWrap: 'break-word',
-            WebkitFontSmoothing: 'antialiased',
-            ...style,
-          }}>
+          <p key={pi} style={{ ...pStyle, margin: pi < paragraphs.length - 1 ? '0 0 14px' : 0 }}>
             {lines.map((line, li) => (
               <React.Fragment key={li}>
                 {li > 0 && <br />}

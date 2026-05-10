@@ -141,6 +141,8 @@ function App() {
     }
 
     setView(newView);
+    if (newView === 'cover-letter') setResumeTab('cover-letter');
+    if (newView === 'resume') setResumeTab('resume');
 
     // 사용자 요청: 이력서 <-> 자기소개서 전환 시에만 위로 스크롤
     if (isResumeTransition) {

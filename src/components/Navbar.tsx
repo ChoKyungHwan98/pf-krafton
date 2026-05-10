@@ -163,20 +163,20 @@ export const Navbar = ({ setView, currentView, onNavClick, isEditing, setIsEditi
           {/* ── RIGHT ── */}
           <div className="flex items-center justify-end gap-3 shrink-0 min-w-[200px]">
             {/* Document shortcut pill (Always show for both Home and Sub-views) */}
-            <div className="hidden xl:flex bg-zinc-100/80 p-1.5 rounded-full border border-black/5 shadow-inner">
+            <div className="hidden lg:flex bg-zinc-100/80 p-1.5 rounded-full border border-black/5 shadow-inner">
               {[
                 { key: 'resume', label: '이력서', icon: React.createElement(FileText, { className: "w-4 h-4" }) },
                 { key: 'portfolio', label: '포트폴리오', icon: React.createElement(FolderOpen, { className: "w-4 h-4" }) },
                 { key: 'game-history', label: '게이밍DNA', icon: React.createElement(Gamepad2, { className: "w-4 h-4" }) },
               ].map(item => (
                 <button key={item.key} onClick={() => { setView(item.key as any); window.scrollTo(0, 0); }}
-                  className={`w-[125px] py-2.5 rounded-full text-[14px] font-bold tracking-wide transition-all duration-300 flex items-center justify-center gap-2 ${currentView === item.key || (currentView === 'cover-letter' && item.key === 'resume') ? 'bg-white text-[#0047BB] shadow-md pointer-events-none' : 'text-zinc-500 hover:text-[#2C2C2C] hover:bg-white hover:shadow-sm'}`}>
+                  className={`w-[110px] py-2.5 rounded-full text-[13px] font-bold tracking-wide transition-all duration-300 flex items-center justify-center gap-2 ${currentView === item.key || (currentView === 'cover-letter' && item.key === 'resume') ? 'bg-white text-[#0047BB] shadow-md pointer-events-none' : 'text-zinc-500 hover:text-[#2C2C2C] hover:bg-white hover:shadow-sm'}`}>
                   {item.icon}
                   <span>{item.label}</span>
                 </button>
               ))}
             </div>
-            <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="lg:hidden w-11 h-11 ml-1 flex items-center justify-center rounded-full bg-zinc-100 text-[#2C2C2C]">
+            <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="hidden max-lg:flex w-11 h-11 ml-1 items-center justify-center rounded-full bg-zinc-100 text-[#2C2C2C]">
               {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
             {/* 관리자 Lock 버튼 — 우측 상단, 레이아웃 비간섭 */}
@@ -209,6 +209,7 @@ export const Navbar = ({ setView, currentView, onNavClick, isEditing, setIsEditi
                 <span className="text-[10px] font-mono tracking-widest uppercase text-zinc-500 mb-2">Documents</span>
                 {[
                   { key: 'resume', label: '이력서 보기', icon: React.createElement(FileText, { className: "w-4 h-4" }) },
+                  { key: 'cover-letter', label: '자기소개서 보기', icon: React.createElement(FileText, { className: "w-4 h-4" }) },
                   { key: 'portfolio', label: '포트폴리오 갤러리', icon: React.createElement(FolderOpen, { className: "w-4 h-4" }) },
                   { key: 'game-history', label: '게이밍DNA 보기', icon: React.createElement(Gamepad2, { className: "w-4 h-4" }) },
                 ].map(item => (
