@@ -11,13 +11,13 @@ interface ResumeEducationProps {
 
 export const ResumeEducation = ({ data, setData, isEditing }: ResumeEducationProps) => {
   return (
-    <div className="flex flex-col gap-12">
+    <div className="flex flex-col gap-8">
       {/* Education */}
       <section>
-        <h3 className="text-[18px] font-bold mb-6 flex items-center gap-3 text-[#1A1A1A]">
+        <h3 className="text-[18px] font-bold mb-5 flex items-center gap-3 text-[#1A1A1A]">
           <GraduationCap className="text-[#0047BB] w-5 h-5" /> 학력 및 교육
         </h3>
-        <div className="space-y-8">
+        <div className="space-y-6">
           {data.education.map((edu, idx) => (
             <div key={idx} className="relative pl-6 border-l-2 border-zinc-200/80 pb-6 last:pb-0">
               <div className="absolute -left-[5px] top-2 w-2 h-2 rounded-full bg-[#0047BB] ring-4 ring-[#FCFCFC]"></div>
@@ -48,7 +48,7 @@ export const ResumeEducation = ({ data, setData, isEditing }: ResumeEducationPro
 
       {/* Certificates */}
       <section>
-        <h3 className="text-[18px] font-bold mb-6 flex items-center gap-3 text-[#1A1A1A]">
+        <h3 className="text-[18px] font-bold mb-4 flex items-center gap-3 text-[#1A1A1A]">
           <Award className="text-[#0047BB] w-5 h-5" /> 자격증
         </h3>
         <div className="flex flex-col gap-4">

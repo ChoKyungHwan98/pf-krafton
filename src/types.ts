@@ -10,10 +10,12 @@ export interface Project {
   image: string;
   gallery?: string[];
   videoUrl?: string;
+  overviewVideoUrl?: string;
   pdfUrl?: string;
   documentLabel?: string;
   scenarioGallery?: string[];
   externalUrl?: string;
+  hideExternalTab?: boolean;
   simulatorUrl?: string;
   simulatorVideoUrl?: string;
   hasSimulator?: boolean;

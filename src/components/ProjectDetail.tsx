@@ -26,7 +26,7 @@ export const ProjectDetail = ({ project, onBack, isEditing, onSaveContent }: Pro
     { id: 'scenario', label: '시나리오 기획서', icon: <FileText className="w-3.5 h-3.5" />, show: !!project.scenarioGallery, color: '#D97706' },
     { id: 'prototype', label: '프로토타입', icon: <Sparkles className="w-3.5 h-3.5" />, show: !!project.prototypeUrl, color: '#7C3AED' },
     { id: 'video', label: '플레이 영상', icon: <Play className="w-3.5 h-3.5" />, show: !!project.videoUrl, color: '#EA580C' },
-    { id: 'link', label: '링크', icon: <ExternalLink className="w-3.5 h-3.5" />, show: !!project.externalUrl, color: '#2563EB' },
+    { id: 'link', label: '링크', icon: <ExternalLink className="w-3.5 h-3.5" />, show: !!project.externalUrl && !project.hideExternalTab, color: '#2563EB' },
     { id: 'simulator', label: '시뮬레이터', icon: <Calculator className="w-3.5 h-3.5" />, show: !!(project.simulatorUrl || project.hasSimulator || project.simulatorVideoUrl), color: '#DC2626' },
     { id: 'gantt', label: '간트차트', icon: <Calendar className="w-3.5 h-3.5" />, show: !!project.ganttUrl, color: '#10B981' },
   ];
@@ -366,127 +366,149 @@ export const ProjectDetail = ({ project, onBack, isEditing, onSaveContent }: Pro
             </motion.div>
           ) : (
             <motion.div key="tab-overview" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-              className="flex-1 flex flex-col min-h-0 overflow-y-auto bg-[#F7F8FA] custom-scrollbar"
+              className="flex-1 flex flex-col min-h-0 overflow-hidden bg-[#1B2838]"
             >
-              {/* Hero */}
-              <div className="relative h-[200px] md:h-[260px] w-full shrink-0 overflow-hidden">
+              {/* Steam-style Hero Banner — compact */}
+              <div className="relative h-[160px] w-full shrink-0 overflow-hidden">
                 <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
-                <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/40 to-black/5" />
+                <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, #1B2838 0%, rgba(27,40,56,0.5) 55%, transparent 100%)' }} />
 
                 {/* Top-left: role badges */}
-                <div className="absolute top-5 left-6 flex flex-wrap gap-2">
+                <div className="absolute top-4 left-6 flex flex-wrap gap-2">
                   {project.roles.map(role => (
                     <span key={role} className="px-3 py-1 bg-black/50 backdrop-blur-md border border-white/20 rounded-full text-white text-[10px] font-black uppercase tracking-widest">{role}</span>
                   ))}
                 </div>
 
-
-
-
-                {/* Bottom: tags + title */}
-                <div className="absolute bottom-0 left-0 right-0 px-8 pb-7">
-                  <div className="flex flex-wrap gap-1.5 mb-3">
-                    {project.tags.map(tag => (
-                      <span key={tag} className="px-2 py-0.5 bg-white/10 backdrop-blur-sm border border-white/15 rounded-full text-white/80 text-[10px] font-semibold">{tag}</span>
-                    ))}
-                  </div>
-                  <h1 className="text-3xl md:text-4xl font-black text-white tracking-tight leading-tight drop-shadow-xl">{project.title}</h1>
+                {/* Bottom: title only */}
+                <div className="absolute bottom-0 left-0 right-0 px-7 pb-4">
+                  <h1 className="text-2xl md:text-3xl font-black text-white tracking-tight leading-tight drop-shadow-xl">{project.title}</h1>
                 </div>
               </div>
 
-              {/* Stats Strip */}
-              <div className="bg-zinc-900 shrink-0 px-4 py-0">
-                <div className="flex items-stretch divide-x divide-white/10">
-                  {[
-                    { icon: <Users className="w-4 h-4" />, label: "팀 규모", value: project.stats?.teamSize ?? "—", accent: false },
-                    { icon: <UserCheck className="w-4 h-4" />, label: "주요 역할", value: project.stats?.myRole ?? "—", accent: false },
-                    { icon: <Trophy className="w-4 h-4" />, label: "주요 성과", value: project.stats?.achievement ?? "—", accent: true },
-                  ].map((stat, i) => (
-                    <div key={i} className={`flex items-center gap-5 px-6 py-6 flex-1 ${stat.accent ? 'bg-emerald-950/25' : ''}`}>
-                      <span className={`shrink-0 ${stat.accent ? 'text-emerald-500' : 'text-zinc-500'}`}>{stat.icon}</span>
-                      <div>
-                        <div className="text-[11px] font-bold text-zinc-500 uppercase tracking-[0.15em] mb-1">{stat.label}</div>
-                        <div className={`text-[16px] font-black leading-tight ${stat.accent ? 'text-emerald-400' : 'text-white'}`}>{stat.value}</div>
+              {/* Steam-style Main Layout: Video Left + Info Right — fills remaining height */}
+              <div className="flex flex-row flex-1 min-h-0">
+
+                {/* LEFT: Video fills the height */}
+                <div className="flex-1 flex flex-col bg-[#1B2838] px-6 py-5 gap-3 min-w-0 min-h-0">
+                  {/* YouTube Embed — flex-1 to fill */}
+                  <div className="flex-1 min-h-0 rounded-sm overflow-hidden shadow-2xl border border-white/10 bg-black">
+                    {project.overviewVideoUrl ? (
+                      <iframe
+                        src={
+                          project.overviewVideoUrl.includes('youtu.be/')
+                            ? project.overviewVideoUrl.replace('youtu.be/', 'youtube.com/embed/')
+                            : project.overviewVideoUrl.replace('watch?v=', 'embed/')
+                        }
+                        className="w-full h-full border-0"
+                        allowFullScreen
+                        title={`${project.title} 영상`}
+                      />
+                    ) : project.externalUrl ? (
+                      <div className="w-full h-full relative overflow-hidden">
+                        {/* Full image */}
+                        <img
+                          src={project.image}
+                          alt={project.title}
+                          className="w-full h-full object-cover"
+                        />
+                        {/* Dark overlay */}
+                        <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.3) 50%, transparent 100%)' }} />
+                        {/* CTA at bottom */}
+                        <div className="absolute bottom-0 left-0 right-0 flex flex-col items-center gap-3 pb-8">
+                          <a
+                            href={project.externalUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-3 px-8 py-3.5 rounded font-black text-white text-[13px] uppercase tracking-widest transition-all hover:brightness-110 active:scale-95 shadow-2xl"
+                            style={{ background: 'linear-gradient(135deg, #1a9fff 0%, #0d6fd4 100%)' }}
+                          >
+                            <ExternalLink className="w-4 h-4" />
+                            지금 플레이하기
+                          </a>
+                          <p className="text-white/50 text-[11px] font-medium">Gemini 플랫폼에서 실행됩니다</p>
+                        </div>
+                      </div>
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center text-zinc-500 text-sm font-medium">
+                        영상이 없습니다
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Short blurb under video */}
+                  <p className="shrink-0 text-[13px] text-[#c6d4df] leading-relaxed">
+                    {project.description}
+                  </p>
+                </div>
+
+                {/* RIGHT: Steam-style Info Panel */}
+                <div className="w-[280px] shrink-0 bg-[#16202D] border-l border-white/10 flex flex-col p-5 gap-4 overflow-hidden">
+
+                  {/* Key art thumbnail */}
+                  <div className="w-full rounded-sm overflow-hidden border border-white/10 shadow-lg shrink-0">
+                    <img src={project.image} alt={project.title} className="w-full object-cover" style={{ maxHeight: '130px' }} />
+                  </div>
+
+                  <div className="h-px bg-white/10 shrink-0" />
+
+                  {/* Info rows */}
+                  <div className="flex flex-col gap-3.5">
+                    {/* Team Size */}
+                    <div className="flex flex-col gap-1">
+                      <div className="flex items-center gap-2">
+                        <Users className="w-3.5 h-3.5 text-[#66c0f4]" />
+                        <span className="text-[11px] font-black text-[#66c0f4] uppercase tracking-[0.15em]">팀 규모</span>
+                      </div>
+                      <span className="text-[13px] font-semibold text-[#c6d4df] leading-snug pl-5">
+                        {project.stats?.teamSize ?? '—'}
+                      </span>
+                    </div>
+
+                    <div className="h-px bg-white/10" />
+
+                    {/* Key Role */}
+                    <div className="flex flex-col gap-1">
+                      <div className="flex items-center gap-2">
+                        <UserCheck className="w-3.5 h-3.5 text-[#66c0f4]" />
+                        <span className="text-[11px] font-black text-[#66c0f4] uppercase tracking-[0.15em]">주요 역할</span>
+                      </div>
+                      <span className="text-[13px] font-semibold text-[#c6d4df] leading-snug pl-5">
+                        {project.stats?.myRole ?? '—'}
+                      </span>
+                    </div>
+
+                    <div className="h-px bg-white/10" />
+
+                    {/* Achievement */}
+                    <div className="flex flex-col gap-1">
+                      <div className="flex items-center gap-2">
+                        <Trophy className="w-3.5 h-3.5 text-[#90ee90]" />
+                        <span className="text-[11px] font-black text-[#90ee90] uppercase tracking-[0.15em]">주요 성과</span>
+                      </div>
+                      <span className="text-[13px] font-bold text-[#90ee90] leading-snug pl-5">
+                        {project.stats?.achievement ?? '—'}
+                      </span>
+                    </div>
+
+                    <div className="h-px bg-white/10" />
+
+                    {/* Tags */}
+                    <div className="flex flex-col gap-2">
+                      <span className="text-[11px] font-black text-[#8f98a0] uppercase tracking-[0.12em]">이 게임의 인기 태그</span>
+                      <div className="flex flex-wrap gap-1.5">
+                        {project.tags.map(tag => (
+                          <span key={tag}
+                            className="px-2.5 py-1 rounded text-[#c6d4df] text-[11px] font-semibold cursor-default transition-colors"
+                            style={{ background: '#1B2838', border: '1px solid #4b6a8a' }}
+                          >
+                            {tag.replace('#', '')}
+                          </span>
+                        ))}
                       </div>
                     </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Body */}
-              <div className="max-w-3xl mx-auto w-full px-6 md:px-8 py-8 pb-16 space-y-5">
-
-                {/* Brief description */}
-                <p className="text-[15px] text-zinc-500 font-medium leading-relaxed border-l-2 border-[#0047BB]/30 pl-4">{project.description}</p>
-
-                {/* Content sections auto-parsed from markdown */}
-                {(() => {
-                  if (!project.content) return null;
-                  const sections: { title: string; items: string[] }[] = [];
-                  let cur: { title: string; items: string[] } | null = null;
-                  for (const raw of project.content.split('\n')) {
-                    const line = raw.trim();
-                    if (line.startsWith('### ')) {
-                      if (cur) sections.push(cur);
-                      cur = { title: line.replace(/^###\s*[\d.]*\s*/, ''), items: [] };
-                    } else if (line.startsWith('## ') && !line.match(/^##\s*\d+\.\s*기획 개요/)) {
-                      if (cur) sections.push(cur);
-                      cur = { title: line.replace(/^##\s*[\d.]*\s*/, ''), items: [] };
-                    } else if (line.startsWith('- ') && cur) {
-                      cur.items.push(line.slice(2));
-                    }
-                  }
-                  if (cur) sections.push(cur);
-                  const withItems = sections.filter(s => s.items.length > 0);
-                  if (withItems.length === 0) return null;
-
-                  const highlight = (text: string) => {
-                    const parts = text.split(/(\*\*.*?\*\*|\d+(?:\.\d+)?(?:%|초|인|배|종|s|개)?)/g);
-                    return parts.map((p, i) => {
-                      if (p.startsWith('**') && p.endsWith('**')) {
-                        return <strong key={i} className="font-bold text-zinc-900">{p.slice(2, -2)}</strong>;
-                      } else if (/^\d/.test(p)) {
-                        return <strong key={i} className="font-bold text-zinc-900">{p}</strong>;
-                      } else {
-                        return <span key={i}>{p}</span>;
-                      }
-                    });
-                  };
-
-                  return (
-                    <div className="space-y-4">
-                      <p className="text-[10px] font-black text-zinc-400 uppercase tracking-[0.25em]">주요 설계 내용</p>
-                      {withItems.map((section, si) => (
-                        <div key={si} className="bg-white rounded-2xl border border-zinc-200 shadow-sm overflow-hidden">
-                          <div className="px-5 py-3 bg-zinc-50 border-b border-zinc-100 flex items-center gap-2">
-                            <div className="w-1 h-4 bg-[#0047BB] rounded-full" />
-                            <p className="text-[11px] font-black text-zinc-700 tracking-wide">{section.title}</p>
-                          </div>
-                          <div className="p-5 space-y-2.5">
-                            {section.items.map((item, ii) => (
-                              <div key={ii} className="flex gap-3 items-start">
-                                <div className="w-1 h-1 rounded-full bg-zinc-300 mt-2 shrink-0" />
-                                <p className="text-[13px] text-zinc-600 leading-relaxed">{highlight(item)}</p>
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  );
-                })()}
-
-                {/* Key tasks chips */}
-                {project.keyTasks && project.keyTasks.length > 0 && (
-                  <div className="pt-4 border-t border-zinc-100">
-                    <p className="text-[10px] font-black text-zinc-400 uppercase tracking-[0.25em] mb-3">담당 역할</p>
-                    <div className="flex flex-wrap gap-2">
-                      {project.keyTasks.map(task => (
-                        <span key={task} className="px-3 py-1.5 bg-zinc-900 text-white rounded-xl text-[11px] font-black tracking-wide">{task}</span>
-                      ))}
-                    </div>
                   </div>
-                )}
+                </div>
               </div>
             </motion.div>
           )}

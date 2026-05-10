@@ -8,7 +8,7 @@ export default defineConfig(({mode}) => {
   const env = loadEnv(mode, '.', '');
   const isProduction = mode === 'production';
   return {
-    base: '/pf-pearlabyss/',
+    base: '/pf-krafton/',
     plugins: [
       react(), 
       tailwindcss(),

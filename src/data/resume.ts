@@ -73,9 +73,7 @@ export const RESUME_DATA: ResumeData = {
       period: "2025.09 - 2026.04",
       description: "실무 중심의 게임 기획 프로세스 전반을 이수했습니다.",
       details: [
-        "시스템 기획: 코어 루프 설계, 경제 시스템 및 밸런싱",
-        "팀 프로젝트 3회 진행 (전 프로젝트 팀장)",
-        "AI 봇 설계 도구 Eve를 활용한 회의록 자동화 시스템 구축"
+        "팀 프로젝트 3회 진행 (전 프로젝트 팀장)"
       ]
     },
     {
@@ -98,31 +96,22 @@ export const RESUME_DATA: ResumeData = {
       title: "도로시아 (방치형 핵앤슬래시 RPG)",
       period: "2026.02 - 2026.04",
       description: "팀장 | 전투 및 경제 밸런스 기획, 방치 시스템 설계",
-      teamSize: "기획 7명 / 프로그래밍 4명",
-      details: [
-        "게임 전체 파워 밸런스 설계",
-        "기준 TTK(Time to Kill) 및 PDPS 기반의 스테이지, 몬스터, 장비 성장 지수 설계",
-        "인플레이션 제어를 위한 4종 재화(골드, 스크랩 등) 순환 구조 및 방치 보상 밸런싱"
-      ]
+      teamSize: "11명",
+      details: []
     },
     {
       title: "Digreed (로그라이트 RPG)",
       period: "2025.12 - 2026.01",
       description: "팀장 | 게임 전체 룰 및 시스템 기획",
-      teamSize: "기획 6명 / 프로그래밍 4명",
-      details: [
-        "무기 교체 시스템, 맵 프리팹 구조, 코어 룰 기획"
-      ]
+      teamSize: "10명",
+      details: []
     },
     {
       title: "침묵의 저택 (횡스크롤 공포)",
       period: "2025.11",
-      description: "횡스크롤 공포 게임의 코어 루프와 필요 시스템을 정의하고 각 파트를 팀원에게 분배·총괄했습니다.",
-      teamSize: "기획 4명",
-      details: [
-        "추격자 AI 행동 패턴, 시야 축소 메카닉, 아이템 획득 및 탈출 구조 기획",
-        "플레이어-추격자 충돌 처리, 오브젝트 상호작용 규칙 정의"
-      ]
+      description: "팀장 | 게임 전체 룰 및 시스템 기획",
+      teamSize: "4명",
+      details: []
     }
   ],
   certificates: [
