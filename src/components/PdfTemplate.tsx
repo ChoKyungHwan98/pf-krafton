@@ -270,7 +270,7 @@ const renderToolIcon = (name: string) => {
 /* ─── PAGE 1: RESUME ─────────────────────────────────────────────── */
 const ResumePage: React.FC<{ data: ResumeData }> = ({ data }) => (
   <div className="pdf-page bg-white mx-auto font-sans relative" style={{ width: '210mm', height: '297mm', overflow: 'hidden' }}>
-    <div className="flex flex-col" style={{ transform: 'scale(0.88)', transformOrigin: 'top left', width: '113.63%', height: '113.63%' }}>
+    <div className="flex flex-col" style={{ transform: 'scale(0.92)', transformOrigin: 'top left', width: '108.7%', height: '108.7%' }}>
       <header className="flex flex-row items-start gap-8 p-8 bg-[#FAFAFA] border-b border-zinc-100 shrink-0">
         {/* Portrait Frame */}
         <div className="relative shrink-0">
@@ -346,7 +346,7 @@ const ResumePage: React.FC<{ data: ResumeData }> = ({ data }) => (
           <h3 className="text-[12px] font-bold mb-3 flex items-center gap-2 text-[#1A1A1A]">
             <GraduationCap className="text-[#0047BB] w-3.5 h-3.5" /> 학력 및 교육
           </h3>
-          <div className="space-y-4">
+          <div className="space-y-5">
             {data.education.map((edu, idx) => (
               <div key={idx} className="relative pl-3 border-l-2 border-[#0047BB]/20">
                 <div className="absolute -left-[5px] top-1 w-2 h-2 rounded-none bg-[#0047BB]/40"></div>
@@ -354,8 +354,8 @@ const ResumePage: React.FC<{ data: ResumeData }> = ({ data }) => (
                   <h4 className="font-bold text-[11px] text-[#1A1A1A] leading-snug">{edu.title}</h4>
                   <span className="text-[8.5px] font-mono font-bold text-zinc-400">{edu.period}</span>
                 </div>
-                <div className="text-[9.5px] text-zinc-600 leading-relaxed mb-1 font-medium">{edu.description}</div>
-                <ul className="text-[8.5px] text-zinc-500 space-y-1 list-none">
+                <div className="text-[10px] text-zinc-600 leading-relaxed mb-1 font-medium">{edu.description}</div>
+                <ul className="text-[9px] text-zinc-500 space-y-1 list-none">
                   {edu.details.map((detail, dIdx) => <li key={dIdx} className="relative pl-2"><span className="absolute left-0 top-1 w-1 h-1 bg-zinc-300 rounded-full"></span>{detail}</li>)}
                 </ul>
               </div>
@@ -391,34 +391,37 @@ const ResumePage: React.FC<{ data: ResumeData }> = ({ data }) => (
           <h3 className="text-[12px] font-bold mb-3 flex items-center gap-2 text-[#1A1A1A]">
             <Briefcase className="text-[#0047BB] w-3.5 h-3.5" /> 프로젝트 경험
           </h3>
-          <div className="space-y-3">
+          <div className="space-y-4">
             {data.experience.map((exp, idx) => (
               <div key={idx} className="relative pl-5 border-l-2 border-[#0047BB]/10">
                 <div className="absolute -left-[6px] top-1.5 w-2.5 h-2.5 rounded-full bg-white border-2 border-[#0047BB] shadow-sm"></div>
-                
+
                 <div className="flex items-center justify-between gap-2 mb-1.5">
-                  <h4 className="font-bold text-[13px] text-[#1A1A1A] tracking-tight">{exp.title}</h4>
-                  <span className="text-[8px] font-mono font-black text-zinc-400 bg-zinc-50 px-1.5 py-0.5 rounded-sm border border-zinc-100">{exp.period}</span>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px', flexWrap: 'wrap' }}>
+                    <h4 className="font-bold text-[14px] text-[#1A1A1A] tracking-tight">{exp.title}</h4>
+                    {exp.teamSize && (
+                      <span style={{ display: 'inline-flex', alignItems: 'center', gap: '3px', fontSize: '9px', fontWeight: 600, color: '#71717A', background: '#F4F4F5', border: '1px solid #E4E4E7', borderRadius: '99px', padding: '1px 7px' }}>
+                        👤 {exp.teamSize}
+                      </span>
+                    )}
+                  </div>
+                  <span className="text-[8px] font-mono font-black text-zinc-400 bg-zinc-50 px-1.5 py-0.5 rounded-sm border border-zinc-100 shrink-0">{exp.period}</span>
                 </div>
 
-                <div className="text-[10px] text-[#0047BB] font-bold mb-1.5 bg-[#0047BB]/5 inline-block px-2 py-1 rounded-sm border-l-2 border-[#0047BB]">
+                <div className="text-[10px] text-[#0047BB] font-bold mb-2 bg-[#0047BB]/5 block px-2 py-1 rounded-sm border-l-2 border-[#0047BB]">
                   {inlineRender(exp.description)}
                 </div>
-                {exp.teamSize && (
-                  <div className="flex items-center gap-1.5 mb-2">
-                    <span className="text-[8px] font-mono font-black text-zinc-400 uppercase tracking-widest">팀 구성</span>
-                    <span className="text-[9px] font-bold text-zinc-500 bg-zinc-50 border border-zinc-200 px-1.5 py-0.5 rounded-sm">{exp.teamSize}</span>
-                  </div>
-                )}
 
-                <ul className="text-[9.5px] text-[#4A4A4A] space-y-1.5 list-none leading-relaxed font-medium">
-                  {exp.details.map((detail, dIdx) => (
-                    <li key={dIdx} className="relative pl-3">
-                      <span className="absolute left-0 top-1.5 w-1 h-1 border border-[#0047BB] rounded-full"></span>
-                      {detail}
-                    </li>
-                  ))}
-                </ul>
+                {exp.details && exp.details.length > 0 && (
+                  <ul className="text-[10px] text-[#4A4A4A] space-y-1.5 list-none leading-relaxed font-medium">
+                    {exp.details.map((detail, dIdx) => (
+                      <li key={dIdx} className="relative pl-3">
+                        <span className="absolute left-0 top-1.5 w-1 h-1 border border-[#0047BB] rounded-full"></span>
+                        {detail}
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </div>
             ))}
           </div>
@@ -440,7 +443,7 @@ const ResumePage: React.FC<{ data: ResumeData }> = ({ data }) => (
                       <div className="text-[#1A1A1A] shrink-0 pt-0.5" style={{ transform: 'scale(0.8)', transformOrigin: 'top left', width: '20px', height: '20px' }}>{renderToolIcon(tool.name)}</div>
                       <div className="flex flex-col">
                         <span className="text-[10px] font-bold text-[#1A1A1A]">{tool.name}</span>
-                        <p className="text-[8.5px] text-zinc-500 font-medium leading-tight">{tool.description}</p>
+                        <p className="text-[9px] text-zinc-500 font-medium leading-tight">{tool.description}</p>
                       </div>
                     </div>
                   ))}
@@ -455,7 +458,7 @@ const ResumePage: React.FC<{ data: ResumeData }> = ({ data }) => (
                       <div className="text-[#1A1A1A] shrink-0 pt-0.5" style={{ transform: 'scale(0.8)', transformOrigin: 'top left', width: '20px', height: '20px' }}>{renderToolIcon(tool.name)}</div>
                       <div className="flex flex-col">
                         <span className="text-[10px] font-bold text-[#1A1A1A]">{tool.name}</span>
-                        <p className="text-[8.5px] text-zinc-500 font-medium leading-tight">{tool.description}</p>
+                        <p className="text-[9px] text-zinc-500 font-medium leading-tight">{tool.description}</p>
                       </div>
                     </div>
                   ))}
@@ -470,7 +473,7 @@ const ResumePage: React.FC<{ data: ResumeData }> = ({ data }) => (
                       <div className="text-[#1A1A1A] shrink-0 pt-0.5" style={{ transform: 'scale(0.8)', transformOrigin: 'top left', width: '20px', height: '20px' }}>{renderToolIcon(tool.name)}</div>
                       <div className="flex flex-col">
                         <span className="text-[10px] font-bold text-[#1A1A1A]">{tool.name}</span>
-                        <p className="text-[8.5px] text-zinc-500 font-medium leading-tight">{tool.description}</p>
+                        <p className="text-[9px] text-zinc-500 font-medium leading-tight">{tool.description}</p>
                       </div>
                     </div>
                   ))}
@@ -543,27 +546,8 @@ const CoverPage: React.FC<{ intro: IntroItem; idx: number; isLast: boolean; data
           </div>
         )}
 
-        {/* Q5 Part 2: AI 프로토타이핑 (하드코딩 추가 - 간격 크게 부여) */}
-        {idx === 4 && (
-          <div style={{ marginTop: '48px', paddingTop: '36px', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
-            <div style={{ borderLeft: `4px solid ${BLUE}`, paddingLeft: '16px', marginBottom: '24px' }}>
-              <div style={{ fontSize: '24px', fontWeight: 900, lineHeight: 1.25, color: DARK, letterSpacing: '-0.6px', wordBreak: 'keep-all' }}>AI는 단순한 도구가 아닌,</div>
-              <div style={{ fontSize: '24px', fontWeight: 900, lineHeight: 1.25, color: BLUE, letterSpacing: '-0.6px', wordBreak: 'keep-all' }}>가장 빠른 검증 수단입니다.</div>
-            </div>
-            <p style={{ margin: '0 0 16px', fontSize: '12.5px', lineHeight: 1.95, color: BODY, wordBreak: 'keep-all', letterSpacing: '-0.2px' }}>
-              <strong style={{ color: BLUE, fontWeight: 800 }}>도로시아 프로젝트</strong>를 진행하며, 저는 기획서만으로는 재미를 검증할 수 없다고 생각했습니다. 기획자가 상상하는 재미와 실제로 플레이할 때의 재미는 다르기 때문입니다.
-            </p>
-            <p style={{ margin: '0 0 16px', fontSize: '12.5px', lineHeight: 1.95, color: BODY, wordBreak: 'keep-all', letterSpacing: '-0.2px' }}>
-              그래서 <strong style={{ color: BLUE, fontWeight: 800 }}>AI를 활용</strong>하여 직접 플레이 가능한 <strong style={{ color: BLUE, fontWeight: 800 }}>프로토타입</strong>을 만들었습니다. 기획 의도대로 시스템을 구현했고, 각 요소들을 조작할 수 있는 형태로 빠르게 제작했습니다.
-            </p>
-            <p style={{ margin: '0 0 16px', fontSize: '12.5px', lineHeight: 1.95, color: BODY, wordBreak: 'keep-all', letterSpacing: '-0.2px' }}>
-              이 프로토타입을 프로그래머에게 전달했을 때, 팀의 <strong style={{ color: BLUE, fontWeight: 800 }}>방향성이 흔들리지 않았습니다</strong>. 문서로는 각자 다르게 상상할 수 있는 재미를, 모두가 같은 화면에서 확인할 수 있었기 때문입니다.
-            </p>
-            <p style={{ margin: 0, fontSize: '12.5px', lineHeight: 1.95, color: BODY, wordBreak: 'keep-all', letterSpacing: '-0.2px' }}>
-              AI는 단순한 도구가 아니라, 기획자의 의도를 가장 빠르게 검증할 수 있는 수단이라고 생각합니다.
-            </p>
-          </div>
-        )}
+
+
 
       </div>
 
