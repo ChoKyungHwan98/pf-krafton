@@ -1,4 +1,4 @@
-﻿import type { ResumeData } from '../types';
+import type { ResumeData } from '../types';
 
 export const RESUME_DATA: ResumeData = {
   name: "조경환",
@@ -37,10 +37,10 @@ export const RESUME_DATA: ResumeData = {
     {
       navTitle: "지원 동기",
       question: "크래프톤에 입사 지원한 동기는 무엇입니까?",
-      logline: "14년의 길을 돌아서게 한 것은,  \n**RPG였습니다.**",
-      hook: "하고 싶은 것, **좋아하는 것**, 잘하는 것은 다릅니다.\n\n사람을 돕고 싶어 법학을 선택했지만, 그것을 좋아하거나 잘하지는 않았습니다.\n\n법학이 <span className=\"font-black text-zinc-400 text-[1.4em] inline-block relative -top-[2px]\">-</span>에서 <span className=\"font-black text-zinc-400 text-[1.4em] inline-block relative -top-[1px]\">0</span>으로 되돌리는 일이라는 것을 깨달은 순간, 더 이상 공부를 이어나갈 수 없었습니다.\n\n남은 질문은 하나였습니다. 나는 무엇을 진짜 좋아하는가. **게임**이었습니다.",
-      body: "어떤 장르도 가리지 않고 플레이했습니다. 그리고 가장 좋아하는 것을 직업으로 삼기로 했다면, 그 안에서도 **가장 좋아하는 것**으로 가야 한다고 생각했습니다. 그것이 **RPG**였습니다.\n\n게임 기획자를 준비하면서 자연스럽게 **글로벌 시장에서 가장 강력한 IP**를 보유한 회사를 목표로 설정했습니다. **크래프톤**이었습니다.\n\n**PUBG**라는 IP 하나로 글로벌 시장을 제패하고 끊임없이 성장해온 회사. 저와 **같은 방향**을 바라보고 있었습니다.",
-      closing: "이를 위해 진행한 **3개의 프로젝트 중 2개가 RPG**입니다. 크래프톤이 쌓아온 게임 개발의 깊이 위에, 제가 준비해 온 것을 올려놓고 싶습니다."
+      logline: "마이너스(-)에서 0으로,  \n**0에서 플러스(+)로.**",
+      hook: "사람을 돕고 싶어 법학과에 진학했습니다. 가장을 돕는 것이 한 가정을 지킬 수 있는 길이라고 생각했습니다. 매일 12시간 이상 공부하며 한계에 부딪힐 때마다 그 이유를 되뇌며 버텼습니다.\n\n그러나 달리면 달릴수록 외면할 수 없는 사실과 마주했습니다. 하고 싶은 것, 좋아하는 것, 잘하는 것은 다르다는 것을.\n\n**법학**으로 사람을 돕고 싶었지만, 그 일이 제가 **좋아하는 일은 아니라는 것**. 이 사실을 인정한 순간, 더 이상 공부를 이어나갈 수 없게 되었습니다.\n\n대학교 마지막 학기였습니다. 방향을 찾지 못한 채, 반년이라는 시간 동안 \"**나는 어떻게 살아가야 하는가**?\"라는 질문 하나에 매달렸습니다.",
+      body: "고민하던 중, **오프라인 게임 행사**에 방문했습니다. 그곳에서 저는 한 장면을 보았습니다. 행사장을 가득 채운 사람들의 환하게 웃는 표정, 쇼케이스가 시작되자 일제히 터지는 환호.\n\n그 장면을 보며 저도 게임을 할 때 저렇게 **기뻤다**는 것을 문득 떠올렸습니다. 학업에 치여 잠시 잊고 있었지만, 게임 앞에서만큼은 언제나 진심이었습니다.\n\n그 자리에서 확신했습니다. 법학이 ‘<span className=\"font-black text-zinc-400 text-[1.4em] inline-block relative -top-[2px]\">-</span>에서 <span className=\"font-black text-zinc-400 text-[1.4em] inline-block relative -top-[1px]\">0</span>으로 되돌리는 일’이라면, **게임**은 누군가의 하루를 ‘<span className=\"font-black text-zinc-400 text-[1.4em] inline-block relative -top-[1px]\">0</span>에서 <span className=\"font-black text-[#0047BB] text-[1.4em] inline-block relative -top-[1px]\">+</span>가 되는 경험’을 만든다는 것을. 저도 **누군가의 하루를 움직이는** 사람이 되고 싶었습니다.\n\n그 <span className=\"font-black text-[#0047BB] text-[1.4em] inline-block relative -top-[1px]\">+</span>를 만드는 가장 중요한 요소는 무엇인가. 저는 강한 IP라고 생각합니다.\n\n그 기준에 가장 부합하는 것은 **포켓몬**입니다. 알을 **1만 개 넘게 부화**시켰고, 레이팅 상위권을 달성하며, 한 IP를 두 결로 끝까지 파본 경험이 있습니다.\n\n**팰월드**는 그 끝에 만난 게임이었습니다. **120시간**을 플레이하며, 포켓몬의 \"수집·육성·교배·보스전\"에 오픈월드·슈팅이 결합된, 제가 평생 좋아한 요소들이 하나로 모인 IP였습니다.",
+      closing: "대한민국에서 <span className=\"font-black text-zinc-400 text-[1.4em] inline-block relative -top-[1px]\">0</span>에서 <span className=\"font-black text-[#0047BB] text-[1.4em] inline-block relative -top-[1px]\">+</span>로의 경험을 만들 수 있는 자리는, 오직 크래프톤의 팰월드 모바일이라고 확신합니다.\n\n크래프톤의 팰월드 모바일에서, <span className=\"font-black text-zinc-400 text-[1.4em] inline-block relative -top-[1px]\">0</span>에서 <span className=\"font-black text-[#0047BB] text-[1.4em] inline-block relative -top-[1px]\">+</span>의 첫 걸음을 시작하고 싶습니다."
     },
     {
       navTitle: "추가 소개",
